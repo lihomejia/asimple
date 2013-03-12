@@ -5,19 +5,24 @@
 <html>
 	<head>
 		<title>用户管理</title>
-		<link rel="stylesheet" type="text/css" href="<c:url value='/css/reset.css'/>" />
-		<link rel="stylesheet" type="text/css" href="<c:url value='/css/style.css'/>" />
-		<script type="text/javascript" src="<c:url value='/js/menujs.js'/>"></script>
+		<link rel="stylesheet" type="text/css" href="<c:url value='/public/css/reset.css'/>" />
+		<link rel="stylesheet" type="text/css" href="<c:url value='/public/css/style.css'/>" />
+		<script type="text/javascript" src="<c:url value='/public/js/menujs.js'/>"></script>
 	</head>
 
 	<body>
-		<%@include file="/public/top.jsp"%>
 		<!--内容菜单-->
 		<table border="0" cellspacing="0" cellpadding="0"
 			class="w960 mCenter mt10 ">
 			<tr>
-				<%@include file="/public/left.jsp"%>
 				<td width="790" align="left" valign="top" class="pl10">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="subNav mCenter" style="width: 100%;">
+						<tr>
+							<td class="font12Blue p10">
+								<span class="font12Blue_B">您当前所在位置：</span>${resource.title }
+							</td>
+						</tr>
+					</table>
 					<form name="form1" method="post" action="<c:url value='/feed/resource/edit.html'/>" onsubmit="return formCheck();">
 					  <input id="rid" name="rid" type="hidden" value="${feedResource.id }"/>
 					  <input id="resourceNumber" name="resourceNumber" type="hidden" value="${resource.number}"/>
@@ -36,7 +41,9 @@
 					    </tr>
 					  </table>
 					</form>
-			<%@include file="/public/bottom.jsp"%>
+				</td>
+			</tr>
+		</table>
 	  <script type="text/javascript">
 	  		function formCheck(){
 	  			var resourceName = document.getElementById('resourceName').value;
