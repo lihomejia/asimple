@@ -12,7 +12,7 @@ public class FeedController {
 	/**
 	 * 去入库页面
 	 */
-	@RequestMapping("/storage")
+	@RequestMapping("/toStorage")
 	public String toStorage(){
 		return "feed/storage";
 	}
