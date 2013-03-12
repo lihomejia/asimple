@@ -7,26 +7,21 @@
 		<base href="<%=basePath%>">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Homepage</title>
-		<link rel="stylesheet" type="text/css" href="public/css/reset.css" />
-		<link rel="stylesheet" type="text/css" href="public/css/style.css" />
-		<script type="text/javascript" src="public/js/menujs.js"></script>
-		<script type="text/javascript" src="public/js/jquery-1.9.1.js"></script>
+		<link rel="stylesheet" type="text/css" href="<c:url value='/public/css/reset.css'/>" />
+		<link rel="stylesheet" type="text/css" href="<c:url value='/public/css/style.css'/>" />
+		<script type="text/javascript" src="<c:url value='/public/js/menujs.js'/>"></script>
+		<script type="text/javascript" src="<c:url value='/public/js/jquery-1.9.1.min.js'/>"></script>
+		
 		<script type="text/javascript">
 			
-			<!-- 
+			$(function() {                     
+				$('#rightframe').load( 
+					function() { 
+						$(this).height(800);
+			     	} 
+		    	); 
+			});      
 
-$(function() {                     
-	$('#rightframe').load( 
-		function() { 
-			$(this).height(800);
-     	} 
-    ); 
-});      
-
-// --> 
-
-			
-		
 			function shows(names) {
 				document.getElementById(names).style.display='block';
 			}
@@ -96,7 +91,6 @@ $(function() {
 				<td width="10" colspan="3" class="mainNavBottomBg"></td>
 			</tr>
 		</table>
-		</div>
 		<!--二级导航-->
 		<!--内容菜单-->
 		<table border="0" cellspacing="0" cellpadding="0" class="w960 mCenter">
@@ -242,7 +236,7 @@ $(function() {
 																<li onclick="changeBgColor('shiyunul5',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;饲料入库单</a>
+																	<a href="<c:url value='/feed/toStorage.html'/>" target="rightframe">&nbsp;饲料入库单</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul5',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
@@ -264,30 +258,30 @@ $(function() {
 																	&nbsp;
 																	<a href="tab.html" target="rightframe">&nbsp;饲料库存</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul5',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																<li onclick="changeBgColor('shiyunul1',this)">
+																	<img src="<c:url value='/public/images/fangdian_06.gif'/>" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;饲料品名维护</a>
+																	<a href="<c:url value='/feed/resource/index.html?resourceNumber=1'/>" target="rightframe">&nbsp;饲料品名维护</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul5',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																<li onclick="changeBgColor('shiyunul1',this)">
+																	<img src="<c:url value='/public/images/fangdian_06.gif'/>" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;饲料规格维护</a>
+																	<a href="<c:url value='/feed/resource/index.html?resourceNumber=2'/>" target="rightframe">&nbsp;饲料规格维护</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul5',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																<li onclick="changeBgColor('shiyunul1',this)">
+																	<img src="<c:url value='/public/images/fangdian_06.gif'/>" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;饲料生产批号维护</a>
+																	<a href="<c:url value='/feed/resource/index.html?resourceNumber=3'/>" target="rightframe">&nbsp;饲料生产批号维护</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul5',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																<li onclick="changeBgColor('shiyunul1',this)">
+																	<img src="<c:url value='/public/images/fangdian_06.gif'/>" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;饲料生产商维护</a>
+																	<a href="<c:url value='/feed/resource/index.html?resourceNumber=4'/>" target="rightframe">&nbsp;饲料生产商维护</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul5',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																<li onclick="changeBgColor('shiyunul1',this)">
+																	<img src="<c:url value='/public/images/fangdian_06.gif'/>" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;饲料种类维护</a>
+																	<a href="<c:url value='/feed/resource/index.html?resourceNumber=5'/>" target="rightframe">&nbsp;饲料种类维护</a>
 																</li>
 															</ul>
 															<div id="menudiv6" class="shiyunlei2"
@@ -583,13 +577,13 @@ $(function() {
 					</table>
 				</td>
 				<td width="790" align="left" valign="top" class="pl10">
-					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="subNav mCenter" style="width: 100%;">
+					<!-- <table width="100%" border="0" cellspacing="0" cellpadding="0" class="subNav mCenter" style="width: 100%;">
 						<tr>
 							<td class="font12Blue p10">
 								<span class="font12Blue_B">您当前所在位置：</span>首页
 							</td>
 						</tr>
-					</table>
+					</table> -->
 					<iframe id="rightframe" name="rightframe" height="100%" style="width:100%; height:100%; border:0" scrolling="no"></iframe>
 				</td>
 			</tr>
