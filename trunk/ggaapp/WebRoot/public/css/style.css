@@ -2,6 +2,10 @@
 /* CSS Document */
 
 /*公用部分*/
+img, body, html {
+    border: 0 none;
+}
+
 .mCenter {
 	margin:0 auto;
 }
