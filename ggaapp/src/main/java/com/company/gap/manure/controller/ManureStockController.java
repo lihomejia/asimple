@@ -1,7 +1,5 @@
 package com.company.gap.manure.controller;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,6 +26,7 @@ import com.company.gap.manure.service.IManureStockService;
  */
 @Controller
 @RequestMapping("manure")
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class ManureStockController extends ViewController {
 	
 	@Autowired
