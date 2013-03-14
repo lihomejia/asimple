@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.company.gap.base.dao.search.Pager;
 import com.company.gap.base.dao.search.Searcher;
 import com.company.gap.base.dao.search.SimpleSearcher;
+import com.company.gap.base.entity.ViewFormModel;
 import com.company.gap.base.service.IViewService;
 
 public abstract class ViewController {
@@ -35,7 +36,10 @@ public abstract class ViewController {
 	
 	
 	@RequestMapping("list")
-	public String execute(HttpServletRequest request) {
+	public String execute(HttpServletRequest request, ViewFormModel model) {
+		/**  */
+		this.searcher = model.getSearcher();
+		this.pager = model.getPager();
 		
 		dowithSearcher();
 		
@@ -43,36 +47,27 @@ public abstract class ViewController {
 		
 		request.setAttribute("datas", datas);
 		
-		pager = searcher.getPager();
-		pager.setStart(16);
-		pager.setPage(2);
-		pager.setPages(10);
-		pager.setHits(15);
-		pager.setAllhits(145);
-		pager.setCount(15);
-		
-		request.setAttribute("pager", pager);
+		request.setAttribute("pager", searcher.getPager());
 		
 		return rootRequestMapping() + "List";
 	}
 	
 	@RequestMapping("delete")
-	public String doDelete(HttpServletRequest request) {
+	public String doDelete(HttpServletRequest request, ViewFormModel model) {
 		_action = ACT_DELETE;
-		return execute(request);
+		return execute(request, model);
 	}
 
 	@RequestMapping("gopage")
-	public String doGopage(HttpServletRequest request, Pager pager) {
-		System.out.println(request.getParameter("pager.start"));
+	public String doGopage(HttpServletRequest request, ViewFormModel model) {
 		_action = ACT_GOPAGE;
-		return execute(request);
+		return execute(request, model);
 	}
 
 	@RequestMapping("search")
-	public String doSearch(HttpServletRequest request){
+	public String doSearch(HttpServletRequest request, ViewFormModel model){
 		_action = ACT_SEARCH;
-		return execute(request);
+		return execute(request, model);
 	}
 	
 	protected void dowithSearcher(){
