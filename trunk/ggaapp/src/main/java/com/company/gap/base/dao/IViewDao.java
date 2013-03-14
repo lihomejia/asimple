@@ -1,10 +1,12 @@
-package com.company.gap.base.service;
+package com.company.gap.base.dao;
 
 import java.util.List;
 
 import com.company.gap.base.dao.search.Searcher;
 
-public interface IViewService<T> {
-	
+public interface IViewDao<T> {
+
 	List<T> queryList(Searcher searcher);
+	
+	int getCount(Searcher searcher);
 }

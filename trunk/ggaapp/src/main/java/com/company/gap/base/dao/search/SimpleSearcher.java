@@ -17,42 +17,15 @@ import org.apache.commons.lang3.StringUtils;
  * 
  *
  */
-public class SimpleSearcher extends BaseSearcher implements Searcher {
+public class SimpleSearcher extends BaseSearcher {
 	
 	private Map<String, SearchField>	sfs		= new HashMap<String, SearchField>();
 	private List<String[]>				orders	= new ArrayList<String[]>();
 	private String						addgroup= "";
+	private String						addsql	= "";
+	private String 						tablename="";
 	private Integer						c		= 0;
-	private String						addhql;
-	private Map<String, String>			pars;
 
-	public Map<String, String> getPars() {
-		return pars;
-	}
-
-	public void setPars(Map<String, String> pars) {
-		this.pars = pars;
-	}
-
-	public String getAddhql() {
-		return addhql;
-	}
-
-	public void setAddhql(String addsql) {
-		this.addhql = addsql;
-	}
-
-	public Map<String, SearchField> getSfs() {
-		return sfs;
-	}
-	
-	public List<String[]> getOrders(){
-		return orders; 
-	}
-
-	public void setSfs(Map<String, SearchField> sfs) {
-		this.sfs = sfs;
-	}
 	
 	/**
 	 * 添加一个查询域
@@ -229,9 +202,35 @@ public class SimpleSearcher extends BaseSearcher implements Searcher {
 		;
 	}
 
+	public Map<String, SearchField> getSfs() {
+		return sfs;
+	}
+
+	public void setSfs(Map<String, SearchField> sfs) {
+		this.sfs = sfs;
+	}
+
+	public String getAddsql() {
+		return addsql;
+	}
+
+	public void setAddsql(String addsql) {
+		this.addsql = addsql;
+	}
+
+	public String getTablename() {
+		return tablename;
+	}
+
+	public void setTablename(String tablename) {
+		this.tablename = tablename;
+	}
+
+	public List<String[]> getOrders() {
+		return orders;
+	}
+
 	public String getAddgroup() {
 		return addgroup;
 	}
-
 }
-
