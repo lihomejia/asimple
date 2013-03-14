@@ -31,6 +31,8 @@ public class ViewServiceImpl implements IViewService {
 		}
 		
 		pager.setHits(datas.size());
+		pager.setAllhits(145);
+		pager.calculate();
 		
 		return (List<T>) datas;
 	}
