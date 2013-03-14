@@ -37,12 +37,13 @@ public abstract class ViewController {
 	@RequestMapping("list")
 	public String execute(HttpServletRequest request) {
 		
-		Searcher searcher = new SimpleSearcher();
+		dowithSearcher();
 		
 		this.datas = viewService.queryList(searcher);
 		
 		request.setAttribute("datas", datas);
 		
+		pager = searcher.getPager();
 		pager.setStart(16);
 		pager.setPage(2);
 		pager.setPages(10);
@@ -62,7 +63,8 @@ public abstract class ViewController {
 	}
 
 	@RequestMapping("gopage")
-	public String doGopage(HttpServletRequest request){
+	public String doGopage(HttpServletRequest request, Pager pager) {
+		System.out.println(request.getParameter("pager.start"));
 		_action = ACT_GOPAGE;
 		return execute(request);
 	}
@@ -91,7 +93,7 @@ public abstract class ViewController {
 		// 无论如何,确保searcher和pager正常初始化.
 		//  在正式查询之前,有类似代码.
 		if (searcher == null){
-			searcher = new SimpleSearcher();
+			searcher = getDefaultSearcher();
 		}		
 		if (pager == null){
 			pager = searcher.getPager();
@@ -110,6 +112,10 @@ public abstract class ViewController {
 	}
 
 	protected abstract String rootRequestMapping();
+	
+	public Searcher getDefaultSearcher() {
+		return new SimpleSearcher();
+	}
 	
 
 	/*********************Getter && Setter**************************/
@@ -130,6 +136,9 @@ public abstract class ViewController {
 	}
 
 	public Searcher getSearcher() {
+		if (searcher == null){
+			searcher = getDefaultSearcher();
+		}
 		return searcher;
 	}
 
