@@ -27,7 +27,7 @@ import com.company.gap.manure.service.IManureStockService;
 @Controller
 @RequestMapping("manure")
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-public class ManureStockController extends ViewController {
+public class ManureStockController extends ViewController<ManureStock> {
 	
 	@Autowired
 	private IManureStockService manureStockService;
@@ -47,5 +47,10 @@ public class ManureStockController extends ViewController {
 	@Override
 	protected String rootRequestMapping() {
 		return "manure/stock";
+	}
+
+	@Override
+	public String getTableName() {
+		return "ma_stock";
 	}
 }
