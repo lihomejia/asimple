@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.company.gap.base.dao.search.Pager;
 import com.company.gap.base.dao.search.Searcher;
 import com.company.gap.base.service.IViewService;
 import com.company.gap.manure.entity.ManureStock;
@@ -18,6 +19,9 @@ public class ViewServiceImpl implements IViewService {
 	@Override
 	public <T> List<T> queryList(Searcher searcher) {
 		
+		Pager pager = searcher.getPager();
+		
+		
 		List<ManureStock> datas = new ArrayList<ManureStock>();
 		for (int i = 0; i < 15; i++) {
 			ManureStock manureStock = new ManureStock();
@@ -25,6 +29,8 @@ public class ViewServiceImpl implements IViewService {
 			manureStock.setMastockTotqty(new BigDecimal(i + 100));
 			datas.add(manureStock);
 		}
+		
+		pager.setHits(datas.size());
 		
 		return (List<T>) datas;
 	}
