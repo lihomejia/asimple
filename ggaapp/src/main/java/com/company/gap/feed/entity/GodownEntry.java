@@ -1,17 +1,18 @@
 package com.company.gap.feed.entity;
 
-import java.util.Date;
 
 public class GodownEntry {
 	private String id;
-	private String name;
-	private String specification;
-	private String producer;
+	private String rsid;
+	private String spid;
+	private String batchid;
+	private String producerid;
+	private String typeid;
 	private int quantity;
 	private String origin;
 	private String ingredient;
-	private Date createDate;
-	private String type;
+	private String createDate;
+	private String expdate;
 	private String suppliers;
 	private String packing;
 	private String operator;
@@ -23,23 +24,35 @@ public class GodownEntry {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getRsid() {
+		return rsid;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setRsid(String rsid) {
+		this.rsid = rsid;
 	}
-	public String getSpecification() {
-		return specification;
+	public String getSpid() {
+		return spid;
 	}
-	public void setSpecification(String specification) {
-		this.specification = specification;
+	public void setSpid(String spid) {
+		this.spid = spid;
 	}
-	public String getProducer() {
-		return producer;
+	public String getBatchid() {
+		return batchid;
 	}
-	public void setProducer(String producer) {
-		this.producer = producer;
+	public void setBatchid(String batchid) {
+		this.batchid = batchid;
+	}
+	public String getProducerid() {
+		return producerid;
+	}
+	public void setProducerid(String producerid) {
+		this.producerid = producerid;
+	}
+	public String getTypeid() {
+		return typeid;
+	}
+	public void setTypeid(String typeid) {
+		this.typeid = typeid;
 	}
 	public int getQuantity() {
 		return quantity;
@@ -59,17 +72,17 @@ public class GodownEntry {
 	public void setIngredient(String ingredient) {
 		this.ingredient = ingredient;
 	}
-	public Date getCreateDate() {
+	public String getCreateDate() {
 		return createDate;
 	}
-	public void setCreateDate(Date createDate) {
+	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
-	public String getType() {
-		return type;
+	public String getExpdate() {
+		return expdate;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setExpdate(String expdate) {
+		this.expdate = expdate;
 	}
 	public String getSuppliers() {
 		return suppliers;
