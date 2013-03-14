@@ -16,6 +16,8 @@
 </head>
 <body>
 	<form id="form1" method="post">
+		<input type="hidden" name="data['a1']" value="2"/>
+		<input type="hidden" name="searcher.sfs['f1'].name" value="ab"/>
 		<table width="960">
 			<!-- search -->
 			<tr>
@@ -40,7 +42,7 @@
 									<tr>
 										<td>&nbsp;</td>
 										<td>&nbsp;</td>
-										<td style="text-align:right"><input type="button" value='&nbsp;查&nbsp;询&nbsp;'/></td>
+										<td style="text-align:right"><input type="button" value="&nbsp;查&nbsp;询&nbsp;" onclick="doMethod('search');"/></td>
 									</tr>
 								</table>
 							</td>
