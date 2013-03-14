@@ -12,7 +12,7 @@ import com.company.gap.base.dao.search.SimpleSearcher;
 import com.company.gap.base.entity.ViewFormModel;
 import com.company.gap.base.service.IViewService;
 
-public abstract class ViewController {
+public abstract class ViewController<T> {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -22,18 +22,16 @@ public abstract class ViewController {
 	public static final String ACT_SELECT = "select";
 	
 	@Autowired
-	private IViewService viewService;
+	private IViewService<T> viewService;
 	
 	protected String _action;
 	
 	/** 查询到的结果数据集 */
-	@SuppressWarnings("unchecked")
-	protected List datas;
+	protected List<T> datas;
 	/** 翻页控制器 */
 	protected Pager pager;
 	/** 查询器 */
 	protected Searcher searcher;
-	
 	
 	@RequestMapping("list")
 	public String execute(HttpServletRequest request, ViewFormModel model) {
@@ -103,10 +101,12 @@ public abstract class ViewController {
 			}
 		}
 		searcher.setPager(pager);
+		searcher.setTablename(getTableName());
 
 	}
 
 	protected abstract String rootRequestMapping();
+	protected abstract String getTableName();
 	
 	public Searcher getDefaultSearcher() {
 		return new SimpleSearcher();
@@ -114,11 +114,11 @@ public abstract class ViewController {
 	
 
 	/*********************Getter && Setter**************************/
-	public List getDatas() {
+	public List<T> getDatas() {
 		return datas;
 	}
 
-	public void setDatas(List datas) {
+	public void setDatas(List<T> datas) {
 		this.datas = datas;
 	}
 
