@@ -1,12 +1,16 @@
 package com.company.gap.manure.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class ManureStock {
+public class ManureStock implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private int mastockId;
 	private BigDecimal mastockTotqty;
 	private BigDecimal mastockUsedqty;
 	private BigDecimal mastockBalqty;
+	private String mastockNote;
 	
 	
 	public int getMastockId() {
@@ -32,5 +36,11 @@ public class ManureStock {
 	}
 	public void setMastockBalqty(BigDecimal mastockBalqty) {
 		this.mastockBalqty = mastockBalqty;
+	}
+	public String getMastockNote() {
+		return mastockNote;
+	}
+	public void setMastockNote(String mastockNote) {
+		this.mastockNote = mastockNote;
 	}
 }
