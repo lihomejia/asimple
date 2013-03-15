@@ -8,22 +8,15 @@ import java.util.Map.Entry;
 
 import org.apache.commons.lang3.StringUtils;
 
-/**
- * 简单searcher功能,存储了一组查询条件,
- *  每个条件针对单个域查询(=,<>,>,< ……),这些条件之间关系为 "AND"
- *  
- * 将addSf等价于addSfOnField,而将原来的addSf改成函数addSf2
- *  addSf和addSf2的区别是,前者将针对一个域,只能增加一次检索.
- * 
- *
- */
 public class SimpleSearcher extends BaseSearcher {
 	
 	private Map<String, SearchField>	sfs		= new HashMap<String, SearchField>();
+	private Map<String, SearchField>	sfso	= new HashMap<String, SearchField>();
 	private List<String[]>				orders	= new ArrayList<String[]>();
-	private String						addgroup= "";
+	private String 						select  = "";
+	private String						group	= "";
 	private String						addsql	= "";
-	private String 						tablename="";
+	private String 						table	= "";
 	private Integer						c		= 0;
 
 	
@@ -64,17 +57,6 @@ public class SimpleSearcher extends BaseSearcher {
 		return this;
 	}
 	
-	/**
-	 * 添加查询条件,如果条件中的字段名称冲突,则覆盖.
-	 * 
-	 * @param name
-	 * @param op
-	 * @param value
-	 * @return
-	 */
-	public SimpleSearcher addSfOnField(String name, Op op, String value){
-		return addSfOnField(new SearchField(name, op, value));
-	}
 	
 	/**
 	 * 添加一个查询域
@@ -102,7 +84,6 @@ public class SimpleSearcher extends BaseSearcher {
 	public SimpleSearcher addSf2(String name, Op op, String value){
 		return addSf2(new SearchField(name, op, value));
 	}
-	
 
 	
 	/**
@@ -131,10 +112,12 @@ public class SimpleSearcher extends BaseSearcher {
 	 * @return
 	 */
 	public SimpleSearcher clear(){
-		sfs = new HashMap<String, SearchField>();
-		orders = new ArrayList<String[]>();
-		addgroup = "";
-		c = 0;
+		this.sfs 	= new HashMap<String, SearchField>();
+		this.sfso 	= new HashMap<String, SearchField>();
+		this.orders = new ArrayList<String[]>();
+		this.group 	= "";
+		this.table	= "";
+		this.c 		= 0;
 		return this;
 	}
 	/**
@@ -166,8 +149,8 @@ public class SimpleSearcher extends BaseSearcher {
 		return this;
 	}
 	
-	public SimpleSearcher addGroup(String fieldname){
-		addgroup = fieldname;
+	public SimpleSearcher addGroup(String group){
+		this.group = group;
 		return this;
 	}
 	
@@ -209,6 +192,18 @@ public class SimpleSearcher extends BaseSearcher {
 		this.sfs = sfs;
 	}
 
+	public Map<String, SearchField> getSfso() {
+		return sfso;
+	}
+
+	public void setSfso(Map<String, SearchField> sfso) {
+		this.sfso = sfso;
+	}
+
+	public String getGroup() {
+		return group;
+	}
+
 	public String getAddsql() {
 		return addsql;
 	}
@@ -217,19 +212,23 @@ public class SimpleSearcher extends BaseSearcher {
 		this.addsql = addsql;
 	}
 
-	public String getTablename() {
-		return tablename;
+	public String getTable() {
+		return table;
 	}
 
-	public void setTablename(String tablename) {
-		this.tablename = tablename;
+	public void setTable(String table) {
+		this.table = table;
 	}
 
 	public List<String[]> getOrders() {
 		return orders;
 	}
 
-	public String getAddgroup() {
-		return addgroup;
+	public String getSelect() {
+		return select;
+	}
+
+	public void setSelect(String select) {
+		this.select = select;
 	}
 }
