@@ -54,7 +54,7 @@ public class ManureStockController extends ViewController {
 		
 		ss.addSf2("mastock_Id", Op.BT, "1000");
 		ss.addSf2("mastock_Id", Op.LE, "10000");
-		ss.addSf("mastock_Balqty", Op.EQ, "15");
+//		ss.addSf("mastock_Balqty", Op.EQ, "452");
 		ss.addSf("mastock_Note", Op.CONTAINS, "2d");
 		
 		ss.addOrder("mastock_Id");
