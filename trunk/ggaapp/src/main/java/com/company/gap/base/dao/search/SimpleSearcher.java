@@ -152,7 +152,6 @@ public class SimpleSearcher extends BaseSearcher {
 	}
 	
 	public SimpleSearcher addOrder(String fieldname, String order){
-		order = SearchHelper.getOrderType(order);
 		boolean f = false;
 		for (String[] ord : orders){
 			if (fieldname.equals(ord[0])){
