@@ -78,12 +78,18 @@
 								<table style="width:100%" border=1>
 									<tr>
 										<th width=100>ID</th>
-										<th width=200>NAME</th>
+										<th width=100>TQTY</th>
+										<th width=100>UQTY</th>
+										<th width=100>BQTY</th>
+										<th width=300>NOTE</th>
 									</tr>
 									<c:forEach items="${datas}" var="data">
 										<tr>
-											<td>${data.mastockId}</td>
-											<td>${data.mastockTotqty}</td>
+											<td>${data['mastock_Id']}</td>
+											<td>${data['mastock_Totqty']}</td>
+											<td>${data['mastock_Usedqty']}</td> 
+											<td>${data['mastock_Balqty']}</td> 
+											<td>${data['mastock_Note']}</td> 
 										</tr>
 									</c:forEach>
 								</table>
