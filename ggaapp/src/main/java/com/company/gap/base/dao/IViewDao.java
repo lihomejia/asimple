@@ -1,12 +1,11 @@
 package com.company.gap.base.dao;
 
 import java.util.List;
+import java.util.Map;
 
-import com.company.gap.base.dao.search.Searcher;
+public interface IViewDao {
 
-public interface IViewDao<T> {
-
-	List<T> queryList(Searcher searcher);
+	List<Map<String, Object>> queryList(String sql, Object[] pros);
 	
-	int getCount(Searcher searcher);
+	int getCount(String sql, Object[] pros);
 }

@@ -1,5 +1,6 @@
 package com.company.gap.base.controller;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,7 +13,7 @@ import com.company.gap.base.dao.search.SimpleSearcher;
 import com.company.gap.base.entity.ViewFormModel;
 import com.company.gap.base.service.IViewService;
 
-public abstract class ViewController<T> {
+public abstract class ViewController {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -22,12 +23,12 @@ public abstract class ViewController<T> {
 	public static final String ACT_SELECT = "select";
 	
 	@Autowired
-	private IViewService<T> viewService;
+	private IViewService viewService;
 	
 	protected String _action;
 	
 	/** 查询到的结果数据集 */
-	protected List<T> datas;
+	protected List<Map<String, Object>> datas;
 	/** 翻页控制器 */
 	protected Pager pager;
 	/** 查询器 */
@@ -101,12 +102,10 @@ public abstract class ViewController<T> {
 			}
 		}
 		searcher.setPager(pager);
-		searcher.setTablename(getTableName());
 
 	}
 
 	protected abstract String rootRequestMapping();
-	protected abstract String getTableName();
 	
 	public Searcher getDefaultSearcher() {
 		return new SimpleSearcher();
@@ -114,13 +113,6 @@ public abstract class ViewController<T> {
 	
 
 	/*********************Getter && Setter**************************/
-	public List<T> getDatas() {
-		return datas;
-	}
-
-	public void setDatas(List<T> datas) {
-		this.datas = datas;
-	}
 
 	public Pager getPager() {
 		return pager;

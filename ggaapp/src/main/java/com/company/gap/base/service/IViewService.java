@@ -1,10 +1,11 @@
 package com.company.gap.base.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.company.gap.base.dao.search.Searcher;
 
-public interface IViewService<T> {
+public interface IViewService {
 	
-	List<T> queryList(Searcher searcher);
+	List<Map<String, Object>> queryList(Searcher searcher);
 }
