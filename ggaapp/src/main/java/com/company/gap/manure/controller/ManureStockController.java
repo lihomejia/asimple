@@ -66,6 +66,6 @@ public class ManureStockController extends ViewController {
 
 	@Override
 	protected String rootRequestMapping() {
-		return "manure/stock";
+		return "manure/stockList";
 	}
 }
