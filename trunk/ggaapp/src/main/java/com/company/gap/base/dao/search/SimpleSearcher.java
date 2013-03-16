@@ -8,7 +8,7 @@ import java.util.Map.Entry;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class SimpleSearcher extends BaseSearcher {
+public class SimpleSearcher {
 	
 	private Map<String, SearchField>	sfs		= new HashMap<String, SearchField>();
 	private Map<String, SearchField>	sfso	= new HashMap<String, SearchField>();

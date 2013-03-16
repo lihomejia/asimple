@@ -26,7 +26,7 @@ public class Pager implements Cloneable, Serializable {
 	private int page;
 
 	public static final int DEFAULT_START = 1;
-	public static final int DEFAULT_COUNT = 20;
+	public static final int DEFAULT_COUNT = 10;
 	public static final int DEFAULT_PAGE = 1;
 
 	/**

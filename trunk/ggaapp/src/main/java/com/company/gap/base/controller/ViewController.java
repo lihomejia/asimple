@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.company.gap.base.dao.search.Pager;
-import com.company.gap.base.dao.search.Searcher;
 import com.company.gap.base.dao.search.SimpleSearcher;
 import com.company.gap.base.entity.ViewFormModel;
 import com.company.gap.base.service.IViewService;
@@ -29,10 +28,10 @@ public abstract class ViewController {
 	
 	/** 查询到的结果数据集 */
 	protected List<Map<String, Object>> datas;
-	/** 翻页控制器 */
+//	/** 翻页控制器 */
 	protected Pager pager;
 	/** 查询器 */
-	protected Searcher searcher;
+	protected SimpleSearcher searcher;
 	
 	@RequestMapping("list")
 	public String execute(HttpServletRequest request, ViewFormModel model) {
@@ -42,13 +41,15 @@ public abstract class ViewController {
 		
 		dowithSearcher();
 		
-		this.datas = viewService.queryList(searcher);
+		this.datas = viewService.queryList(searcher, pager);
 		
-		request.setAttribute("datas", datas);
+		this.afterall();
 		
-		request.setAttribute("pager", searcher.getPager());
+		request.setAttribute("datas", 		datas);
+		request.setAttribute("searcher",	searcher);
+		request.setAttribute("pager", 		pager);
 		
-		return rootRequestMapping() + "List";
+		return rootRequestMapping();
 	}
 	
 	@RequestMapping("delete")
@@ -70,66 +71,15 @@ public abstract class ViewController {
 	}
 	
 	protected void dowithSearcher(){
-		// 新search,删除原来的，保存新的
-		if (ACT_SEARCH.equals(_action)){
-			//SearcherHelper.decacheSearcher(this);
-			//SearcherHelper.cacheSearcher(this);
-		}
-		// gopage / delete, do nothing with searcher
-		//  因为这两个操作,都是在search操作完成以后
-		else if (
-			ACT_GOPAGE.equals(_action) ||
-			ACT_DELETE.equals(_action)
-		){
-			//SearcherHelper.initSearcher(this);
-		}
-		
-		// 无论如何,确保searcher和pager正常初始化.
-		//  在正式查询之前,有类似代码.
 		if (searcher == null){
-			searcher = getDefaultSearcher();
-		}		
-		if (pager == null){
-			pager = searcher.getPager();
-			if (pager == null){
-				pager = Pager.getDefault();
-			}
+			searcher = new SimpleSearcher();
 		}
-		if(ACT_SEARCH.equals(_action)){
-			pager = searcher.getPager();
-			if (pager == null){
-				pager = Pager.getDefault();
-			}
+		if (pager == null) {
+			pager = Pager.getDefault();
 		}
-		searcher.setPager(pager);
-
 	}
 
 	protected abstract String rootRequestMapping();
 	
-	public Searcher getDefaultSearcher() {
-		return new SimpleSearcher();
-	}
-	
-
-	/*********************Getter && Setter**************************/
-
-	public Pager getPager() {
-		return pager;
-	}
-
-	public void setPager(Pager pager) {
-		this.pager = pager;
-	}
-
-	public Searcher getSearcher() {
-		if (searcher == null){
-			searcher = getDefaultSearcher();
-		}
-		return searcher;
-	}
-
-	public void setSearcher(Searcher searcher) {
-		this.searcher = searcher;
-	}
+	protected void afterall() {}
 }

@@ -5,6 +5,8 @@ import com.company.gap.base.dao.search.SimpleSearcher;
 
 public class ViewFormModel extends FormModel {
 	
+	public ViewFormModel() {}
+	
 	private Pager pager;
 	
 	private SimpleSearcher searcher;
