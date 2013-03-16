@@ -6,6 +6,7 @@ public class BaseSearcher implements Searcher {
 	protected Pager pager;
 	
 	public Pager getPager() {
+		if (pager == null) pager = Pager.getDefault();
 		return pager;
 	}
 

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.company.gap.base.dao.IViewDao;
 import com.company.gap.base.dao.search.Pager;
-import com.company.gap.base.dao.search.Searcher;
 import com.company.gap.base.dao.search.SearcherAnalysis;
 import com.company.gap.base.dao.search.SimpleSearcher;
 import com.company.gap.base.service.IViewService;
@@ -24,10 +23,8 @@ public class ViewServiceImpl implements IViewService {
 	private IViewDao viewDao;
 	
 	@Override
-	public List<Map<String, Object>> queryList(Searcher searcher) {
+	public List<Map<String, Object>> queryList(SimpleSearcher searcher, Pager pager) {
 		SimpleSearcher ss = (SimpleSearcher) searcher;
-		
-		Pager pager = searcher.getPager();
 
 		String from 	= " from " + ss.getTable();
 		SqlResult where = SearcherAnalysis.getWhereFromSimpleSearcher(ss);  
