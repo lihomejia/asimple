@@ -28,36 +28,29 @@ public abstract class ViewController {
 	
 	/** 查询到的结果数据集 */
 	protected List<Map<String, Object>> datas;
-//	/** 翻页控制器 */
+	/** 翻页控制器 */
 	protected Pager pager;
 	/** 查询器 */
 	protected SimpleSearcher searcher;
 	
 	@RequestMapping("list")
 	public String execute(HttpServletRequest request, ViewFormModel model) {
-		/**  */
-		this.searcher = model.getSearcher();
-		this.pager = model.getPager();
 		
-		dowithSearcher();
+		this.initialize(request, model);
 		
-		this.datas = viewService.queryList(searcher, pager);
+		this.preparing(request, model);
 		
-		this.afterall();
+		this.dowithSearcher(request, model);
 		
-		request.setAttribute("datas", 		datas);
-		request.setAttribute("searcher",	searcher);
-		request.setAttribute("pager", 		pager);
+		this.searching(request, model);
 		
-		return rootRequestMapping();
+		this.fill(request, model);
+		
+		this.afterall(request, model);
+		
+		return viewResolver(request, model);
 	}
 	
-	@RequestMapping("delete")
-	public String doDelete(HttpServletRequest request, ViewFormModel model) {
-		_action = ACT_DELETE;
-		return execute(request, model);
-	}
-
 	@RequestMapping("gopage")
 	public String doGopage(HttpServletRequest request, ViewFormModel model) {
 		_action = ACT_GOPAGE;
@@ -70,7 +63,12 @@ public abstract class ViewController {
 		return execute(request, model);
 	}
 	
-	protected void dowithSearcher(){
+	/**
+	 * 初始化参数.
+	 */
+	private void initialize(HttpServletRequest request, ViewFormModel model) {
+		this.searcher = model.getSearcher();
+		this.pager = model.getPager();
 		if (searcher == null){
 			searcher = new SimpleSearcher();
 		}
@@ -78,8 +76,40 @@ public abstract class ViewController {
 			pager = Pager.getDefault();
 		}
 	}
-
-	protected abstract String rootRequestMapping();
 	
-	protected void afterall() {}
+	/** 
+	 * 准备其他数据.
+	 */
+	protected void preparing(HttpServletRequest request, ViewFormModel model) {}
+	
+	/**
+	 * Searcher加工.
+	 */
+	protected void dowithSearcher(HttpServletRequest request, ViewFormModel model){}
+	
+	/**
+	 * 执行查询.
+	 */
+	protected void searching(HttpServletRequest request, ViewFormModel model) {
+		this.datas = viewService.queryList(searcher, pager);
+	}
+	
+	/**
+	 * 填充数据，供前台使用.
+	 */
+	protected void fill(HttpServletRequest request, ViewFormModel model) {
+		request.setAttribute("datas", 		datas);
+		request.setAttribute("searcher",	searcher);
+		request.setAttribute("pager", 		pager);
+	}
+	
+	/** 
+	 * 呈现之前的最后处理.
+	 */
+	protected void afterall(HttpServletRequest request, ViewFormModel model) {}
+	
+	/**
+	 * 指定要呈现的View.
+	 */
+	protected abstract String viewResolver(HttpServletRequest request, ViewFormModel model);
 }
