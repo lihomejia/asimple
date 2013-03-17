@@ -319,27 +319,27 @@
 																<li onclick="changeBgColor('shiyunul6',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;肥料品名维护</a>
+																	<a href="manure/resource/list.html?type=1" target="rightframe">&nbsp;肥料品名维护</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul6',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;肥料规格维护</a>
+																	<a href="manure/resource/list.html?type=2" target="rightframe">&nbsp;肥料规格维护</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul6',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;肥料生产批号维护</a>
+																	<a href="manure/resource/list.html?type=3" target="rightframe">&nbsp;肥料生产批号维护</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul6',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;肥料生产商维护</a>
+																	<a href="manure/resource/list.html?type=4" target="rightframe">&nbsp;肥料生产商维护</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul6',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;肥料种类维护</a>
+																	<a href="manure/resource/list.html?type=5" target="rightframe">&nbsp;肥料种类维护</a>
 																</li>
 															</ul>
 															<div id="menudiv7" class="shiyunlei2"
