@@ -167,7 +167,7 @@
 																<li onclick="changeBgColor('shiyunul2',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="WWFW010203.html" target="rightframe">&nbsp;生产单元信息</a>
+																	<a href="cell/list.html" target="rightframe">&nbsp;生产单元信息</a>
 																</li>
 															</ul>
 															<div id="menudiv3" class="shiyunlei2"
