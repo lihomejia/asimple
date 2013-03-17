@@ -49,6 +49,7 @@ create table t_input_resource (
 drop table if exists t_input_stock;
 create table t_input_stock (
 	stock_id             int              AUTO_INCREMENT,
+	stock_cate           int              default 0       comment '类别 1-肥料 2-饲料 3-农药 4-兽药 5-消毒剂 6-清洁剂',
 	stock_nameid         int              default 0       comment '投入品名称ID',
 	stock_sizeid         int              default 0       comment '投入品规格/型号ID',
 	stock_batchid        int              default 0       comment '投入品生产批号ID',
@@ -62,6 +63,7 @@ create table t_input_stock (
 drop table if exists t_input_instock;
 create table t_input_instock (
 	instock_id           int              AUTO_INCREMENT,
+	instock_cate         int              default 0       comment '类别 1-肥料 2-饲料 3-农药 4-兽药 5-消毒剂 6-清洁剂',
 	instock_stockid      int              default 0       comment '库存ID',
 	instock_nameid       int              default 0       comment '投入品名称ID',
 	instock_sizeid       int              default 0       comment '投入品规格/型号ID',
@@ -84,6 +86,7 @@ create table t_input_instock (
 drop table if exists t_input_outstock;
 create table t_input_outstock (
 	outstock_id          int              AUTO_INCREMENT,
+	outstock_cate        int              default 0       comment '类别 1-肥料 2-饲料 3-农药 4-兽药 5-消毒剂 6-清洁剂',
 	outstock_stockid     int              default 0       comment '库存ID',
 	outstock_cellid      int              default 0       comment '生产单元ID',
 	outstock_quantity    decimal(10,2)    default 0       comment '投入品出库数量',
