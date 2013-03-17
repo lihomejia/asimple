@@ -277,6 +277,11 @@ button::-moz-focus-inner, input[type="reset"]::-moz-focus-inner, input[type="but
  border:none /*去虚线框*/;
  padding:0;
 }
+
+.linkStyle:link {
+	text-decoration: none;
+}
+
 .btnStyle {
 	width:58px;
 	height:24px;
