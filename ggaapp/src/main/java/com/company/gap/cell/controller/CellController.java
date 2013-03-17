@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.company.gap.base.controller.ViewController;
-import com.company.gap.base.dao.search.SimpleSearcher;
 import com.company.gap.base.entity.FormModel;
+import com.company.gap.base.entity.ViewFormModel;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.cell.service.ICellService;
 
@@ -31,17 +31,12 @@ public class CellController extends ViewController {
 	private ICellService cellService;
 	
 	@Override
-	protected void dowithSearcher() {
-		super.dowithSearcher();
-		
-		SimpleSearcher ss = (SimpleSearcher) searcher;
-		
-		
-		ss.setTable("t_production_cell");
+	protected void dowithSearcher(HttpServletRequest request, ViewFormModel model) {
+		searcher.setTable("t_production_cell");
 	}
 	
 	@Override
-	protected void afterall() {
+	protected void afterall(HttpServletRequest request, ViewFormModel model) {
 		for (Map<String, Object> data : this.datas) {
 			data.put("cell_cdate", DateUtils.format(data.get("cell_cdate")));
 		}
@@ -68,7 +63,7 @@ public class CellController extends ViewController {
 	
 
 	@Override
-	protected String rootRequestMapping() {
+	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
 		return "cell/list";
 	}
 }
