@@ -241,22 +241,22 @@
 																<li onclick="changeBgColor('shiyunul5',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;饲料入库记录</a>
+																	<a href="<c:url value='/feed/findGodownEntryList.html'/>" target="rightframe">&nbsp;饲料入库记录</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul5',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;饲料出库单</a>
+																	<a href="<c:url value='/feed/toDelivery.html'/>" target="rightframe">&nbsp;饲料出库单</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul5',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;饲料出库记录</a>
+																	<a href="<c:url value='/feed/deliverOrderList.html'/>" target="rightframe">&nbsp;饲料出库记录</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul5',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;饲料库存</a>
+																	<a href="<c:url value='/feed/stockList.html'/>" target="rightframe">&nbsp;饲料库存</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul1',this)">
 																	<img src="<c:url value='/public/images/fangdian_06.gif'/>" align="absmiddle" />

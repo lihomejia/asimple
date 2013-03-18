@@ -108,8 +108,8 @@
 					      <td class=forumrow><input name="operator" type="text" id="operator" size="25" maxlength="30"/> </td>
 					    </tr>
 					    <tr  bgcolor=ffffff> 
-					      <td rowspan="2" class=forumrow><div align="right">备注：</div></td>
-					      <td colspan="3" class=forumrow><textarea name="remark" cols="85" rows="10" id="remark"></textarea></td>
+					      <td rowspan="2" class=forumrow><div align="right">备注1：</div></td>
+					      <td colspan="3" class=forumrow><textarea name="remark" cols="73" rows="10" id="remark"></textarea></td>
 					    </tr>
 					    <tr  bgcolor=ffffff> 
 					      <td colspan="4" align="center"> 
