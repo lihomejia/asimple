@@ -1,15 +1,18 @@
 package com.company.gap.feed.entity;
 
-public class Stock {
+public class DeliveryOrder {
 	private String id;
 	private String rsid;
 	private String spid;
 	private String batchid;
 	private String producerid;
 	private String typeid;
-	private int totalQuantity;
-	private String updatetime;
+	private String useObject;
+	private String deliveryDate;
+	private int quantity;
+	private String operator;
 	private int status;
+	private String remark;
 	public String getId() {
 		return id;
 	}
@@ -46,22 +49,40 @@ public class Stock {
 	public void setTypeid(String typeid) {
 		this.typeid = typeid;
 	}
-	public int getTotalQuantity() {
-		return totalQuantity;
+	public String getUseObject() {
+		return useObject;
 	}
-	public void setTotalQuantity(int totalQuantity) {
-		this.totalQuantity = totalQuantity;
+	public void setUseObject(String useObject) {
+		this.useObject = useObject;
 	}
-	public String getUpdatetime() {
-		return updatetime;
+	public String getDeliveryDate() {
+		return deliveryDate;
 	}
-	public void setUpdatetime(String updatetime) {
-		this.updatetime = updatetime;
+	public void setDeliveryDate(String deliveryDate) {
+		this.deliveryDate = deliveryDate;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	public String getOperator() {
+		return operator;
+	}
+	public void setOperator(String operator) {
+		this.operator = operator;
 	}
 	public int getStatus() {
 		return status;
 	}
 	public void setStatus(int status) {
 		this.status = status;
+	}
+	public String getRemark() {
+		return remark;
+	}
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 }
