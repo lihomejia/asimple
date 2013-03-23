@@ -294,27 +294,27 @@
 																<li onclick="changeBgColor('shiyunul6',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="p4.html" target="rightframe">&nbsp;肥料入库单</a>
+																	<a href="manure/instock/add.html" target="rightframe">&nbsp;肥料入库单</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul6',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;肥料入库记录</a>
+																	<a href="manure/instock/list.html" target="rightframe">&nbsp;肥料入库记录</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul6',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;肥料出库单</a>
+																	<a href="manure/outstock/add.html" target="rightframe">&nbsp;肥料出库单</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul6',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;肥料出库记录</a>
+																	<a href="manure/outstock/list.html" target="rightframe">&nbsp;肥料出库记录</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul6',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="manure/stockList.html" target="rightframe">&nbsp;肥料库存</a>
+																	<a href="manure/stock/list.html" target="rightframe">&nbsp;肥料库存</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul6',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
