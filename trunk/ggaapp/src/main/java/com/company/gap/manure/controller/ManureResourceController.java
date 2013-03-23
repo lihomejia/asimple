@@ -15,23 +15,22 @@ import com.company.gap.base.controller.ViewController;
 import com.company.gap.base.dao.search.Op;
 import com.company.gap.base.entity.FormModel;
 import com.company.gap.base.entity.ViewFormModel;
-import com.company.gap.resource.service.IResourceService;
+import com.company.gap.manure.service.IManureResourceService;
 
 @Controller
 @RequestMapping("manure/resource")
 public class ManureResourceController extends ViewController {
 	
 	@Autowired
-	private IResourceService resourceService;
+	private IManureResourceService resourceService;
 
 	@Override
 	protected void dowithSearcher(HttpServletRequest request, ViewFormModel model) {
-		searcher.addSf("resource_cate", Op.EQ, "1");
 		
 		String type = request.getParameter("type");
 		searcher.addSf("resource_type", Op.EQ, type);
 		
-		searcher.setTable("t_input_resource");
+		searcher.setTable("t_manure_resource");
 	}
 
 	@Override
@@ -71,22 +70,22 @@ public class ManureResourceController extends ViewController {
 	
 	private String entryView(int type) {
 		switch (type) {
-			case 1 : return "manure/manureNameEntry";
-			case 2 : return "manure/manureSizeEntry";
-			case 3 : return "manure/manureBatchEntry";
-			case 4 : return "manure/manureProducerEntry";
-			case 5 : return "manure/manureKindEntry";
+			case 1 : return "manure/resource/manureNameEntry";
+			case 2 : return "manure/resource/manureSizeEntry";
+			case 3 : return "manure/resource/manureBatchEntry";
+			case 4 : return "manure/resource/manureProducerEntry";
+			case 5 : return "manure/resource/manureKindEntry";
 			default :return "";
 		}
 	}
 	
 	private String listView(int type) {
 		switch (type) {
-			case 1 : return "manure/manureNameList";
-			case 2 : return "manure/manureSizeList";
-			case 3 : return "manure/manureBatchList";
-			case 4 : return "manure/manureProducerList";
-			case 5 : return "manure/manureKindList";
+			case 1 : return "manure/resource/manureNameList";
+			case 2 : return "manure/resource/manureSizeList";
+			case 3 : return "manure/resource/manureBatchList";
+			case 4 : return "manure/resource/manureProducerList";
+			case 5 : return "manure/resource/manureKindList";
 			default :return "";
 		}
 	}
