@@ -4,7 +4,9 @@ package com.company.gap.manure.enumeration;
 public enum ManureInStockStatus {
 	UNAUDITED(0, "未审核"),
 	
-	AUDITED(1, "已审核");
+	AUDITED(1, "已审核"),
+	
+	NULLIFY(2, "已作废");
 	
 	private int status;
 	private String name;
@@ -17,6 +19,7 @@ public enum ManureInStockStatus {
 		switch (status) {
 			case 0 : return UNAUDITED;
 			case 1 : return AUDITED;
+			case 2 : return NULLIFY;
 			default: return UNAUDITED;
 		}
 	}

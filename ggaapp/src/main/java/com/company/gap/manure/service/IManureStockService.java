@@ -18,4 +18,6 @@ public interface IManureStockService {
 	int inAuditing(ManureInStock inStock);
 	
 	int outAuditing(ManureOutStock outStock);
+	
+	int addStockQuantity(int stock_id, double quantity);
 }

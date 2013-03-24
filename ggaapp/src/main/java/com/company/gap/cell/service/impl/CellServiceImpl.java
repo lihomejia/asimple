@@ -1,5 +1,6 @@
 package com.company.gap.cell.service.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.ObjectUtils;
@@ -16,6 +17,11 @@ public class CellServiceImpl implements ICellService {
 
 	@Autowired
 	private ICellDao cellDao;
+	
+	@Override
+	public List<Map<String, Object>> findAllProductionCell() {
+		return cellDao.findAllProductionCell();
+	}
 	
 	@Override
 	public Map<String, Object> findProductionCellById(int cellId) {
@@ -37,7 +43,4 @@ public class CellServiceImpl implements ICellService {
 	public int delete(int... cellIds) {
 		return cellDao.delete(cellIds);
 	}
-	
-	
-
 }
