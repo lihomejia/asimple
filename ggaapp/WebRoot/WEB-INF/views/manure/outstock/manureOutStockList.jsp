@@ -9,19 +9,6 @@
 	<link rel="stylesheet" type="text/css" href="<c:url value='/public/css/reset.css'/>" />
 	<link rel="stylesheet" type="text/css" href="<c:url value='/public/css/style.css'/>" />
 	<script type="text/javascript">
-		function reviewPassDeliveryOrder(doid){
-			if(confirm('确认审核通过吗？')){
-				document.location.href = "<%=basePath%>feed/reviewPassDeliveryOrder.html?doid=" + doid;
-			}
-		}
-		function editDeliveryOrder(doid){
-			document.location.href = "<%=basePath%>feed/editDeliveryOrder.html?doid=" + doid;
-		}
-		function delDeliveryOrder(doid){
-			if(confirm('确认要删除吗？')){
-				document.location.href = "<%=basePath%>feed/delDeliveryOrder.html?doid=" + doid;
-			}
-		}
 	</script>
 </head>
 
@@ -46,16 +33,46 @@
 						</tr>
 						<tr>
 							<td>
+								<input type="hidden" name="stock_id" value=${stock_id}/>
 								<table style="width:100%;">
 									<tr>
-										<td style="30%">出库批号</td>
-										<td></td>
+										<td style="25%">肥料名称:</td>
+										<td style="25%">规格型号:</td>
+										<td style="25%">生产批号:</td>
+										<td style="25%">生产商:</td>
 									</tr>
 									<tr>
 										<td>
-											<input type="text"/>
+											<select name="data['nameid']">
+												<c:forEach items="${nameList}" var="resource" >
+													<option value="${resource.resource_id}"  <c:if test="${resource.resource_id==data.nameid}">selected</c:if>>${resource.resource_name}</option>
+												</c:forEach>
+											</select>
 										</td>
-										<td style="text-align:right">
+										<td>
+											<select name="data['sizeid']">
+												<c:forEach items="${sizeList}" var="resource" >
+													<option value="${resource.resource_id}"  <c:if test="${resource.resource_id==data.sizeid}">selected</c:if>>${resource.resource_name}</option>
+												</c:forEach>
+											</select>
+										</td>
+										<td>
+											<select name="data['batchid']">
+												<c:forEach items="${batchList}" var="resource" >
+													<option value="${resource.resource_id}"  <c:if test="${resource.resource_id==data.batchid}">selected</c:if>>${resource.resource_name}</option>
+												</c:forEach>
+											</select>
+										</td>
+										<td>
+											<select name="data['producerid']">
+												<c:forEach items="${producerList}" var="resource" >
+													<option value="${resource.resource_id}"  <c:if test="${resource.resource_id==data.producerid}">selected</c:if>>${resource.resource_name}</option>
+												</c:forEach>
+											</select>
+										</td>
+									</tr>
+									</tr>
+										<td style="text-align:right" colspan="4">
 											<input type="button" class="btnStyle" value="&nbsp;查&nbsp;询&nbsp;" onclick="doMethod('search');"/>
 										</td>
 									</tr>
@@ -106,34 +123,27 @@
 						                <th>状态</th>
 						                <th>操作</th>
 						            </tr>
-						            <c:forEach items="${deliveryOrderList}" var="order" varStatus="status">
+						            <c:forEach items="${datas}" var="data" varStatus="status">
 						              	<tr>
-							                <td>${status.index+1 }</td>
-							                <td>${order.rsname }</td>
-							                <td>${order.spname }</td>
-							                <td>${order.batchname}</td>
-							                <td>${order.producername }</td>
-							                <td>${order.quantity }</td>
-							                <td>${order.operator }</td>
-							                <td>${order.deliveryDate }</td>
+							                <td>${data.outstock_id}</td>
+							                <td>${data.outstock_nameid__disp }</td>
+							                <td>${data.outstock_sizeid__disp }</td>
+							                <td>${data.outstock_batchid__disp}</td>
+							                <td>${data.outstock_producerid__disp }</td>
+							                <td style="text-align:right">${data.outstock_quantity }</td>
+							                <td>${data.outstock_outmanager }</td>
+							                <td>${data.outstock_outdate__disp }</td>
+							                <td>${data.outstock_status__disp }</td>
 							                <td>
-							                	<c:if test="${order.status == 1 }">
-							                		<span style="color:red">未审核</span>
+							                	<c:if test="${data.outstock_status == 0 }">
+							                		<a class=linkStyle href="manure/outstock/auditing.html?outstock_id=${data.outstock_id}" onclick="return confirm('确定审核吗?')">审核</a>
+													&nbsp;|&nbsp;
+							                		<a class=linkStyle href="#">修改</a>
+													&nbsp;|&nbsp;
+							                		<a class=linkStyle href="manure/outstock/delete.html?outstock_id=${data.outstock_id}" onclick="return confirm('确定删除吗?')">删除</a>
 							                	</c:if>
-							                	<c:if test="${order.status == 2 }">
-							                		已通过
-							                	</c:if>
-							                </td>
-							                <td>
-							                	<c:if test="${order.status == 1 }">
-							                		<input type="button" value="允许出库" onclick="reviewPassDeliveryOrder('${order.id }')"/>
-							                		<input type="button" value="修改" onclick="editDeliveryOrder('${order.id }')"/>
-							                		<input type="button" value="删除" onclick="delDeliveryOrder('${order.id }')"/>
-							                	</c:if>
-							                	<c:if test="${order.status == 2 }">
-							                		<input type="button" value="允许出库" disabled="disabled"/>
-							                		<input type="button" value="修改" disabled="disabled"/>
-							                		<input type="button" value="删除" disabled="disabled"/>
+							                	<c:if test="${data.outstock_status == 1 }">
+							                		<a class=linkStyle href="#">查看</a>
 							                	</c:if>
 							               	</td>
 						              	</tr>

@@ -9,19 +9,6 @@
 	<link rel="stylesheet" type="text/css" href="<c:url value='/public/css/reset.css'/>" />
 	<link rel="stylesheet" type="text/css" href="<c:url value='/public/css/style.css'/>" />
 	<script type="text/javascript">
-		function reviewPassDeliveryOrder(doid){
-			if(confirm('确认审核通过吗？')){
-				document.location.href = "<%=basePath%>feed/reviewPassDeliveryOrder.html?doid=" + doid;
-			}
-		}
-		function editDeliveryOrder(doid){
-			document.location.href = "<%=basePath%>feed/editDeliveryOrder.html?doid=" + doid;
-		}
-		function delDeliveryOrder(doid){
-			if(confirm('确认要删除吗？')){
-				document.location.href = "<%=basePath%>feed/delDeliveryOrder.html?doid=" + doid;
-			}
-		}
 	</script>
 </head>
 
@@ -46,16 +33,46 @@
 						</tr>
 						<tr>
 							<td>
+								<input type="hidden" name="stock_id" value=${stock_id}/>
 								<table style="width:100%;">
 									<tr>
-										<td style="30%">入库批号</td>
-										<td></td>
+										<td style="25%">肥料名称:</td>
+										<td style="25%">规格型号:</td>
+										<td style="25%">生产批号:</td>
+										<td style="25%">生产商:</td>
 									</tr>
 									<tr>
 										<td>
-											<input type="text"/>
+											<select name="data['nameid']">
+												<c:forEach items="${nameList}" var="resource" >
+													<option value="${resource.resource_id}"  <c:if test="${resource.resource_id==data.nameid}">selected</c:if>>${resource.resource_name}</option>
+												</c:forEach>
+											</select>
 										</td>
-										<td style="text-align:right">
+										<td>
+											<select name="data['sizeid']">
+												<c:forEach items="${sizeList}" var="resource" >
+													<option value="${resource.resource_id}"  <c:if test="${resource.resource_id==data.sizeid}">selected</c:if>>${resource.resource_name}</option>
+												</c:forEach>
+											</select>
+										</td>
+										<td>
+											<select name="data['batchid']">
+												<c:forEach items="${batchList}" var="resource" >
+													<option value="${resource.resource_id}"  <c:if test="${resource.resource_id==data.batchid}">selected</c:if>>${resource.resource_name}</option>
+												</c:forEach>
+											</select>
+										</td>
+										<td>
+											<select name="data['producerid']">
+												<c:forEach items="${producerList}" var="resource" >
+													<option value="${resource.resource_id}"  <c:if test="${resource.resource_id==data.producerid}">selected</c:if>>${resource.resource_name}</option>
+												</c:forEach>
+											</select>
+										</td>
+									</tr>
+									</tr>
+										<td style="text-align:right" colspan="4">
 											<input type="button" class="btnStyle" value="&nbsp;查&nbsp;询&nbsp;" onclick="doMethod('search');"/>
 										</td>
 									</tr>
@@ -108,18 +125,18 @@
 						            </tr>
 						            <c:forEach items="${datas}" var="data" varStatus="status">
 						              	<tr>
-							                <td>${status.index+1 }</td>
+							                <td>${data.instock_id}</td>
 							                <td>${data.instock_nameid__disp}</td>
-							                <td>${data['instock_sizeid__disp']}</td>
-							                <td>${data['instock_batchid__disp']}</td>
-							                <td>${data['instock_producerid__disp']}</td>
-							                <td style="text-align:right">${data['instock_quantity']}</td>
-							                <td>${data['instock_inmanager']}</td>
-							                <td>${data['instock_indate__disp']}</td>
-							                <td>${data['instock_status__disp']}</td>
+							                <td>${data.instock_sizeid__disp}</td>
+							                <td>${data.instock_batchid__disp}</td>
+							                <td>${data.instock_producerid__disp}</td>
+							                <td style="text-align:right">${data.instock_quantity}</td>
+							                <td>${data.instock_inmanager}</td>
+							                <td>${data.instock_indate__disp}</td>
+							                <td>${data.instock_status__disp}</td>
 							                <td>
 							                	<c:if test="${data.instock_status == 0 }">
-							                		<a class=linkStyle href="manure/instock/auditing.html?instock_id=${data.instock_id}" onclick="return confirm('确定审核吗?')">确认</a>
+							                		<a class=linkStyle href="manure/instock/auditing.html?instock_id=${data.instock_id}" onclick="return confirm('确定审核吗?')">审核</a>
 													&nbsp;|&nbsp;
 							                		<a class=linkStyle href="#">修改</a>
 													&nbsp;|&nbsp;
