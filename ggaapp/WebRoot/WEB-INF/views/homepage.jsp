@@ -352,52 +352,52 @@
 																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;农药入库单</a>
+																	<a href="pesticide/instock/add.html" target="rightframe">&nbsp;农药入库单</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;农药入库记录</a>
+																	<a href="pesticide/instock/list.html" target="rightframe">&nbsp;农药入库记录</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;农药出库单</a>
+																	<a href="pesticide/outstock/add.html" target="rightframe">&nbsp;农药出库单</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;农药出库记录</a>
+																	<a href="pesticide/outstock/list.html" target="rightframe">&nbsp;农药出库记录</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;农药库存</a>
+																	<a href="pesticide/stock/list.html" target="rightframe">&nbsp;农药库存</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;农药品名维护</a>
+																	<a href="pesticide/resource/list.html?type=1" target="rightframe">&nbsp;农药品名维护</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;农药规格维护</a>
+																	<a href="pesticide/resource/list.html?type=2" target="rightframe">&nbsp;农药规格维护</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;农药生产批号维护</a>
+																	<a href="pesticide/resource/list.html?type=3" target="rightframe">&nbsp;农药生产批号维护</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;农药生产商维护</a>
+																	<a href="pesticide/resource/list.html?type=4" target="rightframe">&nbsp;农药生产商维护</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;农药种类维护</a>
+																	<a href="pesticide/resource/list.html?type=5" target="rightframe">&nbsp;农药种类维护</a>
 																</li>
 															</ul>
 															<div id="menudiv8" class="shiyunlei2"
