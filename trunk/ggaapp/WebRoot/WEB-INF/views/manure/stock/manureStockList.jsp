@@ -36,14 +36,43 @@
 							<td>
 								<table style="width:100%;">
 									<tr>
-										<td style="30%">入库批号</td>
-										<td></td>
+										<td style="25%">肥料名称:</td>
+										<td style="25%">规格型号:</td>
+										<td style="25%">生产批号:</td>
+										<td style="25%">生产商:</td>
 									</tr>
 									<tr>
 										<td>
-											<input type="text"/>
+											<select name="data['nameid']">
+												<c:forEach items="${nameList}" var="resource" >
+													<option value="${resource.resource_id}"  <c:if test="${resource.resource_id==data.nameid}">selected</c:if>>${resource.resource_name}</option>
+												</c:forEach>
+											</select>
 										</td>
-										<td style="text-align:right">
+										<td>
+											<select name="data['sizeid']">
+												<c:forEach items="${sizeList}" var="resource" >
+													<option value="${resource.resource_id}"  <c:if test="${resource.resource_id==data.sizeid}">selected</c:if>>${resource.resource_name}</option>
+												</c:forEach>
+											</select>
+										</td>
+										<td>
+											<select name="data['batchid']">
+												<c:forEach items="${batchList}" var="resource" >
+													<option value="${resource.resource_id}"  <c:if test="${resource.resource_id==data.batchid}">selected</c:if>>${resource.resource_name}</option>
+												</c:forEach>
+											</select>
+										</td>
+										<td>
+											<select name="data['producerid']">
+												<c:forEach items="${producerList}" var="resource" >
+													<option value="${resource.resource_id}"  <c:if test="${resource.resource_id==data.producerid}">selected</c:if>>${resource.resource_name}</option>
+												</c:forEach>
+											</select>
+										</td>
+									</tr>
+									</tr>
+										<td style="text-align:right" colspan="4">
 											<input type="button" class="btnStyle" value="&nbsp;查&nbsp;询&nbsp;" onclick="doMethod('search');"/>
 										</td>
 									</tr>
@@ -95,14 +124,14 @@
 				              		</tr>
 				              		<c:forEach items="${datas}" var="data" varStatus="status">
 				              			<tr>
-							                <td>${status.index+1 }</td>
+							                <td>${data.stock_id}</td>
 							                <td>${data.stock_nameid__disp}</td>
 							                <td>${data.stock_sizeid__disp}</td>
 							                <td>${data.stock_batchid__disp}</td>
 							                <td>${data.stock_producerid__disp}</td>
 							                <td style="text-align:right">${data.stock_quantity}</td>
-							                <td><a href="#">入库记录</a></td>
-							                <td><a href="#">出库记录</a></td>
+							                <td><a href="manure/instock/list.html?stock_id=${data.stock_id}">入库记录</a></td>
+							                <td><a href="manure/outstock/list.html?stock_id=${data.stock_id}">出库记录</a></td>
 							                <td></td>
 						              	</tr>
 						        	</c:forEach>
