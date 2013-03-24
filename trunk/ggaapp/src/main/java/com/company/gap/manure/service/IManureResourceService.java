@@ -10,6 +10,8 @@ public interface IManureResourceService {
 	
 	List<ManureResource> queryByType(ManureResourceType resource);
 	
+	List<ManureResource> queryByType(ManureResourceType resource, ManureResource topResource);
+	
 	Map<String, Object> findResourceById(int resourceId);
 
 	int saveResource(Map<String, Object> data);

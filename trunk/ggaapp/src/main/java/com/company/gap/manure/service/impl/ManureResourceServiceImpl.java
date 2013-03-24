@@ -26,6 +26,13 @@ public class ManureResourceServiceImpl implements IManureResourceService {
 	}
 	
 	@Override
+	public List<ManureResource> queryByType(ManureResourceType resource, ManureResource topResource) {
+		List<ManureResource> resources = this.queryByType(resource);
+		resources.add(0, topResource);
+		return resources;
+	}
+	
+	@Override
 	public Map<String, Object> findResourceById(int resourceId) {
 		return resourceDao.findResourceById(resourceId);
 	}
@@ -62,6 +69,7 @@ public class ManureResourceServiceImpl implements IManureResourceService {
 		}
 		return resId2Name;
 	}
+
 	
 	
 }
