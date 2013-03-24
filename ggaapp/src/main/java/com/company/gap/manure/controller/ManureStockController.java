@@ -4,14 +4,16 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.company.gap.base.controller.ViewController;
+import com.company.gap.base.dao.search.Op;
 import com.company.gap.base.entity.ViewFormModel;
-import com.company.gap.base.util.DateUtils;
-import com.company.gap.manure.enumeration.ManureInStockStatus;
+import com.company.gap.manure.entity.ManureResource;
+import com.company.gap.manure.enumeration.ManureResourceType;
 import com.company.gap.manure.service.IManureResourceService;
 
 @Controller
@@ -22,7 +24,27 @@ public class ManureStockController extends ViewController {
 	private IManureResourceService resourceService;
 	
 	@Override
+	protected void preparing(HttpServletRequest request, ViewFormModel model) {
+		request.setAttribute("nameList", 	resourceService.queryByType(ManureResourceType.NAME, ManureResource.ALL));
+		request.setAttribute("sizeList", 	resourceService.queryByType(ManureResourceType.SIZE, ManureResource.ALL));
+		request.setAttribute("batchList", 	resourceService.queryByType(ManureResourceType.BATCH, ManureResource.ALL));
+		request.setAttribute("producerList",resourceService.queryByType(ManureResourceType.PRODUCER, ManureResource.ALL));
+	}
+	
+	
+	@Override
 	protected void dowithSearcher(HttpServletRequest request, ViewFormModel model) {
+		
+		Map<String, Object> data = model.getData();
+		String nameid 		= ObjectUtils.toString(data.get("nameid"), "0");
+		String sizeid 		= ObjectUtils.toString(data.get("sizeid"), "0");
+		String batchid 		= ObjectUtils.toString(data.get("batchid"), "0");
+		String producerid 	= ObjectUtils.toString(data.get("producerid"), "0");
+		if (!"0".equals(nameid)) 	searcher.addSf("stock_nameid", Op.EQ, nameid);
+		if (!"0".equals(sizeid)) 	searcher.addSf("stock_sizeid", Op.EQ, sizeid);
+		if (!"0".equals(batchid)) 	searcher.addSf("stock_batchid", Op.EQ, batchid);
+		if (!"0".equals(producerid))searcher.addSf("stock_producerid", Op.EQ, producerid);
+		
 		searcher.setTable("t_manure_stock");
 	}
 
