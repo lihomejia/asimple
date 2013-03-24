@@ -11,6 +11,8 @@ public interface IManureResourceDao {
 
 	Map<String, Object> findResourceById(int resourceId);
 	
+	Map<String, Object> findByTypeAndName(int type, String name);
+	
 	List<ManureResource> queryAll();
 
 	int insert(Map<String, Object> data);

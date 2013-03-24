@@ -30,6 +30,13 @@ public class ManureResourceDaoImpl implements IManureResourceDao {
 	}
 	
 	@Override
+	public Map<String, Object> findByTypeAndName(int type, String name) {
+		String sql = "select resource_id, resource_name, resource_type from t_manure_resource where resource_type=? and resource_name=?";
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql, type, name);
+		return list.isEmpty() ? null : list.get(0);
+	}
+	
+	@Override
 	public List<ManureResource> queryAll() {
 		String sql = "select resource_id, resource_name, resource_type from t_manure_resource";
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<ManureResource>(ManureResource.class));
