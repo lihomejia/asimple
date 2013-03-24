@@ -21,6 +21,13 @@
 	<a href="javascript:last()" class="img_bullet"><img src="public/icons/resultset_last.png" /> </a>
 </div>
 <script language="javascript">
+	function doMethod(method) {
+		var form = document.getElementById('form1');
+		var url = form.action || window.location.href;
+		form.action = url.replace(/(\/\w+\.html)/i, "/" + method + ".html");
+		form.submit();
+	}
+
 	function next(){
 		goPage(Math.min(document.getElementById("pager.page").value - 0 + 1, document.getElementById("pager.pages").value));
 	}

@@ -23,12 +23,14 @@
                 document.form1.outstock_outdate.focus();
                 return (false);
         	}
-        	if(document.form1.useObject.value == ""){
+        	if(document.form1.outstock_cellid.value == ""){
         		alert("请输入肥料用途!");
-                document.form1.useObject.focus();
+                document.form1.outstock_cellid.focus();
                 return (false);
         	}
-        	if (document.form1.outstock_quantity.value == "" || isNaN(document.form1.outstock_quantity.value)){
+        	if (document.form1.outstock_quantity.value == "" 
+        		|| isNaN(document.form1.outstock_quantity.value)
+        		|| document.form1.outstock_quantity.value == 0){
 	        	alert("请输入正确的出库数量!");
 	            document.form1.outstock_quantity.focus();
 	            return false;
@@ -60,7 +62,8 @@
     </script>
 </head>
 <body>
-	<form id="form1" name="form1" method="post" action="manure/outstock/save.html">
+	<form id="form1" name="form1" method="post" action="<c:url value='/manure/outstock/save.html'/>">
+		<input type="hidden" name="outstock_id" value="${outStock.outstock_id}">
 		<table width="100%">
 			<tr>
 				<td>
@@ -82,34 +85,58 @@
 								<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="dataList">
 									<tr> 
 								    	<td width="15%" class=forumrow><div align="right">肥料名称：</div></td>
-								      	<td width="40%" class=forumrow> 
-									  		<select id="outstock_stockid" name="outstock_stockid">
+								      	<td width="45%" class=forumrow> 
+									  		<select id="outstock_stockid" name="outstock_stockid" style="width :90%">
 									  			<option value="">请选择出库肥料</option>
 									  			<c:forEach items="${stocks}" var="stock">
-									  				<option value="${stock.stock_id }">${stock.stock_nameid__disp}_${stock.stock_sizeid__disp}_${stock.stock_batchid__disp}_${stock.stock_producerid__disp}</option>
+									  				<option value="${stock.stock_id }" <c:if test="${stock.stock_id == outStock.outstock_stockid}">selected</c:if>>${stock.stock_nameid__disp}_${stock.stock_sizeid__disp}_${stock.stock_batchid__disp}_${stock.stock_producerid__disp}</option>
 									  			</c:forEach>
 									  		</select>
+									  		<font color=red>*</font>
 									  	</td>
 								      	<td width="15%" class=forumrow><div align="right">出库时间：</div></td>
-								      	<td width="30%" class=forumrow><input id="outstock_outdate" name="outstock_outdate" /></td>
+								      	<td width="25%" class=forumrow><input id="outstock_outdate" name="outstock_outdate" value="${outStock.outstock_outdate}"/><font color=red>*</font></td>
 								    </tr>
 								    <tr> 
 								      	<td  class=forumrow><div align="right">施用于：</div></td>
 								      	<td  class=forumrow>
-										 	<input id="useObject" name="useObject" /> 数量
-										 	<input name="outstock_quantity" type="text" id="outstock_quantity" size="5" /> 公斤
+								      		<table cellpadding="0" cellspacing="0" style="width:100%">
+								      			<tr>
+								      				<td style="width:50%">
+									      				<select id="outstock_cellid" name="outstock_cellid" style="width:100%">
+													 		<c:forEach items="${cellList}" var="cell">
+													 			<option value="${cell.cell_id}" <c:if test="${cell.cell_id == outStock.outstock_cellid}">seleced</c:if>>${cell.cell_code} ${cell.cell_location}</option>
+													 		</c:forEach>
+													 	</select>
+								      				</td>
+								      				<td><font color=red>*</font></td>
+								      				<td><input name="outstock_quantity" type="text" id="outstock_quantity" size="5" value="${outStock.outstock_quantity}"/></td>
+								      				<td><font color=red>*</font>公斤</td>
+								      			</tr>
+								      		</table>
+										 	
+										 	
+										 	 
 									 	</td>
 										<td class=forumrow><div align="right">出库人员：</div></td>
-								      	<td class=forumrow><input name="outstock_outmanager" type="text" id="outstock_outmanager" /></td>
+								      	<td class=forumrow><input name="outstock_outmanager" type="text" id="outstock_outmanager" value="${outStock.outstock_outmanager}"/><font color=red>*</font></td>
 								    </tr>
 								    <tr> 
 								      	<td rowspan="2" class=forumrow><div align="right">备注：</div></td>
-								     	<td colspan="3" class=forumrow><textarea name="outstock_comment" cols="63" rows="5"></textarea></td>
+								     	<td colspan="3" class=forumrow><textarea name="outstock_comment" cols="63" rows="5">${outStock.outstock_comment}</textarea></td>
 								    </tr>
 								    <tr> 
 								      	<td colspan="4" align="center" class=forumrow>
-								      		<input type="button" value="确&nbsp;定" onclick="doOutStock()"/> 
-								        	<input type="reset" value="清&nbsp; 空" />
+								        	<c:if test="${_action == 'add'}">
+										      	<input type="button" class="btnStyle" value="添&nbsp;加" onclick="doOutStock()"/> 
+								        		<input type="reset" class="btnStyle" value="清&nbsp; 空" />
+								      		</c:if>
+								      		<c:if test="${_action == 'edit'}">
+								      			<input type="button" class="btnStyle" value="保&nbsp;存" onclick="doOutStock()"/> 
+								      		</c:if>
+								      		<c:if test="${_action == 'edit' || _action == 'disp'}">
+								      			<input type="button" class="btnStyle" value="返&nbsp;回" onclick="window.location.href='<c:url value="/manure/outstock/list.html"/>'"/>
+								      		</c:if>
 								        </td>
 								    </tr>
 								</table>

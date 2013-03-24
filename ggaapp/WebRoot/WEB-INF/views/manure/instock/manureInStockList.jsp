@@ -138,12 +138,17 @@
 							                	<c:if test="${data.instock_status == 0 }">
 							                		<a class=linkStyle href="manure/instock/auditing.html?instock_id=${data.instock_id}" onclick="return confirm('确定审核吗?')">审核</a>
 													&nbsp;|&nbsp;
-							                		<a class=linkStyle href="#">修改</a>
+							                		<a class=linkStyle href="manure/instock/edit.html?instock_id=${data.instock_id}">修改</a>
 													&nbsp;|&nbsp;
 							                		<a class=linkStyle href="manure/instock/delete.html?instock_id=${data.instock_id}" onclick="return confirm('确定删除吗?')">删除</a>
 							                	</c:if>
 							                	<c:if test="${data.instock_status == 1 }">
-							                		<a class=linkStyle href="#">查看</a>
+							                		<a class=linkStyle href="manure/instock/disp.html?instock_id=${data.instock_id}">查看</a>
+							                		&nbsp;|&nbsp;
+							                		<a class=linkStyle href="manure/instock/nullify.html?instock_id=${data.instock_id}" onclick="return confirm('确定作废吗?')">作废</a>
+							                	</c:if>
+							                	<c:if test="${data.instock_status == 2 }">
+							                		<a class=linkStyle href="manure/instock/disp.html?instock_id=${data.instock_id}">查看</a>
 							                	</c:if>
 							                </td>
 						              	</tr>
