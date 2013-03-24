@@ -12,5 +12,7 @@ public interface IManureInStockService {
 	
 	int auditing(int instock_id);
 	
+	int nullify(int instock_id);
+	
 	
 }

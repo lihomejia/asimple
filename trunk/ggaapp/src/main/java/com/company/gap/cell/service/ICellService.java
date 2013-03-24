@@ -1,11 +1,14 @@
 package com.company.gap.cell.service;
 
+import java.util.List;
 import java.util.Map;
 
 public interface ICellService {
-	public Map<String, Object> findProductionCellById(int cellId);
+	List<Map<String, Object>> findAllProductionCell();
 	
-	public int saveCell(Map<String, Object> data);
+	Map<String, Object> findProductionCellById(int cellId);
 	
-	public int delete(int... cellIds);
+	int saveCell(Map<String, Object> data);
+	
+	int delete(int... cellIds);
 }

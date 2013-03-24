@@ -8,7 +8,11 @@ public interface IManureInStockDao {
 	
 	int insert(ManureInStock inStock);
 	
+	int update(ManureInStock inStock);
+	
 	int delete(int instock_id);
 	
 	int auditing(int instock_id, int stock_id);
+	
+	int nullify(int instock_id);
 }

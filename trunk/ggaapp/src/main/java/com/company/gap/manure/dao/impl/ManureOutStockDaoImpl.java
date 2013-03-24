@@ -71,4 +71,10 @@ public class ManureOutStockDaoImpl implements IManureOutStockDao {
 		return jdbcTemplate.update(sql, 1, outstock_id);
 	}
 
+	@Override
+	public int nullify(int outstock_id) {
+		String sql = "update t_manure_outstock set outstock_status=? where outstock_id=?";
+		return jdbcTemplate.update(sql, 2, outstock_id);
+	}
+
 }

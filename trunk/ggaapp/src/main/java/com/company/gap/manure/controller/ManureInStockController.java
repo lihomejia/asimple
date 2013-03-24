@@ -76,11 +76,9 @@ public class ManureInStockController extends ViewController {
 	
 	@RequestMapping("add")
 	public String toAdd(HttpServletRequest request) {
-		request.setAttribute("nameList", 	resourceService.queryByType(ManureResourceType.NAME));
-		request.setAttribute("sizeList", 	resourceService.queryByType(ManureResourceType.SIZE));
-		request.setAttribute("batchList", 	resourceService.queryByType(ManureResourceType.BATCH));
-		request.setAttribute("producerList",resourceService.queryByType(ManureResourceType.PRODUCER));
-		request.setAttribute("kindList", 	resourceService.queryByType(ManureResourceType.KIND));
+		_action = ACT_ADD;
+		this.initData(request);
+		request.setAttribute("inStock", new ManureInStock());
 		return "manure/instock/manureInStoctEntry";
 	}
 	
@@ -92,12 +90,20 @@ public class ManureInStockController extends ViewController {
 	
 	@RequestMapping("edit")
 	public String edit(HttpServletRequest request, @RequestParam("instock_id") int instock_id) {
-		return "redirect:/manure/instock/list.html";
+		_action = ACT_EDIT;
+		this.initData(request);
+		ManureInStock inStock = inStockService.findInStockById(instock_id);
+		request.setAttribute("inStock", inStock);
+		return "manure/instock/manureInStoctEntry";
 	}
 	
 	@RequestMapping("disp")
 	public String disp(HttpServletRequest request, @RequestParam("instock_id") int instock_id) {
-		return "redirect:/manure/instock/list.html";
+		_action = ACT_DISP;
+		this.initData(request);
+		ManureInStock inStock = inStockService.findInStockById(instock_id);
+		request.setAttribute("inStock", inStock);
+		return "manure/instock/manureInStoctEntry";
 	}
 	
 	
@@ -107,10 +113,25 @@ public class ManureInStockController extends ViewController {
 		return "redirect:/manure/instock/list.html";
 	}
 	
+	@RequestMapping("nullify")
+	public String nullify(HttpServletRequest request, @RequestParam("instock_id") int instock_id) {
+		inStockService.nullify(instock_id);
+		return "redirect:/manure/instock/list.html";
+	}
+	
 	@RequestMapping("delete")
 	public String delete(HttpServletRequest request, @RequestParam("instock_id") int instock_id) {
 		inStockService.delete(instock_id);
 		return "redirect:/manure/instock/list.html";
+	}
+	
+	private void initData(HttpServletRequest request) {
+		request.setAttribute(ACT_NAME, 		_action);
+		request.setAttribute("nameList", 	resourceService.queryByType(ManureResourceType.NAME));
+		request.setAttribute("sizeList", 	resourceService.queryByType(ManureResourceType.SIZE));
+		request.setAttribute("batchList", 	resourceService.queryByType(ManureResourceType.BATCH));
+		request.setAttribute("producerList",resourceService.queryByType(ManureResourceType.PRODUCER));
+		request.setAttribute("kindList", 	resourceService.queryByType(ManureResourceType.KIND));
 	}
 	
 	

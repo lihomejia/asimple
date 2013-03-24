@@ -53,6 +53,24 @@ public class ManureInStockDaoImpl implements IManureInStockDao {
 	}
 	
 	@Override
+	public int update(ManureInStock in) {
+		String sql = new StringBuffer()
+			.append("update t_manure_instock set ")
+			.append(" instock_stockid=?, instock_nameid=?, instock_sizeid=?, instock_batchid=?, instock_producerid=?,")
+			.append(" instock_quantity=?, instock_location=?, instock_element=?, instock_indate=?, instock_kindid=?,")
+			.append(" instock_expirydate=?, instock_vendor=?, instock_wrap=?, instock_inmanager=?, instock_comment=?")
+			.append(" where instock_id=?")
+		.toString();
+		return jdbcTemplate.update(sql, 
+				in.getInstock_stockid(), in.getInstock_nameid(), in.getInstock_sizeid(), in.getInstock_batchid(), in.getInstock_producerid(),
+				in.getInstock_quantity(), in.getInstock_location(), in.getInstock_element(), in.getInstock_indate(), in.getInstock_kindid(),
+				in.getInstock_expirydate(),in.getInstock_vendor(), in.getInstock_wrap(), in.getInstock_inmanager(), in.getInstock_comment(),
+				in.getInstock_id()
+		);
+	}
+	
+	
+	@Override
 	public int delete(int instock_id) {
 		String sql = "delete from t_manure_instock where instock_id=?";
 		return jdbcTemplate.update(sql, instock_id);
@@ -64,4 +82,9 @@ public class ManureInStockDaoImpl implements IManureInStockDao {
 		return jdbcTemplate.update(sql, stock_id, 1, instock_id);
 	}
 
+	@Override
+	public int nullify(int instock_id) {
+		String sql = "update t_manure_instock set instock_status=? where instock_id=?";
+		return jdbcTemplate.update(sql, 2, instock_id);
+	}
 }

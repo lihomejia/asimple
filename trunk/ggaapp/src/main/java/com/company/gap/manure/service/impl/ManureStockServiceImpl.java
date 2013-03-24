@@ -72,5 +72,10 @@ public class ManureStockServiceImpl implements IManureStockService {
 		return stockDao.addStockQuantity(outStock.getOutstock_stockid(), -outStock.getOutstock_quantity());
 	}
 
+	@Override
+	public int addStockQuantity(int stock_id, double quantity) {
+		return stockDao.addStockQuantity(stock_id, quantity);
+	}
+
 
 }

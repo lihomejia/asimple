@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.company.gap.manure.dao.IManureOutStockDao;
+import com.company.gap.manure.entity.ManureInStock;
 import com.company.gap.manure.entity.ManureOutStock;
 import com.company.gap.manure.entity.ManureStock;
 import com.company.gap.manure.service.IManureOutStockService;
@@ -61,6 +62,20 @@ public class ManureOutStockServiceImpl implements IManureOutStockService {
 		
 		
 		return outStockDao.auditing(outstock_id);
+	}
+
+	@Override
+	public int nullify(int outstock_id) {
+		ManureOutStock outStock = this.findOutStockById(outstock_id);
+		if (outStock.getOutstock_status() != 1) {
+			//只处理已审核的
+			return 0;
+		}
+		int stock_id = outStock.getOutstock_stockid();
+		ManureStock stock = stockService.findStockById(stock_id);
+		
+		stockService.addStockQuantity(stock_id, outStock.getOutstock_quantity());
+		return outStockDao.nullify(outstock_id);
 	}
 
 }

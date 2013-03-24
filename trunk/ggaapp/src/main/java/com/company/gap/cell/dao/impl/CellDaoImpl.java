@@ -1,5 +1,6 @@
 package com.company.gap.cell.dao.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,13 @@ public class CellDaoImpl implements ICellDao {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	
+	@Override
+	public List<Map<String, Object>> findAllProductionCell() {
+		String sql = "select cell_id, cell_code, cell_location, cell_area, cell_cdate from t_production_cell";
+		return jdbcTemplate.queryForList(sql);
+	}
 	
 	@Override
 	public Map<String, Object> findProductionCellById(int cellId) {
