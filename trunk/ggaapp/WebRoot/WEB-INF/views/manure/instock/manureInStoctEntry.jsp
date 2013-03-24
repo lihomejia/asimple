@@ -65,6 +65,7 @@
 </head>
 <body>
 	<form id="form1" name="form1" method="post" action="<c:url value='/manure/instock/save.html'/>" onsubmit="return formCheck();">
+		<input type="hidden" name="instock_id" value="${inStock.instock_id}">
 		<table width="100%">
 			<tr>
 				<td>
@@ -90,12 +91,13 @@
 											<select id=instock_nameid name="instock_nameid">
 												<option selected value=""> 请选择肥料名称</option>
 												<c:forEach items="${nameList}" var="rs">
-													<option value="${rs.resource_id }">${rs.resource_name }</option>
+													<option value="${rs.resource_id }" <c:if test="${rs.resource_id==inStock.instock_nameid}">selected</c:if>>${rs.resource_name }</option>
 												</c:forEach>
 											</select>
+											<font color=red>*</font>
 									  	</td>
 								      	<td width="15%" class=forumrow><div align="right">入库时间：</div></td>
-								      	<td width="35%" class=forumrow><input id="instock_indate" name="instock_indate" size="25" /></td>
+								      	<td width="35%" class=forumrow><input id="instock_indate" name="instock_indate" size="25" value="${inStock.instock_indate}"/><font color=red>*</font></td>
 								    </tr>
 								    <tr> 
 								      	<td class=forumrow><div align="right">规格/型号：</div></td>
@@ -103,18 +105,20 @@
 										    <select id="instock_sizeid" name='instock_sizeid'>
 									          <option value="" selected>请选择规格型号</option>
 												<c:forEach items="${sizeList}" var="rs">
-													<option value="${rs.resource_id }">${rs.resource_name }</option>
+													<option value="${rs.resource_id }" <c:if test="${rs.resource_id==inStock.instock_sizeid}">selected</c:if>>${rs.resource_name }</option>
 												</c:forEach>
 											</select>
+											<font color=red>*</font>
 									  	</td>
 								      	<td class=forumrow><div align="right">所属类别：</div></td>
 								      	<td class=forumrow>
 								      		<select name="instock_kindid" id="instock_kindid">
 										    	<option value="" selected>请选择类别</option>
 									        	<c:forEach items="${kindList}" var="rs">
-													<option value="${rs.resource_id }">${rs.resource_name }</option>
+													<option value="${rs.resource_id }" <c:if test="${rs.resource_id==inStock.instock_kindid}">selected</c:if>>${rs.resource_name }</option>
 											  	</c:forEach>
 										    </select>
+										    <font color=red>*</font>
 								      	</td>
 								    </tr>
 								    <tr> 
@@ -123,12 +127,13 @@
 									  		<select id="instock_batchid" name='instock_batchid'>
 								          		<option value="" selected>请选择生产批号</option>
 										   		<c:forEach items="${batchList}" var="rs">
-													<option value="${rs.resource_id }">${rs.resource_name }</option>
+													<option value="${rs.resource_id }" <c:if test="${rs.resource_id==inStock.instock_batchid}">selected</c:if>>${rs.resource_name }</option>
 										 		</c:forEach>
 								         	</select>
+								         	<font color=red>*</font>
 									  	</td>
 								      	<td class=forumrow><div align="right">有效期：</div></td>
-								      	<td class=forumrow><input id="instock_expirydate" name="instock_expirydate" size="25" /></td>
+								      	<td class=forumrow><input id="instock_expirydate" name="instock_expirydate" size="25" value="${inStock.instock_expirydate}"/><font color=red>*</font></td>
 								    </tr>
 								    <tr> 
 								    	<td class=forumrow><div align="right">生产商：</div></td>
@@ -136,40 +141,49 @@
 										  	<select id="instock_producerid" name='instock_producerid'>
 										        <option value="" selected>请选择生产商家</option>
 										        <c:forEach items="${producerList}" var="rs">
-													<option value="${rs.resource_id }">${rs.resource_name }</option>
+													<option value="${rs.resource_id }" <c:if test="${rs.resource_id==inStock.instock_producerid}">selected</c:if>>${rs.resource_name }</option>
 												</c:forEach>
 									        </select>
+									        <font color=red>*</font>
 									  	</td>
 								      	<td class=forumrow><div align="right">供应商：</div></td>
-								      	<td class=forumrow><input id="instock_vendor" name="instock_vendor" type="text" id="pname" size="25" maxlength="30" /></td>
+								      	<td class=forumrow><input name="instock_vendor" type="text" size="25" maxlength="30" value="${inStock.instock_vendor}"/></td>
 								    </tr>
 								    <tr> 
 								    	<td class=forumrow><div align="right">入库数量：</div></td>
 								      	<td colspan="3" class=forumrow>
-								      		<input name="instock_quantity" type="text" id="instock_quantity" onkeypress="javascript:CheckNum();"  size="15" maxlength="10" /> 公斤 <font color=red>(注意：输入数量必须统一单位，这里的单位是公斤。)</font>
+								      		<input name="instock_quantity" type="text" id="instock_quantity" onkeypress="javascript:CheckNum();"  size="15" maxlength="10" value="${inStock.instock_quantity}"/><font color=red>*</font> 公斤 <font color=red>(注意：输入数量必须统一单位，这里的单位是公斤。)</font>
 								       	 	<div align="right"></div>
 								        </td>
 								    </tr>
 								    <tr> 
 										<td class=forumrow><div align="right">产地：</div></td>
-									    <td class=forumrow><input name="instock_location" type="text" size="25" maxlength="30" /></td>
+									    <td class=forumrow><input name="instock_location" type="text" size="25" maxlength="30" value="${inStock.instock_location}"/></td>
 									    <td class=forumrow><div align="right">包装形式：</div></td>
-									    <td class=forumrow><input name="instock_wrap" type="text" size="25" maxlength="30" /> </td>
+									    <td class=forumrow><input name="instock_wrap" type="text" size="25" maxlength="30" value="${inStock.instock_wrap}"/> </td>
 								    </tr>
 								   	<tr> 
 								      	<td class=forumrow><div align="right">有效成分：</div></td>
-								      	<td class=forumrow><input name="instock_element" type="text" size="25" maxlength="30" /></td>
+								      	<td class=forumrow><input name="instock_element" type="text" size="25" maxlength="30" value="${inStock.instock_element}"/></td>
 								      	<td class=forumrow><div align="right">入库人：</div></td>
-								      	<td class=forumrow><input name="instock_inmanager" type="text" id="instock_inmanager" size="25" maxlength="30"/> </td>
+								      	<td class=forumrow><input name="instock_inmanager" type="text" id="instock_inmanager" size="25" maxlength="30" value="${inStock.instock_inmanager}"/><font color=red>*</font></td>
 								    </tr>
 								    <tr> 
 								      	<td rowspan="2" class=forumrow><div align="right">备注：</div></td>
-								      	<td colspan="3" class=forumrow><textarea name="instock_comment" cols="73" rows="10"></textarea></td>
+								      	<td colspan="3" class=forumrow><textarea name="instock_comment" cols="73" rows="10">${inStock.instock_comment}</textarea></td>
 								    </tr>
 								    <tr> 
-								      	<td colspan="4" align="center"> 
-									      	<input type="submit" class="btnStyle" value="添&nbsp;加" /> 
-									        <input type="reset" class="btnStyle" value="清&nbsp;空" />
+								      	<td colspan="4" align="center">
+								      		<c:if test="${_action == 'add'}">
+										      	<input type="submit" class="btnStyle" value="添&nbsp;加" /> 
+										        <input type="reset" class="btnStyle" value="清&nbsp;空" />
+								      		</c:if>
+								      		<c:if test="${_action == 'edit'}">
+								      			<input type="submit" class="btnStyle" value="保&nbsp;存" /> 
+								      		</c:if>
+								      		<c:if test="${_action == 'edit' || _action == 'disp'}">
+								      			<input type="button" class="btnStyle" value="返&nbsp;回" onclick="window.location.href='<c:url value="/manure/instock/list.html"/>'"/>
+								      		</c:if>
 								      	</td>
 								    </tr>
 								</table>
