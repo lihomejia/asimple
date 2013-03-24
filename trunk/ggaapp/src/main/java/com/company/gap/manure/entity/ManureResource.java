@@ -1,10 +1,24 @@
 package com.company.gap.manure.entity;
 
+
 public class ManureResource {
 	private int resource_id;
 	private String resource_name;
 	private int resource_type;
 	
+	public static ManureResource ALL = new ManureResource(0, "--全部--");
+	
+	public ManureResource(){}
+	
+	public ManureResource(int resource_id, String resource_name) {
+		this.resource_id = resource_id;
+		this.resource_name = resource_name;
+	}
+	public ManureResource(int resource_id, String resource_name, int resource_type) {
+		this.resource_id = resource_id;
+		this.resource_name = resource_name;
+		this.resource_type = resource_type;
+	}
 	public int getResource_id() {
 		return resource_id;
 	}
