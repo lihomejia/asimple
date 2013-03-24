@@ -16,10 +16,16 @@ public abstract class ViewController {
 
 	private static final long serialVersionUID = 1L;
 	
+	public static final String ACT_NAME   = "_action";
+	
 	public static final String ACT_DELETE = "delete";
 	public static final String ACT_GOPAGE = "gopage";
 	public static final String ACT_SEARCH = "search";
 	public static final String ACT_SELECT = "select";
+	
+	public static final String ACT_ADD	  = "add";
+	public static final String ACT_EDIT   = "edit";
+	public static final String ACT_DISP   = "disp";
 	
 	@Autowired
 	private IViewService viewService;
@@ -98,6 +104,7 @@ public abstract class ViewController {
 	 * 填充数据，供前台使用.
 	 */
 	protected void fill(HttpServletRequest request, ViewFormModel model) {
+		request.setAttribute("data", 		model.getData());
 		request.setAttribute("datas", 		datas);
 		request.setAttribute("searcher",	searcher);
 		request.setAttribute("pager", 		pager);
