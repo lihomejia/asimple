@@ -36,6 +36,11 @@ public class ManureResourceServiceImpl implements IManureResourceService {
 	public Map<String, Object> findResourceById(int resourceId) {
 		return resourceDao.findResourceById(resourceId);
 	}
+	
+	@Override
+	public Map<String, Object> findByTypeAndName(int type, String name) {
+		return resourceDao.findByTypeAndName(type, name);
+	}
 
 	@Override
 	public int saveResource(Map<String, Object> data) {
