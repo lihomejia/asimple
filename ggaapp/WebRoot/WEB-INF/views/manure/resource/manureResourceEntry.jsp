@@ -6,42 +6,53 @@
     <title></title>
     <link rel="stylesheet" type="text/css" href="<c:url value='/public/css/reset.css'/>" />
     <link rel="stylesheet" type="text/css" href="<c:url value='/public/css/style.css'/>" />
+    <%@include file="/public/jsp/jquery.jsp"%>
     <script type="text/javascript">
     
 	    function doSubmit() {
 	    	if (document.getElementById('resource_name').value == '') {
-	    		alert('肥料名称不能为空');
+	    		alert('${resource.name}不能为空');
 	    		return false;
 	    	}
-			var form = document.getElementById('form1');
-			form.submit();
+	    	$.ajax({
+	    		type: "POST",
+			   	url: "<%=basePath%>/manure/resource/checkResource.html",
+			   	data: 'type=${type}&resource_name=' + $('#resource_name').val(),
+			   	success: function(rs){
+			     	if(!rs){
+			     		alert("当前${resource.name}已存在!");
+			     		return;
+			     	}
+			     	$('#form1').submit();
+			   	}
+			});
 		}
 		
 		function doCancel() {
-			window.location.href = "list.html?type=1";
+			window.location.href = '<c:url value="/manure/resource/list.html?type=${type}"/>';
 		}
     </script>
 </head>
 <body>
 	<form id="form1" method="post" action="manure/resource/save.html">
-		<input type="hidden" name="type" value="1"/>
+		<input type="hidden" name="type" value="${type}"/>
 		<input type="hidden" name="data['resource_id']" value="${data.resource_id }"/>
-		<input type="hidden" name="data['resource_type']" value="1"/>
+		<input type="hidden" name="data['resource_type']" value="${type}"/>
 		
 		<table width="100%">
 			<tr>
 				<td>
 					<table style="width:100%;">
 						<tr>
-							<td class="dataListTitle"><span class="pl10">肥料名称维护</span></td>
+							<td class="dataListTitle"><span class="pl10">${resource.title}</span></td>
 						</tr>
 						<tr>
 							<td>
 								<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0" class="dataList">
 									<tr>
-										<td class=forumrow style="30%"><div align="right">肥料名称:</div></td>
+										<td class=forumrow style="30%"><div align="right">${resource.name}:</div></td>
 										<td class=forumrow>
-											<input type="text" id="resource_name" name="data['resource_name']" value="${data.resource_name }"/>
+											<input id="resource_name" type="text" name="data['resource_name']" value="${data.resource_name }"/>
 										</td>
 									</tr>
 									<tr>
