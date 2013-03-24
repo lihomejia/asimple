@@ -113,7 +113,7 @@
 								<table width="100%" border="0" cellspacing="0" cellpadding="0" class="dataList">
 									<tr>
 						                <th>库存编号</th>
-						                <th>饲料名称</th>
+						                <th>肥料名称</th>
 						                <th>规格型号</th>
 						                <th>生产批号</th>
 						                <th>生产商</th>
