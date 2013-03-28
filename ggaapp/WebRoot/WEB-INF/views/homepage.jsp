@@ -208,22 +208,22 @@
 																<li onclick="changeBgColor('shiyunul4',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="password.html" target="rightframe">&nbsp;登记</a>
+																	<a href="grow/register/toAdd.html" target="rightframe">&nbsp;登记</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul4',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="WWFW010202.html" target="rightframe">&nbsp;种植过程</a>
+																	<a href="grow/process/list.html" target="rightframe">&nbsp;种植过程</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul4',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="WWFW010203.html" target="rightframe">&nbsp;已完成信息</a>
+																	<a href="grow/completed/list.html" target="rightframe">&nbsp;已完成信息</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul4',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="WWFW010203.html" target="rightframe">&nbsp;已归档信息</a>
+																	<a href="grow/archived/list.html" target="rightframe">&nbsp;已归档信息</a>
 																</li>
 															</ul>
 															<div id="menudiv5" class="shiyunlei2"
