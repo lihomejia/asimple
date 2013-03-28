@@ -77,22 +77,21 @@ public class SearcherAnalysis {
 				value = "%" + value + "%";
 			}
 			
-			sql
-				.append(SQL_AND)
-				.append(sFieldName)
-				.append(" ")
-				.append(op.getOper())
-				.append(" ?")
-			;
+			sql.append(SQL_AND).append(sFieldName).append(" ").append(op.getOper());
 			
-			Object val;
 			if (Op.IN.equals(op)){
-				val = value.split(";");
+				Object[] vals = value.split(";");
+				sql.append("(?");
+				pros.add(vals[0]);
+				for (int i = 1; i < vals.length; i++) {
+					sql.append(",?");
+					pros.add(vals[i]);
+				}
+				sql.append(")");
 			} else {
-				val = value;
+				sql.append(" ?");
+				pros.add(value);
 			}
-			
-			pros.add(val);
 		}
 		
 		if (sql.indexOf(SQL_AND) == 0){
