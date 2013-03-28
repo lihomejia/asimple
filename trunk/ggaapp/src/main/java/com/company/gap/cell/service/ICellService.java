@@ -11,4 +11,6 @@ public interface ICellService {
 	int saveCell(Map<String, Object> data);
 	
 	int delete(int... cellIds);
+	
+	Map<Integer, String> queryCellId2Code();
 }

@@ -1,16 +1,19 @@
 package com.company.gap.cell.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.cell.dao.ICellDao;
 import com.company.gap.cell.service.ICellService;
+import com.company.gap.manure.entity.ManureResource;
 
 @Service
 public class CellServiceImpl implements ICellService {
@@ -43,4 +46,16 @@ public class CellServiceImpl implements ICellService {
 	public int delete(int... cellIds) {
 		return cellDao.delete(cellIds);
 	}
+	
+	@Override
+	public Map<Integer, String> queryCellId2Code() {
+		Map<Integer, String> cellId2Name = new HashMap<Integer, String>();
+		for (Map<String, Object> mCell : this.findAllProductionCell()) {
+			int cellId = NumberUtils.toInt(ObjectUtils.toString(mCell.get("cell_id")));
+			String cellCode = ObjectUtils.toString(mCell.get("cell_code"));
+			cellId2Name.put(cellId, cellCode);
+		}
+		return cellId2Name;
+	}
+	
 }
