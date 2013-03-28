@@ -1,3 +1,4 @@
+#生产单元
 drop table if exists t_production_cell;
 create table t_production_cell (
     cell_id              int              AUTO_INCREMENT,
@@ -6,33 +7,6 @@ create table t_production_cell (
     cell_area            decimal(10,2)    default 0       comment '生产单元面积',
     cell_cdate           timestamp        default now()   comment '建档时间',
     primary key(cell_id)
-);
-
-drop table if exists t_farming_activity;
-create table t_farming_activity (
-	activity_id          int              AUTO_INCREMENT,
-	activity_cellid      int              default 0,
-	activity_date        timestamp        default now()   comment '活动时间',
-	activity_content     varchar(255)     default ''      comment '农事活动内容',
-	activity_scope		 decimal(10,2)    default 0       comment '农事活动规模(亩）',
-	activity_quantity    int              default 0       comment '参与人员数量',
-	activity_manager     varchar(36)      default ''      comment '负责人',
-	activity_comment     varchar(255)     default ''      comment '备注',
-	primary key(activity_id)
-);
-
-drop table if exists t_irrigation;
-create table t_irrigation (
-	irrigation_id        int              AUTO_INCREMENT,
-	irrigation_cellid    int              default 0,
-	irrigation_date      timestamp        default now()   comment '灌溉时间',
-	irrigation_way       varchar(20)      default ''      comment '灌溉方式',
-	irrigation_area      decimal(10,2)    default 0       comment '灌溉面积',
-	irrigation_quantum   decimal(10,2)    default 0       comment '灌溉量',
-	irrigation_manager   varchar(36)      default ''      comment '操作负责人',
-	irrigation_approver  varchar(36)      default ''      comment '审核员',
-	irrigation_comment   varchar(255)     default ''      comment '备注',
-	primary key(irrigation_id)
 );
 
 #肥料资源
@@ -104,6 +78,8 @@ create table t_manure_outstock (
 #肥料使用
 drop table if exists t_manure_usehist;
 create table t_manure_usehist (
+	usehist_id           int              AUTO_INCREMENT,
+	primary key(usehist_id)
 );
 
 
@@ -175,22 +151,89 @@ create table t_pesticide_outstock (
 #农药使用
 drop table if exists t_pesticide_usehist;
 create table t_pesticide_usehist (
+	usehist_id           int              AUTO_INCREMENT,
+	primary key(usehist_id)
 );
+
+#种植
+drop table if exists t_grow_register;
+create table t_grow_register (
+	register_id          int              AUTO_INCREMENT,
+	register_cellid      int              default 0       comment '生产单元ID',
+	register_person      varchar(36)      default ''      comment '登记人',
+	register_regdate     timestamp        default now()   comment '登记时间',
+	register_desc        varchar(60)      default ''      comment '种植描述',
+	register_status      int              default 0       comment '种植状态',
+	register_comment     varchar(255)     default ''      comment '备注',
+	primary key(register_id)
+);
+
+
+#农事活动
+drop table if exists t_grow_farming_activity;
+create table t_grow_farming_activity (
+	activity_id          int              AUTO_INCREMENT,
+	activity_growid      int              default 0       comment '种植ID',
+	activity_cellid      int              default 0       comment '生产单元ID',
+	activity_date        timestamp        default now()   comment '活动时间',
+	activity_content     varchar(255)     default ''      comment '农事活动内容',
+	activity_scope		 decimal(10,2)    default 0       comment '农事活动规模(亩）',
+	activity_quantity    int              default 0       comment '参与人员数量',
+	activity_manager     varchar(36)      default ''      comment '负责人',
+	activity_comment     varchar(255)     default ''      comment '备注',
+	primary key(activity_id)
+);
+
+#灌溉记录
+drop table if exists t_grow_irrigation;
+create table t_grow_irrigation (
+	irrigation_id        int              AUTO_INCREMENT,
+	irrigation_growid    int              default 0       comment '种植ID',
+	irrigation_cellid    int              default 0       comment '生产单元ID',
+	irrigation_date      timestamp        default now()   comment '灌溉时间',
+	irrigation_way       varchar(20)      default ''      comment '灌溉方式',
+	irrigation_area      decimal(10,2)    default 0       comment '灌溉面积',
+	irrigation_quantum   decimal(10,2)    default 0       comment '灌溉量',
+	irrigation_manager   varchar(36)      default ''      comment '操作负责人',
+	irrigation_approver  varchar(36)      default ''      comment '审核员',
+	irrigation_comment   varchar(255)     default ''      comment '备注',
+	primary key(irrigation_id)
+);
+
+#收割(收获)记录
+drop table if exists t_grow_harvest;
+create table t_grow_harvest (
+	harvest_id           int              AUTO_INCREMENT,
+	harvest_growid       int              default 0       comment '种植ID',
+	harvest_cellid       int              default 0       comment '生产单元ID',
+	harvest_operatedate  timestamp        default now()   comment '操作时间',
+	harvest_scale        varchar(20)      default ''      comment '规模',
+	harvest_yield        decimal(10,2)    default 0       comment '产量',
+	harvest_storage      varchar(36)      default ''      comment '存储地点',
+	harvest_respmanager  varchar(36)      default ''      comment '基地负责人',
+	harvest_storemanager varchar(36)      default ''      comment '操作负责人',
+	harvest_comment      varchar(255)     default ''      comment '备注',
+	primary key(harvest_id)
+);
+
 
 #产品库存
 drop table if exists t_product_stock;
 create table t_product_stock (
-
+	stock_id             int              AUTO_INCREMENT,
+	primary key(stock_id)
 );
 
 #产品入库
 drop table if exists t_product_instock;
 create table t_product_instock (
-
+	instock_id           int              AUTO_INCREMENT,
+	primary key(instock_id)
 );
 
 #产品出库
 drop table if exists t_product_outstock;
 create table t_product_outstock (
-
+	outstock_id          int              AUTO_INCREMENT,
+	primary key(outstock_id)
 );
