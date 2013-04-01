@@ -1,18 +1,13 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
-<%@include file="/public/taglibs.jsp"%>
+<%@include file="/public/jsp/taglibs.jsp"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
 	<base href="<%=basePath%>">
     <title></title>
-    <link rel="stylesheet" type="text/css" href="<c:url value='/public/css/reset.css'/>" />
-    <link rel="stylesheet" type="text/css" href="<c:url value='/public/css/style.css'/>" />
-    <%@include file="/public/jsp/jquery.jsp"%>
+  	<%@include file="/public/jsp/common.jsp"%>
     <script type="text/javascript">
-	    $(function() {
-	    	$( "#instock_indate" ).datepicker();
-	    	$( "#instock_expirydate").datepicker();
-	  	});
-	  
   		function formCheck(){
 			if (document.form1.instock_nameid.value == ""){
 	                alert("请输入肥料名称!");
@@ -97,7 +92,7 @@
 											<font color=red>*</font>
 									  	</td>
 								      	<td width="15%" class=forumrow><div align="right">入库时间：</div></td>
-								      	<td width="35%" class=forumrow><input id="instock_indate" name="instock_indate" size="25" value="${inStock.instock_indate}"/><font color=red>*</font></td>
+								      	<td width="35%" class=forumrow><input id="instock_indate" name="instock_indate" size="25" value="${inStock.instock_indate}" class="Wdate" onClick="WdatePicker()"/><font color=red>*</font></td>
 								    </tr>
 								    <tr> 
 								      	<td class=forumrow><div align="right">规格/型号：</div></td>
@@ -133,7 +128,7 @@
 								         	<font color=red>*</font>
 									  	</td>
 								      	<td class=forumrow><div align="right">有效期：</div></td>
-								      	<td class=forumrow><input id="instock_expirydate" name="instock_expirydate" size="25" value="${inStock.instock_expirydate}"/><font color=red>*</font></td>
+								      	<td class=forumrow><input id="instock_expirydate" name="instock_expirydate" size="25" value="${inStock.instock_expirydate}" class="Wdate" onClick="WdatePicker()"/><font color=red>*</font></td>
 								    </tr>
 								    <tr> 
 								    	<td class=forumrow><div align="right">生产商：</div></td>

@@ -1,15 +1,12 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
-<%@include file="/public/taglibs.jsp"%>
+<%@include file="/public/jsp/taglibs.jsp"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
 	<base href="<%=basePath%>">
 	<title>种植过程</title>
-	<link rel="stylesheet" type="text/css" href="<c:url value='/public/css/reset.css'/>" />
-	<link rel="stylesheet" type="text/css" href="<c:url value='/public/css/style.css'/>" />
-	<script type="text/javascript">
-	</script>
+	<%@include file="/public/jsp/common.jsp"%>
 </head>
 
 <body>
@@ -112,7 +109,7 @@
 							                <td>${data.register_status__disp}</td>
 							                <td><a class=linkStyle href="#">农事活动</a></td>
 							                <td><a class=linkStyle href="#">灌溉记录</a></td>
-							                <td><a class=linkStyle href="#">投入品使用</a></td>
+							                <td><a class=linkStyle href="#">肥料</a>&nbsp;|&nbsp;<a class=linkStyle href="#">农药</a></td>
 							                <td><a class=linkStyle href="#">收割记录</a></td>
 							                <td>
 							                	<c:if test="${data.register_status == 0 }">
