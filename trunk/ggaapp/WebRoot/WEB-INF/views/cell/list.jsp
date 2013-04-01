@@ -1,18 +1,12 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
-<%@include file="/public/taglibs.jsp"%>
+<%@include file="/public/jsp/taglibs.jsp"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
 	<base href="<%=basePath%>">
     <title></title>
-    <link rel="stylesheet" type="text/css" href="<c:url value='/public/css/style.css'/>" />
-    <script type="text/javascript">
-	    function doMethod(method) {
-			var form = document.getElementById('form1');
-			var url = form.action || window.location.href;
-			form.action = url.replace(/(\/\w+\.html)/i, "/" + method + ".html");
-			form.submit();
-		}
-    </script>
+    <%@include file="/public/jsp/common.jsp"%>
 </head>
 <body>
 	<form id="form1" method="post">
@@ -40,6 +34,7 @@
 										<td style="30%">单元代码</td>
 										<td style="30%">单元位置</td>
 										<td style="30%">单元面积</td>
+										<td>&nbsp;</td>
 									</tr>
 									<tr>
 										<td>
@@ -57,8 +52,12 @@
 											<input type="hidden" name="searcher.sfs['area'].name" value="cell_area"/>
 											<input type="hidden" name="searcher.sfs['area'].op.code" value="1"/>
 										</td>
+										<td style="text-align:right">
+											<input type="button" class="btnStyle" value="&nbsp;新&nbsp;建&nbsp;" onclick="window.location.href='<c:url value="/cell/add.html"/>';"/>
+										</td>
 									</tr>
 									<tr>
+										<td>&nbsp;</td>
 										<td>&nbsp;</td>
 										<td>&nbsp;</td>
 										<td style="text-align:right"><input type="button" class="btnStyle" value="&nbsp;查&nbsp;询&nbsp;" onclick="doMethod('search');"/></td>
@@ -99,19 +98,32 @@
 							<td align="left" valign="top">
 								<table width="100%" border="0" cellspacing="0" cellpadding="0" class="dataList">
 									<tr>
-										<th style="width:10%">ID</th>
-										<th style="width:20%">单元代码</th>
-										<th style="width:20%">单元位置</th>
-										<th style="width:10%">单元面积</th>
-										<th style="width:20%">建档时间</th>
+										<th>单元ID</th>
+										<th>单元代码</th>
+										<th>单元位置</th>
+										<th>单元面积</th>
+										<th>建档时间</th>
+										<th>状态</th>
+										<th>操作</th>
 									</tr>
 									<c:forEach items="${datas}" var="data">
 										<tr>
-											<td><a href="cell/entry.html?cellId=${data['cell_id']}">${data['cell_id']}</a></td>
-											<td><a href="cell/entry.html?cellId=${data['cell_id']}">${data['cell_code']}</a></td>
-											<td>${data['cell_location']}</td> 
-											<td>${data['cell_area']}</td> 
-											<td>${data['cell_cdate']}</td> 
+											<td>${data.cell_id}</td>
+											<td>${data.cell_code}</td>
+											<td>${data.cell_location}</td>
+											<td style="text-align:right">${data.cell_area}</td>
+											<td>${data.cell_cdate}</td>
+											<td>${data.cell_status__disp}</td>
+											<td>
+												<c:if test="${data.cell_status == 0}">
+							                		<a class=linkStyle href="cell/edit.html?cellId=${data.cell_id}">修改</a>
+													&nbsp;|&nbsp;
+							                		<a class=linkStyle href="cell/delete.html?cellId=${data.cell_id}" onclick="return confirm('确定删除吗?')">删除</a>
+							                	</c:if>
+							                	<c:if test="${data.cell_status == 1}">
+							                		<a class=linkStyle href="cell/disp.html?cellId=${data.cell_id}">查看</a>
+							                	</c:if>
+											</td>
 										</tr>
 									</c:forEach>
 								</table>

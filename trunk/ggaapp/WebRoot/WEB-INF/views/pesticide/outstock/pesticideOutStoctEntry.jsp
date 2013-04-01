@@ -1,17 +1,13 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
-<%@include file="/public/taglibs.jsp"%>
+<%@include file="/public/jsp/taglibs.jsp"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
 	<base href="<%=basePath%>">
     <title></title>
-    <link rel="stylesheet" type="text/css" href="<c:url value='/public/css/reset.css'/>" />
-    <link rel="stylesheet" type="text/css" href="<c:url value='/public/css/style.css'/>" />
-    <%@include file="/public/jsp/jquery.jsp"%>
+    <%@include file="/public/jsp/commonjq.jsp"%>
     <script type="text/javascript">
-	    $(function() {
-	    	$( "#outstock_outdate" ).datepicker();
-	  	});
-			  
 		function formCheck(){
 			if (document.form1.outstock_stockid.value == ""){
                 alert("请选择库存农药!");
@@ -95,7 +91,7 @@
 									  		<font color=red>*</font>
 									  	</td>
 								      	<td width="15%" class=forumrow><div align="right">出库时间：</div></td>
-								      	<td width="25%" class=forumrow><input id="outstock_outdate" name="outstock_outdate" value="${outStock.outstock_outdate}"/><font color=red>*</font></td>
+								      	<td width="25%" class=forumrow><input id="outstock_outdate" name="outstock_outdate" value="${outStock.outstock_outdate}" class="Wdate" onClick="WdatePicker()"/><font color=red>*</font></td>
 								    </tr>
 								    <tr> 
 								      	<td  class=forumrow><div align="right">施用于：</div></td>

@@ -1,13 +1,12 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
-<%@include file="/public/taglibs.jsp"%>
+<%@include file="/public/jsp/taglibs.jsp"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
 	<base href="<%=basePath%>">
     <title></title>
-    <link rel="stylesheet" type="text/css" href="<c:url value='/public/css/reset.css'/>" />
-	<link rel="stylesheet" type="text/css" href="<c:url value='/public/css/style.css'/>" />
+    <%@include file="/public/jsp/common.jsp"%>
 </head>
 <body>
 	<form id="form1" method="post">

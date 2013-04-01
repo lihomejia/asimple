@@ -1,17 +1,12 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
-<%@include file="/public/taglibs.jsp"%>
+<%@include file="/public/jsp/taglibs.jsp"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 	<head>
+		<base href="<%=basePath%>">
 		<title>饲料入库记录</title>
-		<link rel="stylesheet" type="text/css" href="<c:url value='/public/css/reset.css'/>" />
-		<link rel="stylesheet" type="text/css" href="<c:url value='/public/css/style.css'/>" />
-		<link rel="stylesheet" type="text/css" href="<c:url value='/public/js/jqueryui/jquery-ui.min.css'/>" />
-		<script src="<c:url value='/public/js/jquery-1.9.1.min.js'/>"></script>
-  		<script src="<c:url value='/public/js/jqueryui/jquery-ui.min.js'/>"></script>
-		<script type="text/javascript" src="<c:url value='/public/js/jqueryui/jquery.ui.datepicker-zh-CN.js'/>"></script>
-		<script type="text/javascript" src="<c:url value='/public/js/menujs.js'/>"></script>
+		<%@include file="/public/jsp/commonjq.jsp"%>
 	</head>
 
 	<body>

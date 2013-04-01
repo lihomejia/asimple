@@ -1,17 +1,11 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
-<%@include file="/public/taglibs.jsp"%>
+<%@include file="/public/jsp/taglibs.jsp"%>
 <html>
 <head>
 	<base href="<%=basePath%>">
     <title></title>
-    <link rel="stylesheet" type="text/css" href="<c:url value='/public/css/reset.css'/>" />
-    <link rel="stylesheet" type="text/css" href="<c:url value='/public/css/style.css'/>" />
-    <%@include file="/public/jsp/jquery.jsp"%>
+    <%@include file="/public/jsp/common.jsp"%>
     <script type="text/javascript">
-	    $(function() {
-	    	$( "#register_regdate" ).datepicker();
-	  	});
-	  
   		function formCheck(){
 			if (document.form1.register_cellid.value == ""){
                 alert("请选择生产单元!");
@@ -71,7 +65,7 @@
 											<font color=red>*</font>
 									  	</td>
 								      	<td width="15%" class=forumrow><div align="right">登记时间：</div></td>
-								      	<td width="35%" class=forumrow><input id="register_regdate" name="register_regdate" size="25" value="${register.register_regdate}"/><font color=red>*</font></td>
+								      	<td width="35%" class=forumrow><input id="register_regdate" name="register_regdate" size="25" value="${register.register_regdate}" class="Wdate" onClick="WdatePicker()"/><font color=red>*</font></td>
 								    </tr>
 								    <tr> 
 								   	 	<td class=forumrow><div align="right">描述：</div></td>
