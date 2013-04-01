@@ -9,33 +9,19 @@ import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.company.gap.base.controller.ViewController;
 import com.company.gap.base.dao.search.Op;
 import com.company.gap.base.entity.ViewFormModel;
 import com.company.gap.base.util.DateUtils;
-import com.company.gap.cell.service.ICellService;
-import com.company.gap.manure.entity.ManureOutStock;
 import com.company.gap.manure.entity.ManureResource;
-import com.company.gap.manure.entity.ManureStock;
 import com.company.gap.manure.enumeration.ManureOutStockStatus;
 import com.company.gap.manure.enumeration.ManureResourceType;
-import com.company.gap.manure.service.IManureOutStockService;
 import com.company.gap.manure.service.IManureResourceService;
-import com.company.gap.manure.service.IManureStockService;
 
 @Controller
 @RequestMapping("manure/outstock")
-public class ManureOutStockController extends ViewController {
-	
-	@Autowired
-	private IManureOutStockService outStockService;
-	@Autowired
-	private IManureStockService stockService;
-	@Autowired
-	private ICellService cellService;
+public class ManureOutStockViewController extends ViewController {
 	
 	@Autowired
 	private IManureResourceService resourceService;
@@ -84,70 +70,6 @@ public class ManureOutStockController extends ViewController {
 		}
 	}
 	
-	@RequestMapping("add")
-	public String toAdd(HttpServletRequest request) {
-		_action = ACT_ADD;
-		this.initData(request);
-		request.setAttribute("outStock", new ManureOutStock());
-		return "manure/outstock/manureOutStoctEntry";
-	}
-	
-	@RequestMapping("/checkOutStock")
-	public @ResponseBody boolean checkOutStock(HttpServletRequest request, ManureOutStock outStock){
-		int stock_id = outStock.getOutstock_stockid();
-		double quantity = outStock.getOutstock_quantity();
-		ManureStock stock = stockService.findStockById(stock_id);
-		return (stock != null) && (stock.getStock_quantity() >= quantity);
-	}
-	
-	@RequestMapping("save")
-	public String save(HttpServletRequest request, ManureOutStock outStock) {
-		outStockService.save(outStock);
-		return "redirect:/manure/outstock/list.html";
-	}
-	
-	@RequestMapping("edit")
-	public String edit(HttpServletRequest request, @RequestParam("outstock_id") int outstock_id) {
-		_action = ACT_EDIT;
-		this.initData(request);
-		ManureOutStock outStock = outStockService.findOutStockById(outstock_id);
-		request.setAttribute("outStock", outStock);
-		return "manure/outstock/manureOutStoctEntry";
-	}
-	
-	@RequestMapping("disp")
-	public String disp(HttpServletRequest request, @RequestParam("outstock_id") int outstock_id) {
-		_action = ACT_DISP;
-		this.initData(request);
-		ManureOutStock outStock = outStockService.findOutStockById(outstock_id);
-		request.setAttribute("outStock", outStock);
-		return "manure/outstock/manureOutStoctEntry";
-	}
-	
-	@RequestMapping("auditing")
-	public String auditing(HttpServletRequest request, @RequestParam("outstock_id") int outstock_id) {
-		outStockService.auditing(outstock_id);
-		return "redirect:/manure/outstock/list.html";
-	}
-	
-	@RequestMapping("nullify")
-	public String nullify(HttpServletRequest request, @RequestParam("outstock_id") int outstock_id) {
-		outStockService.nullify(outstock_id);
-		return "redirect:/manure/outstock/list.html";
-	}
-	
-	@RequestMapping("delete")
-	public String delete(HttpServletRequest request, @RequestParam("outstock_id") int outstock_id) {
-		outStockService.delete(outstock_id);
-		return "redirect:/manure/outstock/list.html";
-	}
-	
-	private void initData(HttpServletRequest request) {
-		request.setAttribute(ACT_NAME, 		_action);
-		request.setAttribute("stocks", 		stockService.queryAllStock());
-		request.setAttribute("cellList", 	cellService.findAllProductionCell());
-	}
-
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
 		return "manure/outstock/manureOutStockList";

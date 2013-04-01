@@ -12,25 +12,12 @@ import com.company.gap.base.dao.search.SimpleSearcher;
 import com.company.gap.base.entity.ViewFormModel;
 import com.company.gap.base.service.IViewService;
 
-public abstract class ViewController {
+public abstract class ViewController extends BaseController {
 
 	private static final long serialVersionUID = 1L;
 	
-	public static final String ACT_NAME   = "_action";
-	
-	public static final String ACT_DELETE = "delete";
-	public static final String ACT_GOPAGE = "gopage";
-	public static final String ACT_SEARCH = "search";
-	public static final String ACT_SELECT = "select";
-	
-	public static final String ACT_ADD	  = "add";
-	public static final String ACT_EDIT   = "edit";
-	public static final String ACT_DISP   = "disp";
-	
 	@Autowired
 	private IViewService viewService;
-	
-	protected String _action;
 	
 	/** 查询到的结果数据集 */
 	protected List<Map<String, Object>> datas;

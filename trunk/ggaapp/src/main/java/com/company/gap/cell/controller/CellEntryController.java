@@ -5,15 +5,12 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.company.gap.base.controller.ViewController;
+import com.company.gap.base.controller.EntryController;
 import com.company.gap.base.entity.FormModel;
-import com.company.gap.base.entity.ViewFormModel;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.cell.service.ICellService;
 
@@ -24,46 +21,46 @@ import com.company.gap.cell.service.ICellService;
  */
 @Controller
 @RequestMapping("cell")
-@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-public class CellController extends ViewController {
+public class CellEntryController extends EntryController {
 	
 	@Autowired
 	private ICellService cellService;
 	
-	@Override
-	protected void dowithSearcher(HttpServletRequest request, ViewFormModel model) {
-		searcher.setTable("t_production_cell");
-	}
-	
-	@Override
-	protected void afterall(HttpServletRequest request, ViewFormModel model) {
-		for (Map<String, Object> data : this.datas) {
-			data.put("cell_cdate", DateUtils.format(data.get("cell_cdate")));
-		}
-	}
-	
 	@RequestMapping("add")
 	public String add(HttpServletRequest request) {
+		super.add(request);
 		return "cell/entry";
 	}
 
 	@RequestMapping("save")
 	public String save(HttpServletRequest request, FormModel model) {
+		super.save(request);
 		cellService.saveCell(model.getData());
 		return "redirect:/cell/list.html";
 	}
 	
-	@RequestMapping("entry")
-	public String entry(HttpServletRequest request, @RequestParam("cellId") int cellId) {
+	@RequestMapping("edit")
+	public String edit(HttpServletRequest request, @RequestParam("cellId") int cellId) {
+		super.edit(request);
 		Map<String, Object> data = this.cellService.findProductionCellById(cellId);
 		data.put("cell_cdate", DateUtils.format(data.get("cell_cdate")));
 		request.setAttribute("data", data);
 		return "cell/entry";
 	}
 	
-
-	@Override
-	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "cell/list";
+	@RequestMapping("disp")
+	public String disp(HttpServletRequest request, @RequestParam("cellId") int cellId) {
+		super.disp(request);
+		Map<String, Object> data = this.cellService.findProductionCellById(cellId);
+		data.put("cell_cdate", DateUtils.format(data.get("cell_cdate")));
+		request.setAttribute("data", data);
+		return "cell/entry";
+	}
+	
+	@RequestMapping("delete")
+	public String delete(HttpServletRequest request, @RequestParam("cellId") int cellId) {
+		super.delete(request);
+		cellService.delete(cellId);
+		return "redirect:/cell/list.html";
 	}
 }
