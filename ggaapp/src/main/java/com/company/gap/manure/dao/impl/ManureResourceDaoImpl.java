@@ -56,16 +56,16 @@ public class ManureResourceDaoImpl implements IManureResourceDao {
 	
 	@Override
 	public int delete(int... resourceIds) {
+		int len = resourceIds.length;
 		StringBuffer sql = new StringBuffer();
 		sql.append("delete from t_manure_resource where resource_id in (?");
-		for (int i = 1; i < resourceIds.length; i++) {
+		Object[] pros = new Object[len];
+		pros[0] = resourceIds[0];
+		for (int i = 1; i < len; i++) {
+			pros[i] = resourceIds[i];
 			sql.append(",?");
 		}
 		sql.append(")");
-		Object[] os = new Object[resourceIds.length];
-		for (int i = 0; i< resourceIds.length; i++) {
-			os[i] = resourceIds[i];
-		}
-		return jdbcTemplate.update(sql.toString(), os);
+		return jdbcTemplate.update(sql.toString(), pros);
 	}
 }

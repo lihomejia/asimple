@@ -1,6 +1,5 @@
 package com.company.gap.grow.enumeration;
 
-import com.company.gap.manure.enumeration.ManureInStockStatus;
 
 public enum GrowStatus {
 	UNAUDITED(0, "未审核"),

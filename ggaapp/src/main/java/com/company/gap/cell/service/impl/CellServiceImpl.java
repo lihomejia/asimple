@@ -12,8 +12,9 @@ import org.springframework.stereotype.Service;
 
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.cell.dao.ICellDao;
+import com.company.gap.cell.entity.Cell;
+import com.company.gap.cell.enumeration.CellStatus;
 import com.company.gap.cell.service.ICellService;
-import com.company.gap.manure.entity.ManureResource;
 
 @Service
 public class CellServiceImpl implements ICellService {
@@ -25,6 +26,12 @@ public class CellServiceImpl implements ICellService {
 	public List<Map<String, Object>> findAllProductionCell() {
 		return cellDao.findAllProductionCell();
 	}
+	
+	@Override
+	public List<Cell> findProductionCells(CellStatus cellStatus) {
+		return cellDao.findProductionCells(cellStatus);
+	}
+	
 	
 	@Override
 	public Map<String, Object> findProductionCellById(int cellId) {
@@ -58,4 +65,8 @@ public class CellServiceImpl implements ICellService {
 		return cellId2Name;
 	}
 	
+	@Override
+	public int updateStatus(int cell_id, int cell_status) {
+		return cellDao.updateStatus(cell_id, cell_status);
+	}
 }
