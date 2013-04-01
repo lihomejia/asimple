@@ -6,6 +6,7 @@ create table t_production_cell (
     cell_location        varchar(100)     default ''      comment '生产单元位置',
     cell_area            decimal(10,2)    default 0       comment '生产单元面积',
     cell_cdate           timestamp        default now()   comment '建档时间',
+    cell_status          int              default 0       comment '单元状态 0:空闲,1:占用',
     primary key(cell_id)
 );
 
@@ -60,6 +61,7 @@ drop table if exists t_manure_outstock;
 create table t_manure_outstock (
 	outstock_id          int              AUTO_INCREMENT,
 	outstock_stockid     int              default 0       comment '库存ID',
+	outstock_registerid  int              default 0       comment '注册ID',
 	outstock_cellid      int              default 0       comment '生产单元ID',
 	outstock_nameid      int              default 0       comment '名称ID',
 	outstock_sizeid      int              default 0       comment '规格/型号ID',
@@ -72,14 +74,6 @@ create table t_manure_outstock (
 	outstock_outmanager  varchar(36)      default ''      comment '出库人/领用人',
 	outstock_comment     varchar(255)     default ''      comment '备注',
 	primary key(outstock_id)
-);
-
-
-#肥料使用
-drop table if exists t_manure_usehist;
-create table t_manure_usehist (
-	usehist_id           int              AUTO_INCREMENT,
-	primary key(usehist_id)
 );
 
 
@@ -134,6 +128,7 @@ drop table if exists t_pesticide_outstock;
 create table t_pesticide_outstock (
 	outstock_id          int              AUTO_INCREMENT,
 	outstock_stockid     int              default 0       comment '库存ID',
+	outstock_registerid  int              default 0       comment '注册ID',
 	outstock_cellid      int              default 0       comment '生产单元ID',
 	outstock_nameid      int              default 0       comment '名称ID',
 	outstock_sizeid      int              default 0       comment '规格/型号ID',
@@ -148,12 +143,6 @@ create table t_pesticide_outstock (
 	primary key(outstock_id)
 );
 
-#农药使用
-drop table if exists t_pesticide_usehist;
-create table t_pesticide_usehist (
-	usehist_id           int              AUTO_INCREMENT,
-	primary key(usehist_id)
-);
 
 #种植
 drop table if exists t_grow_register;
