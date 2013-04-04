@@ -208,7 +208,7 @@
 																<li onclick="changeBgColor('shiyunul4',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="grow/register/toAdd.html" target="rightframe">&nbsp;登记</a>
+																	<a href="grow/register/add.html" target="rightframe">&nbsp;登记</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul4',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />

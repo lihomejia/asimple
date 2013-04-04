@@ -19,9 +19,9 @@
                 document.form1.outstock_outdate.focus();
                 return (false);
         	}
-        	if(document.form1.outstock_cellid.value == ""){
+        	if(document.form1.outstock_registerid.value == ""){
         		alert("请输入肥料用途!");
-                document.form1.outstock_cellid.focus();
+                document.form1.outstock_registerid.focus();
                 return (false);
         	}
         	if (document.form1.outstock_quantity.value == "" 
@@ -41,10 +41,19 @@
         
         function doOutStock(){
         	if(formCheck()) {
+        		var quantity = parseFloat($('#outstock_quantity').val());
+        		var oquantity = parseFloat($('#outstock_oquantity').val());
+        		var dquantity = quantity - oquantity;
+        		if (dquantity <= 0) {
+        			//当修改的金额比原来的还小，则无需校验库存.
+        			$('#form1').submit();
+        			return;
+        		}
+        		
         		$.ajax({
 				   type: "POST",
 				   url: "<%=basePath%>/manure/outstock/checkOutStock.html",
-				   data: 'outstock_stockid=' + $('#outstock_stockid').val() + '&outstock_quantity=' + $('#outstock_quantity').val(),
+				   data: 'outstock_stockid=' + $('#outstock_stockid').val() + '&outstock_quantity=' + dquantity,
 				   success: function(rs){
 				     	if(!rs){
 				     		alert("当前肥料库存不足!");
@@ -81,14 +90,20 @@
 								<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="dataList">
 									<tr> 
 								    	<td width="15%" class=forumrow><div align="right">肥料名称：</div></td>
-								      	<td width="45%" class=forumrow> 
-									  		<select id="outstock_stockid" name="outstock_stockid" style="width :90%">
-									  			<option value="">请选择出库肥料</option>
-									  			<c:forEach items="${stocks}" var="stock">
-									  				<option value="${stock.stock_id }" <c:if test="${stock.stock_id == outStock.outstock_stockid}">selected</c:if>>${stock.stock_nameid__disp}_${stock.stock_sizeid__disp}_${stock.stock_batchid__disp}_${stock.stock_producerid__disp}</option>
-									  			</c:forEach>
-									  		</select>
-									  		<font color=red>*</font>
+								      	<td width="45%" class=forumrow>
+								      		<c:if test="${_action == 'add'}">
+										  		<select id="outstock_stockid" name="outstock_stockid" style="width :90%">
+										  			<option value="">请选择出库肥料</option>
+										  			<c:forEach items="${stocks}" var="stock">
+										  				<option value="${stock.stock_id }">${stock.stock_nameid__disp}_${stock.stock_sizeid__disp}_${stock.stock_batchid__disp}_${stock.stock_producerid__disp}</option>
+										  			</c:forEach>
+										  		</select>
+										  		<font color=red>*</font>
+										  	</c:if>
+										  	<c:if test="${_action != 'add'}">
+										  		<input type="hidden" name="outstock_stockid" value="${outStock.outstock_stockid}"/>
+										  		<input type="text" value="${data.outstock_stockid__disp}" disabled="disabled" size="40"/>
+										  	</c:if>
 									  	</td>
 								      	<td width="15%" class=forumrow><div align="right">出库时间：</div></td>
 								      	<td width="25%" class=forumrow><input id="outstock_outdate" name="outstock_outdate" value="${outStock.outstock_outdate}" class="Wdate" onClick="WdatePicker()"/><font color=red>*</font></td>
@@ -99,20 +114,27 @@
 								      		<table cellpadding="0" cellspacing="0" style="width:100%">
 								      			<tr>
 								      				<td style="width:50%">
-									      				<select id="outstock_cellid" name="outstock_cellid" style="width:100%">
-													 		<c:forEach items="${cellList}" var="cell">
-													 			<option value="${cell.cell_id}" <c:if test="${cell.cell_id == outStock.outstock_cellid}">seleced</c:if>>${cell.cell_code} ${cell.cell_location}</option>
-													 		</c:forEach>
-													 	</select>
+								      					<c:if test="${_action == 'add'}">
+										      				<select id="outstock_registerid" name="outstock_registerid" style="width:100%">
+														 		<c:forEach items="${registerList}" var="register">
+														 			<option value="${register.register_id}">${register.cell_code} ${register.cell_location}</option>
+														 		</c:forEach>
+														 	</select>
+														 </c:if>
+														 <c:if test="${_action != 'add'}">
+														 	<input type="hidden" id="outstock_registerid" name="outstock_registerid" value="${outStock.outstock_registerid}"/>
+														 	<input type="hidden" name="outstock_cellid" value="${outStock.outstock_cellid}"/>
+														 	<input type="text" value="${data.outstock_registerid__disp}" disabled="disabled" />
+														 </c:if>
 								      				</td>
 								      				<td><font color=red>*</font></td>
-								      				<td><input name="outstock_quantity" type="text" id="outstock_quantity" size="5" value="${outStock.outstock_quantity}"/></td>
+								      				<td>
+								      					<input type="hidden" id="outstock_oquantity" name="outstock_oquantity" size="5" value="${outStock.outstock_quantity}"/>
+								      					<input type="text" id="outstock_quantity" name="outstock_quantity" size="5" value="${outStock.outstock_quantity}"/>
+								      				</td>
 								      				<td><font color=red>*</font>公斤</td>
 								      			</tr>
 								      		</table>
-										 	
-										 	
-										 	 
 									 	</td>
 										<td class=forumrow><div align="right">出库人员：</div></td>
 								      	<td class=forumrow><input name="outstock_outmanager" type="text" id="outstock_outmanager" value="${outStock.outstock_outmanager}"/><font color=red>*</font></td>
