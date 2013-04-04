@@ -19,5 +19,5 @@ public interface ICellService {
 	
 	Map<Integer, String> queryCellId2Code();
 	
-	public int updateStatus(int cell_id, int cell_status);
+	int updateStatus(int cell_id, int cell_status);
 }
