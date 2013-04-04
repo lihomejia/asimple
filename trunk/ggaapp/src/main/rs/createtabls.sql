@@ -152,11 +152,10 @@ create table t_grow_register (
 	register_person      varchar(36)      default ''      comment '登记人',
 	register_regdate     timestamp        default now()   comment '登记时间',
 	register_desc        varchar(60)      default ''      comment '种植描述',
-	register_status      int              default 0       comment '种植状态',
+	register_status      int              default 0       comment '种植状态, 0:未审核,1:进行中,2:已完成,3:已归档',
 	register_comment     varchar(255)     default ''      comment '备注',
 	primary key(register_id)
 );
-
 
 #农事活动
 drop table if exists t_grow_farming_activity;
