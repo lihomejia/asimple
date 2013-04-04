@@ -56,13 +56,19 @@
 									<tr> 
 								    	<td width="15%" class=forumrow><div align="right">生产单元：</div></td>
 								      	<td width="35%" class=forumrow>
-											<select id=register_cellid name="register_cellid">
-												<option selected value="">请选择生产单元</option>
-												<c:forEach items="${cellList}" var="cell">
-													<option value="${cell.cell_id }" <c:if test="${cell.cell_id==register.register_cellid}">selected</c:if>>${cell.cell_code}</option>
-												</c:forEach>
-											</select>
-											<font color=red>*</font>
+								      		<c:if test="${_action == 'add'}">
+												<select id=register_cellid name="register_cellid">
+													<option selected value="">请选择生产单元</option>
+													<c:forEach items="${cellList}" var="cell">
+														<option value="${cell.cell_id }">${cell.cell_code}</option>
+													</c:forEach>
+												</select>
+												<font color=red>*</font>
+											</c:if>
+											<c:if test="${_action != 'add'}">
+												<input type="hidden" name="register_cellid" value="${register.register_cellid}"/>
+												<input type="text" value="${data.register_cellid__disp}" disabled="disabled"/>
+											</c:if>
 									  	</td>
 								      	<td width="15%" class=forumrow><div align="right">登记时间：</div></td>
 								      	<td width="35%" class=forumrow><input id="register_regdate" name="register_regdate" size="25" value="${register.register_regdate}" class="Wdate" onClick="WdatePicker()"/><font color=red>*</font></td>
