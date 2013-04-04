@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.company.gap.cell.dao.ICellDao;
 import com.company.gap.cell.entity.Cell;
 import com.company.gap.cell.enumeration.CellStatus;
+import com.company.gap.grow.enumeration.GrowStatus;
 
 @Repository
 public class CellDaoImpl implements ICellDao {

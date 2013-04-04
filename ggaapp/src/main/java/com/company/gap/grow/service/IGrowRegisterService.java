@@ -1,5 +1,8 @@
 package com.company.gap.grow.service;
 
+import java.util.List;
+import java.util.Map;
+
 import com.company.gap.grow.entity.GrowRegister;
 
 public interface IGrowRegisterService {
@@ -15,4 +18,5 @@ public interface IGrowRegisterService {
 
 	int delete(int registerId);
 	
+	List<Map<String, Object>> findGrowingInfos();
 }

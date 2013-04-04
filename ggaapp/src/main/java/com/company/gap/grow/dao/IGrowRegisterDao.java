@@ -1,5 +1,8 @@
 package com.company.gap.grow.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import com.company.gap.grow.entity.GrowRegister;
 
 public interface IGrowRegisterDao {
@@ -16,5 +19,7 @@ public interface IGrowRegisterDao {
 	int archive(int registerId);
 	
 	int delete(int registerId);
+	
+	List<Map<String, Object>> findGrowingInfos();
 	
 }

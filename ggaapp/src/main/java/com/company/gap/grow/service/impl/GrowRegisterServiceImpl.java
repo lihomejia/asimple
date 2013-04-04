@@ -1,8 +1,13 @@
 package com.company.gap.grow.service.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.company.gap.cell.enumeration.CellStatus;
+import com.company.gap.cell.service.ICellService;
 import com.company.gap.grow.dao.IGrowRegisterDao;
 import com.company.gap.grow.entity.GrowRegister;
 import com.company.gap.grow.service.IGrowRegisterService;
@@ -12,6 +17,8 @@ public class GrowRegisterServiceImpl implements IGrowRegisterService {
 
 	@Autowired
 	private IGrowRegisterDao registerDao;
+	@Autowired
+	private ICellService cellService;
 	
 	@Override
 	public GrowRegister findGrowRegister(int registerId) {
@@ -20,12 +27,15 @@ public class GrowRegisterServiceImpl implements IGrowRegisterService {
 
 	@Override
 	public int save(GrowRegister register) {
+		int ret = 0;
 		if (register.getRegister_id() == 0) {
-			return registerDao.insert(register);
+			ret = registerDao.insert(register);
+			cellService.updateStatus(register.getRegister_cellid(), CellStatus.OCCUPY.getStatus());
 		}
 		else {
-			return registerDao.update(register);
+			ret = registerDao.update(register);
 		}
+		return ret;
 	}
 	
 	@Override
@@ -45,9 +55,14 @@ public class GrowRegisterServiceImpl implements IGrowRegisterService {
 	
 	@Override
 	public int delete(int registerId) {
-		return registerDao.delete(registerId);
+		GrowRegister register = this.findGrowRegister(registerId);
+		int ret = registerDao.delete(registerId);
+		cellService.updateStatus(register.getRegister_cellid(), CellStatus.IDLE.getStatus());
+		return ret;
 	}
 
-	
-
+	@Override
+	public List<Map<String, Object>> findGrowingInfos() {
+		return registerDao.findGrowingInfos();
+	}
 }

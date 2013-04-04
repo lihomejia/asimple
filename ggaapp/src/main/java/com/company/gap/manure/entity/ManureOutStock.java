@@ -4,6 +4,7 @@ package com.company.gap.manure.entity;
 public class ManureOutStock {
 	private int outstock_id;
 	private int outstock_stockid;
+	private int outstock_registerid;
 	private int outstock_cellid;
 	private int outstock_nameid;
 	private int outstock_sizeid;
@@ -11,10 +12,12 @@ public class ManureOutStock {
 	private int outstock_producerid;
 	private int outstock_kindid;
 	private double outstock_quantity;
+	private double outstock_oquantity;
 	private int outstock_status;
 	private String outstock_outdate;
 	private String outstock_outmanager;
 	private String outstock_comment;
+	
 	public int getOutstock_id() {
 		return outstock_id;
 	}
@@ -26,6 +29,12 @@ public class ManureOutStock {
 	}
 	public void setOutstock_stockid(int outstock_stockid) {
 		this.outstock_stockid = outstock_stockid;
+	}
+	public int getOutstock_registerid() {
+		return outstock_registerid;
+	}
+	public void setOutstock_registerid(int outstock_registerid) {
+		this.outstock_registerid = outstock_registerid;
 	}
 	public int getOutstock_cellid() {
 		return outstock_cellid;
@@ -69,6 +78,12 @@ public class ManureOutStock {
 	public void setOutstock_quantity(double outstock_quantity) {
 		this.outstock_quantity = outstock_quantity;
 	}
+	public double getOutstock_oquantity() {
+		return outstock_oquantity;
+	}
+	public void setOutstock_oquantity(double outstock_oquantity) {
+		this.outstock_oquantity = outstock_oquantity;
+	}
 	public int getOutstock_status() {
 		return outstock_status;
 	}
@@ -93,4 +108,7 @@ public class ManureOutStock {
 	public void setOutstock_comment(String outstock_comment) {
 		this.outstock_comment = outstock_comment;
 	}
+	
+	
+	
 }

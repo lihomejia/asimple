@@ -1,5 +1,8 @@
 package com.company.gap.grow.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,45 +10,51 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.company.gap.base.controller.ViewController;
-import com.company.gap.base.entity.ViewFormModel;
+import com.company.gap.base.controller.EntryController;
+import com.company.gap.cell.enumeration.CellStatus;
 import com.company.gap.cell.service.ICellService;
 import com.company.gap.grow.entity.GrowRegister;
 import com.company.gap.grow.service.IGrowRegisterService;
 
 @Controller
 @RequestMapping("grow/register")
-public class GrowRegisterController extends ViewController {
+public class GrowRegisterController extends EntryController {
 	
 	@Autowired
 	private ICellService cellService;
-	
 	@Autowired
 	private IGrowRegisterService registerService;
 	
 	
-	@RequestMapping("toAdd")
-	public String toAdd(HttpServletRequest request) {
-		_action = ACT_ADD;
-		request.setAttribute("register", new GrowRegister());
-		this.initData(request);
-		
+	@RequestMapping("add")
+	public String add(HttpServletRequest request) {
+		super.add(request);
+		request.setAttribute("register", 	new GrowRegister());
+		request.setAttribute("cellList", 	cellService.findProductionCells(CellStatus.IDLE));
 		return "grow/register/growRegisterEntry";
 	}
 	
 	@RequestMapping("edit")
 	public String edit(HttpServletRequest request, @RequestParam("register_id") int register_id) {
-		_action = ACT_EDIT;
-		this.initData(request);
-		request.setAttribute("register", registerService.findGrowRegister(register_id));
+		super.edit(request);
+		GrowRegister register = registerService.findGrowRegister(register_id);
+		Map<String, Object> cell = cellService.findProductionCellById(register.getRegister_cellid());
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("register_cellid__disp", cell.get("cell_code"));
+		request.setAttribute("register", register);
+		request.setAttribute("data", data);
 		return "grow/register/growRegisterEntry";
 	}
 	
 	@RequestMapping("disp")
 	public String disp(HttpServletRequest request, @RequestParam("register_id") int register_id) {
-		_action = ACT_DISP;
-		this.initData(request);
-		request.setAttribute("register", registerService.findGrowRegister(register_id));
+		super.disp(request);
+		GrowRegister register = registerService.findGrowRegister(register_id);
+		Map<String, Object> cell = cellService.findProductionCellById(register.getRegister_cellid());
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("register_cellid__disp", cell.get("cell_code"));
+		request.setAttribute("register", register);
+		request.setAttribute("data", data);
 		return "grow/register/growRegisterEntry";
 	}
 	
@@ -79,13 +88,8 @@ public class GrowRegisterController extends ViewController {
 		return "redirect:/grow/process/list.html";
 	}
 	
-	private void initData(HttpServletRequest request) {
-		request.setAttribute(ACT_NAME, 		_action);
-		request.setAttribute("cellList", 	cellService.findAllProductionCell());
-	}
-
 	@Override
-	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return null;
+	protected void initialize(HttpServletRequest request) {
+		super.initialize(request);
 	}
 }

@@ -1,12 +1,14 @@
 package com.company.gap.grow.dao.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.company.gap.cell.enumeration.CellStatus;
 import com.company.gap.grow.dao.IGrowRegisterDao;
 import com.company.gap.grow.entity.GrowRegister;
 import com.company.gap.grow.enumeration.GrowStatus;
@@ -60,5 +62,17 @@ public class GrowRegiesterDaoImpl implements IGrowRegisterDao {
 		String sql = "delete from t_grow_register where register_id=?";
 		return jdbcTemplate.update(sql, registerId);
 	}
-	
+
+	@Override
+	public List<Map<String, Object>> findGrowingInfos() {
+		String sql = new StringBuffer()
+			.append("select register_id, cell_id, cell_code, cell_location ")
+			.append(" from t_grow_register, t_production_cell")
+			.append(" where register_cellid = cell_id")
+			.append(" and register_status = ").append(GrowStatus.GOING.getStatus())
+			.append(" and cell_status = ").append(CellStatus.OCCUPY.getStatus())
+			.toString()
+		;
+		return jdbcTemplate.queryForList(sql);
+	}
 }

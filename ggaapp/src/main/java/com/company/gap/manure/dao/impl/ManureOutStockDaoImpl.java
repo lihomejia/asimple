@@ -20,7 +20,7 @@ public class ManureOutStockDaoImpl implements IManureOutStockDao {
 	@Override
 	public ManureOutStock findInStockById(int outstock_id) {
 		String sql = new StringBuffer()
-			.append("select outstock_id, outstock_stockid, outstock_cellid, outstock_quantity, outstock_status, outstock_outdate, outstock_outmanager, outstock_comment,")
+			.append("select outstock_id, outstock_stockid, outstock_registerid, outstock_cellid, outstock_quantity, outstock_status, outstock_outdate, outstock_outmanager, outstock_comment,")
 			.append(" outstock_nameid, outstock_sizeid, outstock_batchid, outstock_producerid, outstock_kindid")
 			.append(" from t_manure_outstock")
 			.append(" where outstock_id=?")
@@ -33,13 +33,13 @@ public class ManureOutStockDaoImpl implements IManureOutStockDao {
 	public int insert(ManureOutStock out) {
 		String sql = new StringBuffer()
 			.append("insert into t_manure_outstock (")
-			.append(" outstock_stockid, outstock_cellid, outstock_quantity, outstock_status, outstock_outdate,")
+			.append(" outstock_stockid, outstock_registerid, outstock_cellid, outstock_quantity, outstock_status, outstock_outdate,")
 			.append(" outstock_nameid, outstock_sizeid, outstock_batchid, outstock_producerid, outstock_kindid,")
 			.append(" outstock_outmanager, outstock_comment")
-			.append(") values (?,?,?,?,?,?,?,?,?,?,?,?)")
+			.append(") values (?,?,?,?,?,?,?,?,?,?,?,?,?)")
 		.toString();
 		return jdbcTemplate.update(sql, 
-				out.getOutstock_stockid(), out.getOutstock_cellid(), out.getOutstock_quantity(), 0, out.getOutstock_outdate(),
+				out.getOutstock_stockid(), out.getOutstock_registerid(), out.getOutstock_cellid(), out.getOutstock_quantity(), 0, out.getOutstock_outdate(),
 				out.getOutstock_nameid(), out.getOutstock_sizeid(), out.getOutstock_batchid(), out.getOutstock_producerid(), out.getOutstock_kindid(),
 				out.getOutstock_outmanager(), out.getOutstock_comment());
 		
