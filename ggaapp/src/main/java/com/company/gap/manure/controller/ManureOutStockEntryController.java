@@ -77,7 +77,7 @@ public class ManureOutStockEntryController extends EntryController {
 		;
 		data.put("outstock_stockid__disp", stockid__disp);
 		
-		Map<String, Object> cell = cellService.findProductionCellById(outStock.getOutstock_cellid());
+		Map<String, Object> cell = cellService.findCellById(outStock.getOutstock_cellid());
 		data.put("outstock_registerid__disp", ObjectUtils.toString(cell.get("cell_code")) + "&nbsp;" + cell.get("cell_location"));
 		
 		request.setAttribute("outStock", outStock);
@@ -104,7 +104,7 @@ public class ManureOutStockEntryController extends EntryController {
 		;
 		data.put("outstock_stockid__disp", stockid__disp);
 		
-		Map<String, Object> cell = cellService.findProductionCellById(outStock.getOutstock_cellid());
+		Map<String, Object> cell = cellService.findCellById(outStock.getOutstock_cellid());
 		data.put("outstock_registerid__disp", ObjectUtils.toString(cell.get("cell_code")) + "&nbsp;" + cell.get("cell_location"));
 		
 		request.setAttribute("outStock", outStock);

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.company.gap.base.controller.EntryController;
 import com.company.gap.base.entity.FormModel;
 import com.company.gap.base.util.DateUtils;
+import com.company.gap.cell.entity.TCell;
 import com.company.gap.cell.service.ICellService;
 
 /**
@@ -42,8 +43,8 @@ public class CellEntryController extends EntryController {
 	@RequestMapping("edit")
 	public String edit(HttpServletRequest request, @RequestParam("cellId") int cellId) {
 		super.edit(request);
-		Map<String, Object> data = this.cellService.findProductionCellById(cellId);
-		data.put("cell_cdate", DateUtils.format(data.get("cell_cdate")));
+		Map<String, Object> data = this.cellService.findCellById(cellId);
+		data.put(TCell.CDATE, DateUtils.format(data.get(TCell.CDATE)));
 		request.setAttribute("data", data);
 		return "cell/entry";
 	}
@@ -51,8 +52,8 @@ public class CellEntryController extends EntryController {
 	@RequestMapping("disp")
 	public String disp(HttpServletRequest request, @RequestParam("cellId") int cellId) {
 		super.disp(request);
-		Map<String, Object> data = this.cellService.findProductionCellById(cellId);
-		data.put("cell_cdate", DateUtils.format(data.get("cell_cdate")));
+		Map<String, Object> data = this.cellService.findCellById(cellId);
+		data.put(TCell.CDATE, DateUtils.format(data.get(TCell.CDATE)));
 		request.setAttribute("data", data);
 		return "cell/entry";
 	}

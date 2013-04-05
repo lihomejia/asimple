@@ -30,7 +30,7 @@ public class GrowRegisterController extends EntryController {
 	public String add(HttpServletRequest request) {
 		super.add(request);
 		request.setAttribute("register", 	new GrowRegister());
-		request.setAttribute("cellList", 	cellService.findProductionCells(CellStatus.IDLE));
+		request.setAttribute("cellList", 	cellService.findCellsByStatus(CellStatus.IDLE));
 		return "grow/register/growRegisterEntry";
 	}
 	
@@ -38,7 +38,7 @@ public class GrowRegisterController extends EntryController {
 	public String edit(HttpServletRequest request, @RequestParam("register_id") int register_id) {
 		super.edit(request);
 		GrowRegister register = registerService.findGrowRegister(register_id);
-		Map<String, Object> cell = cellService.findProductionCellById(register.getRegister_cellid());
+		Map<String, Object> cell = cellService.findCellById(register.getRegister_cellid());
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("register_cellid__disp", cell.get("cell_code"));
 		request.setAttribute("register", register);
@@ -50,7 +50,7 @@ public class GrowRegisterController extends EntryController {
 	public String disp(HttpServletRequest request, @RequestParam("register_id") int register_id) {
 		super.disp(request);
 		GrowRegister register = registerService.findGrowRegister(register_id);
-		Map<String, Object> cell = cellService.findProductionCellById(register.getRegister_cellid());
+		Map<String, Object> cell = cellService.findCellById(register.getRegister_cellid());
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("register_cellid__disp", cell.get("cell_code"));
 		request.setAttribute("register", register);

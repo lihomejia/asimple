@@ -14,6 +14,7 @@ import com.company.gap.base.controller.ViewController;
 import com.company.gap.base.dao.search.Op;
 import com.company.gap.base.entity.ViewFormModel;
 import com.company.gap.base.util.DateUtils;
+import com.company.gap.base.util.Dto;
 import com.company.gap.cell.service.ICellService;
 import com.company.gap.grow.enumeration.GrowStatus;
 
@@ -39,12 +40,11 @@ public class GrowProcessController extends ViewController {
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
 		Map<Integer, String> cellId2Code = cellService.queryCellId2Code();
 		
-		for (Map<String, Object> data : datas) {
-			int cellId = NumberUtils.toInt(ObjectUtils.toString(data.get("register_cellid")));
-			data.put("register_cellid__disp", 	cellId2Code.get(cellId));
-			data.put("register_regdate__disp", 	DateUtils.format(data.get("register_regdate")));
-			GrowStatus status = GrowStatus.valueOf(NumberUtils.toInt(ObjectUtils.toString(data.get("register_status"))));
-			data.put("register_status__disp", 	status.getName());
+		for (Dto dto : datas) {
+			dto.put("register_cellid__disp", 	cellId2Code.get(dto.getInt("register_cellid")));
+			dto.put("register_regdate__disp", 	DateUtils.format(dto.getDate("register_regdate")));
+			GrowStatus status = GrowStatus.valueOf(dto.getInt("register_status"));
+			dto.put("register_status__disp", 	status.getName());
 		}
 	}
 

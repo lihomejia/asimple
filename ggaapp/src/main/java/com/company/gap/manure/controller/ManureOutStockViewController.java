@@ -14,6 +14,7 @@ import com.company.gap.base.controller.ViewController;
 import com.company.gap.base.dao.search.Op;
 import com.company.gap.base.entity.ViewFormModel;
 import com.company.gap.base.util.DateUtils;
+import com.company.gap.base.util.Dto;
 import com.company.gap.manure.entity.ManureResource;
 import com.company.gap.manure.enumeration.ManureOutStockStatus;
 import com.company.gap.manure.enumeration.ManureResourceType;
@@ -59,14 +60,14 @@ public class ManureOutStockViewController extends ViewController {
 	@Override
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
 		Map<Integer, String> resId2Res = resourceService.queryResId2Name();
-		for (Map<String, Object> data : datas) {
-			data.put("outstock_nameid__disp", 	resId2Res.get((Integer) data.get("outstock_nameid")));
-			data.put("outstock_sizeid__disp", 	resId2Res.get((Integer) data.get("outstock_sizeid")));
-			data.put("outstock_batchid__disp", 	resId2Res.get((Integer) data.get("outstock_batchid")));
-			data.put("outstock_producerid__disp",resId2Res.get((Integer) data.get("outstock_producerid")));
-			data.put("outstock_outdate__disp", 	DateUtils.format(data.get("outstock_outdate")));
-			ManureOutStockStatus status = ManureOutStockStatus.valueOf((Integer) data.get("outstock_status"));
-			data.put("outstock_status__disp", 	status.getName());
+		for (Dto dto : datas) {
+			dto.put("outstock_nameid__disp", 	resId2Res.get(dto.getInt("outstock_nameid")));
+			dto.put("outstock_sizeid__disp", 	resId2Res.get(dto.getInt("outstock_sizeid")));
+			dto.put("outstock_batchid__disp", 	resId2Res.get(dto.getInt("outstock_batchid")));
+			dto.put("outstock_producerid__disp",resId2Res.get(dto.getInt("outstock_producerid")));
+			dto.put("outstock_outdate__disp", 	DateUtils.format(dto.getDate("outstock_outdate")));
+			ManureOutStockStatus status = ManureOutStockStatus.valueOf(dto.getInt("outstock_status"));
+			dto.put("outstock_status__disp", 	status.getName());
 		}
 	}
 	

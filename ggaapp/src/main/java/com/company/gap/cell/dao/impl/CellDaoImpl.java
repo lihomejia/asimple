@@ -1,17 +1,15 @@
 package com.company.gap.cell.dao.impl;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.company.gap.base.util.ColumnDtoRowMapper;
+import com.company.gap.base.util.Dto;
 import com.company.gap.cell.dao.ICellDao;
-import com.company.gap.cell.entity.Cell;
-import com.company.gap.cell.enumeration.CellStatus;
-import com.company.gap.grow.enumeration.GrowStatus;
+import com.company.gap.cell.entity.TCell;
 
 @Repository
 public class CellDaoImpl implements ICellDao {
@@ -21,34 +19,34 @@ public class CellDaoImpl implements ICellDao {
 	
 	
 	@Override
-	public List<Map<String, Object>> findAllProductionCell() {
+	public List<Dto> findAllCells() {
 		String sql = "select cell_id, cell_code, cell_location, cell_area, cell_cdate, cell_status from t_production_cell";
-		return jdbcTemplate.queryForList(sql);
+		return jdbcTemplate.query(sql, new ColumnDtoRowMapper());
 	}
 	
 	@Override
-	public List<Cell> findProductionCells(CellStatus cellStatus) {
+	public List<Dto> findCellsByStatus(int status) {
 		String sql = "select cell_id, cell_code, cell_location, cell_area, cell_cdate, cell_status from t_production_cell where cell_status=?";
-		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<Cell>(Cell.class), cellStatus.getStatus());
+		return jdbcTemplate.query(sql, new ColumnDtoRowMapper(), status);
 	}
 	
 	@Override
-	public Map<String, Object> findProductionCellById(int cellId) {
+	public Dto findCellById(int cellId) {
 		String sql = "select cell_id, cell_code, cell_location, cell_area, cell_cdate, cell_status from t_production_cell where cell_id=?";
-		return jdbcTemplate.queryForMap(sql, cellId);
+		return jdbcTemplate.queryForObject(sql, new ColumnDtoRowMapper(), cellId);
 	}
 
 
 	@Override
-	public int insert(Map<String, Object> data) {
+	public int insert(Dto dto) {
 		String sql = "insert into t_production_cell(cell_code, cell_location, cell_area, cell_cdate, cell_status) values (?,?,?,?,0)";
-		return jdbcTemplate.update(sql, data.get("cell_code"), data.get("cell_location"), data.get("cell_area"), data.get("cell_cdate"));
+		return jdbcTemplate.update(sql, dto.getString(TCell.CODE), dto.getString(TCell.LOCATION), dto.getDouble(TCell.AREA), dto.getDate(TCell.CDATE));
 	}
 
 	@Override
-	public int update(Map<String, Object> data) {
+	public int update(Dto dto) {
 		String sql = "update t_production_cell set cell_code=?,cell_location=?,cell_area=?,cell_cdate=? where cell_id=?";
-		return jdbcTemplate.update(sql, data.get("cell_code"), data.get("cell_location"), data.get("cell_area"), data.get("cell_cdate"), data.get("cell_id"));
+		return jdbcTemplate.update(sql, dto.getString(TCell.CODE), dto.getString(TCell.LOCATION), dto.getDouble(TCell.AREA), dto.getDate(TCell.CDATE), dto.getInt(TCell.ID));
 	}
 	
 	public int updateStatus(int cell_id, int cell_status) {
