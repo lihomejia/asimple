@@ -1,7 +1,5 @@
 package com.company.gap.cell.controller;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -10,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.company.gap.base.controller.ViewController;
 import com.company.gap.base.entity.ViewFormModel;
 import com.company.gap.base.util.DateUtils;
+import com.company.gap.base.util.Dto;
+import com.company.gap.cell.entity.TCell;
 import com.company.gap.cell.enumeration.CellStatus;
 
 /**
@@ -28,10 +28,10 @@ public class CellViewController extends ViewController {
 	
 	@Override
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
-		for (Map<String, Object> data : this.datas) {
-			CellStatus status = CellStatus.valueOf((Integer) data.get("cell_status"));
-			data.put("cell_status__disp", status.getName());
-			data.put("cell_cdate", DateUtils.format(data.get("cell_cdate")));
+		for (Dto dto : this.datas) {
+			CellStatus status = CellStatus.valueOf(dto.getInt(TCell.STATUS));
+			dto.put(TCell.STATUS + __DISP, status.getName());
+			dto.put(TCell.CDATE, DateUtils.format(dto.getDate(TCell.CDATE)));
 		}
 	}
 	

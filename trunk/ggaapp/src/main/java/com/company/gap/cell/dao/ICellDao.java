@@ -1,21 +1,19 @@
 package com.company.gap.cell.dao;
 
 import java.util.List;
-import java.util.Map;
 
-import com.company.gap.cell.entity.Cell;
-import com.company.gap.cell.enumeration.CellStatus;
+import com.company.gap.base.util.Dto;
 
 public interface ICellDao {
-	List<Map<String, Object>> findAllProductionCell();
+	List<Dto> findAllCells();
 	
-	List<Cell> findProductionCells(CellStatus cellStatus);
+	List<Dto> findCellsByStatus(int status);
 	
-	Map<String, Object> findProductionCellById(int cellId);
+	Dto findCellById(int cellId);
 	
-	int insert(Map<String, Object> data);
+	int insert(Dto dto);
 	
-	int update(Map<String, Object> data);
+	int update(Dto dto);
 	
 	public int updateStatus(int cell_id, int cell_status);
 	

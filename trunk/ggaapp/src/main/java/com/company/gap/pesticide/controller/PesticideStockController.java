@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.company.gap.base.controller.ViewController;
 import com.company.gap.base.dao.search.Op;
 import com.company.gap.base.entity.ViewFormModel;
+import com.company.gap.base.util.Dto;
 import com.company.gap.pesticide.entity.PesticideResource;
 import com.company.gap.pesticide.enumeration.PesticideResourceType;
 import com.company.gap.pesticide.service.IPesticideResourceService;
@@ -52,11 +53,11 @@ public class PesticideStockController extends ViewController {
 	@Override
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
 		Map<Integer, String> resId2Res = resourceService.queryResId2Name();
-		for (Map<String, Object> data : datas) {
-			data.put("stock_nameid__disp", 		resId2Res.get((Integer) data.get("stock_nameid")));
-			data.put("stock_sizeid__disp", 		resId2Res.get((Integer) data.get("stock_sizeid")));
-			data.put("stock_batchid__disp", 	resId2Res.get((Integer) data.get("stock_batchid")));
-			data.put("stock_producerid__disp",	resId2Res.get((Integer) data.get("stock_producerid")));
+		for (Dto dto : datas) {
+			dto.put("stock_nameid__disp", 		resId2Res.get(dto.getInt("stock_nameid")));
+			dto.put("stock_sizeid__disp", 		resId2Res.get(dto.getInt("stock_sizeid")));
+			dto.put("stock_batchid__disp", 		resId2Res.get(dto.getInt("stock_batchid")));
+			dto.put("stock_producerid__disp",	resId2Res.get(dto.getInt("stock_producerid")));
 		}
 	}
 

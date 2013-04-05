@@ -15,6 +15,7 @@ import com.company.gap.base.controller.ViewController;
 import com.company.gap.base.dao.search.Op;
 import com.company.gap.base.entity.ViewFormModel;
 import com.company.gap.base.util.DateUtils;
+import com.company.gap.base.util.Dto;
 import com.company.gap.pesticide.entity.PesticideInStock;
 import com.company.gap.pesticide.entity.PesticideResource;
 import com.company.gap.pesticide.enumeration.PesticideInStockStatus;
@@ -63,14 +64,14 @@ public class PesticideInStockController extends ViewController {
 	@Override
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
 		Map<Integer, String> resId2Res = resourceService.queryResId2Name();
-		for (Map<String, Object> data : datas) {
-			data.put("instock_nameid__disp", 	resId2Res.get((Integer) data.get("instock_nameid")));
-			data.put("instock_sizeid__disp", 	resId2Res.get((Integer) data.get("instock_sizeid")));
-			data.put("instock_batchid__disp", 	resId2Res.get((Integer) data.get("instock_batchid")));
-			data.put("instock_producerid__disp",resId2Res.get((Integer) data.get("instock_producerid")));
-			data.put("instock_indate__disp", 	DateUtils.format(data.get("instock_indate")));
-			PesticideInStockStatus status = PesticideInStockStatus.valueOf((Integer) data.get("instock_status"));
-			data.put("instock_status__disp", 	status.getName());
+		for (Dto dto : datas) {
+			dto.put("instock_nameid__disp", 	resId2Res.get(dto.getInt("instock_nameid")));
+			dto.put("instock_sizeid__disp", 	resId2Res.get(dto.getInt("instock_sizeid")));
+			dto.put("instock_batchid__disp", 	resId2Res.get(dto.getInt("instock_batchid")));
+			dto.put("instock_producerid__disp",resId2Res.get(dto.getInt("instock_producerid")));
+			dto.put("instock_indate__disp", 	DateUtils.format(dto.getDate("instock_indate")));
+			PesticideInStockStatus status = PesticideInStockStatus.valueOf(dto.getInt("instock_status"));
+			dto.put("instock_status__disp", 	status.getName());
 		}
 	}
 	
