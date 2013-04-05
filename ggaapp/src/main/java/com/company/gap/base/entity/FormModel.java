@@ -1,16 +1,16 @@
 package com.company.gap.base.entity;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.company.gap.base.util.BaseDto;
+import com.company.gap.base.util.Dto;
 
 public class FormModel {
-	private Map<String, Object> data = new HashMap<String, Object>();
+	private Dto data = new BaseDto();
 
-	public Map<String, Object> getData() {
+	public Dto getData() {
 		return data;
 	}
 
-	public void setData(Map<String, Object> data) {
+	public void setData(Dto data) {
 		this.data = data;
 	}
 }
