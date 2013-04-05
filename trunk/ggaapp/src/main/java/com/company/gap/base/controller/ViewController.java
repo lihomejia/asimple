@@ -1,6 +1,5 @@
 package com.company.gap.base.controller;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,6 +10,7 @@ import com.company.gap.base.dao.search.Pager;
 import com.company.gap.base.dao.search.SimpleSearcher;
 import com.company.gap.base.entity.ViewFormModel;
 import com.company.gap.base.service.IViewService;
+import com.company.gap.base.util.Dto;
 
 public abstract class ViewController extends BaseController {
 
@@ -20,7 +20,7 @@ public abstract class ViewController extends BaseController {
 	private IViewService viewService;
 	
 	/** 查询到的结果数据集 */
-	protected List<Map<String, Object>> datas;
+	protected List<Dto> datas;
 	/** 翻页控制器 */
 	protected Pager pager;
 	/** 查询器 */
