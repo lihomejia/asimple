@@ -1,18 +1,17 @@
 package com.company.gap.manure.dao;
 
 import java.util.List;
-import java.util.Map;
 
-import com.company.gap.manure.entity.ManureStock;
+import com.company.gap.base.util.Dto;
 
 public interface IManureStockDao {
-	ManureStock findStockById(int stock_id);
+	Dto findStockById(int stock_id);
 	
-	ManureStock selectByStockInfo(ManureStock stock);
+	Dto selectByStockInfo(Dto stock);
 	
-	List<Map<String, Object>> queryAllStock();
+	List<Dto> queryAllStock();
 	
-	int insertStock(ManureStock stock);
+	int insertStock(Dto stock);
 	
 	int addStockQuantity(int stock_id, double quantity);
 }

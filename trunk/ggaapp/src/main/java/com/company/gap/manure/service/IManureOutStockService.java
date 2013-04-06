@@ -1,11 +1,11 @@
 package com.company.gap.manure.service;
 
-import com.company.gap.manure.entity.ManureOutStock;
+import com.company.gap.base.util.Dto;
 
 public interface IManureOutStockService {
-	ManureOutStock findOutStockById(int outstock_id);
+	Dto findOutStockById(int outstock_id);
 	
-	int save(ManureOutStock outStock);
+	int save(Dto outStock);
 	
 	int delete(int outstock_id);
 	

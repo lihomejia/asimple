@@ -1,23 +1,22 @@
 package com.company.gap.manure.dao;
 
 import java.util.List;
-import java.util.Map;
 
-import com.company.gap.manure.entity.ManureResource;
+import com.company.gap.base.util.Dto;
 
 public interface IManureResourceDao {
 	
-	List<ManureResource> queryByType(int resourceType);
+	List<Dto> queryByType(int resourceType);
 
-	Map<String, Object> findResourceById(int resourceId);
+	Dto findResourceById(int resourceId);
 	
-	Map<String, Object> findByTypeAndName(int type, String name);
+	Dto findByTypeAndName(int type, String name);
 	
-	List<ManureResource> queryAll();
+	List<Dto> queryAll();
 
-	int insert(Map<String, Object> data);
+	int insert(Dto data);
 
-	int update(Map<String, Object> data);
+	int update(Dto data);
 
 	int delete(int... resourceIds);
 }

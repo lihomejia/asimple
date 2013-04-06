@@ -4,15 +4,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.company.gap.base.controller.BaseController;
+import com.company.gap.base.util.BaseDto;
+import com.company.gap.base.util.Dto;
 import com.company.gap.manure.dao.IManureResourceDao;
-import com.company.gap.manure.entity.ManureResource;
 import com.company.gap.manure.enumeration.ManureResourceType;
 import com.company.gap.manure.service.IManureResourceService;
+import com.company.gap.manure.tab.TResource;
 
 @Service
 public class ManureResourceServiceImpl implements IManureResourceService {
@@ -21,30 +22,34 @@ public class ManureResourceServiceImpl implements IManureResourceService {
 	private IManureResourceDao resourceDao;
 	
 	@Override
-	public List<ManureResource> queryByType(ManureResourceType resource) {
+	public List<Dto> queryByType(ManureResourceType resource) {
 		return resourceDao.queryByType(resource.getType());
 	}
 	
 	@Override
-	public List<ManureResource> queryByType(ManureResourceType resource, ManureResource topResource) {
-		List<ManureResource> resources = this.queryByType(resource);
-		resources.add(0, topResource);
+	public List<Dto> queryByType(ManureResourceType resource, boolean containTop) {
+		List<Dto> resources = this.queryByType(resource);
+		if (containTop) {
+			Dto all = new BaseDto();
+			all.put(TResource.NAME, BaseController.__ALL);
+			resources.add(0, all);
+		}
 		return resources;
 	}
 	
 	@Override
-	public Map<String, Object> findResourceById(int resourceId) {
+	public Dto findResourceById(int resourceId) {
 		return resourceDao.findResourceById(resourceId);
 	}
 	
 	@Override
-	public Map<String, Object> findByTypeAndName(int type, String name) {
+	public Dto findByTypeAndName(int type, String name) {
 		return resourceDao.findByTypeAndName(type, name);
 	}
 
 	@Override
-	public int saveResource(Map<String, Object> data) {
-		if (StringUtils.isEmpty(ObjectUtils.toString(data.get("resource_id")))) {
+	public int saveResource(Dto data) {
+		if (data.getInt(TResource.ID) == 0) {
 			return resourceDao.insert(data);
 		} 
 		else {
@@ -58,10 +63,10 @@ public class ManureResourceServiceImpl implements IManureResourceService {
 	}
 	
 	@Override
-	public Map<Integer, ManureResource> queryResId2Res() {
-		Map<Integer, ManureResource> resId2Res = new HashMap<Integer, ManureResource>();
-		for (ManureResource resource : resourceDao.queryAll()) {
-			resId2Res.put(resource.getResource_id(), resource);
+	public Map<Integer, Dto> queryResId2Res() {
+		Map<Integer, Dto> resId2Res = new HashMap<Integer, Dto>();
+		for (Dto resource : resourceDao.queryAll()) {
+			resId2Res.put(resource.getInt(TResource.ID), resource);
 		}
 		return resId2Res;
 	}
@@ -69,8 +74,8 @@ public class ManureResourceServiceImpl implements IManureResourceService {
 	@Override
 	public Map<Integer, String> queryResId2Name() {
 		Map<Integer, String> resId2Name = new HashMap<Integer, String>();
-		for (ManureResource resource : resourceDao.queryAll()) {
-			resId2Name.put(resource.getResource_id(), resource.getResource_name());
+		for (Dto resource : resourceDao.queryAll()) {
+			resId2Name.put(resource.getInt(TResource.ID), resource.getString(TResource.NAME));
 		}
 		return resId2Name;
 	}

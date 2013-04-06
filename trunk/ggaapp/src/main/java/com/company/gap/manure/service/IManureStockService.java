@@ -1,23 +1,20 @@
 package com.company.gap.manure.service;
 
 import java.util.List;
-import java.util.Map;
 
-import com.company.gap.manure.entity.ManureInStock;
-import com.company.gap.manure.entity.ManureOutStock;
-import com.company.gap.manure.entity.ManureStock;
+import com.company.gap.base.util.Dto;
 
 public interface IManureStockService {
 	
-	ManureStock findStockById(int stock_id);
+	Dto findStockById(int stock_id);
 	
-	ManureStock selectByStockInfo(ManureStock stock);
+	Dto selectByStockInfo(Dto stock);
 	
-	List<Map<String, Object>> queryAllStock();
+	List<Dto> queryAllStock();
 
-	int inAuditing(ManureInStock inStock);
+	int inAuditing(Dto inStock);
 	
-	int outAuditing(ManureOutStock outStock);
+	int outAuditing(Dto outStock);
 	
 	int addStockQuantity(int stock_id, double quantity);
 }

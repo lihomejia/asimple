@@ -1,13 +1,13 @@
 package com.company.gap.manure.dao;
 
-import com.company.gap.manure.entity.ManureOutStock;
+import com.company.gap.base.util.Dto;
 
 public interface IManureOutStockDao {
-	ManureOutStock findInStockById(int outstock_id);
+	Dto findInStockById(int outstock_id);
 	
-	int insert(ManureOutStock outStock);
+	int insert(Dto outStock);
 	
-	int update(ManureOutStock outStock);
+	int update(Dto outStock);
 	
 	int delete(int outstock_id);
 	
