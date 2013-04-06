@@ -13,39 +13,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.company.gap.base.controller.ViewController;
-import com.company.gap.base.dao.search.Op;
+import com.company.gap.base.controller.EntryController;
 import com.company.gap.base.entity.FormModel;
-import com.company.gap.base.entity.ViewFormModel;
 import com.company.gap.manure.enumeration.ManureResourceType;
 import com.company.gap.manure.service.IManureResourceService;
 
 @Controller
 @RequestMapping("manure/resource")
-public class ManureResourceController extends ViewController {
+public class ManureResourceEntryController extends EntryController {
 	
 	@Autowired
 	private IManureResourceService resourceService;
 	
-	
-	@Override
-	protected void preparing(HttpServletRequest request, ViewFormModel model) {
-		int type = NumberUtils.toInt(request.getParameter("type"));
-		request.setAttribute("type", type);
-		request.setAttribute("resource", ManureResourceType.valueOf(type));
-	}
-
-	@Override
-	protected void dowithSearcher(HttpServletRequest request, ViewFormModel model) {
-		String type = request.getParameter("type");
-		searcher.addSf("resource_type", Op.EQ, type);
-		searcher.setTable("t_manure_resource");
-	}
-
-	@Override
-	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "manure/resource/manureResourceList";
-	}
 	
 	@RequestMapping("add")
 	public String add(HttpServletRequest request) {

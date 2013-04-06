@@ -13,7 +13,6 @@ import com.company.gap.base.controller.ViewController;
 import com.company.gap.base.dao.search.Op;
 import com.company.gap.base.entity.ViewFormModel;
 import com.company.gap.base.util.Dto;
-import com.company.gap.manure.entity.ManureResource;
 import com.company.gap.manure.enumeration.ManureResourceType;
 import com.company.gap.manure.service.IManureResourceService;
 
@@ -26,10 +25,10 @@ public class ManureStockController extends ViewController {
 	
 	@Override
 	protected void preparing(HttpServletRequest request, ViewFormModel model) {
-		request.setAttribute("nameList", 	resourceService.queryByType(ManureResourceType.NAME, ManureResource.ALL));
-		request.setAttribute("sizeList", 	resourceService.queryByType(ManureResourceType.SIZE, ManureResource.ALL));
-		request.setAttribute("batchList", 	resourceService.queryByType(ManureResourceType.BATCH, ManureResource.ALL));
-		request.setAttribute("producerList",resourceService.queryByType(ManureResourceType.PRODUCER, ManureResource.ALL));
+		request.setAttribute("nameList", 	resourceService.queryByType(ManureResourceType.NAME, true));
+		request.setAttribute("sizeList", 	resourceService.queryByType(ManureResourceType.SIZE, true));
+		request.setAttribute("batchList", 	resourceService.queryByType(ManureResourceType.BATCH, true));
+		request.setAttribute("producerList",resourceService.queryByType(ManureResourceType.PRODUCER, true));
 	}
 	
 	

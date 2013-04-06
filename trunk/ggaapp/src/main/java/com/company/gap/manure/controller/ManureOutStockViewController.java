@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +15,6 @@ import com.company.gap.base.dao.search.Op;
 import com.company.gap.base.entity.ViewFormModel;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.base.util.Dto;
-import com.company.gap.manure.entity.ManureResource;
 import com.company.gap.manure.enumeration.ManureOutStockStatus;
 import com.company.gap.manure.enumeration.ManureResourceType;
 import com.company.gap.manure.service.IManureResourceService;
@@ -30,10 +28,10 @@ public class ManureOutStockViewController extends ViewController {
 	
 	@Override
 	protected void preparing(HttpServletRequest request, ViewFormModel model) {
-		request.setAttribute("nameList", 	resourceService.queryByType(ManureResourceType.NAME, ManureResource.ALL));
-		request.setAttribute("sizeList", 	resourceService.queryByType(ManureResourceType.SIZE, ManureResource.ALL));
-		request.setAttribute("batchList", 	resourceService.queryByType(ManureResourceType.BATCH, ManureResource.ALL));
-		request.setAttribute("producerList",resourceService.queryByType(ManureResourceType.PRODUCER, ManureResource.ALL));
+		request.setAttribute("nameList", 	resourceService.queryByType(ManureResourceType.NAME, true));
+		request.setAttribute("sizeList", 	resourceService.queryByType(ManureResourceType.SIZE, true));
+		request.setAttribute("batchList", 	resourceService.queryByType(ManureResourceType.BATCH, true));
+		request.setAttribute("producerList",resourceService.queryByType(ManureResourceType.PRODUCER, true));
 		
 	}
 	
