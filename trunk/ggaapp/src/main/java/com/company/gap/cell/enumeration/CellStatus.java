@@ -3,7 +3,7 @@ package com.company.gap.cell.enumeration;
 
 public enum CellStatus {
 	IDLE(0, "空闲"),
-	OCCUPY(1, "占用");
+	OCCUPY(1, "在用");
 	
 	private int status;
 	private String name;

@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,12 +39,19 @@ public class ManureOutStockViewController extends ViewController {
 	
 	@Override
 	protected void dowithSearcher(HttpServletRequest request, ViewFormModel model) {
-		int stock_id = NumberUtils.toInt(request.getParameter("stock_id"));
-		
-		if (stock_id != 0) {
+		String stock_id = request.getParameter("stock_id");
+		String register_id = request.getParameter("register_id");
+		if (StringUtils.isNotEmpty(stock_id)) {
 			request.setAttribute("stock_id", stock_id);
-			searcher.addSf("outstock_stockid", Op.EQ, String.valueOf(stock_id));
+			searcher.addSf("outstock_stockid", Op.EQ, stock_id);
 		}
+		if (StringUtils.isNotEmpty(register_id)) {
+			request.setAttribute("stock_id", register_id);
+			searcher.addSf("outstock_registerid", Op.EQ, register_id);
+		}
+		
+		
+		
 		Map<String, Object> data = model.getData();
 		String nameid 		= ObjectUtils.toString(data.get("nameid"), "0");
 		String sizeid 		= ObjectUtils.toString(data.get("sizeid"), "0");
