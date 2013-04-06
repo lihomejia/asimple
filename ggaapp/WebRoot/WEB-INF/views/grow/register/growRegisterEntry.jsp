@@ -33,7 +33,7 @@
 </head>
 <body>
 	<form id="form1" name="form1" method="post" action="<c:url value='/grow/register/save.html'/>" onsubmit="return formCheck();">
-		<input type="hidden" name="register_id" value="${register.register_id}">
+		<input type="hidden" name="register_id" value="${data.register_id}">
 		<table width="100%">
 			<tr>
 				<td>
@@ -57,7 +57,7 @@
 								    	<td width="15%" class=forumrow><div align="right">生产单元：</div></td>
 								      	<td width="35%" class=forumrow>
 								      		<c:if test="${_action == 'add'}">
-												<select id=register_cellid name="register_cellid">
+												<select id=register_cellid name="data['register_cellid']">
 													<option selected value="">请选择生产单元</option>
 													<c:forEach items="${cellList}" var="cell">
 														<option value="${cell.cell_id }">${cell.cell_code}</option>
@@ -66,22 +66,22 @@
 												<font color=red>*</font>
 											</c:if>
 											<c:if test="${_action != 'add'}">
-												<input type="hidden" name="register_cellid" value="${register.register_cellid}"/>
+												<input type="hidden" name="data['register_cellid']" value="${data.register_cellid}"/>
 												<input type="text" value="${data.register_cellid__disp}" disabled="disabled"/>
 											</c:if>
 									  	</td>
 								      	<td width="15%" class=forumrow><div align="right">登记时间：</div></td>
-								      	<td width="35%" class=forumrow><input id="register_regdate" name="register_regdate" size="25" value="${register.register_regdate}" class="Wdate" onClick="WdatePicker()"/><font color=red>*</font></td>
+								      	<td width="35%" class=forumrow><input id="register_regdate" name="data['register_regdate']" size="25" value="${data.register_regdate}" class="Wdate" onClick="WdatePicker()"/><font color=red>*</font></td>
 								    </tr>
 								    <tr> 
 								   	 	<td class=forumrow><div align="right">描述：</div></td>
-								      	<td width="35%" class=forumrow><input id="register_desc" name="register_desc" size="25" value="${register.register_desc}"/><font color=red>*</font></td>
+								      	<td width="35%" class=forumrow><input id="register_desc" name="data['register_desc']" size="25" value="${data.register_desc}"/><font color=red>*</font></td>
 								      	<td class=forumrow><div align="right">登记人：</div></td>
-								      	<td width="35%" class=forumrow><input id="register_person" name="register_person" size="25" value="${register.register_person}"/><font color=red>*</font></td>
+								      	<td width="35%" class=forumrow><input id="register_person" name="data['register_person']" size="25" value="${data.register_person}"/><font color=red>*</font></td>
 								    </tr>
 								    <tr> 
 								      	<td rowspan="2" class=forumrow><div align="right">备注：</div></td>
-								      	<td colspan="3" class=forumrow><textarea name="register_comment" cols="73" rows="10">${register.register_comment}</textarea></td>
+								      	<td colspan="3" class=forumrow><textarea name="data['register_comment']" cols="73" rows="10">${data.register_comment}</textarea></td>
 								    </tr>
 								    <tr> 
 								      	<td colspan="4" align="center">

@@ -32,8 +32,7 @@
 								<table style="width:100%;">
 									<tr>
 										<td style="30%">${resource.name}</td>
-										<td style="text-align:right">
-											<input type="button" class="btnStyle" value="&nbsp;新&nbsp;建&nbsp;" onclick="window.location.href='<c:url value="/manure/resource/add.html?type=${type}"/>';"/>
+										<td>
 										</td>
 									</tr>
 									<tr>
@@ -101,6 +100,12 @@
 							</td>
 						</tr>
 					</table>	
+				</td>
+			</tr>
+			<tr><td>&nbsp;</td></tr>
+			<tr>
+				<td style="text-align:right">
+					<input type="button" class="btnStyle" value="&nbsp;新&nbsp;建&nbsp;" onclick="window.location.href='<c:url value="/manure/resource/add.html?type=${type}"/>';"/>
 				</td>
 			</tr>
 		</table>
