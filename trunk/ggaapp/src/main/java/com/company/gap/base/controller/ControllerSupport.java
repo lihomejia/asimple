@@ -14,5 +14,7 @@ public interface ControllerSupport {
 	
 	String __DISP	  = "__disp";
 	
+	String __ALL      = "--全部--";
+	
 	
 }
