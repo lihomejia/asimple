@@ -11,7 +11,6 @@ import com.company.gap.base.entity.ViewFormModel;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.base.util.Dto;
 import com.company.gap.grow.tab.TFarm;
-import com.company.gap.grow.tab.THarvest;
 import com.company.gap.grow.tab.TRegister;
 
 @Controller
@@ -22,7 +21,7 @@ public class GrowFarmViewController extends ViewController {
 	protected void dowithSearcher(HttpServletRequest request, ViewFormModel model) {
 		String register_id = request.getParameter(TRegister.ID);
 		request.setAttribute(TRegister.ID, register_id);
-		searcher.addSf(THarvest.REGISTERID, Op.EQ, register_id);
+		searcher.addSf(TFarm.REGISTERID, Op.EQ, register_id);
 		
 		
 		searcher.setTable("t_grow_farm");
