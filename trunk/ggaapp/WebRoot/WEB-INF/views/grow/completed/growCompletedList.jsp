@@ -87,7 +87,7 @@
 							<td align="left" valign="top">
 								<table width="100%" border="0" cellspacing="0" cellpadding="0" class="dataList">
 									<tr>
-						                <th width="5%">种植编号</th>
+						                <th width="5%">编号</th>
 						                <th width="8%">生产单元</th>
 						                <th>描述</th>
 						                <th>登记日期</th>
@@ -101,16 +101,25 @@
 						            </tr>
 						            <c:forEach items="${datas}" var="data" varStatus="status">
 						              	<tr>
-							                <td>${data.register_id}</td>
+							                <td>${pager.start+status.index}</td>
 							                <td>${data.register_cellid__disp}</td>
 							                <td>${data.register_desc}</td>
 							                <td>${data.register_regdate__disp}</td>
 							                <td>${data.register_person}</td>
 							                <td>${data.register_status__disp}</td>
-							                <td><a class=linkStyle href="#">农事活动</a></td>
-							                <td><a class=linkStyle href="#">灌溉记录</a></td>
-							                <td><a class=linkStyle href="#">投入品使用</a></td>
-							                <td><a class=linkStyle href="#">收割记录</a></td>
+							                <td>
+								                <a class=linkStyle href="<c:url value='/grow/farm/list.html?register_id=${data.register_id}'/>">农事活动</a>
+							                </td>
+							                <td>
+								                <a class=linkStyle href="<c:url value='/grow/irrigate/list.html?register_id=${data.register_id}'/>">灌溉记录</a>
+											</td>
+							                <td>
+							                	<a class=linkStyle href="<c:url value='/manure/outstock/list.html?register_id=${data.register_id}'/>">肥料</a>&nbsp;|&nbsp;
+							                	<a class=linkStyle href="<c:url value='/manure/outstock/list.html?register_id=${data.register_id}'/>">农药</a>
+							                </td>
+							                <td>
+								                <a class=linkStyle href="<c:url value='/grow/harvest/list.html?register_id=${data.register_id}'/>">收割记录</a>
+							                </td>
 							                <td>
 							                	<a class=linkStyle href="grow/register/archive.html?register_id=${data.register_id}" onclick="return confirm('确定归档吗?')">归档</a>
 							                	&nbsp;|&nbsp;
