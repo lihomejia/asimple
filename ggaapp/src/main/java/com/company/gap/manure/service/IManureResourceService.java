@@ -3,24 +3,24 @@ package com.company.gap.manure.service;
 import java.util.List;
 import java.util.Map;
 
-import com.company.gap.manure.entity.ManureResource;
+import com.company.gap.base.util.Dto;
 import com.company.gap.manure.enumeration.ManureResourceType;
 
 public interface IManureResourceService {
 	
-	List<ManureResource> queryByType(ManureResourceType resource);
+	List<Dto> queryByType(ManureResourceType resource);
 	
-	List<ManureResource> queryByType(ManureResourceType resource, ManureResource topResource);
+	List<Dto> queryByType(ManureResourceType resource, boolean containTop);
 	
-	Map<String, Object> findResourceById(int resourceId);
+	Dto findResourceById(int resourceId);
 	
-	Map<String, Object> findByTypeAndName(int type, String name);
+	Dto findByTypeAndName(int type, String name);
 
-	int saveResource(Map<String, Object> data);
+	int saveResource(Dto data);
 	
 	int delete(int... resourceIds);
 	
-	Map<Integer, ManureResource> queryResId2Res();
+	Map<Integer, Dto> queryResId2Res();
 	
 	Map<Integer, String> queryResId2Name();
 }

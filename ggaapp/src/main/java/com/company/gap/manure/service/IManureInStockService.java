@@ -1,12 +1,12 @@
 package com.company.gap.manure.service;
 
-import com.company.gap.manure.entity.ManureInStock;
+import com.company.gap.base.util.Dto;
 
 public interface IManureInStockService {
 	
-	ManureInStock findInStockById(int instock_id);
+	Dto findInStockById(int instock_id);
 	
-	int save(ManureInStock inStock);
+	int save(Dto data);
 	
 	int delete(int instock_id);
 	

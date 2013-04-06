@@ -3,12 +3,13 @@ package com.company.gap.manure.dao.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.company.gap.base.util.ColumnDtoRowMapper;
+import com.company.gap.base.util.Dto;
 import com.company.gap.manure.dao.IManureInStockDao;
-import com.company.gap.manure.entity.ManureInStock;
+import com.company.gap.manure.tab.TInStock;
 
 @Repository
 public class ManureInStockDaoImpl implements IManureInStockDao {
@@ -17,7 +18,7 @@ public class ManureInStockDaoImpl implements IManureInStockDao {
 	private JdbcTemplate jdbcTemplate;
 	
 	@Override
-	public ManureInStock findInStockById(int instock_id) {
+	public Dto findInStockById(int instock_id) {
 		String sql = new StringBuffer()
 			.append("select instock_id,")
 			.append(" instock_stockid, instock_nameid, instock_sizeid, instock_batchid, instock_producerid,")
@@ -27,13 +28,13 @@ public class ManureInStockDaoImpl implements IManureInStockDao {
 			.append(" from t_manure_instock")
 			.append(" where instock_id=?")
 		.toString();
-		List<ManureInStock> instocks = jdbcTemplate.query(sql, new BeanPropertyRowMapper<ManureInStock>(ManureInStock.class), instock_id);
+		List<Dto> instocks = jdbcTemplate.query(sql, new ColumnDtoRowMapper(), instock_id);
 		
-		return instocks.isEmpty() ? new ManureInStock() : instocks.get(0);
+		return instocks.isEmpty() ? null : instocks.get(0);
 	}
 	
 	@Override
-	public int insert(ManureInStock in) {
+	public int insert(Dto in) {
 		String sql = new StringBuffer()
 			.append("insert into t_manure_instock(")
 			.append("instock_stockid, instock_nameid, instock_sizeid, instock_batchid, instock_producerid,")
@@ -46,14 +47,14 @@ public class ManureInStockDaoImpl implements IManureInStockDao {
 			.append(")")
 		.toString();
 		return jdbcTemplate.update(sql, 
-				in.getInstock_stockid(), in.getInstock_nameid(), in.getInstock_sizeid(), in.getInstock_batchid(), in.getInstock_producerid(),
-				in.getInstock_quantity(), in.getInstock_location(), in.getInstock_element(), in.getInstock_indate(), in.getInstock_kindid(),
-				in.getInstock_expirydate(),in.getInstock_vendor(), in.getInstock_wrap(), in.getInstock_inmanager(), in.getInstock_comment()
+				in.getInt(TInStock.STOCKID), in.getInt(TInStock.NAMEID), in.getInt(TInStock.SIZEID), in.getInt(TInStock.BATCHID), in.getInt(TInStock.PRODUCERID),
+				in.getDouble(TInStock.QUANTITY), in.getString(TInStock.LOCATION), in.getString(TInStock.ELEMENT), in.getDate(TInStock.INDATE), in.getInt(TInStock.KINDID),
+				in.getDate(TInStock.EXPIRYDATE), in.getString(TInStock.VENDOR), in.getString(TInStock.WRAP), in.getString(TInStock.INMANAGER), in.getString(TInStock.COMMENT)
 		);
 	}
 	
 	@Override
-	public int update(ManureInStock in) {
+	public int update(Dto in) {
 		String sql = new StringBuffer()
 			.append("update t_manure_instock set ")
 			.append(" instock_stockid=?, instock_nameid=?, instock_sizeid=?, instock_batchid=?, instock_producerid=?,")
@@ -62,10 +63,10 @@ public class ManureInStockDaoImpl implements IManureInStockDao {
 			.append(" where instock_id=?")
 		.toString();
 		return jdbcTemplate.update(sql, 
-				in.getInstock_stockid(), in.getInstock_nameid(), in.getInstock_sizeid(), in.getInstock_batchid(), in.getInstock_producerid(),
-				in.getInstock_quantity(), in.getInstock_location(), in.getInstock_element(), in.getInstock_indate(), in.getInstock_kindid(),
-				in.getInstock_expirydate(),in.getInstock_vendor(), in.getInstock_wrap(), in.getInstock_inmanager(), in.getInstock_comment(),
-				in.getInstock_id()
+				in.getInt(TInStock.STOCKID), in.getInt(TInStock.NAMEID), in.getInt(TInStock.SIZEID), in.getInt(TInStock.BATCHID), in.getInt(TInStock.PRODUCERID),
+				in.getDouble(TInStock.QUANTITY), in.getString(TInStock.LOCATION), in.getString(TInStock.ELEMENT), in.getDate(TInStock.INDATE), in.getInt(TInStock.KINDID),
+				in.getDate(TInStock.EXPIRYDATE), in.getString(TInStock.VENDOR), in.getString(TInStock.WRAP), in.getString(TInStock.INMANAGER), in.getString(TInStock.COMMENT),
+				in.getInt(TInStock.ID)
 		);
 	}
 	
