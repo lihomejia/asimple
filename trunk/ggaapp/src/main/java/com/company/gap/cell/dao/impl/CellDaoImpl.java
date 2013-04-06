@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.company.gap.base.util.ColumnDtoRowMapper;
 import com.company.gap.base.util.Dto;
 import com.company.gap.cell.dao.ICellDao;
-import com.company.gap.cell.entity.TCell;
+import com.company.gap.cell.tab.TCell;
 
 @Repository
 public class CellDaoImpl implements ICellDao {

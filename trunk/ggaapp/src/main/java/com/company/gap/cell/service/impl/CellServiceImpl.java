@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.company.gap.base.util.Dto;
 import com.company.gap.cell.dao.ICellDao;
-import com.company.gap.cell.entity.TCell;
 import com.company.gap.cell.enumeration.CellStatus;
 import com.company.gap.cell.service.ICellService;
+import com.company.gap.cell.tab.TCell;
 
 @Service
 public class CellServiceImpl implements ICellService {
