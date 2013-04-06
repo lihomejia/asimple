@@ -158,43 +158,46 @@ create table t_grow_register (
 );
 
 #农事活动
-drop table if exists t_grow_farming_activity;
-create table t_grow_farming_activity (
-	activity_id          int              AUTO_INCREMENT,
-	activity_growid      int              default 0       comment '种植ID',
-	activity_cellid      int              default 0       comment '生产单元ID',
-	activity_date        timestamp        default now()   comment '活动时间',
-	activity_content     varchar(255)     default ''      comment '农事活动内容',
-	activity_scope		 decimal(10,2)    default 0       comment '农事活动规模(亩）',
-	activity_quantity    int              default 0       comment '参与人员数量',
-	activity_manager     varchar(36)      default ''      comment '负责人',
-	activity_comment     varchar(255)     default ''      comment '备注',
-	primary key(activity_id)
+drop table if exists t_grow_farm;
+create table t_grow_farm (
+	farm_id              int              AUTO_INCREMENT,
+	farm_registerid      int              default 0       comment '种植ID',
+	farm_cellid          int              default 0       comment '生产单元ID',
+	farm_date            timestamp        default now()   comment '活动时间',
+	farm_content         varchar(255)     default ''      comment '农事活动内容',
+	farm_scope		     decimal(10,2)    default 0       comment '农事活动规模(亩）',
+	farm_people          int              default 0       comment '参与人员数量',
+	farm_manager         varchar(36)      default ''      comment '负责人',
+	farm_comment         varchar(255)     default ''      comment '备注',
+	primary key(farm_id)
 );
 
 #灌溉记录
-drop table if exists t_grow_irrigation;
-create table t_grow_irrigation (
-	irrigation_id        int              AUTO_INCREMENT,
-	irrigation_growid    int              default 0       comment '种植ID',
-	irrigation_cellid    int              default 0       comment '生产单元ID',
-	irrigation_date      timestamp        default now()   comment '灌溉时间',
-	irrigation_way       varchar(20)      default ''      comment '灌溉方式',
-	irrigation_area      decimal(10,2)    default 0       comment '灌溉面积',
-	irrigation_quantum   decimal(10,2)    default 0       comment '灌溉量',
-	irrigation_manager   varchar(36)      default ''      comment '操作负责人',
-	irrigation_approver  varchar(36)      default ''      comment '审核员',
-	irrigation_comment   varchar(255)     default ''      comment '备注',
-	primary key(irrigation_id)
+drop table if exists t_grow_irrigate;
+create table t_grow_irrigate (
+	irrigate_id          int              AUTO_INCREMENT,
+	irrigate_registerid  int              default 0       comment '种植ID',
+	irrigate_cellid      int              default 0       comment '生产单元ID',
+	irrigate_date        timestamp        default now()   comment '灌溉时间',
+	irrigate_way         varchar(20)      default ''      comment '灌溉方式',
+	irrigate_area        decimal(10,2)    default 0       comment '灌溉面积',
+	irrigate_quantum     decimal(10,2)    default 0       comment '灌溉量',
+	irrigate_manager     varchar(36)      default ''      comment '操作负责人',
+	irrigate_approver    varchar(36)      default ''      comment '审核员',
+	irrigate_comment     varchar(255)     default ''      comment '备注',
+	primary key(irrigate_id)
 );
 
 #收割(收获)记录
 drop table if exists t_grow_harvest;
 create table t_grow_harvest (
 	harvest_id           int              AUTO_INCREMENT,
-	harvest_growid       int              default 0       comment '种植ID',
+	harvest_registerid   int              default 0       comment '种植ID',
 	harvest_cellid       int              default 0       comment '生产单元ID',
+	harvest_pname        varchar(60)      default ''      comment '产品名称',
+	harvest_batch        int              default 0       comment '产品批次号',
 	harvest_operatedate  timestamp        default now()   comment '操作时间',
+	harvest_method       varchar(60)      default ''      comment '收割方法',     
 	harvest_scale        varchar(20)      default ''      comment '规模',
 	harvest_yield        decimal(10,2)    default 0       comment '产量',
 	harvest_storage      varchar(36)      default ''      comment '存储地点',
