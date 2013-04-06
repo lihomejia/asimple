@@ -1,17 +1,17 @@
 package com.company.gap.grow.dao.impl;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.company.gap.base.util.ColumnDtoRowMapper;
+import com.company.gap.base.util.Dto;
 import com.company.gap.cell.enumeration.CellStatus;
 import com.company.gap.grow.dao.IGrowRegisterDao;
-import com.company.gap.grow.entity.GrowRegister;
 import com.company.gap.grow.enumeration.GrowStatus;
+import com.company.gap.grow.tab.TRegister;
 
 @Repository
 public class GrowRegiesterDaoImpl implements IGrowRegisterDao {
@@ -20,22 +20,22 @@ public class GrowRegiesterDaoImpl implements IGrowRegisterDao {
 	private JdbcTemplate jdbcTemplate;
 	
 	@Override
-	public GrowRegister findGrowRegister(int registerId) {
+	public Dto findGrowRegister(int registerId) {
 		String sql = "select register_id, register_cellid, register_person, register_regdate, register_desc, register_status, register_comment from t_grow_register where register_id=?";
-		List<GrowRegister> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<GrowRegister>(GrowRegister.class), registerId);
+		List<Dto> list = jdbcTemplate.query(sql, new ColumnDtoRowMapper(), registerId);
 		return list.isEmpty() ? null : list.get(0);
 	}
 	
 	@Override
-	public int insert(GrowRegister register) {
+	public int insert(Dto register) {
 		String sql = "insert into t_grow_register(register_cellid, register_person, register_regdate, register_desc, register_status, register_comment) values(?,?,?,?,?,?)";
-		return jdbcTemplate.update(sql, register.getRegister_cellid(), register.getRegister_person(), register.getRegister_regdate(), register.getRegister_desc(), register.getRegister_status(), register.getRegister_comment());
+		return jdbcTemplate.update(sql, register.getInt(TRegister.CELLID), register.getString(TRegister.PERSON), register.getDate(TRegister.REGDATE), register.getString(TRegister.DESC), register.getInt(TRegister.STATUS), register.getString(TRegister.COMMENT));
 	}
 
 	@Override
-	public int update(GrowRegister register) {
+	public int update(Dto register) {
 		String sql = "update t_grow_register set register_cellid=?, register_person=?, register_regdate=?, register_desc=?, register_status=?, register_comment=? where register_id=?";
-		return jdbcTemplate.update(sql, register.getRegister_cellid(), register.getRegister_person(), register.getRegister_regdate(), register.getRegister_desc(), register.getRegister_status(), register.getRegister_comment(), register.getRegister_id());
+		return jdbcTemplate.update(sql, register.getInt(TRegister.CELLID), register.getString(TRegister.PERSON), register.getDate(TRegister.REGDATE), register.getString(TRegister.DESC), register.getInt(TRegister.STATUS), register.getString(TRegister.COMMENT), register.getInt(TRegister.ID));
 	}
 
 
@@ -64,7 +64,7 @@ public class GrowRegiesterDaoImpl implements IGrowRegisterDao {
 	}
 
 	@Override
-	public List<Map<String, Object>> findGrowingInfos() {
+	public List<Dto> findGrowingInfos() {
 		String sql = new StringBuffer()
 			.append("select register_id, cell_id, cell_code, cell_location ")
 			.append(" from t_grow_register, t_production_cell")
@@ -73,6 +73,6 @@ public class GrowRegiesterDaoImpl implements IGrowRegisterDao {
 			.append(" and cell_status = ").append(CellStatus.OCCUPY.getStatus())
 			.toString()
 		;
-		return jdbcTemplate.queryForList(sql);
+		return jdbcTemplate.query(sql, new ColumnDtoRowMapper());
 	}
 }
