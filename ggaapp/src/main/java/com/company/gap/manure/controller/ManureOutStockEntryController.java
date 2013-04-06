@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,13 +14,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.company.gap.base.controller.EntryController;
+import com.company.gap.base.entity.FormModel;
+import com.company.gap.base.util.Dto;
 import com.company.gap.cell.service.ICellService;
 import com.company.gap.grow.service.IGrowRegisterService;
-import com.company.gap.manure.entity.ManureOutStock;
-import com.company.gap.manure.entity.ManureStock;
 import com.company.gap.manure.service.IManureOutStockService;
 import com.company.gap.manure.service.IManureResourceService;
 import com.company.gap.manure.service.IManureStockService;
+import com.company.gap.manure.tab.TOutStock;
+import com.company.gap.manure.tab.TStock;
 
 @Controller
 @RequestMapping("manure/outstock")
@@ -39,22 +42,21 @@ public class ManureOutStockEntryController extends EntryController {
 	@RequestMapping("add")
 	public String add(HttpServletRequest request) {
 		super.add(request);
-		request.setAttribute("outStock",	new ManureOutStock());
 		request.setAttribute("registerList", 	registerService.findGrowingInfos());
 		return "manure/outstock/manureOutStoctEntry";
 	}
 	
 	@RequestMapping("/checkOutStock")
-	public @ResponseBody boolean checkOutStock(HttpServletRequest request, ManureOutStock outStock){
-		int stock_id = outStock.getOutstock_stockid();
-		double quantity = outStock.getOutstock_quantity();
-		ManureStock stock = stockService.findStockById(stock_id);
-		return (stock != null) && (stock.getStock_quantity() >= quantity);
+	public @ResponseBody boolean checkOutStock(HttpServletRequest request){
+		int stock_id = NumberUtils.toInt(request.getParameter(TOutStock.STOCKID));
+		double quantity = NumberUtils.toDouble(request.getParameter(TOutStock.QUANTITY));
+		Dto stock = stockService.findStockById(stock_id);
+		return (stock != null) && (stock.getDouble(TStock.QUANTITY) >= quantity);
 	}
 	
 	@RequestMapping("save")
-	public String save(HttpServletRequest request, ManureOutStock outStock) {
-		outStockService.save(outStock);
+	public String save(HttpServletRequest request, FormModel model) {
+		outStockService.save(model.getData());
 		return "redirect:/manure/outstock/list.html";
 	}
 	
@@ -63,25 +65,23 @@ public class ManureOutStockEntryController extends EntryController {
 		super.edit(request);
 		Map<Integer, String> resId2Name = resourceService.queryResId2Name();
 		
-		ManureOutStock outStock = outStockService.findOutStockById(outstock_id);
+		Dto outStock = outStockService.findOutStockById(outstock_id);
 		
-		ManureStock stock = stockService.findStockById(outStock.getOutstock_stockid());
-		Map<String, Object> data = new HashMap<String, Object>();
+		Dto stock = stockService.findStockById(outStock.getInt(TOutStock.STOCKID));
 		StringBuffer stockid__disp = new StringBuffer();
 		stockid__disp.
-			append(resId2Name.get(stock.getStock_nameid())).append("&nbsp;")
-			.append(resId2Name.get(stock.getStock_sizeid())).append("&nbsp;")
-			.append(resId2Name.get(stock.getStock_batchid())).append("&nbsp;")
-			.append(resId2Name.get(stock.getStock_producerid())).append("&nbsp;")
+			append(resId2Name.get(stock.getInt(TStock.NAMEID))).append("&nbsp;")
+			.append(resId2Name.get(stock.getInt(TStock.SIZEID))).append("&nbsp;")
+			.append(resId2Name.get(stock.getInt(TStock.BATCHID))).append("&nbsp;")
+			.append(resId2Name.get(stock.getInt(TStock.PRODUCERID))).append("&nbsp;")
 			.toString()
 		;
-		data.put("outstock_stockid__disp", stockid__disp);
+		outStock.put("outstock_stockid__disp", stockid__disp);
 		
-		Map<String, Object> cell = cellService.findCellById(outStock.getOutstock_cellid());
-		data.put("outstock_registerid__disp", ObjectUtils.toString(cell.get("cell_code")) + "&nbsp;" + cell.get("cell_location"));
+		Dto cell = cellService.findCellById(outStock.getInt(TOutStock.CELLID));
+		outStock.put("outstock_registerid__disp", ObjectUtils.toString(cell.get("cell_code")) + "&nbsp;" + cell.get("cell_location"));
 		
-		request.setAttribute("outStock", outStock);
-		request.setAttribute("data", data);
+		request.setAttribute("data", outStock);
 		return "manure/outstock/manureOutStoctEntry";
 	}
 	
@@ -90,25 +90,23 @@ public class ManureOutStockEntryController extends EntryController {
 		super.disp(request);
 		Map<Integer, String> resId2Name = resourceService.queryResId2Name();
 		
-		ManureOutStock outStock = outStockService.findOutStockById(outstock_id);
+		Dto outStock = outStockService.findOutStockById(outstock_id);
 		
-		ManureStock stock = stockService.findStockById(outStock.getOutstock_stockid());
-		Map<String, Object> data = new HashMap<String, Object>();
+		Dto stock = stockService.findStockById(outStock.getInt(TOutStock.STOCKID));
 		StringBuffer stockid__disp = new StringBuffer();
 		stockid__disp.
-			append(resId2Name.get(stock.getStock_nameid())).append("&nbsp;")
-			.append(resId2Name.get(stock.getStock_sizeid())).append("&nbsp;")
-			.append(resId2Name.get(stock.getStock_batchid())).append("&nbsp;")
-			.append(resId2Name.get(stock.getStock_producerid())).append("&nbsp;")
+			append(resId2Name.get(stock.getInt(TStock.NAMEID))).append("&nbsp;")
+			.append(resId2Name.get(stock.getInt(TStock.SIZEID))).append("&nbsp;")
+			.append(resId2Name.get(stock.getInt(TStock.BATCHID))).append("&nbsp;")
+			.append(resId2Name.get(stock.getInt(TStock.PRODUCERID))).append("&nbsp;")
 			.toString()
 		;
-		data.put("outstock_stockid__disp", stockid__disp);
+		outStock.put("outstock_stockid__disp", stockid__disp);
 		
-		Map<String, Object> cell = cellService.findCellById(outStock.getOutstock_cellid());
-		data.put("outstock_registerid__disp", ObjectUtils.toString(cell.get("cell_code")) + "&nbsp;" + cell.get("cell_location"));
+		Dto cell = cellService.findCellById(outStock.getInt(TOutStock.CELLID));
+		outStock.put("outstock_registerid__disp", ObjectUtils.toString(cell.get("cell_code")) + "&nbsp;" + cell.get("cell_location"));
 		
-		request.setAttribute("outStock", outStock);
-		request.setAttribute("data", data);
+		request.setAttribute("data", outStock);
 		return "manure/outstock/manureOutStoctEntry";
 	}
 	

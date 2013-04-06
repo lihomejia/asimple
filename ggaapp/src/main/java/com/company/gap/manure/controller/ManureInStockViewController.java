@@ -4,7 +4,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,10 +14,11 @@ import com.company.gap.base.dao.search.Op;
 import com.company.gap.base.entity.ViewFormModel;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.base.util.Dto;
-import com.company.gap.manure.entity.ManureResource;
 import com.company.gap.manure.enumeration.ManureInStockStatus;
 import com.company.gap.manure.enumeration.ManureResourceType;
 import com.company.gap.manure.service.IManureResourceService;
+import com.company.gap.manure.tab.TInStock;
+import com.company.gap.manure.tab.TStock;
 
 @Controller
 @RequestMapping("manure/instock")
@@ -29,29 +29,29 @@ public class ManureInStockViewController extends ViewController {
 	
 	@Override
 	protected void preparing(HttpServletRequest request, ViewFormModel model) {
-		request.setAttribute("nameList", 	resourceService.queryByType(ManureResourceType.NAME, ManureResource.ALL));
-		request.setAttribute("sizeList", 	resourceService.queryByType(ManureResourceType.SIZE, ManureResource.ALL));
-		request.setAttribute("batchList", 	resourceService.queryByType(ManureResourceType.BATCH, ManureResource.ALL));
-		request.setAttribute("producerList",resourceService.queryByType(ManureResourceType.PRODUCER, ManureResource.ALL));
+		request.setAttribute("nameList", 	resourceService.queryByType(ManureResourceType.NAME, true));
+		request.setAttribute("sizeList", 	resourceService.queryByType(ManureResourceType.SIZE, true));
+		request.setAttribute("batchList", 	resourceService.queryByType(ManureResourceType.BATCH, true));
+		request.setAttribute("producerList",resourceService.queryByType(ManureResourceType.PRODUCER, true));
 	}
 	
 	@Override
 	protected void dowithSearcher(HttpServletRequest request, ViewFormModel model) {
-		int stock_id = NumberUtils.toInt(request.getParameter("stock_id"));
+		int stock_id = NumberUtils.toInt(request.getParameter(TStock.ID));
 		if (stock_id != 0) {
-			request.setAttribute("stock_id", stock_id);
-			searcher.addSf("instock_stockid", Op.EQ, String.valueOf(stock_id));
+			request.setAttribute(TStock.ID, stock_id);
+			searcher.addSf(TInStock.STOCKID, Op.EQ, String.valueOf(stock_id));
 		}
 		
-		Map<String, Object> data = model.getData();
-		String nameid 		= ObjectUtils.toString(data.get("nameid"), "0");
-		String sizeid 		= ObjectUtils.toString(data.get("sizeid"), "0");
-		String batchid 		= ObjectUtils.toString(data.get("batchid"), "0");
-		String producerid 	= ObjectUtils.toString(data.get("producerid"), "0");
-		if (!"0".equals(nameid)) 	searcher.addSf("instock_nameid", Op.EQ, nameid);
-		if (!"0".equals(sizeid)) 	searcher.addSf("instock_sizeid", Op.EQ, sizeid);
-		if (!"0".equals(batchid)) 	searcher.addSf("instock_batchid", Op.EQ, batchid);
-		if (!"0".equals(producerid))searcher.addSf("instock_producerid", Op.EQ, producerid);
+		Dto data = model.getData();
+		String nameid 		= data.getString("nameid");
+		String sizeid 		= data.getString("sizeid");
+		String batchid 		= data.getString("batchid");
+		String producerid 	= data.getString("producerid");
+		if (!"0".equals(nameid)) 	searcher.addSf(TInStock.NAMEID, Op.EQ, nameid);
+		if (!"0".equals(sizeid)) 	searcher.addSf(TInStock.SIZEID, Op.EQ, sizeid);
+		if (!"0".equals(batchid)) 	searcher.addSf(TInStock.BATCHID, Op.EQ, batchid);
+		if (!"0".equals(producerid))searcher.addSf(TInStock.PRODUCERID, Op.EQ, producerid);
 		
 		searcher.setTable("t_manure_instock");
 	}
@@ -60,13 +60,13 @@ public class ManureInStockViewController extends ViewController {
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
 		Map<Integer, String> resId2Res = resourceService.queryResId2Name();
 		for (Dto dto : datas) {
-			dto.put("instock_nameid__disp", 	resId2Res.get(dto.getInt("instock_nameid")));
-			dto.put("instock_sizeid__disp", 	resId2Res.get(dto.getInt("instock_sizeid")));
-			dto.put("instock_batchid__disp", 	resId2Res.get(dto.getInt("instock_batchid")));
-			dto.put("instock_producerid__disp",resId2Res.get(dto.getInt("instock_producerid")));
-			dto.put("instock_indate__disp", 	DateUtils.format(dto.getDate("instock_indate")));
+			dto.put(TInStock.NAMEID + __DISP, 	resId2Res.get(dto.getInt("instock_nameid")));
+			dto.put(TInStock.SIZEID + __DISP, 	resId2Res.get(dto.getInt("instock_sizeid")));
+			dto.put(TInStock.BATCHID+ __DISP, 	resId2Res.get(dto.getInt("instock_batchid")));
+			dto.put(TInStock.PRODUCERID +__DISP,resId2Res.get(dto.getInt("instock_producerid")));
+			dto.put(TInStock.INDATE + __DISP, 	DateUtils.format(dto.getDate("instock_indate")));
 			ManureInStockStatus status = ManureInStockStatus.valueOf(dto.getInt("instock_status"));
-			dto.put("instock_status__disp", 	status.getName());
+			dto.put(TInStock.STATUS + __DISP, 	status.getName());
 		}
 	}
 	
