@@ -1,16 +1,16 @@
 package com.company.gap.grow.service.impl;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.company.gap.base.util.Dto;
 import com.company.gap.cell.enumeration.CellStatus;
 import com.company.gap.cell.service.ICellService;
 import com.company.gap.grow.dao.IGrowRegisterDao;
-import com.company.gap.grow.entity.GrowRegister;
 import com.company.gap.grow.service.IGrowRegisterService;
+import com.company.gap.grow.tab.TRegister;
 
 @Service
 public class GrowRegisterServiceImpl implements IGrowRegisterService {
@@ -21,16 +21,16 @@ public class GrowRegisterServiceImpl implements IGrowRegisterService {
 	private ICellService cellService;
 	
 	@Override
-	public GrowRegister findGrowRegister(int registerId) {
+	public Dto findGrowRegister(int registerId) {
 		return registerDao.findGrowRegister(registerId);
 	}
 
 	@Override
-	public int save(GrowRegister register) {
+	public int save(Dto register) {
 		int ret = 0;
-		if (register.getRegister_id() == 0) {
+		if (register.getInt(TRegister.ID) == 0) {
 			ret = registerDao.insert(register);
-			cellService.updateStatus(register.getRegister_cellid(), CellStatus.OCCUPY.getStatus());
+			cellService.updateStatus(register.getInt(TRegister.CELLID), CellStatus.OCCUPY.getStatus());
 		}
 		else {
 			ret = registerDao.update(register);
@@ -55,14 +55,14 @@ public class GrowRegisterServiceImpl implements IGrowRegisterService {
 	
 	@Override
 	public int delete(int registerId) {
-		GrowRegister register = this.findGrowRegister(registerId);
+		Dto register = this.findGrowRegister(registerId);
 		int ret = registerDao.delete(registerId);
-		cellService.updateStatus(register.getRegister_cellid(), CellStatus.IDLE.getStatus());
+		cellService.updateStatus(register.getInt(TRegister.CELLID), CellStatus.IDLE.getStatus());
 		return ret;
 	}
 
 	@Override
-	public List<Map<String, Object>> findGrowingInfos() {
+	public List<Dto> findGrowingInfos() {
 		return registerDao.findGrowingInfos();
 	}
 }
