@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.company.gap.base.controller.EntryController;
 import com.company.gap.base.entity.FormModel;
 import com.company.gap.base.util.DateUtils;
-import com.company.gap.cell.entity.TCell;
 import com.company.gap.cell.service.ICellService;
+import com.company.gap.cell.tab.TCell;
 
 /**
  * 
