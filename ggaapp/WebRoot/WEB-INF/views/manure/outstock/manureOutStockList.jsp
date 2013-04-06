@@ -109,8 +109,8 @@
 							<td align="left" valign="top">
 								<table width="100%" border="0" cellspacing="0" cellpadding="0" class="dataList">
 									<tr>
-						                <th width="5%">出库编号</th>
-						                <th width="8%">饲料名称</th>
+						                <th>编号</th>
+						                <th>饲料名称</th>
 						                <th>规格型号</th>
 						                <th>生产批号</th>
 						                <th>生产商</th>
@@ -122,7 +122,7 @@
 						            </tr>
 						            <c:forEach items="${datas}" var="data" varStatus="status">
 						              	<tr>
-							                <td>${data.outstock_id}</td>
+							                <td>${pager.start+status.index}</td>
 							                <td>${data.outstock_nameid__disp }</td>
 							                <td>${data.outstock_sizeid__disp }</td>
 							                <td>${data.outstock_batchid__disp}</td>

@@ -82,13 +82,13 @@
 							<td align="left" valign="top">
 								<table width="100%" border="0" cellspacing="0" cellpadding="0" class="dataList">
 									<tr>
-										<th style="width:10%">ID</th>
+										<th style="width:10%">编号</th>
 										<th style="width:20%">${resource.name}</th>
 										<th style="width:20%">操作</th>
 									</tr>
-									<c:forEach items="${datas}" var="data">
+									<c:forEach items="${datas}" var="data" varStatus="status">
 										<tr>
-											<td>${data['resource_id']}</td>
+											<td>${pager.start+status.index}</td>
 											<td>${data['resource_name']}</td>
 											<td>
 												<a class=linkStyle href="manure/resource/entry.html?type=${type}&resourceId=${data.resource_id}">修改</a>

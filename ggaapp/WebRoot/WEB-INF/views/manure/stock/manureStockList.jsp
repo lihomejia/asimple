@@ -108,7 +108,7 @@
 							<td align="left" valign="top">
 								<table width="100%" border="0" cellspacing="0" cellpadding="0" class="dataList">
 									<tr>
-						                <th>库存编号</th>
+						                <th>编号</th>
 						                <th>肥料名称</th>
 						                <th>规格型号</th>
 						                <th>生产批号</th>
@@ -120,7 +120,7 @@
 				              		</tr>
 				              		<c:forEach items="${datas}" var="data" varStatus="status">
 				              			<tr>
-							                <td>${data.stock_id}</td>
+							                <td>${pager.start+status.index}</td>
 							                <td>${data.stock_nameid__disp}</td>
 							                <td>${data.stock_sizeid__disp}</td>
 							                <td>${data.stock_batchid__disp}</td>

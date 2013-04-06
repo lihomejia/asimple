@@ -98,7 +98,7 @@
 							<td align="left" valign="top">
 								<table width="100%" border="0" cellspacing="0" cellpadding="0" class="dataList">
 									<tr>
-										<th>单元ID</th>
+										<th>编号</th>
 										<th>单元代码</th>
 										<th>单元位置</th>
 										<th>单元面积</th>
@@ -106,9 +106,9 @@
 										<th>状态</th>
 										<th>操作</th>
 									</tr>
-									<c:forEach items="${datas}" var="data">
+									<c:forEach items="${datas}" var="data" varStatus="status">
 										<tr>
-											<td>${data.cell_id}</td>
+											<td>${pager.start+status.index}</td>
 											<td>${data.cell_code}</td>
 											<td>${data.cell_location}</td>
 											<td style="text-align:right">${data.cell_area}</td>
