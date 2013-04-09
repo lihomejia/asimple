@@ -112,8 +112,8 @@
 											<td>${data.cell_code}</td>
 											<td>${data.cell_location}</td>
 											<td style="text-align:right">${data.cell_area}</td>
-											<td>${data.cell_cdate}</td>
-											<td>${data.cell_status__disp}</td>
+											<td>${data.__disp.cdate}</td>
+											<td>${data.__disp.status}</td>
 											<td>
 												<c:if test="${data.cell_status == 0}">
 							                		<a class=linkStyle href="cell/edit.html?cellId=${data.cell_id}">修改</a>
