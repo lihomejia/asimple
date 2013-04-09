@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import com.company.gap.base.util.DateUtils;
 import com.company.gap.base.util.Dto;
 import com.company.gap.cell.service.ICellService;
 import com.company.gap.grow.enumeration.GrowStatus;
+import com.company.gap.grow.tab.TRegister;
 
 @Controller
 @RequestMapping("grow/process")
@@ -25,12 +27,19 @@ public class GrowProcessController extends ViewController {
 	@Override
 	protected void preparing(HttpServletRequest request, ViewFormModel model) {
 		super.preparing(request, model);
+		request.setAttribute("cellList", cellService.findAllCells());
 	}
 	
 	
 	@Override
 	protected void dowithSearcher(HttpServletRequest request, ViewFormModel model) {
 		searcher.addSf("register_status", Op.IN, "0;1");
+		
+		Dto data = model.getData();
+		if (StringUtils.isNotEmpty(data.getString(TRegister.CELLID))) {
+			searcher.addSf(TRegister.CELLID, Op.EQ, data.getString(TRegister.CELLID));
+		}
+		
 		searcher.setTable("t_grow_register");
 	}
 	
