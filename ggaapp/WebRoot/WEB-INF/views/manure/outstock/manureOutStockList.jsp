@@ -30,7 +30,7 @@
 						</tr>
 						<tr>
 							<td>
-								<input type="hidden" name="stock_id" value=${stock_id}/>
+								<input type="hidden" name="stock_id" value="${stock_id}"/>
 								<table style="width:100%;">
 									<tr>
 										<td style="25%">肥料名称:</td>

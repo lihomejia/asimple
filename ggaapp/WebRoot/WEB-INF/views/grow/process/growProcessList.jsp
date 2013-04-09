@@ -38,8 +38,15 @@
 									</tr>
 									<tr>
 										<td>
+											<select name="data['register_cellid']">
+												<option>--全部--</option>
+												<c:forEach items="${cellList}" var="cell">
+													<option value="${cell.cell_id}">${cell.cell_code}</option>
+												</c:forEach>
+											</select>
 										</td>
 										<td>
+											<input type="text" name="data['register_desc']"/>
 										</td>
 										<td>
 										</td>
