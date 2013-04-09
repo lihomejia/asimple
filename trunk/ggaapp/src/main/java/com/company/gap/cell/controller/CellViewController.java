@@ -5,12 +5,11 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.company.gap.base.controller.ViewController;
+import com.company.gap.base.controller.BeanViewController;
 import com.company.gap.base.entity.ViewFormModel;
 import com.company.gap.base.util.DateUtils;
-import com.company.gap.base.util.Dto;
+import com.company.gap.cell.entity.Cell;
 import com.company.gap.cell.enumeration.CellStatus;
-import com.company.gap.cell.tab.TCell;
 
 /**
  * 
@@ -19,7 +18,11 @@ import com.company.gap.cell.tab.TCell;
  */
 @Controller
 @RequestMapping("cell")
-public class CellViewController extends ViewController {
+public class CellViewController extends BeanViewController<Cell> {
+	
+	public CellViewController() {
+		super(Cell.class);
+	}
 	
 	@Override
 	protected void dowithSearcher(HttpServletRequest request, ViewFormModel model) {
@@ -28,10 +31,10 @@ public class CellViewController extends ViewController {
 	
 	@Override
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
-		for (Dto dto : this.datas) {
-			CellStatus status = CellStatus.valueOf(dto.getInt(TCell.STATUS));
-			dto.put(TCell.STATUS + __DISP, status.getName());
-			dto.put(TCell.CDATE, DateUtils.format(dto.getDate(TCell.CDATE)));
+		for (Cell cell : this.datas) {
+			CellStatus status = CellStatus.valueOf(cell.getCell_status());
+			cell.get__disp().put("status", status.getName());
+			cell.get__disp().put("cdate", DateUtils.format(cell.getCell_cdate()));
 		}
 	}
 	

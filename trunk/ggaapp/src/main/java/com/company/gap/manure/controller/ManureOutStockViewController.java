@@ -37,14 +37,14 @@ public class ManureOutStockViewController extends ViewController {
 	
 	@Override
 	protected void dowithSearcher(HttpServletRequest request, ViewFormModel model) {
-		String stock_id = request.getParameter("stock_id");
-		String register_id = request.getParameter("register_id");
+		String stock_id = StringUtils.defaultString(request.getParameter("stock_id"));
+		String register_id = StringUtils.defaultString(request.getParameter("register_id"));
 		if (StringUtils.isNotEmpty(stock_id)) {
 			request.setAttribute("stock_id", stock_id);
 			searcher.addSf("outstock_stockid", Op.EQ, stock_id);
 		}
 		if (StringUtils.isNotEmpty(register_id)) {
-			request.setAttribute("stock_id", register_id);
+			request.setAttribute("register_id", register_id);
 			searcher.addSf("outstock_registerid", Op.EQ, register_id);
 		}
 		
