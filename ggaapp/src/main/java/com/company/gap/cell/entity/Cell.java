@@ -2,8 +2,13 @@ package com.company.gap.cell.entity;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import com.company.gap.base.entity.GeneralModel;
 
+@Entity
+@Table(name="t_production_cell")
 public class Cell extends GeneralModel {
 	private int cell_id;
 	private String cell_code;
