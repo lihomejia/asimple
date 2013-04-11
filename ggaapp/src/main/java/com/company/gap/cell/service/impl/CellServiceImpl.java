@@ -4,64 +4,67 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.company.gap.base.util.Dto;
 import com.company.gap.cell.dao.ICellDao;
+import com.company.gap.cell.entity.Cell;
 import com.company.gap.cell.enumeration.CellStatus;
 import com.company.gap.cell.service.ICellService;
-import com.company.gap.cell.tab.TCell;
 
 @Service
 public class CellServiceImpl implements ICellService {
 
 	@Autowired
-	private ICellDao cellDao;
+	private ICellDao<Cell> cellDao;
 	
 	@Override
-	public List<Dto> findAllCells() {
-		return cellDao.findAllCells();
+	public List<Cell> findAll() {
+		return cellDao.findList();
 	}
 	
 	@Override
-	public List<Dto> findCellsByStatus(CellStatus cellStatus) {
-		return cellDao.findCellsByStatus(cellStatus.getStatus());
+	public List<Cell> findByStatus(CellStatus cellStatus) {
+		Cell cell = new Cell();
+		cell.setUseStatus(cellStatus.getStatus());
+		return cellDao.findList(cell);
 	}
 	
 	
 	@Override
-	public Dto findCellById(int cellId) {
-		return this.cellDao.findCellById(cellId);
+	public Cell findById(Integer id) {
+		return this.cellDao.findById(id);
 	}
 
 	@Override
-	public int saveCell(Dto data) {
-		if (StringUtils.isEmpty(data.getString("cell_id"))) {
-			return cellDao.insert(data);
+	public int save(Cell cell) {
+		if (cell.getId() == null) {
+			return cellDao.insert(cell);
 		}
 		else {
-			return cellDao.update(data);
+			return cellDao.update(cell);
 		}
 	}
 
 	@Override
-	public int delete(int... cellIds) {
-		return cellDao.delete(cellIds);
+	public int deleteById(Integer id) {
+		return cellDao.deleteById(id);
 	}
 	
 	@Override
-	public Map<Integer, String> queryCellId2Code() {
+	public Map<Integer, String> queryId2Code() {
 		Map<Integer, String> cellId2Name = new HashMap<Integer, String>();
-		for (Dto dto : this.findAllCells()) {
-			cellId2Name.put(dto.getInt(TCell.ID), dto.getString(TCell.CODE));
+		for (Cell cell : this.findAll()) {
+			cellId2Name.put(cell.getId(), cell.getCode());
 		}
 		return cellId2Name;
 	}
 	
 	@Override
-	public int updateStatus(int cell_id, int cell_status) {
-		return cellDao.updateStatus(cell_id, cell_status);
+	public int updateStatus(Integer id, Integer status) {
+		Cell cell = new Cell();
+		cell.setId(id);
+		cell.setUseStatus(status);
+		return cellDao.update(cell);
 	}
 }

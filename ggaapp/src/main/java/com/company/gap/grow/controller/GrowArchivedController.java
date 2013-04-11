@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.company.gap.base.controller.ViewController;
 import com.company.gap.base.dao.search.Op;
-import com.company.gap.base.entity.ViewFormModel;
+import com.company.gap.base.model.ViewFormModel;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.base.util.Dto;
 import com.company.gap.cell.service.ICellService;
@@ -38,7 +38,7 @@ public class GrowArchivedController extends ViewController {
 	
 	@Override
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
-		Map<Integer, String> cellId2Code = cellService.queryCellId2Code();
+		Map<Integer, String> cellId2Code = cellService.queryId2Code();
 		
 		for (Dto dto : datas) {
 			dto.put("register_cellid__disp", 	cellId2Code.get(dto.getInt("register_cellid")));

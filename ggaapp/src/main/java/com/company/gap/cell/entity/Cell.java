@@ -5,51 +5,47 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.company.gap.base.entity.GeneralModel;
+import com.company.gap.base.model.GeneralModel;
 
 @Entity
 @Table(name="t_production_cell")
 public class Cell extends GeneralModel {
-	private int cell_id;
-	private String cell_code;
-	private String cell_location;
-	private double cell_area;
-	private Date cell_cdate;
-	private int cell_status;
-	public int getCell_id() {
-		return cell_id;
+	private String code;
+	private String location;
+	private Double area;
+	private Integer useStatus;
+	private Date buildDate;
+	
+	
+	public String getCode() {
+		return code;
 	}
-	public void setCell_id(int cell_id) {
-		this.cell_id = cell_id;
+	public void setCode(String code) {
+		this.code = code;
 	}
-	public String getCell_code() {
-		return cell_code;
+	public String getLocation() {
+		return location;
 	}
-	public void setCell_code(String cell_code) {
-		this.cell_code = cell_code;
+	public void setLocation(String location) {
+		this.location = location;
 	}
-	public String getCell_location() {
-		return cell_location;
+	public Double getArea() {
+		return area;
 	}
-	public void setCell_location(String cell_location) {
-		this.cell_location = cell_location;
+	public void setArea(Double area) {
+		this.area = area;
 	}
-	public double getCell_area() {
-		return cell_area;
+	public Integer getUseStatus() {
+		return useStatus;
 	}
-	public void setCell_area(double cell_area) {
-		this.cell_area = cell_area;
+	public void setUseStatus(Integer useStatus) {
+		this.useStatus = useStatus;
 	}
-	public Date getCell_cdate() {
-		return cell_cdate;
+	public Date getBuildDate() {
+		return buildDate;
 	}
-	public void setCell_cdate(Date cell_cdate) {
-		this.cell_cdate = cell_cdate;
+	public void setBuildDate(Date buildDate) {
+		this.buildDate = buildDate;
 	}
-	public int getCell_status() {
-		return cell_status;
-	}
-	public void setCell_status(int cell_status) {
-		this.cell_status = cell_status;
-	}
+	
 }

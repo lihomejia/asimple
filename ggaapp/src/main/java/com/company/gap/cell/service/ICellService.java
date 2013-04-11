@@ -3,22 +3,22 @@ package com.company.gap.cell.service;
 import java.util.List;
 import java.util.Map;
 
-import com.company.gap.base.util.Dto;
+import com.company.gap.cell.entity.Cell;
 import com.company.gap.cell.enumeration.CellStatus;
 
 public interface ICellService {
 	
-	List<Dto> findAllCells();
+	List<Cell> findAll();
 	
-	List<Dto> findCellsByStatus(CellStatus cellStatus);
+	List<Cell> findByStatus(CellStatus cellStatus);
 	
-	Dto findCellById(int cellId);
+	Cell findById(Integer cellId);
 	
-	int saveCell(Dto data);
+	int save(Cell cell);
 	
-	int delete(int... cellIds);
+	int deleteById(Integer id);
 	
-	Map<Integer, String> queryCellId2Code();
+	Map<Integer, String> queryId2Code();
 	
-	int updateStatus(int cell_id, int cell_status);
+	int updateStatus(Integer id, Integer status);
 }
