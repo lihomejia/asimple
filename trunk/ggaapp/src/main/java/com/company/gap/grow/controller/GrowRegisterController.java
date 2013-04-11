@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.company.gap.base.controller.EntryController;
-import com.company.gap.base.entity.FormModel;
+import com.company.gap.base.model.FormModel;
 import com.company.gap.base.util.Dto;
+import com.company.gap.cell.entity.Cell;
 import com.company.gap.cell.enumeration.CellStatus;
 import com.company.gap.cell.service.ICellService;
 import com.company.gap.grow.service.IGrowRegisterService;
@@ -30,7 +31,7 @@ public class GrowRegisterController extends EntryController {
 	@RequestMapping("add")
 	public String add(HttpServletRequest request) {
 		super.add(request);
-		request.setAttribute("cellList", 	cellService.findCellsByStatus(CellStatus.IDLE));
+		request.setAttribute("cellList", 	cellService.findByStatus(CellStatus.IDLE));
 		return "grow/register/growRegisterEntry";
 	}
 	
@@ -38,8 +39,8 @@ public class GrowRegisterController extends EntryController {
 	public String edit(HttpServletRequest request, @RequestParam("register_id") int register_id) {
 		super.edit(request);
 		Dto register = registerService.findGrowRegister(register_id);
-		Map<String, Object> cell = cellService.findCellById(register.getInt(TRegister.CELLID));
-		register.put("register_cellid__disp", cell.get("cell_code"));
+		Cell cell = cellService.findById(register.getInt(TRegister.CELLID));
+		register.put("register_cellid__disp", cell.getCode());
 		request.setAttribute("data", register);
 		return "grow/register/growRegisterEntry";
 	}
@@ -48,8 +49,8 @@ public class GrowRegisterController extends EntryController {
 	public String disp(HttpServletRequest request, @RequestParam("register_id") int register_id) {
 		super.disp(request);
 		Dto register = registerService.findGrowRegister(register_id);
-		Map<String, Object> cell = cellService.findCellById(register.getInt(TRegister.CELLID));
-		register.put("register_cellid__disp", cell.get("cell_code"));
+		Cell cell = cellService.findById(register.getInt(TRegister.CELLID));
+		register.put("register_cellid__disp", cell.getCode());
 		request.setAttribute("data", register);
 		return "grow/register/growRegisterEntry";
 	}

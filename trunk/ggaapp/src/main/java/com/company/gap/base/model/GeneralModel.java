@@ -1,19 +1,20 @@
-package com.company.gap.base.entity;
+package com.company.gap.base.model;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import com.company.gap.base.annotation.Comment;
 
 @Entity
 @Comment("所有实体的基类")
 public class GeneralModel {
+	
+	@Id
 	@Comment("主键")
-	@Column(unique=true)
 	private Integer 	id;
 	
 	@Comment("创建人ID")
@@ -21,6 +22,9 @@ public class GeneralModel {
 	
 	@Comment("创建日期")
 	private Date 		cdate;
+	
+	@Comment("状态")
+	private Integer     status;
 	
 	@Comment("审批人ID")
 	private Integer	 	auserId;
@@ -31,6 +35,15 @@ public class GeneralModel {
 	@Comment("存储各种其他信息的介质")
 	private Map<String, Object>  __disp = new HashMap<String, Object>();
 
+
+	@Override
+	public String toString() {
+		return GeneralModelUtil.toString(this);
+	}
+
+	//////////////////////////////////////////////////////
+	//Getter && Setter
+	//////////////////////////////////////////////////////
 	public Integer getId() {
 		return id;
 	}
@@ -53,6 +66,14 @@ public class GeneralModel {
 
 	public void setCdate(Date cdate) {
 		this.cdate = cdate;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
 
 	public Integer getAuserId() {

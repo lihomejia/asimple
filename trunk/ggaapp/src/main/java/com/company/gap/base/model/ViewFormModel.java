@@ -1,4 +1,4 @@
-package com.company.gap.base.entity;
+package com.company.gap.base.model;
 
 import com.company.gap.base.dao.search.Pager;
 import com.company.gap.base.dao.search.SimpleSearcher;

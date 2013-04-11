@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.company.gap.base.controller.EntryController;
-import com.company.gap.base.entity.FormModel;
+import com.company.gap.base.model.FormModel;
 import com.company.gap.manure.enumeration.ManureResourceType;
 import com.company.gap.manure.service.IManureResourceService;
 

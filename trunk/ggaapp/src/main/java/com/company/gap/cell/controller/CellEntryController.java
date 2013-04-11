@@ -1,7 +1,5 @@
 package com.company.gap.cell.controller;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.company.gap.base.controller.EntryController;
-import com.company.gap.base.entity.FormModel;
 import com.company.gap.base.util.DateUtils;
+import com.company.gap.cell.entity.Cell;
 import com.company.gap.cell.service.ICellService;
-import com.company.gap.cell.tab.TCell;
 
 /**
  * 
@@ -34,34 +31,34 @@ public class CellEntryController extends EntryController {
 	}
 
 	@RequestMapping("save")
-	public String save(HttpServletRequest request, FormModel model) {
+	public String save(HttpServletRequest request, Cell cell) {
 		super.save(request);
-		cellService.saveCell(model.getData());
+		cellService.save(cell);
 		return "redirect:/cell/list.html";
 	}
 	
 	@RequestMapping("edit")
-	public String edit(HttpServletRequest request, @RequestParam("cellId") int cellId) {
+	public String edit(HttpServletRequest request, @RequestParam("id") Integer id) {
 		super.edit(request);
-		Map<String, Object> data = this.cellService.findCellById(cellId);
-		data.put(TCell.CDATE, DateUtils.format(data.get(TCell.CDATE)));
+		Cell data = this.cellService.findById(id);
+		data.get__disp().put("cdate", DateUtils.format(data.getCdate()));
 		request.setAttribute("data", data);
 		return "cell/entry";
 	}
 	
 	@RequestMapping("disp")
-	public String disp(HttpServletRequest request, @RequestParam("cellId") int cellId) {
+	public String disp(HttpServletRequest request, @RequestParam("id") int id) {
 		super.disp(request);
-		Map<String, Object> data = this.cellService.findCellById(cellId);
-		data.put(TCell.CDATE, DateUtils.format(data.get(TCell.CDATE)));
+		Cell data = this.cellService.findById(id);
+		data.get__disp().put("cdate", DateUtils.format(data.getCdate()));
 		request.setAttribute("data", data);
 		return "cell/entry";
 	}
 	
 	@RequestMapping("delete")
-	public String delete(HttpServletRequest request, @RequestParam("cellId") int cellId) {
+	public String delete(HttpServletRequest request, @RequestParam("id") int id) {
 		super.delete(request);
-		cellService.delete(cellId);
+		cellService.deleteById(id);
 		return "redirect:/cell/list.html";
 	}
 }

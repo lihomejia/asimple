@@ -1,4 +1,4 @@
-package com.company.gap.base.entity;
+package com.company.gap.base.model;
 
 import com.company.gap.base.util.BaseDto;
 import com.company.gap.base.util.Dto;

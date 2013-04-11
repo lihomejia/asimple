@@ -4,7 +4,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,8 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.company.gap.base.controller.EntryController;
-import com.company.gap.base.entity.FormModel;
+import com.company.gap.base.model.FormModel;
 import com.company.gap.base.util.Dto;
+import com.company.gap.cell.entity.Cell;
 import com.company.gap.cell.service.ICellService;
 import com.company.gap.grow.service.IGrowRegisterService;
 import com.company.gap.manure.service.IManureOutStockService;
@@ -77,8 +77,8 @@ public class ManureOutStockEntryController extends EntryController {
 		;
 		outStock.put("outstock_stockid__disp", stockid__disp);
 		
-		Dto cell = cellService.findCellById(outStock.getInt(TOutStock.CELLID));
-		outStock.put("outstock_registerid__disp", ObjectUtils.toString(cell.get("cell_code")) + "&nbsp;" + cell.get("cell_location"));
+		Cell cell = cellService.findById(outStock.getInt(TOutStock.CELLID));
+		outStock.put("outstock_registerid__disp", cell.getCode() + "&nbsp;" + cell.getLocation());
 		
 		request.setAttribute("data", outStock);
 		return "manure/outstock/manureOutStoctEntry";
@@ -102,8 +102,8 @@ public class ManureOutStockEntryController extends EntryController {
 		;
 		outStock.put("outstock_stockid__disp", stockid__disp);
 		
-		Dto cell = cellService.findCellById(outStock.getInt(TOutStock.CELLID));
-		outStock.put("outstock_registerid__disp", ObjectUtils.toString(cell.get("cell_code")) + "&nbsp;" + cell.get("cell_location"));
+		Cell cell = cellService.findById(outStock.getInt(TOutStock.CELLID));
+		outStock.put("outstock_registerid__disp", cell.getCode() + "&nbsp;" + cell.getLocation());
 		
 		request.setAttribute("data", outStock);
 		return "manure/outstock/manureOutStoctEntry";

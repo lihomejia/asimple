@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.company.gap.base.controller.EntryController;
-import com.company.gap.base.entity.FormModel;
+import com.company.gap.base.model.FormModel;
 import com.company.gap.base.util.Dto;
 import com.company.gap.grow.service.IGrowIrrigateService;
 import com.company.gap.grow.tab.TIrrigate;
