@@ -12,7 +12,7 @@
 			<property name="hibernate.connection.password" value="root" />
 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/gap?useOldAliasMetadataBehavior=true&amp;useUnicode=true&amp;characterEncoding=utf-8" />
 			<property name="hibernate.max_fetch_depth" value="3" />
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.jdbc.fetch_size" value="18" />
 			<property name="hibernate.jdbc.batch_size" value="10" />
 			<property name="hibernate.show_sql" value="true" />
