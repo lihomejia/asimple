@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.company.gap.cell.dao.ICellDao;
-import com.company.gap.cell.entity.Cell;
+import com.company.gap.cell.model.Cell;
 
 @Controller
 @RequestMapping("test")

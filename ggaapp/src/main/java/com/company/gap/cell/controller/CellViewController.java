@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.company.gap.base.controller.BeanViewController;
 import com.company.gap.base.model.ViewFormModel;
 import com.company.gap.base.util.DateUtils;
-import com.company.gap.cell.entity.Cell;
 import com.company.gap.cell.enumeration.CellStatus;
+import com.company.gap.cell.model.Cell;
 
 /**
  * 
@@ -32,9 +32,9 @@ public class CellViewController extends BeanViewController<Cell> {
 	@Override
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
 		for (Cell cell : this.datas) {
-			CellStatus status = CellStatus.valueOf(cell.getUseStatus());
+			CellStatus status = CellStatus.valueOf(cell.getUsestatus());
 			cell.get__disp().put("status", status.getName());
-			cell.get__disp().put("cdate", DateUtils.format(cell.getBuildDate()));
+			cell.get__disp().put("cdate", DateUtils.format(cell.getBuilddate()));
 		}
 	}
 	
