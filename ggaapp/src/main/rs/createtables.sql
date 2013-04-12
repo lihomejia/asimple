@@ -1,17 +1,18 @@
 #生产单元
 drop table if exists t_production_cell;
 create table t_production_cell (
-    id              int              AUTO_INCREMENT,
-    cuser_id           int              default 0,
-    cdate           datetime         default null,
-    code            varchar(10)      default ''      comment '生产单元代码',
-    location        varchar(100)     default ''      comment '生产单元位置',
-    area            decimal(10,2)    default 0       comment '生产单元面积',
-    cdate           datetime        default null   comment '建档时间',
-    status          int              default 0       comment '单元状态 0:空闲,1:占用',
-    auser_id
-    adate
-    primary key(cell_id)
+    id integer not null auto_increment,
+    adate datetime default null comment '审批日期',
+    auser_id datetime default null comment '审批人ID',
+    cdate datetime default null comment '创建日期',
+    cuser_id int default 0 comment '创建人ID',
+    status int default 0 comment '状态',
+    area decimal(10,2) default 0 comment '单元面积',
+    builddate datetime default null comment '建档日期',
+    code varchar(30) default '' comment '单元代码',
+    location varchar(100) default '' comment '单元位置',
+    usestatus int default 0 comment '单元状态',
+    primary key (id)
 );
 
 #肥料资源
