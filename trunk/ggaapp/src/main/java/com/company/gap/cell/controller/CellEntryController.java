@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.company.gap.base.controller.EntryController;
 import com.company.gap.base.util.DateUtils;
-import com.company.gap.cell.entity.Cell;
+import com.company.gap.cell.model.Cell;
 import com.company.gap.cell.service.ICellService;
 
 /**

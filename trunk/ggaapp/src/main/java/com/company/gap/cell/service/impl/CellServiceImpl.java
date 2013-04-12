@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.company.gap.cell.dao.ICellDao;
-import com.company.gap.cell.entity.Cell;
 import com.company.gap.cell.enumeration.CellStatus;
+import com.company.gap.cell.model.Cell;
 import com.company.gap.cell.service.ICellService;
 
 @Service
@@ -26,7 +26,7 @@ public class CellServiceImpl implements ICellService {
 	@Override
 	public List<Cell> findByStatus(CellStatus cellStatus) {
 		Cell cell = new Cell();
-		cell.setUseStatus(cellStatus.getStatus());
+		cell.setUsestatus(cellStatus.getStatus());
 		return cellDao.findList(cell);
 	}
 	
@@ -64,7 +64,7 @@ public class CellServiceImpl implements ICellService {
 	public int updateStatus(Integer id, Integer status) {
 		Cell cell = new Cell();
 		cell.setId(id);
-		cell.setUseStatus(status);
+		cell.setUsestatus(status);
 		return cellDao.update(cell);
 	}
 }

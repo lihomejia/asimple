@@ -4,37 +4,36 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.persistence.Entity;
+import javax.persistence.Column;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
-import com.company.gap.base.annotation.Comment;
-
-@Entity
-@Comment("所有实体的基类")
+@MappedSuperclass
 public class GeneralModel {
-	
+
 	@Id
-	@Comment("主键")
 	private Integer 	id;
 	
-	@Comment("创建人ID")
+	@Column(name="cuser_id", columnDefinition="int default 0")
 	private Integer 	cuserId;
 	
-	@Comment("创建日期")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date 		cdate;
 	
-	@Comment("状态")
+	@Column(columnDefinition="int default 0")
 	private Integer     status;
 	
-	@Comment("审批人ID")
+	@Column(name="auser_id", columnDefinition="int default 0")
 	private Integer	 	auserId;
 	
-	@Comment("审批日期")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date 		adate;
 	
-	@Comment("存储各种其他信息的介质")
+	@Transient
 	private Map<String, Object>  __disp = new HashMap<String, Object>();
-
 
 	@Override
 	public String toString() {
