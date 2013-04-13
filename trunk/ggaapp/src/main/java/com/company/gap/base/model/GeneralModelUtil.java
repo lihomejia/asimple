@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.Table;
+import javax.persistence.Entity;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
@@ -207,9 +207,9 @@ public class GeneralModelUtil {
 	}
 	
 	public static String getTableName(Class<?> cls) {
-		Table table = cls.getAnnotation(Table.class);
-		if (table != null) {
-			return table.name();
+		Entity entity = cls.getAnnotation(Entity.class);
+		if (entity != null) {
+			return entity.name();
 		}
 		return null;
 	}

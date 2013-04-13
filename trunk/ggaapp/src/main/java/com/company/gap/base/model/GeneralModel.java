@@ -1,20 +1,23 @@
 package com.company.gap.base.model;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import com.company.gap.base.util.BaseDto;
+import com.company.gap.base.util.Dto;
+
 @MappedSuperclass
 public class GeneralModel {
 
-	@Id
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer 	id;
 	
 	@Column(name="cuser_id", columnDefinition="int default 0")
@@ -33,7 +36,7 @@ public class GeneralModel {
 	private Date 		adate;
 	
 	@Transient
-	private Map<String, Object>  __disp = new HashMap<String, Object>();
+	private Dto  __added = new BaseDto();
 
 	@Override
 	public String toString() {
@@ -91,11 +94,11 @@ public class GeneralModel {
 		this.adate = adate;
 	}
 
-	public Map<String, Object> get__disp() {
-		return __disp;
+	public Dto get__added() {
+		return __added;
 	}
 
-	public void set__disp(Map<String, Object> __disp) {
-		this.__disp = __disp;
+	public void set__added(Dto __added) {
+		this.__added = __added;
 	}
 }
