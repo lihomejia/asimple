@@ -80,4 +80,8 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 		if (list.size() > 0) return list.get(0);
 		return null;
 	}
+
+	public String getTableName() {
+		return tableName;
+	}
 }
