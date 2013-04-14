@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.company.gap.base.controller.EntryController;
+import com.company.gap.base.util.DateUtils;
 import com.company.gap.grow.model.Harvest;
 import com.company.gap.grow.service.IHarvestService;
 
@@ -27,6 +28,7 @@ public class HarvestEntryController extends EntryController {
 	public String edit(HttpServletRequest request, @RequestParam("id") int id) {
 		super.edit(request);
 		Harvest harvest = harvestService.findById(id);
+		harvest.get__added().put("operatedate", DateUtils.format(harvest.getOperatedate()));
 		request.setAttribute("data", harvest);
 		return "grow/harvest/growHarvestEntry";
 	}
@@ -43,6 +45,27 @@ public class HarvestEntryController extends EntryController {
 	public String save(HttpServletRequest request, Harvest harvest) {
 		int registerId = harvest.getRegisterId();
 		harvestService.save(harvest);
+		return "redirect:/grow/harvest/list.html?registerId=" + registerId;
+	}
+	
+	@RequestMapping("delete")
+	public String delete(HttpServletRequest request, @RequestParam("id") int id) {
+		harvestService.deleteById(id);
+		String registerId = request.getParameter("registerId");
+		return "redirect:/grow/harvest/list.html?registerId=" + registerId;
+	}
+	
+	@RequestMapping("approve")
+	public String approve(HttpServletRequest request, @RequestParam("id") int id) {
+		harvestService.approve(id);
+		String registerId = request.getParameter("registerId");
+		return "redirect:/grow/harvest/list.html?registerId=" + registerId;
+	}
+	
+	@RequestMapping("nullify")
+	public String nullify(HttpServletRequest request, @RequestParam("id") int id) {
+		harvestService.nullify(id);
+		String registerId = request.getParameter("registerId");
 		return "redirect:/grow/harvest/list.html?registerId=" + registerId;
 	}
 	

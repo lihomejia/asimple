@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.company.gap.base.dao.IBaseDao;
-import com.company.gap.base.model.Status;
 import com.company.gap.base.service.impl.BaseServiceImpl;
 import com.company.gap.cell.enumeration.CellStatus;
 import com.company.gap.cell.service.ICellService;
@@ -32,8 +31,9 @@ public class RegisterServiceImpl extends BaseServiceImpl<Register> implements IR
 	public int save(Register register) {
 		int ret = 0;
 		if (register.getId() == null) {
+			register.setGrowstatus(GrowStatus.GOING.getStatus());
 			ret = dao.insert(register);
-			cellService.updateStatus(register.getCellId(), CellStatus.OCCUPY.getStatus());
+			cellService.updateUseStatus(register.getCellId(), CellStatus.OCCUPY.getStatus());
 		}
 		else {
 			ret = dao.update(register);
@@ -47,15 +47,6 @@ public class RegisterServiceImpl extends BaseServiceImpl<Register> implements IR
 		register.setGrowstatus(growstatus);
 		return dao.findList(register);
 	}
-
-	@Override
-	public int approve(Integer id) {
-		Register register = new Register();
-		register.setId(id);
-		register.setStatus(Status.APPROVED.getStatus());
-		
-		return dao.update(register);
-	}
 	
 	@Override
 	public int complete(Integer id) {
@@ -65,15 +56,25 @@ public class RegisterServiceImpl extends BaseServiceImpl<Register> implements IR
 		
 		return dao.update(register);
 	}
+	
+
+	@Override
+	public int nullify(Integer id) {
+		Register register = dao.findById(id);
+		cellService.updateUseStatus(register.getCellId(), CellStatus.IDLE.getStatus());
+		return super.nullify(id);
+	}
 
 	@Override
 	public int archive(Integer id) {
-		Register register = new Register();
+		
+		Register register = dao.findById(id);
+		cellService.updateUseStatus(register.getCellId(), CellStatus.IDLE.getStatus());
+		
+		register = new Register();
 		register.setId(id);
 		register.setGrowstatus(GrowStatus.ARCHIVED.getStatus());
 		
 		return dao.update(register);
 	}
-
-	
 }

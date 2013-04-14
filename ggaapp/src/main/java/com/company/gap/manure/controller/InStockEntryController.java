@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.company.gap.base.controller.EntryController;
+import com.company.gap.base.util.DateUtils;
+import com.company.gap.base.util.Dto;
 import com.company.gap.manure.enumeration.ResourceType;
 import com.company.gap.manure.model.InStock;
 import com.company.gap.manure.service.IInStockService;
@@ -25,6 +27,10 @@ public class InStockEntryController extends EntryController {
 	@RequestMapping("add")
 	public String add(HttpServletRequest request) {
 		super.add(request);
+		InStock inStock = new InStock();
+		inStock.setInuserId(10001);
+		inStock.get__added().put("inuserId", "XXX");
+		request.setAttribute("data", inStock);
 		return "manure/instock/manureInStoctEntry";
 	}
 	
@@ -39,16 +45,19 @@ public class InStockEntryController extends EntryController {
 	public String edit(HttpServletRequest request, @RequestParam("id") int id) {
 		super.edit(request);
 		InStock inStock = inStockService.findById(id);
+		Dto __added = inStock.get__added();
+		__added.put("indate", DateUtils.format(inStock.getIndate()));
+		__added.put("expirydate", DateUtils.format(inStock.getExpirydate()));
+		__added.put("inuserId", "XXX");
 		request.setAttribute("data", inStock);
 		return "manure/instock/manureInStoctEntry";
 	}
 	
 	@RequestMapping("disp")
 	public String disp(HttpServletRequest request, @RequestParam("id") int id) {
+		String result = this.edit(request, id);
 		super.disp(request);
-		InStock inStock = inStockService.findById(id);
-		request.setAttribute("data", inStock);
-		return "manure/instock/manureInStoctEntry";
+		return result;
 	}
 	
 	

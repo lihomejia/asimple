@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.company.gap.base.controller.EntryController;
+import com.company.gap.base.util.DateUtils;
 import com.company.gap.grow.model.Irrigate;
 import com.company.gap.grow.service.IIrrigateService;
 
@@ -28,6 +29,7 @@ public class IrrigateEntryController extends EntryController {
 	public String edit(HttpServletRequest request, @RequestParam("id") int id) {
 		super.edit(request);
 		Irrigate irrigate = irrigateService.findById(id);
+		irrigate.get__added().put("date", DateUtils.format(irrigate.getDate()));
 		request.setAttribute("data", irrigate);
 		return "grow/irrigate/growIrrigateEntry";
 	}
@@ -47,6 +49,27 @@ public class IrrigateEntryController extends EntryController {
 		return "redirect:/grow/irrigate/list.html?registerId=" + registerId;
 	}
 	
+	
+	@RequestMapping("delete")
+	public String delete(HttpServletRequest request, @RequestParam("id") int id) {
+		irrigateService.deleteById(id);
+		String registerId = request.getParameter("registerId");
+		return "redirect:/grow/irrigate/list.html?registerId=" + registerId;
+	}
+	
+	@RequestMapping("approve")
+	public String approve(HttpServletRequest request, @RequestParam("id") int id) {
+		irrigateService.approve(id);
+		String registerId = request.getParameter("registerId");
+		return "redirect:/grow/irrigate/list.html?registerId=" + registerId;
+	}
+	
+	@RequestMapping("nullify")
+	public String nullify(HttpServletRequest request, @RequestParam("id") int id) {
+		irrigateService.nullify(id);
+		String registerId = request.getParameter("registerId");
+		return "redirect:/grow/irrigate/list.html?registerId=" + registerId;
+	}
 	
 	protected void initialize(HttpServletRequest request) {
 		super.initialize(request);

@@ -29,8 +29,8 @@ public class Farm extends GeneralModel {
 	@Column(columnDefinition="int default 0")
 	private Integer persons;
 	
-	@Column(name="manager_id", columnDefinition="int default 0")
-	private Integer managerId;
+	@Column(length=60)
+	private String manager;;
 	
 	@Column(length=255)
 	private String comment;
@@ -83,12 +83,12 @@ public class Farm extends GeneralModel {
 		this.persons = persons;
 	}
 
-	public Integer getManagerId() {
-		return managerId;
+	public String getManager() {
+		return manager;
 	}
 
-	public void setManagerId(Integer managerId) {
-		this.managerId = managerId;
+	public void setManager(String manager) {
+		this.manager = manager;
 	}
 
 	public String getComment() {

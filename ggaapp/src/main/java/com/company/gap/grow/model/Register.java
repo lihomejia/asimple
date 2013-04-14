@@ -21,7 +21,10 @@ public class Register extends GeneralModel {
 	private Date regdate;
 	
 	@Column(length=100)
-	private String desc;
+	private String description;
+	
+	@Column(length=36)
+	private String person;
 	
 	@Column(columnDefinition="int default 0")
 	private Integer growstatus;
@@ -53,12 +56,20 @@ public class Register extends GeneralModel {
 		this.regdate = regdate;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	public String getPerson() {
+		return person;
+	}
+
+	public void setPerson(String person) {
+		this.person = person;
 	}
 
 	public Integer getGrowstatus() {

@@ -9,6 +9,8 @@ public interface IBaseDao<T> {
 	int insert2(T t);
 	
 	int update(T t);
+	
+	int updateStatus(Integer id, Integer status);
 
 	int deleteById(Integer id);
 	

@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.company.gap.base.controller.BeanViewController;
 import com.company.gap.base.dao.search.Op;
+import com.company.gap.base.model.Status;
 import com.company.gap.base.model.ViewFormModel;
+import com.company.gap.base.util.Dto;
 import com.company.gap.manure.enumeration.ResourceType;
 import com.company.gap.manure.model.Resource;
 
@@ -33,6 +35,14 @@ public class ResourceViewController extends BeanViewController<Resource> {
 		searcher.addSf("type", Op.EQ, type);
 		searcher.setTable("t_manure_resource");
 	}
+	
+	@Override
+	protected void afterall(HttpServletRequest request, ViewFormModel model) {
+		for (Resource resource : datas) {
+			Dto __added = resource.get__added();
+			__added.put("status", Status.valueOf(resource.getStatus()).getName());
+		}
+	} 
 
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {

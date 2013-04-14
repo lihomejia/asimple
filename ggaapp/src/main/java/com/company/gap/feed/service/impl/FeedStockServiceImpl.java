@@ -11,7 +11,7 @@ import com.company.gap.feed.entity.Stock;
 import com.company.gap.feed.service.StockService;
 
 @Service
-public class StockServiceImpl implements StockService {
+public class FeedStockServiceImpl implements StockService {
 	
 	@Autowired
 	private StockDao stockDao;

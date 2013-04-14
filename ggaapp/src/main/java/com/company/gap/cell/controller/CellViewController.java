@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.company.gap.base.controller.BeanViewController;
+import com.company.gap.base.model.Status;
 import com.company.gap.base.model.ViewFormModel;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.cell.enumeration.CellStatus;
@@ -32,8 +33,8 @@ public class CellViewController extends BeanViewController<Cell> {
 	@Override
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
 		for (Cell cell : this.datas) {
-			CellStatus status = CellStatus.valueOf(cell.getUsestatus());
-			cell.get__added().put("usestatus", status.getName());
+			cell.get__added().put("status", Status.valueOf(cell.getStatus()).getName());
+			cell.get__added().put("usestatus", CellStatus.valueOf(cell.getUsestatus()).getName());
 			cell.get__added().put("builddate", DateUtils.format(cell.getBuilddate()));
 		}
 	}

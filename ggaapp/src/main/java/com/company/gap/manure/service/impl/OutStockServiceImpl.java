@@ -58,14 +58,6 @@ public class OutStockServiceImpl extends BaseServiceImpl<OutStock> implements IO
 	}
 	
 	@Override
-	public int approve(Integer id) {
-		OutStock outstock = new OutStock();
-		outstock.setId(id);
-		outstock.setStatus(Status.APPROVED.getStatus());
-		return dao.update(outstock);
-	}
-
-	@Override
 	public int nullify(Integer id) {
 		OutStock outStock = dao.findById(id);
 		int stockId = outStock.getStockId();

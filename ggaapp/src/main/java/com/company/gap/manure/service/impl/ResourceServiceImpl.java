@@ -45,14 +45,6 @@ public class ResourceServiceImpl extends BaseServiceImpl<Resource> implements IR
 	}
 
 	@Override
-	public Resource findByTypeAndName(int type, String name) {
-		Resource resource = new Resource();
-		resource.setType(type);
-		resource.setName(name);
-		return dao.findBean(resource);
-	}
-
-	@Override
 	public Map<Integer, Resource> queryResId2Res() {
 		Map<Integer, Resource> resId2Res = new HashMap<Integer, Resource>();
 		for (Resource resource : this.findList()) {
