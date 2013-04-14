@@ -36,6 +36,9 @@
 	<!-- 默认的注解适配器的支持 --> 
 	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/> -->
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="webBindingInitializer">
+			<bean class="com.company.gap.base.web.bind.SimpleWebBinding" />  
+		</property>
 		<property name="messageConverters">
 			<list>
 				<ref bean="jacksonMessageConverter" />
