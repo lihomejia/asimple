@@ -2,7 +2,6 @@ package com.company.gap.grow.enumeration;
 
 
 public enum GrowStatus {
-	UNAUDITED(0, "未审核"),
 	
 	GOING(1, "进行中"),
 	
@@ -20,11 +19,10 @@ public enum GrowStatus {
 	
 	public static GrowStatus valueOf(int status) {
 		switch (status) {
-			case 0 : return UNAUDITED;
 			case 1 : return GOING;
 			case 2 : return COMPLETED;
 			case 3 : return ARCHIVED;
-			default: return UNAUDITED;
+			default: return GOING;
 		}
 	}
 

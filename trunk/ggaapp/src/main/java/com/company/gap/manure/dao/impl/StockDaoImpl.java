@@ -20,4 +20,10 @@ public class StockDaoImpl extends BaseDaoImpl<Stock> implements IStockDao<Stock>
 		String sql = "select * from " + this.getTableName() + " where quantity>0";
 		return this.findList(sql);
 	}
+
+	@Override
+	public int addStockQuantity(Integer id, double quantity) {
+		String sql = "update " + this.getTableName() + " set quantity=quantity+? where id=?";
+		return jdbcTemplate.update(sql, quantity, id);
+	}
 }

@@ -9,24 +9,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.company.gap.base.controller.ViewController;
+import com.company.gap.base.controller.BeanViewController;
 import com.company.gap.base.dao.search.Op;
 import com.company.gap.base.model.ViewFormModel;
 import com.company.gap.base.util.Dto;
 import com.company.gap.manure.enumeration.ResourceType;
+import com.company.gap.manure.model.Stock;
 import com.company.gap.manure.service.IResourceService;
 
 @Controller
 @RequestMapping("manure/stock")
-public class StockController extends ViewController {
-
+public class StockController extends BeanViewController<Stock> {
+	
 	@Autowired
 	private IResourceService resourceService;
+	
+	public StockController() {
+		super(Stock.class);
+	}
 	
 	@Override
 	protected void preparing(HttpServletRequest request, ViewFormModel model) {
 		request.setAttribute("nameList", 	resourceService.queryByType(ResourceType.NAME, true));
-		request.setAttribute("sizeList", 	resourceService.queryByType(ResourceType.SPEC, true));
+		request.setAttribute("specList", 	resourceService.queryByType(ResourceType.SPEC, true));
 		request.setAttribute("batchList", 	resourceService.queryByType(ResourceType.BATCH, true));
 		request.setAttribute("producerList",resourceService.queryByType(ResourceType.PRODUCER, true));
 	}
@@ -52,11 +57,12 @@ public class StockController extends ViewController {
 	@Override
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
 		Map<Integer, String> resId2Res = resourceService.queryResId2Name();
-		for (Dto dto : datas) {
-			dto.put("stock_nameid__disp", 		resId2Res.get(dto.getInt("stock_nameid")));
-			dto.put("stock_sizeid__disp", 		resId2Res.get(dto.getInt("stock_sizeid")));
-			dto.put("stock_batchid__disp", 		resId2Res.get(dto.getInt("stock_batchid")));
-			dto.put("stock_producerid__disp",	resId2Res.get(dto.getInt("stock_producerid")));
+		for (Stock stock : datas) {
+			Dto __added = stock.get__added();
+			__added.put("nameId", 		resId2Res.get(stock.getNameId()));
+			__added.put("specId", 		resId2Res.get(stock.getSpecId()));
+			__added.put("batchId", 		resId2Res.get(stock.getBatchId()));
+			__added.put("producerId",	resId2Res.get(stock.getProducerId()));
 		}
 	}
 

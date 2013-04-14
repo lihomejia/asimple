@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.company.gap.base.controller.EntryController;
+import com.company.gap.base.model.Status;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.cell.model.Cell;
 import com.company.gap.cell.service.ICellService;
@@ -61,4 +62,17 @@ public class CellEntryController extends EntryController {
 		cellService.deleteById(id);
 		return "redirect:/cell/list.html";
 	}
+	
+	@RequestMapping("approve")
+	public String approve(HttpServletRequest request, @RequestParam("id") int id) {
+		cellService.updateStatus(id, Status.APPROVED.getStatus());
+		return "redirect:/cell/list.html";
+	}
+	
+	@RequestMapping("nullify")
+	public String nullify(HttpServletRequest request, @RequestParam("id") int id) {
+		cellService.updateStatus(id, Status.NULLIFY.getStatus());
+		return "redirect:/cell/list.html";
+	}
+	
 }

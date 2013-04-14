@@ -13,8 +13,6 @@ public interface IResourceService extends IBaseService<Resource> {
 	
 	List<Resource> queryByType(ResourceType type, boolean containTop);
 	
-	Resource findByTypeAndName(int type, String name);
-	
 	Map<Integer, Resource> queryResId2Res();
 	
 	Map<Integer, String> queryResId2Name();

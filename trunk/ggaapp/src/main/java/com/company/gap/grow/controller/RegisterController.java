@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.company.gap.base.controller.EntryController;
-import com.company.gap.cell.enumeration.CellStatus;
 import com.company.gap.cell.model.Cell;
 import com.company.gap.cell.service.ICellService;
 import com.company.gap.grow.model.Register;
@@ -27,7 +26,7 @@ public class RegisterController extends EntryController {
 	@RequestMapping("add")
 	public String add(HttpServletRequest request) {
 		super.add(request);
-		request.setAttribute("cellList", 	cellService.findByStatus(CellStatus.IDLE));
+		request.setAttribute("cellList", 	cellService.findUsableList());
 		return "grow/register/growRegisterEntry";
 	}
 	
@@ -57,6 +56,12 @@ public class RegisterController extends EntryController {
 	@RequestMapping("approve")
 	public String approve(HttpServletRequest request, @RequestParam("id") int id) {
 		registerService.approve(id);
+		return "redirect:/grow/process/list.html";
+	}
+	
+	@RequestMapping("nullify")
+	public String nullify(HttpServletRequest request, @RequestParam("id") int id) {
+		registerService.nullify(id);
 		return "redirect:/grow/process/list.html";
 	}
 	

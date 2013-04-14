@@ -43,7 +43,7 @@ public class InStockViewController extends BeanViewController<InStock> {
 		String stockId = request.getParameter("stockId");
 		if (StringUtils.isNotEmpty(stockId)) {
 			request.setAttribute("stockId", stockId);
-			searcher.addSf("stockId", Op.EQ, stockId);
+			searcher.addSf("stock_id", Op.EQ, stockId);
 		}
 		
 		searcher.setTable("t_manure_instock");
@@ -60,6 +60,7 @@ public class InStockViewController extends BeanViewController<InStock> {
 			__added.put("producerId", 	resId2Res.get(inStock.getProducerId()));
 			__added.put("indate", 		DateUtils.format(inStock.getIndate()));
 			__added.put("status", 		Status.valueOf(inStock.getStatus()).getName());
+			__added.put("inuserId", 	"XXX");
 		}
 	}
 	

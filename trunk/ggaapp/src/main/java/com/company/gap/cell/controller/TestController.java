@@ -12,7 +12,7 @@ import com.company.gap.cell.model.Cell;
 public class TestController {
 	
 	@Autowired
-	private ICellDao<Cell> cellDao;
+	private ICellDao cellDao;
 	
 	@RequestMapping("test1")
 	public void test1() {

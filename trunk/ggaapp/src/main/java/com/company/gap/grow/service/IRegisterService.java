@@ -9,8 +9,6 @@ public interface IRegisterService extends IBaseService<Register> {
 	
 	List<Register> findListByGrowStatus(Integer growstatus);
 	
-	int approve(Integer id);
-	
 	int complete(Integer id);
 	
 	int archive(Integer id);

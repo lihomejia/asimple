@@ -8,30 +8,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.company.gap.base.controller.ViewController;
+import com.company.gap.base.controller.BeanViewController;
 import com.company.gap.base.dao.search.Op;
+import com.company.gap.base.model.Status;
 import com.company.gap.base.model.ViewFormModel;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.base.util.Dto;
 import com.company.gap.cell.service.ICellService;
 import com.company.gap.grow.enumeration.GrowStatus;
+import com.company.gap.grow.model.Register;
 
 @Controller
 @RequestMapping("grow/completed")
-public class CompletedController extends ViewController {
+public class CompletedController extends BeanViewController<Register> {
 
 	@Autowired
 	private ICellService cellService;
 	
+	public CompletedController() {
+		super(Register.class);
+	}
+	
 	@Override
 	protected void preparing(HttpServletRequest request, ViewFormModel model) {
 		super.preparing(request, model);
+		request.setAttribute("cellList", cellService.findList());
 	}
 	
 	
 	@Override
 	protected void dowithSearcher(HttpServletRequest request, ViewFormModel model) {
-		searcher.addSf("register_status", Op.EQ, String.valueOf(GrowStatus.COMPLETED.getStatus()));
+		searcher.addSf("growstatus", Op.EQ, String.valueOf(GrowStatus.COMPLETED.getStatus()));
 		searcher.setTable("t_grow_register");
 	}
 	
@@ -39,11 +46,12 @@ public class CompletedController extends ViewController {
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
 		Map<Integer, String> cellId2Code = cellService.queryId2Code();
 		
-		for (Dto dto : datas) {
-			dto.put("register_cellid__disp", 	cellId2Code.get(dto.getInt("register_cellid")));
-			dto.put("register_regdate__disp", 	DateUtils.format(dto.getDate("register_regdate")));
-			GrowStatus status = GrowStatus.valueOf(dto.getInt("register_status"));
-			dto.put("register_status__disp", 	status.getName());
+		for (Register register : datas) {
+			Dto __added = register.get__added();
+			__added.put("cellId", 		cellId2Code.get(register.getCellId()));
+			__added.put("regdate", 		DateUtils.format(register.getRegdate()));
+			__added.put("status", 		Status.valueOf(register.getStatus()).getName());
+			__added.put("growstatus", 	GrowStatus.valueOf(register.getGrowstatus()).getName());
 		}
 	}
 

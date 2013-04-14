@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.company.gap.base.controller.BeanViewController;
 import com.company.gap.base.dao.search.Op;
+import com.company.gap.base.model.Status;
 import com.company.gap.base.model.ViewFormModel;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.base.util.Dto;
@@ -24,7 +25,7 @@ public class HarvestViewController extends BeanViewController<Harvest> {
 	protected void dowithSearcher(HttpServletRequest request, ViewFormModel model) {
 		String registerId = request.getParameter("registerId");
 		request.setAttribute("registerId", registerId);
-		searcher.addSf("registerId", Op.EQ, registerId);
+		searcher.addSf("register_id", Op.EQ, registerId);
 		
 		
 		searcher.setTable("t_grow_harvest");
@@ -36,6 +37,7 @@ public class HarvestViewController extends BeanViewController<Harvest> {
 		for (Harvest harvest : datas) {
 			Dto __added = harvest.get__added();
 			__added.put("operatedate", DateUtils.format(harvest.getOperatedate()));
+			__added.put("status", Status.valueOf(harvest.getStatus()).getName());
 		}
 	}
 	

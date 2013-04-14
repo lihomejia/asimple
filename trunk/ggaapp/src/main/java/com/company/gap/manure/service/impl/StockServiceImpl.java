@@ -55,10 +55,7 @@ public class StockServiceImpl extends BaseServiceImpl<Stock> implements IStockSe
 
 	@Override
 	public int addStockQuantity(Integer id, double quantity) {
-		Stock stock = new Stock();
-		stock.setId(id);
-		stock.setQuantity(quantity);
-		return dao.update(stock);
+		return dao.addStockQuantity(id, quantity);
 	}
 	
 	@Override

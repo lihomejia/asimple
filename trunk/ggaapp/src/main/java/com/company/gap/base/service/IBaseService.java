@@ -3,6 +3,13 @@ package com.company.gap.base.service;
 import java.util.List;
 
 public interface IBaseService<T> {
+	int save(T t);
+	
+	int deleteById(Integer id);
+	
+	int approve(Integer id);
+	
+	int nullify(Integer id);
 	
 	List<T> findList();
 	
@@ -16,7 +23,4 @@ public interface IBaseService<T> {
 	
 	T findBean(String sql, Object... args);
 	
-	int save(T t);
-	
-	int deleteById(Integer id);
 }

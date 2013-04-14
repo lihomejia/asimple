@@ -38,6 +38,7 @@ public class InStockServiceImpl extends BaseServiceImpl<InStock> implements IInS
 		inStock = new InStock();
 		inStock.setId(id);
 		inStock.setStockId(stockId);
+		inStock.setStatus(Status.APPROVED.getStatus());
 		
 		return dao.update(inStock);
 	}

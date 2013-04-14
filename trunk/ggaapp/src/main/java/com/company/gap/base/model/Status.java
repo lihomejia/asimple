@@ -23,7 +23,7 @@ public enum Status {
 			case 0 : return WAITING;
 			case 2 : return APPROVED;
 			case 3 : return NULLIFY;
-			default: return null;
+			default: return WAITING;
 		}
 	}
 

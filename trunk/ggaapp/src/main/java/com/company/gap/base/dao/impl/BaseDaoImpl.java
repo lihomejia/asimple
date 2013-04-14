@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.company.gap.base.dao.IBaseDao;
 import com.company.gap.base.model.GeneralModelUtil;
+import com.company.gap.base.model.Status;
 import com.company.gap.base.util.sql.SqlResult;
 
 
@@ -17,8 +18,6 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	protected JdbcTemplate jdbcTemplate;
 	private Class<T> cls;
 	private String tableName;
-	
-	public static String PRIMARYKEY = "id";
 	
 	public BaseDaoImpl(Class<T> cls) {
 		this.cls = cls;
@@ -42,8 +41,14 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	
 	@Override
 	public int deleteById(Integer id) {
-		String sql = "delete from " + tableName + " where " + PRIMARYKEY + "=?";
+		String sql = "delete from " + tableName + " where id=?";
 		return jdbcTemplate.update(sql, id);
+	}
+	
+	@Override
+	public int updateStatus(Integer id, Integer status) {
+		String sql = "update " + tableName + " set status=? where id=?";
+		return jdbcTemplate.update(sql, status, id);
 	}
 	
 	@Override
@@ -64,7 +69,7 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	
 	@Override
 	public T findById(Integer id) {
-		String sql = "select * from " + tableName + " where " + PRIMARYKEY + "=?";
+		String sql = "select * from " + tableName + " where id=?";
 		return this.findBean(sql, id);
 	}
 
