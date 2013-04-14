@@ -7,24 +7,24 @@
     <%@include file="/public/jsp/common.jsp"%>
     <script type="text/javascript">
   		function formCheck(){
-			if (document.form1.register_cellid.value == ""){
+			if (document.form1.cellId.value == ""){
                 alert("请选择生产单元!");
-            	document.form1.register_cellid.focus();
+            	document.form1.cellId.focus();
                 return false;
 	        }  
-			if (document.form1.register_regdate.value == ""){
+			if (document.form1.regdate.value == ""){
                 alert("请输入登记时间!");
-                document.form1.register_regdate.focus();
+                document.form1.regdate.focus();
                 return false;
 	        }
-			if (document.form1.register_desc.value == ""){
+			if (document.form1.description.value == ""){
                 alert("请输入描述!");
-                document.form1.register_desc.focus();
+                document.form1.description.focus();
                 return false;
 	        } 
-			if (document.form1.register_person.value == ""){
+			if (document.form1.person.value == ""){
                 alert("请输入登记人!");
-                document.form1.register_person.focus();
+                document.form1.person.focus();
                 return false;
 	        }
 	        return true;
@@ -57,31 +57,31 @@
 								    	<td width="15%" class=forumrow><div align="right">生产单元：</div></td>
 								      	<td width="35%" class=forumrow>
 								      		<c:if test="${_action == 'add'}">
-												<select id=register_cellid name="data['register_cellid']">
+												<select id=cellId name="cellId">
 													<option selected value="">请选择生产单元</option>
 													<c:forEach items="${cellList}" var="cell">
-														<option value="${cell.cell_id }">${cell.cell_code}</option>
+														<option value="${cell.id }">${cell.code}</option>
 													</c:forEach>
 												</select>
 												<font color=red>*</font>
 											</c:if>
 											<c:if test="${_action != 'add'}">
-												<input type="hidden" name="data['register_cellid']" value="${data.register_cellid}"/>
-												<input type="text" value="${data.register_cellid__disp}" disabled="disabled"/>
+												<input type="hidden" name="cellId" value="${data.cellId}"/>
+												<input type="text" value="${data.__added.cellId}" disabled="disabled"/>
 											</c:if>
 									  	</td>
 								      	<td width="15%" class=forumrow><div align="right">登记时间：</div></td>
-								      	<td width="35%" class=forumrow><input id="register_regdate" name="data['register_regdate']" size="25" value="${data.register_regdate}" class="Wdate" onClick="WdatePicker()"/><font color=red>*</font></td>
+								      	<td width="35%" class=forumrow><input id="regdate" name="regdate" size="25" value="${data.__added.regdate}" class="Wdate" onClick="WdatePicker()"/><font color=red>*</font></td>
 								    </tr>
 								    <tr> 
 								   	 	<td class=forumrow><div align="right">描述：</div></td>
-								      	<td width="35%" class=forumrow><input id="register_desc" name="data['register_desc']" size="25" value="${data.register_desc}"/><font color=red>*</font></td>
+								      	<td width="35%" class=forumrow><input id="description" name="description" size="25" value="${data.description}"/><font color=red>*</font></td>
 								      	<td class=forumrow><div align="right">登记人：</div></td>
-								      	<td width="35%" class=forumrow><input id="register_person" name="data['register_person']" size="25" value="${data.register_person}"/><font color=red>*</font></td>
+								      	<td width="35%" class=forumrow><input id="person" name="person" size="25" value="${data.person}"/><font color=red>*</font></td>
 								    </tr>
 								    <tr> 
 								      	<td rowspan="2" class=forumrow><div align="right">备注：</div></td>
-								      	<td colspan="3" class=forumrow><textarea name="data['register_comment']" cols="73" rows="10">${data.register_comment}</textarea></td>
+								      	<td colspan="3" class=forumrow><textarea name="comment" cols="73" rows="10">${data.comment}</textarea></td>
 								    </tr>
 								    <tr> 
 								      	<td colspan="4" align="center">

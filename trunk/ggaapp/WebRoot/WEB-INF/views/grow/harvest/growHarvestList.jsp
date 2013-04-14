@@ -59,25 +59,36 @@
 						                <th>储存地点</th>
 						                <th>基地负责人</th>
 						                <th>仓贮负责人</th>
+						                <th>状态</th>
 						                <th>备注</th>
 						                <th>操作</th>
 						            </tr>
 						            <c:forEach items="${datas}" var="data" varStatus="status">
 						              	<tr>
 						              		<td>${pager.start+status.index}</td>
-						              		<td>${data.harvest_pname}</td>
-						              		<td>${data.harvest_batch }</td>
-						              		<td>${data.harvest_operatedate__disp }</td>
-						              		<td>${data.harvest_scale }</td>
-						              		<td>${data.harvest_yield }</td>
-						              		<td>${data.harvest_storage }</td>
-						              		<td>${data.harvest_respmanager }</td>
-						              		<td>${data.harvest_storemanager }</td>
-						              		<td>${data.harvest_comment }</td>
+						              		<td>${data.product}</td>
+						              		<td>${data.batch }</td>
+						              		<td>${data.__added.operatedate }</td>
+						              		<td>${data.scale }</td>
+						              		<td>${data.yield }</td>
+						              		<td>${data.storage }</td>
+						              		<td>${data.respmanager }</td>
+						              		<td>${data.storemanager }</td>
+						              		<td>${data.__added.status}</td>
+						              		<td>${data.comment }</td>
 						              		<td>
-						              			<a class=linkStyle href="grow/harvest/edit.html?harvest_id=${data.harvest_id}&register_id=${register_id}">修改</a>
-												&nbsp;|&nbsp;
-						                		<a class=linkStyle href="grow/harvest/delete.html?harvest_id=${data.harvest_id}&register_id=${register_id}" onclick="return confirm('确定删除吗?')">删除</a>
+						              			<c:if test="${data.status == 0}">
+						              				<a class=linkStyle href="grow/harvest/approve.html?id=${data.id}&registerId=${registerId}" onclick="return confirm('确定批准吗?')">批准</a>
+													&nbsp;|&nbsp;
+						              				<a class=linkStyle href="grow/harvest/edit.html?id=${data.id}&registerId=${registerId}">修改</a>
+													&nbsp;|&nbsp;
+							                		<a class=linkStyle href="grow/harvest/delete.html?id=${data.id}&registerId=${registerId}" onclick="return confirm('确定删除吗?')">删除</a>
+						              			</c:if>
+						              			<c:if test="${data.status == 2}">
+						              				<a class=linkStyle href="grow/harvest/disp.html?id=${data.id}&registerId=${registerId}">查看</a>
+													&nbsp;|&nbsp;
+							                		<a class=linkStyle href="grow/harvest/nullify.html?id=${data.id}&registerId=${registerId}" onclick="return confirm('确定作废吗?')">作废</a>
+						              			</c:if>
 						              		</td>
 						              	</tr>
 						        	</c:forEach>
@@ -90,7 +101,7 @@
 			<tr><td>&nbsp;</td></tr>
 			</tr>
 				<td style="text-align:right">
-					<input type="button" class="btnStyle" value="&nbsp;添&nbsp;加&nbsp;" onclick='window.location.href="<c:url value='/grow/harvest/add.html'/>?register_id=${register_id}"'/>
+					<input type="button" class="btnStyle" value="&nbsp;添&nbsp;加&nbsp;" onclick='window.location.href="<c:url value='/grow/harvest/add.html'/>?registerId=${registerId}"'/>
 				</td>
 			</tr>
 		</table>

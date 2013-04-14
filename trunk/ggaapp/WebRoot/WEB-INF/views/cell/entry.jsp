@@ -8,24 +8,23 @@
     <script type="text/javascript">
 	    function doSubmit() {
 			var form = document.getElementById('form1');
-			var cell_area = form.cell_area.value;
-			if (cell_area == "" || isNaN(cell_area) || cell_area == 0) {
+			var area = form.area.value;
+			if (area == "" || isNaN(area) || area == 0) {
 	        	alert("请输入正确的单元面积!");
-	            form.cell_area.focus();
+	            form.area.focus();
 	            return false;
 		    }
-			
 			form.submit();
 		}
 		
 		function doCancel() {
-			window.location.href = "list.html";
+			window.location.href = "<c:url value='/cell/list.html'/>";
 		}
     </script>
 </head>
 <body>
 	<form id="form1" method="post" action="<c:url value='/cell/save.html'/>">
-		<input type="hidden" name="data['cell_id']" value="${data.cell_id }"/>
+		<input type="hidden" name="id" value="${data.id }"/>
 		<table width="100%">
 			<tr>
 				<td>
@@ -39,25 +38,25 @@
 									<tr>
 										<td class=forumrow style="30%"><div align="right">单元代码:</div></td>
 										<td class=forumrow>
-											<input type="text" name="data['cell_code']" value="${data.cell_code }"/>
+											<input type="text" name="code" value="${data.code }"/>
 										</td>
 									</tr>
 									<tr>
 										<td class=forumrow style="70%"><div align="right">单元位置:</div></td>
 										<td class=forumrow>
-											<input type="text" name="data['cell_location']" value="${data.cell_location }"/>
+											<input type="text" name="location" value="${data.location }"/>
 										</td>
 									</tr>
 									<tr>
 										<td class=forumrow style="70%"><div align="right">单元面积:</div></td>
 										<td class=forumrow>
-											<input type="text" id="cell_area" name="data['cell_area']" value="${data.cell_area }"/>
+											<input type="text" id="area" name="area" value="${data.area }"/>
 										</td>
 									</tr>
 									<tr>
 										<td class=forumrow style="70%"><div align="right">建档时间:</div></td>
 										<td class=forumrow>
-											<input type="text" id="cdate" name="data['cell_cdate']" value="${data.cell_cdate }" class="Wdate" onClick="WdatePicker()"/>
+											<input type="text" name="builddate" value="${data.__added.builddate}" class="Wdate" onClick="WdatePicker()"/>
 										</td>
 									</tr>
 									<tr>

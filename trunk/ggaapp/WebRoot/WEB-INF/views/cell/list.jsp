@@ -39,21 +39,18 @@
 									<tr>
 										<td>
 											<input type="text" name="searcher.sfs['code'].value" value="${searcher.sfs['code'].value}"/>
-											<input type="hidden" name="searcher.sfs['code'].name" value="cell_code"/>
+											<input type="hidden" name="searcher.sfs['code'].name" value="code"/>
 											<input type="hidden" name="searcher.sfs['code'].op.code" value="1"/>
 										</td>
 										<td>
 											<input type="text" name="searcher.sfs['location'].value" value="${searcher.sfs['location'].value}"/>
-											<input type="hidden" name="searcher.sfs['location'].name" value="cell_location"/>
+											<input type="hidden" name="searcher.sfs['location'].name" value="location"/>
 											<input type="hidden" name="searcher.sfs['location'].op.code" value="1"/>
 										</td>
 										<td>
 											<input type="text" name="searcher.sfs['area'].value" value="${searcher.sfs['area'].value}"/>
-											<input type="hidden" name="searcher.sfs['area'].name" value="cell_area"/>
+											<input type="hidden" name="searcher.sfs['area'].name" value="area"/>
 											<input type="hidden" name="searcher.sfs['area'].op.code" value="1"/>
-										</td>
-										<td style="text-align:right">
-											<input type="button" class="btnStyle" value="&nbsp;新&nbsp;建&nbsp;" onclick="window.location.href='<c:url value="/cell/add.html"/>';"/>
 										</td>
 									</tr>
 									<tr>
@@ -103,25 +100,35 @@
 										<th>单元位置</th>
 										<th>单元面积</th>
 										<th>建档时间</th>
+										<th>使用状态</th>
 										<th>状态</th>
 										<th>操作</th>
 									</tr>
 									<c:forEach items="${datas}" var="data" varStatus="status">
 										<tr>
 											<td>${pager.start+status.index}</td>
-											<td>${data.cell_code}</td>
-											<td>${data.cell_location}</td>
-											<td style="text-align:right">${data.cell_area}</td>
-											<td>${data.__disp.cdate}</td>
-											<td>${data.__disp.status}</td>
+											<td>${data.code}</td>
+											<td>${data.location}</td>
+											<td style="text-align:right">${data.area}</td>
+											<td>${data.__added.builddate}</td>
 											<td>
-												<c:if test="${data.cell_status == 0}">
-							                		<a class=linkStyle href="cell/edit.html?cellId=${data.cell_id}">修改</a>
+												<c:if test="${data.status == 2}">
+													${data.__added.usestatus}
+												</c:if>
+											</td>
+											<td>${data.__added.status}</td>
+											<td>
+												<c:if test="${data.status == 0}">
+							                		<a class=linkStyle href="cell/approve.html?id=${data.id}" onclick="return confirm('确定批准吗?')">批准</a>
+							                		&nbsp;|&nbsp;
+							                		<a class=linkStyle href="cell/edit.html?id=${data.id}">修改</a>
 													&nbsp;|&nbsp;
-							                		<a class=linkStyle href="cell/delete.html?cellId=${data.cell_id}" onclick="return confirm('确定删除吗?')">删除</a>
+							                		<a class=linkStyle href="cell/delete.html?id=${data.id}" onclick="return confirm('确定删除吗?')">删除</a>
 							                	</c:if>
-							                	<c:if test="${data.cell_status == 1}">
-							                		<a class=linkStyle href="cell/disp.html?cellId=${data.cell_id}">查看</a>
+							                	<c:if test="${data.status == 2}">
+							                		<a class=linkStyle href="cell/disp.html?id=${data.id}">查看</a>
+							                		&nbsp;|&nbsp;
+							                		<a class=linkStyle href="cell/nullify.html?id=${data.id}" onclick="return confirm('确定作废吗?')">作废</a>
 							                	</c:if>
 											</td>
 										</tr>
@@ -130,6 +137,12 @@
 							</td>
 						</tr>
 					</table>	
+				</td>
+			</tr>
+			<tr><td>&nbsp;</td></tr>
+			<tr>
+				<td style="text-align:right">
+					<input type="button" class="btnStyle" value="&nbsp;新&nbsp;建&nbsp;" onclick="window.location.href='<c:url value="/cell/add.html"/>';"/>
 				</td>
 			</tr>
 		</table>

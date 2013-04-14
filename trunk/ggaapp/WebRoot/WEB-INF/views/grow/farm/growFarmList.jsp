@@ -56,22 +56,33 @@
 						                <th>农事活动规模(亩）</th>
 						                <th>参与人员数量</th>
 						                <th>负责人</th>
+						                <th>状态</th>
 						                <th>备注</th>
 						                <th>操作</th>
 						            </tr>
 						            <c:forEach items="${datas}" var="data" varStatus="status">
 						              	<tr>
 						              		<td>${pager.start+status.index}</td>
-						              		<td>${data.farm_date__disp}</td>
-						              		<td>${data.farm_content }</td>
-						              		<td>${data.farm_scope }</td>
-						              		<td>${data.farm_people }</td>
-						              		<td>${data.farm_manager }</td>
-						              		<td>${data.farm_comment }</td>
+						              		<td>${data.__added.activitydate}</td>
+						              		<td>${data.content }</td>
+						              		<td>${data.scale }</td>
+						              		<td>${data.persons }</td>
+						              		<td>${data.manager }</td>
+						              		<td>${data.__added.status}</td>
+						              		<td>${data.comment }</td>
 						              		<td>
-						              			<a class=linkStyle href="grow/farm/edit.html?farm_id=${data.farm_id}&register_id=${register_id}">修改</a>
-												&nbsp;|&nbsp;
-						                		<a class=linkStyle href="grow/farm/delete.html?farm_id=${data.farm_id}&register_id=${register_id}" onclick="return confirm('确定删除吗?')">删除</a>
+						              			<c:if test="${data.status == 0}">
+						              				<a class=linkStyle href="grow/farm/approve.html?id=${data.id}&registerId=${registerId}" onclick="return confirm('确定批准吗?')">批准</a>
+													&nbsp;|&nbsp;
+						              				<a class=linkStyle href="grow/farm/edit.html?id=${data.id}&registerId=${registerId}">修改</a>
+													&nbsp;|&nbsp;
+							                		<a class=linkStyle href="grow/farm/delete.html?id=${data.id}&registerId=${registerId}" onclick="return confirm('确定删除吗?')">删除</a>
+						              			</c:if>
+						              			<c:if test="${data.status == 2}">
+						              				<a class=linkStyle href="grow/farm/disp.html?id=${data.id}&registerId=${registerId}">查看</a>
+													&nbsp;|&nbsp;
+							                		<a class=linkStyle href="grow/farm/nullify.html?id=${data.id}&registerId=${registerId}" onclick="return confirm('确定作废吗?')">作废</a>
+						              			</c:if>
 						              		</td>
 						              	</tr>
 						        	</c:forEach>
@@ -84,7 +95,7 @@
 			<tr><td>&nbsp;</td></tr>
 			</tr>
 				<td style="text-align:right">
-					<input type="button" class="btnStyle" value="&nbsp;添&nbsp;加&nbsp;" onclick='window.location.href="<c:url value='/grow/farm/add.html'/>?register_id=${register_id}"'/>
+					<input type="button" class="btnStyle" value="&nbsp;添&nbsp;加&nbsp;" onclick='window.location.href="<c:url value='/grow/farm/add.html'/>?registerId=${registerId}"'/>
 				</td>
 			</tr>
 		</table>

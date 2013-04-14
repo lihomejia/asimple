@@ -13,8 +13,8 @@
 </head>
 <body>
 	<form id="form1" name="form1" method="post" action="<c:url value='/grow/irrigate/save.html'/>" onsubmit="return formCheck();">
-		<input type="hidden" name="data['irrigate_id']" value="${data.irrigate_id}"/>
-		<input type="hidden" name="data['irrigate_registerid']" value="${register_id}"/>
+		<input type="hidden" name="id" value="${data.id}"/>
+		<input type="hidden" name="registerId" value="${registerId}"/>
 		<table width="100%">
 			<tr>
 				<td>
@@ -37,37 +37,37 @@
 								    <tr> 
 								   	 	<td class=forumrow style="70%"><div align="right">时间:</div></td>
 										<td class=forumrow>
-											<input type="text" name="data['irrigate_date']" value="${data.irrigate_date }" class="Wdate" onClick="WdatePicker()"/>
+											<input type="text" name="date" value="${data.__added.date }" class="Wdate" onClick="WdatePicker()"/>
 										</td>
 								    </tr>
 								    <tr>
 										<td class=forumrow><div align="right">灌溉方式:</div></td>
 										<td class=forumrow>
-											<input type="text" name="data['irrigate_way']" value="${data.irrigate_way }"/>
+											<input type="text" name="way" value="${data.way }"/>
 										</td>
 									</tr>
 								    <tr>
 										<td class=forumrow><div align="right">灌溉面积:</div></td>
 										<td class=forumrow>
-											<input type="text" name="data['irrigate_area']" value="${data.irrigate_area }"/>
+											<input type="text" name="area" value="${data.area }"/>
 										</td>
 									</tr>
 								    <tr>
 										<td class=forumrow><div align="right">灌溉量:</div></td>
 										<td class=forumrow>
-											<input type="text" name="data['irrigate_quantum']" value="${data.irrigate_quantum }"/>
+											<input type="text" name="quantum" value="${data.quantum}"/>
 										</td>
 									</tr>
 								    <tr>
 										<td class=forumrow><div align="right">负责人:</div></td>
 										<td class=forumrow>
-											<input type="text" name="data['irrigate_manager']" value="${data.irrigate_manager }"/>
+											<input type="text" name="manager" value="${data.manager }"/>
 										</td>
 									</tr>
 								    <tr>
 										<td class=forumrow><div align="right">备注:</div></td>
 										<td class=forumrow>
-											<textarea name="data['irrigate_comment']" cols="50" rows="4">${data.irrigate_comment}</textarea>
+											<textarea name="comment" cols="50" rows="4">${data.comment}</textarea>
 										</td>
 									</tr>
 								    <tr> 
@@ -81,7 +81,7 @@
 								      			<input type="submit" class="btnStyle" value="保&nbsp;存" /> 
 								      		</c:if>
 								      		<c:if test="${_action == 'edit' || _action == 'disp'}">
-								      			<input type="button" class="btnStyle" value="返&nbsp;回" onclick="window.location.href='<c:url value="/grow/irrigate/list.html?register_id=${register_id}"/>'"/>
+								      			<input type="button" class="btnStyle" value="返&nbsp;回" onclick="window.location.href='<c:url value="/grow/irrigate/list.html?registerId=${registerId}"/>'"/>
 								      		</c:if>
 										</td>
 								    </tr>

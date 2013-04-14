@@ -39,30 +39,30 @@
 									</tr>
 									<tr>
 										<td>
-											<select name="data['nameid']">
+											<select name="data['nameId']">
 												<c:forEach items="${nameList}" var="resource" >
-													<option value="${resource.resource_id}"  <c:if test="${resource.resource_id==data.nameid}">selected</c:if>>${resource.resource_name}</option>
+													<option value="${resource.id}"  <c:if test="${resource.id==data.nameId}">selected</c:if>>${resource.name}</option>
 												</c:forEach>
 											</select>
 										</td>
 										<td>
-											<select name="data['sizeid']">
-												<c:forEach items="${sizeList}" var="resource" >
-													<option value="${resource.resource_id}"  <c:if test="${resource.resource_id==data.sizeid}">selected</c:if>>${resource.resource_name}</option>
+											<select name="data['specId']">
+												<c:forEach items="${specList}" var="resource" >
+													<option value="${resource.id}"  <c:if test="${resource.id==data.specId}">selected</c:if>>${resource.name}</option>
 												</c:forEach>
 											</select>
 										</td>
 										<td>
-											<select name="data['batchid']">
+											<select name="data['batchId']">
 												<c:forEach items="${batchList}" var="resource" >
-													<option value="${resource.resource_id}"  <c:if test="${resource.resource_id==data.batchid}">selected</c:if>>${resource.resource_name}</option>
+													<option value="${resource.id}"  <c:if test="${resource.id==data.batchId}">selected</c:if>>${resource.name}</option>
 												</c:forEach>
 											</select>
 										</td>
 										<td>
-											<select name="data['producerid']">
+											<select name="data['producerId']">
 												<c:forEach items="${producerList}" var="resource" >
-													<option value="${resource.resource_id}"  <c:if test="${resource.resource_id==data.producerid}">selected</c:if>>${resource.resource_name}</option>
+													<option value="${resource.id}"  <c:if test="${resource.id==data.producerId}">selected</c:if>>${resource.name}</option>
 												</c:forEach>
 											</select>
 										</td>
@@ -121,13 +121,13 @@
 				              		<c:forEach items="${datas}" var="data" varStatus="status">
 				              			<tr>
 							                <td>${pager.start+status.index}</td>
-							                <td>${data.stock_nameid__disp}</td>
-							                <td>${data.stock_sizeid__disp}</td>
-							                <td>${data.stock_batchid__disp}</td>
-							                <td>${data.stock_producerid__disp}</td>
-							                <td style="text-align:right">${data.stock_quantity}</td>
-							                <td><a href="manure/instock/list.html?stock_id=${data.stock_id}">入库记录</a></td>
-							                <td><a href="manure/outstock/list.html?stock_id=${data.stock_id}">出库记录</a></td>
+							                <td>${data.__added.nameId}</td>
+							                <td>${data.__added.specId}</td>
+							                <td>${data.__added.batchId}</td>
+							                <td>${data.__added.producerId}</td>
+							                <td style="text-align:right">${data.quantity}</td>
+							                <td><a href="manure/instock/list.html?stockId=${data.id}">入库记录</a></td>
+							                <td><a href="manure/outstock/list.html?stockId=${data.id}">出库记录</a></td>
 							                <td></td>
 						              	</tr>
 						        	</c:forEach>

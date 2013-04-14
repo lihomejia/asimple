@@ -30,7 +30,7 @@
 						</tr>
 						<tr>
 							<td>
-								<input type="hidden" name="stock_id" value="${stock_id}"/>
+								<input type="hidden" name="stockId" value="${stockId}"/>
 								<table style="width:100%;">
 									<tr>
 										<td style="25%">肥料名称:</td>
@@ -40,30 +40,30 @@
 									</tr>
 									<tr>
 										<td>
-											<select name="data['nameid']">
+											<select name="data['nameId']">
 												<c:forEach items="${nameList}" var="resource" >
-													<option value="${resource.resource_id}"  <c:if test="${resource.resource_id==data.nameid}">selected</c:if>>${resource.resource_name}</option>
+													<option value="${resource.id}"  <c:if test="${resource.id==data.nameId}">selected</c:if>>${resource.name}</option>
 												</c:forEach>
 											</select>
 										</td>
 										<td>
-											<select name="data['sizeid']">
-												<c:forEach items="${sizeList}" var="resource" >
-													<option value="${resource.resource_id}"  <c:if test="${resource.resource_id==data.sizeid}">selected</c:if>>${resource.resource_name}</option>
+											<select name="data['specId']">
+												<c:forEach items="${specList}" var="resource" >
+													<option value="${resource.id}"  <c:if test="${resource.id==data.specId}">selected</c:if>>${resource.name}</option>
 												</c:forEach>
 											</select>
 										</td>
 										<td>
-											<select name="data['batchid']">
+											<select name="data['batchId']">
 												<c:forEach items="${batchList}" var="resource" >
-													<option value="${resource.resource_id}"  <c:if test="${resource.resource_id==data.batchid}">selected</c:if>>${resource.resource_name}</option>
+													<option value="${resource.id}"  <c:if test="${resource.id==data.batchId}">selected</c:if>>${resource.name}</option>
 												</c:forEach>
 											</select>
 										</td>
 										<td>
-											<select name="data['producerid']">
+											<select name="data['producerId']">
 												<c:forEach items="${producerList}" var="resource" >
-													<option value="${resource.resource_id}"  <c:if test="${resource.resource_id==data.producerid}">selected</c:if>>${resource.resource_name}</option>
+													<option value="${resource.id}"  <c:if test="${resource.id==data.producerId}">selected</c:if>>${resource.name}</option>
 												</c:forEach>
 											</select>
 										</td>
@@ -123,29 +123,29 @@
 						            <c:forEach items="${datas}" var="data" varStatus="status">
 						              	<tr>
 							                <td>${pager.start+status.index}</td>
-							                <td>${data.outstock_nameid__disp }</td>
-							                <td>${data.outstock_sizeid__disp }</td>
-							                <td>${data.outstock_batchid__disp}</td>
-							                <td>${data.outstock_producerid__disp }</td>
-							                <td style="text-align:right">${data.outstock_quantity }</td>
-							                <td>${data.outstock_outmanager }</td>
-							                <td>${data.outstock_outdate__disp }</td>
-							                <td>${data.outstock_status__disp }</td>
+							                <td>${data.__added.nameId}</td>
+							                <td>${data.__added.specId}</td>
+							                <td>${data.__added.batchId}</td>
+							                <td>${data.__added.producerId}</td>
+							                <td style="text-align:right">${data.quantity }</td>
+							                <td>${data.__added.outuserId}</td>
+							                <td>${data.__added.outdate}</td>
+							                <td>${data.__added.status }</td>
 							                <td>
-							                	<c:if test="${data.outstock_status == 0 }">
-							                		<a class=linkStyle href="manure/outstock/auditing.html?outstock_id=${data.outstock_id}" onclick="return confirm('确定审核吗?')">审核</a>
+							                	<c:if test="${data.status == 0 }">
+							                		<a class=linkStyle href="manure/outstock/approve.html?id=${data.id}" onclick="return confirm('确定批准吗?')">批准</a>
 													&nbsp;|&nbsp;
-							                		<a class=linkStyle href="manure/outstock/edit.html?outstock_id=${data.outstock_id}">修改</a>
+							                		<a class=linkStyle href="manure/outstock/edit.html?id=${data.id}">修改</a>
 													&nbsp;|&nbsp;
-							                		<a class=linkStyle href="manure/outstock/delete.html?outstock_id=${data.outstock_id}" onclick="return confirm('确定删除吗?')">删除</a>
+							                		<a class=linkStyle href="manure/outstock/delete.html?id=${data.id}" onclick="return confirm('确定删除吗?')">删除</a>
 							                	</c:if>
-							                	<c:if test="${data.outstock_status == 1 }">
-							                		<a class=linkStyle href="manure/outstock/disp.html?outstock_id=${data.outstock_id}">查看</a>
+							                	<c:if test="${data.status == 2}">
+							                		<a class=linkStyle href="manure/outstock/disp.html?id=${data.id}">查看</a>
 							                		&nbsp;|&nbsp;
-							                		<a class=linkStyle href="manure/outstock/nullify.html?outstock_id=${data.outstock_id}" onclick="return confirm('确定作废吗?')">作废</a>
+							                		<a class=linkStyle href="manure/outstock/nullify.html?id=${data.id}" onclick="return confirm('确定作废吗?')">作废</a>
 							                	</c:if>
-							                	<c:if test="${data.instock_status == 2 }">
-							                		<a class=linkStyle href="manure/outstock/disp.html?outstock_id=${data.outstock_id}">查看</a>
+							                	<c:if test="${data.status == 3 }">
+							                		<a class=linkStyle href="manure/outstock/disp.html?id=${data.id}">查看</a>
 							                	</c:if>
 							               	</td>
 						              	</tr>
