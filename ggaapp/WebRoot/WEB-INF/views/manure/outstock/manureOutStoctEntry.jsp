@@ -9,40 +9,35 @@
     <%@include file="/public/jsp/commonjq.jsp"%>
     <script type="text/javascript">
 		function formCheck(){
-			if (document.form1.outstock_stockid.value == ""){
+			if (document.form1.stockId.value == ""){
                 alert("请选择库存肥料!");
-                document.form1.outstock_stockid.focus();
+                document.form1.stockId.focus();
                 return (false);
         	}  
-			if (document.form1.outstock_outdate.value == ""){
+			if (document.form1.outdate.value == ""){
                 alert("请输入出库时间!");
-                document.form1.outstock_outdate.focus();
+                document.form1.outdate.focus();
                 return (false);
         	}
-        	if(document.form1.outstock_registerid.value == ""){
+        	if(document.form1.registerId.value == ""){
         		alert("请输入肥料用途!");
-                document.form1.outstock_registerid.focus();
+                document.form1.registerId.focus();
                 return (false);
         	}
-        	if (document.form1.outstock_quantity.value == "" 
-        		|| isNaN(document.form1.outstock_quantity.value)
-        		|| document.form1.outstock_quantity.value == 0){
+        	if (document.form1.quantity.value == "" 
+        		|| isNaN(document.form1.quantity.value)
+        		|| document.form1.quantity.value == 0){
 	        	alert("请输入正确的出库数量!");
-	            document.form1.outstock_quantity.focus();
+	            document.form1.quantity.focus();
 	            return false;
 		     }
-		     if (document.form1.outstock_outmanager.value == ""){
-                alert("请输入出库人!");
-                document.form1.outstock_outmanager.focus();
-                return false;
-		      }
         	return true;
         }
         
         function doOutStock(){
         	if(formCheck()) {
-        		var quantity =$('#outstock_quantity').val();
-        		var oquantity = $('#outstock_oquantity').val();
+        		var quantity =$('#quantity').val();
+        		var oquantity = $('#oquantity').val();
         		quantity = (quantity == '' || isNaN(quantity)) ? 0 : parseFloat(quantity);
         		oquantity = (oquantity == '' || isNaN(oquantity)) ? 0 : parseFloat(oquantity);
         		var dquantity = quantity - oquantity;
@@ -55,7 +50,7 @@
         		$.ajax({
 				   type: "POST",
 				   url: "<%=basePath%>/manure/outstock/checkOutStock.html",
-				   data: 'outstock_stockid=' + $('#outstock_stockid').val() + '&outstock_quantity=' + dquantity,
+				   data: 'stockId=' + $('#stockId').val() + '&quantity=' + dquantity,
 				   success: function(rs){
 				     	if(!rs){
 				     		alert("当前肥料库存不足!");
@@ -70,7 +65,7 @@
 </head>
 <body>
 	<form id="form1" name="form1" method="post" action="<c:url value='/manure/outstock/save.html'/>">
-		<input type="hidden" name="data['outstock_id']" value="${data.outstock_id}">
+		<input type="hidden" name="id" value="${data.id}">
 		<table width="100%">
 			<tr>
 				<td>
@@ -94,21 +89,21 @@
 								    	<td width="15%" class=forumrow><div align="right">肥料名称：</div></td>
 								      	<td width="45%" class=forumrow>
 								      		<c:if test="${_action == 'add'}">
-										  		<select id="outstock_stockid" name="data['outstock_stockid']" style="width :90%">
+										  		<select id="stockId" name="stockId" style="width :90%">
 										  			<option value="">请选择出库肥料</option>
 										  			<c:forEach items="${stocks}" var="stock">
-										  				<option value="${stock.stock_id }">${stock.stock_nameid__disp}_${stock.stock_sizeid__disp}_${stock.stock_batchid__disp}_${stock.stock_producerid__disp}</option>
+										  				<option value="${stock.id}">${stock.__added.nameId}_${stock.__added.sizeId}_${stock.__added.batchId}_${stock.__added.producerId}</option>
 										  			</c:forEach>
 										  		</select>
 										  		<font color=red>*</font>
 										  	</c:if>
 										  	<c:if test="${_action != 'add'}">
-										  		<input type="hidden" id="outstock_stockid" name="data['outstock_stockid']" value="${data.outstock_stockid}"/>
-										  		<input type="text" value="${data.outstock_stockid__disp}" disabled="disabled" size="40"/>
+										  		<input type="hidden" id="stockId" name="stockId" value="${data.stockId}"/>
+										  		<input type="text" value="${data.__added.stockId}" disabled="disabled" size="40"/>
 										  	</c:if>
 									  	</td>
 								      	<td width="15%" class=forumrow><div align="right">出库时间：</div></td>
-								      	<td width="25%" class=forumrow><input id="outstock_outdate" name="data['outstock_outdate']" value="${data.outstock_outdate}" class="Wdate" onClick="WdatePicker()"/><font color=red>*</font></td>
+								      	<td width="25%" class=forumrow><input id="outdate" name="outdate" value="${data.__added.outdate}" class="Wdate" onClick="WdatePicker()"/><font color=red>*</font></td>
 								    </tr>
 								    <tr> 
 								      	<td  class=forumrow><div align="right">施用于：</div></td>
@@ -117,33 +112,36 @@
 								      			<tr>
 								      				<td style="width:50%">
 								      					<c:if test="${_action == 'add'}">
-										      				<select id="outstock_registerid" name="data['outstock_registerid']" style="width:100%">
+										      				<select id="registerId" name="registerId" style="width:100%">
 														 		<c:forEach items="${registerList}" var="register">
-														 			<option value="${register.register_id}">${register.cell_code} ${register.cell_location}</option>
+														 			<option value="${register.id}">${register.code} ${register.location}</option>
 														 		</c:forEach>
 														 	</select>
 														 </c:if>
 														 <c:if test="${_action != 'add'}">
-														 	<input type="hidden" id="outstock_registerid" name="data['outstock_registerid']" value="${data.outstock_registerid}"/>
-														 	<input type="hidden" name="data['outstock_cellid']" value="${data.outstock_cellid}"/>
-														 	<input type="text" value="${data.outstock_registerid__disp}" disabled="disabled" />
+														 	<input type="hidden" id="registerId" name="registerId" value="${data.registerId}"/>
+														 	<input type="hidden" name="cellId" value="cellId"/>
+														 	<input type="text" value="${data.__added.registerId}" disabled="disabled" />
 														 </c:if>
 								      				</td>
 								      				<td><font color=red>*</font></td>
 								      				<td>
-								      					<input type="hidden" id="outstock_oquantity" name="data['outstock_oquantity']" size="5" value="${data.outstock_quantity}"/>
-								      					<input type="text" id="outstock_quantity" name="data['outstock_quantity']" size="5" value="${data.outstock_quantity}"/>
+								      					<input type="hidden" id="oquantity" name="__added.quantity" size="5" value="${data.quantity}"/>
+								      					<input type="text" id="quantity" name="quantity'" size="5" value="${data.quantity}"/>
 								      				</td>
 								      				<td><font color=red>*</font>公斤</td>
 								      			</tr>
 								      		</table>
 									 	</td>
 										<td class=forumrow><div align="right">出库人员：</div></td>
-								      	<td class=forumrow><input name="data['outstock_outmanager']" type="text" id="outstock_outmanager" value="${data.outstock_outmanager}"/><font color=red>*</font></td>
+								      	<td class=forumrow>
+								      		<input type="hidden" name="outuserId" size="25" maxlength="30" value="${data.outuserId}"/>
+								      		<input type="text" value="${data.__added.outuserId}" disabled="disabled"/>
+								      	</td>
 								    </tr>
 								    <tr> 
 								      	<td rowspan="2" class=forumrow><div align="right">备注：</div></td>
-								     	<td colspan="3" class=forumrow><textarea name="data['outstock_comment']" cols="63" rows="5">${data.outstock_comment}</textarea></td>
+								     	<td colspan="3" class=forumrow><textarea name="comment" cols="63" rows="5">${data.comment}</textarea></td>
 								    </tr>
 								    <tr> 
 								      	<td colspan="4" align="center" class=forumrow>

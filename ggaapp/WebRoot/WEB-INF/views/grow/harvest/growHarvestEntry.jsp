@@ -13,8 +13,8 @@
 </head>
 <body>
 	<form id="form1" name="form1" method="post" action="<c:url value='/grow/harvest/save.html'/>" onsubmit="return formCheck();">
-		<input type="hidden" name="data['harvest_id']" value="${data.harvest_id}"/>
-		<input type="hidden" name="data['harvest_registerid']" value="${register_id}"/>
+		<input type="hidden" name="id" value="${data.id}"/>
+		<input type="hidden" name="registerId" value="${registerId}"/>
 		<table width="100%">
 			<tr>
 				<td>
@@ -37,61 +37,61 @@
 								    <tr> 
 								   	 	<td class=forumrow style="70%"><div align="right">产品名称:</div></td>
 										<td class=forumrow>
-											<input type="text" name="data['harvest_pname']" value="${data.harvest_pname }"/>
+											<input type="text" name="product" value="${data.product }"/>
 										</td>
 								    </tr>
 								    <tr> 
 								   	 	<td class=forumrow style="70%"><div align="right">产品批次号:</div></td>
 										<td class=forumrow>
-											<input type="text" name="data['harvest_batch']" value="${data.harvest_batch }"/>
+											<input type="text" name="batch" value="${data.batch}"/>
 										</td>
 								    </tr>
 								    <tr> 
 								   	 	<td class=forumrow style="70%"><div align="right">时间:</div></td>
 										<td class=forumrow>
-											<input type="text" name="data['harvest_operatedate']" value="${data.harvest_operatedate }" class="Wdate" onClick="WdatePicker()"/>
+											<input type="text" name="operatedate" value="${data.__added.operatedate}" class="Wdate" onClick="WdatePicker()"/>
 										</td>
 								    </tr>
 								    <tr>
 										<td class=forumrow><div align="right">收割方法:</div></td>
 										<td class=forumrow>
-											<input type="text" name="data['harvest_method']" value="${data.harvest_method }"/>
+											<input type="text" name="method" value="${data.method }"/>
 										</td>
 									</tr>
 								    <tr>
 										<td class=forumrow><div align="right">规模:</div></td>
 										<td class=forumrow>
-											<input type="text" name="data['harvest_scale']" value="${data.harvest_scale }"/>
+											<input type="text" name="scale" value="${data.scale}"/>
 										</td>
 									</tr>
 								    <tr>
 										<td class=forumrow><div align="right">产量:</div></td>
 										<td class=forumrow>
-											<input type="text" name="data['harvest_yield']" value="${data.harvest_yield }"/>
+											<input type="text" name="yield" value="${data.yield }"/>
 										</td>
 									</tr>
 								    <tr>
 										<td class=forumrow><div align="right">储存地点:</div></td>
 										<td class=forumrow>
-											<input type="text" name="data['harvest_storage']" value="${data.harvest_storage }"/>
+											<input type="text" name="storage" value="${data.storage }"/>
 										</td>
 									</tr>
 								    <tr>
 										<td class=forumrow><div align="right">基地负责人:</div></td>
 										<td class=forumrow>
-											<input type="text" name="data['harvest_respmanager']" value="${data.harvest_respmanager }"/>
+											<input type="text" name="respmanager" value="${data.respmanager}"/>
 										</td>
 									</tr>
 								    <tr>
 										<td class=forumrow><div align="right">仓贮负责人:</div></td>
 										<td class=forumrow>
-											<input type="text" name="data['harvest_storemanager']" value="${data.harvest_storemanager }"/>
+											<input type="text" name="storemanager" value="${data.storemanager }"/>
 										</td>
 									</tr>
 								    <tr>
 										<td class=forumrow><div align="right">备注:</div></td>
 										<td class=forumrow>
-											<textarea name="data['harvest_comment']" cols="50" rows="4">${data.harvest_comment}</textarea>
+											<textarea name="comment" cols="50" rows="4">${data.comment}</textarea>
 										</td>
 									</tr>
 								    <tr> 
@@ -105,7 +105,7 @@
 								      			<input type="submit" class="btnStyle" value="保&nbsp;存" /> 
 								      		</c:if>
 								      		<c:if test="${_action == 'edit' || _action == 'disp'}">
-								      			<input type="button" class="btnStyle" value="返&nbsp;回" onclick="window.location.href='<c:url value="/grow/harvest/list.html?register_id=${register_id}"/>'"/>
+								      			<input type="button" class="btnStyle" value="返&nbsp;回" onclick="window.location.href='<c:url value="/grow/harvest/list.html?registerId=${registerId}"/>'"/>
 								      		</c:if>
 										</td>
 								    </tr>

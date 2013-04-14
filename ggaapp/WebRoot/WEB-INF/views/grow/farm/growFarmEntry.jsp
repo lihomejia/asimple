@@ -13,8 +13,8 @@
 </head>
 <body>
 	<form id="form1" name="form1" method="post" action="<c:url value='/grow/farm/save.html'/>" onsubmit="return formCheck();">
-		<input type="hidden" name="data['farm_id']" value="${data.farm_id}"/>
-		<input type="hidden" name="data['farm_registerid']" value="${register_id}"/>
+		<input type="hidden" name="id" value="${data.id}"/>
+		<input type="hidden" name="registerId" value="${registerId}"/>
 		<table width="100%">
 			<tr>
 				<td>
@@ -37,37 +37,37 @@
 								    <tr> 
 								   	 	<td class=forumrow style="70%"><div align="right">时间:</div></td>
 										<td class=forumrow>
-											<input type="text" name="data['farm_date']" value="${data.farm_date }" class="Wdate" onClick="WdatePicker()"/>
+											<input type="text" name="activitydate" value="${data.__added.activitydate }" class="Wdate" onClick="WdatePicker()"/>
 										</td>
 								    </tr>
 								    <tr>
 										<td class=forumrow><div align="right">农事活动内容:</div></td>
 										<td class=forumrow>
-											<textarea name="data['farm_content']" cols="50" rows="4">${data.farm_content}</textarea>
+											<textarea name="content" cols="50" rows="4">${data.content}</textarea>
 										</td>
 									</tr>
 								    <tr>
 										<td class=forumrow><div align="right">农事活动规模(亩）:</div></td>
 										<td class=forumrow>
-											<input type="text" name="data['farm_scope']" value="${data.farm_scope }"/>
+											<input type="text" name="scale" value="${data.scale }"/>
 										</td>
 									</tr>
 								    <tr>
 										<td class=forumrow><div align="right">参与人员数量:</div></td>
 										<td class=forumrow>
-											<input type="text" name="data['farm_people']" value="${data.farm_people }"/>
+											<input type="text" name="persons" value="${data.persons }"/>
 										</td>
 									</tr>
 								    <tr>
 										<td class=forumrow><div align="right">负责人:</div></td>
 										<td class=forumrow>
-											<input type="text" name="data['farm_manager']" value="${data.farm_manager }"/>
+											<input type="text" name="manager" value="${data.manager }"/>
 										</td>
 									</tr>
 								    <tr>
 										<td class=forumrow><div align="right">备注:</div></td>
 										<td class=forumrow>
-											<textarea name="data['farm_comment']" cols="50" rows="4">${data.farm_comment}</textarea>
+											<textarea name="comment" cols="50" rows="4">${data.comment}</textarea>
 										</td>
 									</tr>
 								    <tr> 
@@ -81,7 +81,7 @@
 								      			<input type="submit" class="btnStyle" value="保&nbsp;存" /> 
 								      		</c:if>
 								      		<c:if test="${_action == 'edit' || _action == 'disp'}">
-								      			<input type="button" class="btnStyle" value="返&nbsp;回" onclick="window.location.href='<c:url value="/grow/farm/list.html?register_id=${register_id}"/>'"/>
+								      			<input type="button" class="btnStyle" value="返&nbsp;回" onclick="window.location.href='<c:url value="/grow/farm/list.html?registerId=${registerId}"/>'"/>
 								      		</c:if>
 										</td>
 								    </tr>

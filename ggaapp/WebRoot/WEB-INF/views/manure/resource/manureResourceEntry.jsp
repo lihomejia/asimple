@@ -10,35 +10,22 @@
     <script type="text/javascript">
     
 	    function doSubmit() {
-	    	if (document.getElementById('resource_name').value == '') {
+	    	if (document.getElementById('name').value == '') {
 	    		alert('${resource.name}不能为空');
 	    		return false;
 	    	}
-	    	$.ajax({
-	    		type: "POST",
-			   	url: "<%=basePath%>/manure/resource/checkResource.html",
-			   	data: 'type=${type}&resource_name=' + $('#resource_name').val(),
-			   	success: function(rs){
-			     	if(!rs){
-			     		alert("当前${resource.name}已存在!");
-			     		return;
-			     	}
-			     	$('#form1').submit();
-			   	}
-			});
+	    	$('#form1').submit();
 		}
 		
 		function doCancel() {
-			window.location.href = '<c:url value="/manure/resource/list.html?type=${type}"/>';
+			window.location.href = "<c:url value='/manure/resource/list.html?type=${type}'/>";
 		}
     </script>
 </head>
 <body>
-	<form id="form1" method="post" action="manure/resource/save.html">
+	<form id="form1" method="post" action="<c:url value='/manure/resource/save.html'/>">
+		<input type="hidden" name="id" value="${data.id}"/>
 		<input type="hidden" name="type" value="${type}"/>
-		<input type="hidden" name="data['resource_id']" value="${data.resource_id }"/>
-		<input type="hidden" name="data['resource_type']" value="${type}"/>
-		
 		<table width="100%">
 			<tr>
 				<td>
@@ -52,7 +39,7 @@
 									<tr>
 										<td class=forumrow style="30%"><div align="right">${resource.name}:</div></td>
 										<td class=forumrow>
-											<input id="resource_name" type="text" name="data['resource_name']" value="${data.resource_name }"/>
+											<input id="name" type="text" name="name" value="${data.name }"/>
 										</td>
 									</tr>
 									<tr>

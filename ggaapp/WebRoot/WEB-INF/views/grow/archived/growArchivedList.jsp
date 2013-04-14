@@ -30,7 +30,6 @@
 						</tr>
 						<tr>
 							<td>
-								<input type="hidden" name="stock_id" value=${stock_id}/>
 								<table style="width:100%;">
 									<tr>
 										<td style="25%">生产单元:</td>
@@ -38,8 +37,19 @@
 									</tr>
 									<tr>
 										<td>
+											<select name="searcher.sfs['cellId'].value">
+												<option value="">--全部--</option>
+												<c:forEach items="${cellList}" var="cell">
+													<option value="${cell.id}" <c:if test="${cell.id == searcher.sfs['cellId'].value}">selected</c:if>>${cell.code}</option>
+												</c:forEach>
+											</select>
+											<input type="hidden" name="searcher.sfs['cellId'].name" value="cell_id"/>
+											<input type="hidden" name="searcher.sfs['cellId'].op.code" value="8"/>
 										</td>
 										<td>
+											<input type="text" name="searcher.sfs['description'].value" value="${searcher.sfs['description'].value}"/>
+											<input type="hidden" name="searcher.sfs['description'].name" value="description"/>
+											<input type="hidden" name="searcher.sfs['description'].op.code" value="1"/>
 										</td>
 										<td>
 										</td>
@@ -92,6 +102,7 @@
 						                <th>描述</th>
 						                <th>登记日期</th>
 						                <th>登记人</th>
+						                <th>种植状态</th>
 						                <th>状态</th>
 						                <th>农事活动</th>
 						                <th>灌溉记录</th>
@@ -102,26 +113,29 @@
 						            <c:forEach items="${datas}" var="data" varStatus="status">
 						              	<tr>
 							                <td>${pager.start+status.index}</td>
-							                <td>${data.register_cellid__disp}</td>
-							                <td>${data.register_desc}</td>
-							                <td>${data.register_regdate__disp}</td>
-							                <td>${data.register_person}</td>
-							                <td>${data.register_status__disp}</td>
-							                < <td>
-								                <a class=linkStyle href="<c:url value='/grow/farm/list.html?register_id=${data.register_id}'/>">农事活动</a>
+							                <td>${data.__added.cellId}</td>
+							                <td>${data.description}</td>
+							                <td>${data.__added.regdate}</td>
+							                <td>${data.person}</td>
+							                <td>
+							                	${data.__added.growstatus}
+							                </td>
+							                <td>${data.__added.status}</td>
+							                <td>
+								                <a class=linkStyle href="<c:url value='/grow/farm/list.html?registerId=${data.id}'/>">农事活动</a>
 							                </td>
 							                <td>
-								                <a class=linkStyle href="<c:url value='/grow/irrigate/list.html?register_id=${data.register_id}'/>">灌溉记录</a>
+								                <a class=linkStyle href="<c:url value='/grow/irrigate/list.html?registerId=${data.id}'/>">灌溉记录</a>
 											</td>
 							                <td>
-							                	<a class=linkStyle href="<c:url value='/manure/outstock/list.html?register_id=${data.register_id}'/>">肥料</a>&nbsp;|&nbsp;
-							                	<a class=linkStyle href="<c:url value='/manure/outstock/list.html?register_id=${data.register_id}'/>">农药</a>
+							                	<a class=linkStyle href="<c:url value='/manure/outstock/list.html?registerId=${data.id}'/>">肥料</a>&nbsp;|&nbsp;
+							                	<a class=linkStyle href="<c:url value='/manure/outstock/list.html?registerId=${data.id}'/>">农药</a>
 							                </td>
 							                <td>
-								                <a class=linkStyle href="<c:url value='/grow/harvest/list.html?register_id=${data.register_id}'/>">收割记录</a>
+								                <a class=linkStyle href="<c:url value='/grow/harvest/list.html?registerId=${data.id}'/>">收割记录</a>
 							                </td>
 							                <td>
-							                	<a class=linkStyle href="grow/register/disp.html?register_id=${data.register_id}">查看</a>
+							                	<a class=linkStyle href="grow/register/disp.html?id=${data.id}">查看</a>
 							                </td>
 						              	</tr>
 						        	</c:forEach>

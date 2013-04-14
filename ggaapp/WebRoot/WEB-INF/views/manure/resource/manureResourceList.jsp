@@ -38,7 +38,7 @@
 									<tr>
 										<td>
 											<input type="text" name="searcher.sfs['name'].value" value="${searcher.sfs['name'].value}"/>
-											<input type="hidden" name="searcher.sfs['name'].name" value="resource_name"/>
+											<input type="hidden" name="searcher.sfs['name'].name" value="name"/>
 											<input type="hidden" name="searcher.sfs['name'].op.code" value="1"/>
 										</td>
 										<td style="text-align:right">
@@ -81,18 +81,27 @@
 							<td align="left" valign="top">
 								<table width="100%" border="0" cellspacing="0" cellpadding="0" class="dataList">
 									<tr>
-										<th style="width:10%">编号</th>
-										<th style="width:20%">${resource.name}</th>
-										<th style="width:20%">操作</th>
+										<th>编号</th>
+										<th>${resource.name}</th>
+										<th>状态</th>
+										<th>操作</th>
 									</tr>
 									<c:forEach items="${datas}" var="data" varStatus="status">
 										<tr>
 											<td>${pager.start+status.index}</td>
-											<td>${data['resource_name']}</td>
+											<td>${data.name}</td>
+											<td>${data.__added.status}</td>
 											<td>
-												<a class=linkStyle href="manure/resource/entry.html?type=${type}&resourceId=${data.resource_id}">修改</a>
-												&nbsp;|&nbsp;
-												<a class=linkStyle href="manure/resource/delete.html?type=${type}&resourceId=${data.resource_id}" onclick="return confirm('确定删除吗?');">删除</a>
+												<c:if test="${data.status == 0}">
+													<a class=linkStyle href="manure/resource/approve.html?type=${type}&id=${data.id}" onclick="return confirm('确定批准吗?');">批准</a>
+													&nbsp;|&nbsp;
+													<a class=linkStyle href="manure/resource/entry.html?type=${type}&id=${data.id}">修改</a>
+													&nbsp;|&nbsp;
+													<a class=linkStyle href="manure/resource/delete.html?type=${type}&idd=${data.id}" onclick="return confirm('确定删除吗?');">删除</a>
+												</c:if>
+												<c:if test="${data.status == 2}">
+													<a class=linkStyle href="manure/resource/nullify.html?type=${type}&id=${data.id}" onclick="return confirm('确定作废吗?');">作废</a>
+												</c:if>
 											</td> 
 										</tr>
 									</c:forEach>
