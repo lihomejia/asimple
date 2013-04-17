@@ -8,7 +8,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.company.gap.base.dao.IBaseDao;
 import com.company.gap.base.model.GeneralModelUtil;
-import com.company.gap.base.model.Status;
 import com.company.gap.base.util.sql.SqlResult;
 
 
@@ -23,15 +22,10 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 		this.cls = cls;
 		this.tableName = GeneralModelUtil.getTableName(cls);
 	}
-
+	
 	@Override
 	public int insert(T t) {
 		return GeneralModelUtil.insert(jdbcTemplate, t);
-	}
-	
-	@Override
-	public int insert2(T t) {
-		return GeneralModelUtil.insert2(jdbcTemplate, t);
 	}
 
 	@Override

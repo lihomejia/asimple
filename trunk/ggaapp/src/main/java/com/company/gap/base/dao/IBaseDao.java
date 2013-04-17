@@ -6,8 +6,6 @@ public interface IBaseDao<T> {
 
 	int insert(T t);
 	
-	int insert2(T t);
-	
 	int update(T t);
 	
 	int updateStatus(Integer id, Integer status);
