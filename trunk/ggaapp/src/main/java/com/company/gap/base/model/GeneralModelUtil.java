@@ -29,24 +29,14 @@ public class GeneralModelUtil {
 	public static final String COMMA = ",";
 	public static final String AND = " AND ";
 	
-	/**
-	 * 持久化对象，并返回影响行数.
-	 * @param jdbcTemplate
-	 * @param model
-	 * @return
-	 */
-	public static int insert(JdbcTemplate jdbcTemplate, Object model) {
-		SqlResult result = getInsertSql(model);
-		return jdbcTemplate.update(result.getSql(), result.getValues());
-	}
-	
+
 	/**
 	 * 持久化对象，并返回新对象的主键.
 	 * @param jdbcTemplate
 	 * @param model
 	 * @return
 	 */
-	public static int insert2(JdbcTemplate jdbcTemplate, Object model) {
+	public static int insert(JdbcTemplate jdbcTemplate, Object model) {
 		SqlResult result = getInsertSql(model);
 		
 		final String sql = result.getSql();
