@@ -2,6 +2,8 @@ package com.company.gap.base.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.company.gap.base.service.IBaseService;
+
 /**
  * Entry界面基类.
  * @author lh.jia

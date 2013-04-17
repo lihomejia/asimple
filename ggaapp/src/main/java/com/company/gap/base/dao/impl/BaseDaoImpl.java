@@ -2,6 +2,7 @@ package com.company.gap.base.dao.impl;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,12 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	public int updateStatus(Integer id, Integer status) {
 		String sql = "update " + tableName + " set status=? where id=?";
 		return jdbcTemplate.update(sql, status, id);
+	}
+	
+	@Override
+	public int updateStatus(Integer id, Integer status, Integer cuserId, Date cdate) {
+		String sql = "update " + tableName + " set status=?,cuser_id=?,cdate=? where id=?";
+		return jdbcTemplate.update(sql, status, cuserId, cdate, id);
 	}
 	
 	@Override

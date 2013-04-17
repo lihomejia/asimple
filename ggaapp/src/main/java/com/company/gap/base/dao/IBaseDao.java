@@ -1,5 +1,6 @@
 package com.company.gap.base.dao;
 
+import java.util.Date;
 import java.util.List;
 
 public interface IBaseDao<T> {
@@ -9,7 +10,9 @@ public interface IBaseDao<T> {
 	int update(T t);
 	
 	int updateStatus(Integer id, Integer status);
-
+	
+	int updateStatus(Integer id, Integer status, Integer cuserId, Date cdate);
+	
 	int deleteById(Integer id);
 	
 	List<T> findList();

@@ -1,11 +1,16 @@
 package com.company.gap.base.service;
 
+import java.util.Date;
 import java.util.List;
 
 public interface IBaseService<T> {
 	int save(T t);
 	
 	int update(T t);
+	
+	int updateStatus(Integer id, Integer status);
+	
+	int updateStatus(Integer id, Integer status, Integer cuserId, Date cdate);
 	
 	int deleteById(Integer id);
 	
