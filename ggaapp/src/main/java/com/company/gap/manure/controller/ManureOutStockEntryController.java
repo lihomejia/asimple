@@ -74,10 +74,10 @@ public class ManureOutStockEntryController extends EntryController {
 			.append(resId2Name.get(stock.getProducerId())).append("&nbsp;")
 			.toString()
 		;
-		outStock.get__added().put("stockId", stockId__disp);
+		outStock.get__disp().put("stockId", stockId__disp);
 		
 		Cell cell = cellService.findById(outStock.getCellId());
-		outStock.get__added().put("outstock_registerid__disp", cell.getCode() + "&nbsp;" + cell.getLocation());
+		outStock.get__disp().put("outstock_registerid__disp", cell.getCode() + "&nbsp;" + cell.getLocation());
 		
 		request.setAttribute("data", outStock);
 		return "manure/outstock/manureOutStoctEntry";

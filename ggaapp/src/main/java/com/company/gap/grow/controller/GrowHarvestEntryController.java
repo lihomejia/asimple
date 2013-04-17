@@ -28,7 +28,7 @@ public class GrowHarvestEntryController extends EntryController {
 	public String edit(HttpServletRequest request, @RequestParam("id") int id) {
 		super.edit(request);
 		Harvest harvest = harvestService.findById(id);
-		harvest.get__added().put("operatedate", DateUtils.format(harvest.getOperatedate()));
+		harvest.get__disp().put("operatedate", DateUtils.format(harvest.getOperatedate()));
 		request.setAttribute("data", harvest);
 		return "grow/harvest/growHarvestEntry";
 	}

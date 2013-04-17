@@ -34,9 +34,9 @@ public class GrowIrrigateViewController extends BeanViewController<Irrigate> {
 	@Override
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
 		for (Irrigate  irrigate : datas) {
-			Dto __added = irrigate.get__added();
-			__added.put("date", DateUtils.format(irrigate.getDate()));
-			__added.put("status", Status.valueOf(irrigate.getStatus()).getName());
+			Dto __disp = irrigate.get__disp();
+			__disp.put("date", DateUtils.format(irrigate.getDate()));
+			__disp.put("status", Status.valueOf(irrigate.getStatus()).getName());
 		}
 	}
 	

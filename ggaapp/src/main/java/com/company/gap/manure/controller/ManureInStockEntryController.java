@@ -29,7 +29,7 @@ public class ManureInStockEntryController extends EntryController {
 		super.add(request);
 		InStock inStock = new InStock();
 		inStock.setInuserId(10001);
-		inStock.get__added().put("inuserId", "XXX");
+		inStock.get__disp().put("inuserId", "XXX");
 		request.setAttribute("data", inStock);
 		return "manure/instock/manureInStoctEntry";
 	}
@@ -45,10 +45,10 @@ public class ManureInStockEntryController extends EntryController {
 	public String edit(HttpServletRequest request, @RequestParam("id") int id) {
 		super.edit(request);
 		InStock inStock = inStockService.findById(id);
-		Dto __added = inStock.get__added();
-		__added.put("indate", DateUtils.format(inStock.getIndate()));
-		__added.put("expirydate", DateUtils.format(inStock.getExpirydate()));
-		__added.put("inuserId", "XXX");
+		Dto __disp = inStock.get__disp();
+		__disp.put("indate", DateUtils.format(inStock.getIndate()));
+		__disp.put("expirydate", DateUtils.format(inStock.getExpirydate()));
+		__disp.put("inuserId", "XXX");
 		request.setAttribute("data", inStock);
 		return "manure/instock/manureInStoctEntry";
 	}

@@ -29,7 +29,7 @@ public class GrowIrrigateEntryController extends EntryController {
 	public String edit(HttpServletRequest request, @RequestParam("id") int id) {
 		super.edit(request);
 		Irrigate irrigate = irrigateService.findById(id);
-		irrigate.get__added().put("date", DateUtils.format(irrigate.getDate()));
+		irrigate.get__disp().put("date", DateUtils.format(irrigate.getDate()));
 		request.setAttribute("data", irrigate);
 		return "grow/irrigate/growIrrigateEntry";
 	}

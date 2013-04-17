@@ -86,7 +86,7 @@ public class GeneralModelUtil {
 				} catch (IllegalArgumentException e) {
 				} catch (IllegalAccessException e) {}
 				
-				if (value == null || "__added".equals(column)) continue;
+				if (value == null || "__disp".equals(column)) continue;
 
 				fields.append(COMMA).append(column);
 				feilds2.append(COMMA).append("?");
@@ -122,7 +122,7 @@ public class GeneralModelUtil {
 				} catch (IllegalArgumentException e) {
 				} catch (IllegalAccessException e) {}
 				
-				if (value == null || "__added".equals(column)) continue;
+				if (value == null || "__disp".equals(column)) continue;
 
 				if ("id".equals(column)) {
 					keys.append(AND).append(column).append("=?");
@@ -162,7 +162,7 @@ public class GeneralModelUtil {
 				} catch (IllegalArgumentException e) {
 				} catch (IllegalAccessException e) {}
 				
-				if (value == null || "__added".equals(column)) continue;
+				if (value == null || "__disp".equals(column)) continue;
 				
 				conditions.append(AND).append(column).append("=?");
 				values.add(value);
