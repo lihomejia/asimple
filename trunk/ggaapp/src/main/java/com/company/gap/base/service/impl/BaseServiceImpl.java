@@ -21,6 +21,11 @@ public abstract class BaseServiceImpl<T extends GeneralModel> implements IBaseSe
 	}
 	
 	@Override
+	public int update(T t) {
+		return get().update(t);
+	}
+	
+	@Override
 	public int deleteById(Integer id) {
 		return get().deleteById(id);
 	}

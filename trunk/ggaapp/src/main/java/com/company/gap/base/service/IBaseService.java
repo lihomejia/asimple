@@ -5,6 +5,8 @@ import java.util.List;
 public interface IBaseService<T> {
 	int save(T t);
 	
+	int update(T t);
+	
 	int deleteById(Integer id);
 	
 	int approve(Integer id);
