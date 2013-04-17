@@ -11,10 +11,6 @@ import com.company.gap.manure.model.Stock;
 @Repository
 public class ManureStockDaoImpl extends BaseDaoImpl<Stock> implements IManureStockDao<Stock> {
 
-	public ManureStockDaoImpl() {
-		super(Stock.class);
-	}
-
 	@Override
 	public List<Stock> findStockList() {
 		String sql = "select * from " + this.getTableName() + " where quantity>0";

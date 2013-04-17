@@ -8,9 +8,4 @@ import com.company.gap.grow.model.Farm;
 
 @Repository
 public class GrowFarmDaoImpl extends BaseDaoImpl<Farm> implements IGrowFarmDao {
-	
-	public GrowFarmDaoImpl() {
-		super(Farm.class);
-	}
-
 }

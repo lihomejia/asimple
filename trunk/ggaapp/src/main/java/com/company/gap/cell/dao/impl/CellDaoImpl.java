@@ -8,7 +8,4 @@ import com.company.gap.cell.model.Cell;
 
 @Repository
 public class CellDaoImpl extends BaseDaoImpl<Cell> implements ICellDao {
-	public CellDaoImpl() {
-		super(Cell.class);
-	}
 }

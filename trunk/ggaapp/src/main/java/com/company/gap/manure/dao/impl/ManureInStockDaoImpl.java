@@ -8,8 +8,4 @@ import com.company.gap.manure.model.InStock;
 
 @Repository
 public class ManureInStockDaoImpl extends BaseDaoImpl<InStock> implements IManureInStockDao<InStock> {
-
-	public ManureInStockDaoImpl() {
-		super(InStock.class);
-	}
 }
