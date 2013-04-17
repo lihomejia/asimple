@@ -1,5 +1,6 @@
 package com.company.gap.base.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import com.company.gap.base.dao.IBaseDao;
@@ -23,6 +24,16 @@ public abstract class BaseServiceImpl<T extends GeneralModel> implements IBaseSe
 	@Override
 	public int update(T t) {
 		return get().update(t);
+	}
+	
+	@Override
+	public int updateStatus(Integer id, Integer status) {
+		return get().updateStatus(id, status);
+	}
+	
+	@Override
+	public int updateStatus(Integer id, Integer status, Integer cuserId, Date cdate) {
+		return get().updateStatus(id, status, cuserId, cdate);
 	}
 	
 	@Override
