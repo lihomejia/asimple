@@ -39,7 +39,6 @@ public class GrowArchivedViewController extends BeanViewController<Register> {
 	@Override
 	protected void dowithSearcher(HttpServletRequest request, ViewFormModel model) {
 		searcher.addSf("growstatus", Op.EQ, String.valueOf(GrowStatus.ARCHIVED.getStatus()));
-		searcher.setTable("t_grow_register");
 	}
 	
 	@Override

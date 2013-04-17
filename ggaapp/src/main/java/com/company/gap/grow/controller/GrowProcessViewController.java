@@ -39,7 +39,6 @@ public class GrowProcessViewController extends BeanViewController<Register> {
 	@Override
 	protected void dowithSearcher(HttpServletRequest request, ViewFormModel model) {
 		searcher.addSf("growstatus", Op.IN, "0;1");
-		searcher.setTable("t_grow_register");
 	}
 	
 	@Override

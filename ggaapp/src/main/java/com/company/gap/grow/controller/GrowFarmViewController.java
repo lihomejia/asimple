@@ -27,9 +27,6 @@ public class GrowFarmViewController extends BeanViewController<Farm> {
 		String registerId = request.getParameter("registerId");
 		request.setAttribute("registerId", registerId);
 		searcher.addSf("register_id", Op.EQ, registerId);
-		
-		
-		searcher.setTable("t_grow_farm");
 	}
 	
 

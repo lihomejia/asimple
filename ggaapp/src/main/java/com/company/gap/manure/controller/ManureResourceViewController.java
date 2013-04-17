@@ -33,7 +33,6 @@ public class ManureResourceViewController extends BeanViewController<Resource> {
 	protected void dowithSearcher(HttpServletRequest request, ViewFormModel model) {
 		String type = request.getParameter("type");
 		searcher.addSf("type", Op.EQ, type);
-		searcher.setTable("t_manure_resource");
 	}
 	
 	@Override

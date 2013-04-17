@@ -27,7 +27,6 @@ public class CellViewController extends BeanViewController<Cell> {
 	
 	@Override
 	protected void dowithSearcher(HttpServletRequest request, ViewFormModel model) {
-		searcher.setTable("t_production_cell");
 	}
 	
 	@Override

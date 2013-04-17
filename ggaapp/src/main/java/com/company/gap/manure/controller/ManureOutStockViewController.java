@@ -62,8 +62,6 @@ public class ManureOutStockViewController extends BeanViewController<OutStock> {
 		if (!"0".equals(sizeid)) 	searcher.addSf("outstock_sizeid", Op.EQ, sizeid);
 		if (!"0".equals(batchid)) 	searcher.addSf("outstock_batchid", Op.EQ, batchid);
 		if (!"0".equals(producerid))searcher.addSf("outstock_producerid", Op.EQ, producerid);
-		
-		searcher.setTable("t_manure_outstock");
 	}
 	
 	@Override
