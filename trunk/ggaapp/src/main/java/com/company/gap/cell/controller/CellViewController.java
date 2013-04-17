@@ -21,10 +21,6 @@ import com.company.gap.cell.model.Cell;
 @RequestMapping("cell")
 public class CellViewController extends BeanViewController<Cell> {
 	
-	public CellViewController() {
-		super(Cell.class);
-	}
-	
 	@Override
 	protected void dowithSearcher(HttpServletRequest request, ViewFormModel model) {
 	}

@@ -26,10 +26,6 @@ public class ManureInStockViewController extends BeanViewController<InStock> {
 	@Autowired
 	private IManureResourceService resourceService;
 	
-	public ManureInStockViewController() {
-		super(InStock.class);
-	}
-	
 	@Override
 	protected void preparing(HttpServletRequest request, ViewFormModel model) {
 		request.setAttribute("nameList", 	resourceService.queryByType(ResourceType.NAME, true));

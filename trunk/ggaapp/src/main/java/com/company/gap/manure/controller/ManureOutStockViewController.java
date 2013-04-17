@@ -24,10 +24,6 @@ import com.company.gap.manure.service.IManureResourceService;
 @RequestMapping("manure/outstock")
 public class ManureOutStockViewController extends BeanViewController<OutStock> {
 	
-	public ManureOutStockViewController() {
-		super(OutStock.class);
-	}
-	
 	@Autowired
 	private IManureResourceService resourceService;
 	

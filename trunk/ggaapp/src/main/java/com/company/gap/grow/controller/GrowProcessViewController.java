@@ -24,10 +24,6 @@ public class GrowProcessViewController extends BeanViewController<Register> {
 
 	@Autowired
 	private ICellService cellService;
-
-	public GrowProcessViewController() {
-		super(Register.class);
-	}
 	
 	@Override
 	protected void preparing(HttpServletRequest request, ViewFormModel model) {

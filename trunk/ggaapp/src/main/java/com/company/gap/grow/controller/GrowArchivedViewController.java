@@ -25,10 +25,6 @@ public class GrowArchivedViewController extends BeanViewController<Register> {
 	@Autowired
 	private ICellService cellService;
 	
-	public GrowArchivedViewController() {
-		super(Register.class);
-	}
-	
 	@Override
 	protected void preparing(HttpServletRequest request, ViewFormModel model) {
 		super.preparing(request, model);

@@ -18,10 +18,6 @@ import com.company.gap.manure.model.Resource;
 @RequestMapping("manure/resource")
 public class ManureResourceViewController extends BeanViewController<Resource> {
 	
-	public ManureResourceViewController() {
-		super(Resource.class);
-	}
-
 	@Override
 	protected void preparing(HttpServletRequest request, ViewFormModel model) {
 		int type = NumberUtils.toInt(request.getParameter("type"));
