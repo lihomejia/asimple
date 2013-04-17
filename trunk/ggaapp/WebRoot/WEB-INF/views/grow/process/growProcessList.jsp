@@ -135,7 +135,7 @@
 											</td>
 							                <td>
 							                	<c:if test="${data.status != 0 }">
-								                	<a class=linkStyle href="<c:url value='/manure/outstock/list.html?registerId=${data.id}'/>">肥料</a>&nbsp;|&nbsp;
+								                	<a class=linkStyle href="<c:url value='/grow/manure/list.html?registerId=${data.id}'/>">肥料</a>&nbsp;|&nbsp;
 								                	<a class=linkStyle href="<c:url value='/manure/outstock/list.html?registerId=${data.id}'/>">农药</a>
 							                	</c:if>
 							                </td>
