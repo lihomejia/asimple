@@ -493,3 +493,7 @@ text-decoration:underline;}
 #demo ul li.nobor{border-bottom:none; }
 #demo ul li a{font-size:12px; line-height:24px; text-decoration:none;}
 #demo ul li a:hover{color:#ff0000; background-color:#f4f4f4;}
+.required {
+	color: red; 
+	font-height: 900;
+}
