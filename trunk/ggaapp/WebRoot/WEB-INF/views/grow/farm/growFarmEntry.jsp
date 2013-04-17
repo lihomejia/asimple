@@ -37,7 +37,7 @@
 								    <tr> 
 								   	 	<td class=forumrow style="70%"><div align="right">时间:</div></td>
 										<td class=forumrow>
-											<input type="text" name="activitydate" value="${data.__added.activitydate }" class="Wdate" onClick="WdatePicker()"/>
+											<input type="text" name="activitydate" value="${data.__disp.activitydate }" class="Wdate" onClick="WdatePicker()"/>
 										</td>
 								    </tr>
 								    <tr>

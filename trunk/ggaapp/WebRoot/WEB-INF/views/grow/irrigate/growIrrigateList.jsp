@@ -63,12 +63,12 @@
 						            <c:forEach items="${datas}" var="data" varStatus="status">
 						              	<tr>
 						              		<td>${pager.start+status.index}</td>
-						              		<td>${data.__added.date}</td>
+						              		<td>${data.__disp.date}</td>
 						              		<td>${data.way }</td>
 						              		<td>${data.area}</td>
 						              		<td>${data.quantum }</td>
 						              		<td>${data.manager }</td>
-						              		<td>${data.__added.status}</td>
+						              		<td>${data.__disp.status}</td>
 						              		<td>${data.comment }</td>
 						              		<td>
 						              			<c:if test="${data.status == 0}">

@@ -92,18 +92,18 @@
 										  		<select id="stockId" name="stockId" style="width :90%">
 										  			<option value="">请选择出库肥料</option>
 										  			<c:forEach items="${stocks}" var="stock">
-										  				<option value="${stock.id}">${stock.__added.nameId}_${stock.__added.sizeId}_${stock.__added.batchId}_${stock.__added.producerId}</option>
+										  				<option value="${stock.id}">${stock.__disp.nameId}_${stock.__disp.sizeId}_${stock.__disp.batchId}_${stock.__disp.producerId}</option>
 										  			</c:forEach>
 										  		</select>
 										  		<font color=red>*</font>
 										  	</c:if>
 										  	<c:if test="${_action != 'add'}">
 										  		<input type="hidden" id="stockId" name="stockId" value="${data.stockId}"/>
-										  		<input type="text" value="${data.__added.stockId}" disabled="disabled" size="40"/>
+										  		<input type="text" value="${data.__disp.stockId}" disabled="disabled" size="40"/>
 										  	</c:if>
 									  	</td>
 								      	<td width="15%" class=forumrow><div align="right">出库时间：</div></td>
-								      	<td width="25%" class=forumrow><input id="outdate" name="outdate" value="${data.__added.outdate}" class="Wdate" onClick="WdatePicker()"/><font color=red>*</font></td>
+								      	<td width="25%" class=forumrow><input id="outdate" name="outdate" value="${data.__disp.outdate}" class="Wdate" onClick="WdatePicker()"/><font color=red>*</font></td>
 								    </tr>
 								    <tr> 
 								      	<td  class=forumrow><div align="right">施用于：</div></td>
@@ -121,12 +121,12 @@
 														 <c:if test="${_action != 'add'}">
 														 	<input type="hidden" id="registerId" name="registerId" value="${data.registerId}"/>
 														 	<input type="hidden" name="cellId" value="cellId"/>
-														 	<input type="text" value="${data.__added.registerId}" disabled="disabled" />
+														 	<input type="text" value="${data.__disp.registerId}" disabled="disabled" />
 														 </c:if>
 								      				</td>
 								      				<td><font color=red>*</font></td>
 								      				<td>
-								      					<input type="hidden" id="oquantity" name="__added.quantity" size="5" value="${data.quantity}"/>
+								      					<input type="hidden" id="oquantity" name="__disp.quantity" size="5" value="${data.quantity}"/>
 								      					<input type="text" id="quantity" name="quantity'" size="5" value="${data.quantity}"/>
 								      				</td>
 								      				<td><font color=red>*</font>公斤</td>
@@ -136,7 +136,7 @@
 										<td class=forumrow><div align="right">出库人员：</div></td>
 								      	<td class=forumrow>
 								      		<input type="hidden" name="outuserId" size="25" maxlength="30" value="${data.outuserId}"/>
-								      		<input type="text" value="${data.__added.outuserId}" disabled="disabled"/>
+								      		<input type="text" value="${data.__disp.outuserId}" disabled="disabled"/>
 								      	</td>
 								    </tr>
 								    <tr> 
