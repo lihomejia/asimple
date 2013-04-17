@@ -12,17 +12,17 @@ import com.company.gap.base.util.DateUtils;
 import com.company.gap.base.util.Dto;
 import com.company.gap.manure.enumeration.ResourceType;
 import com.company.gap.manure.model.InStock;
-import com.company.gap.manure.service.IInStockService;
-import com.company.gap.manure.service.IResourceService;
+import com.company.gap.manure.service.IManureInStockService;
+import com.company.gap.manure.service.IManureResourceService;
 
 @Controller
 @RequestMapping("manure/instock")
-public class InStockEntryController extends EntryController {
+public class ManureInStockEntryController extends EntryController {
 
 	@Autowired
-	private IResourceService resourceService;
+	private IManureResourceService resourceService;
 	@Autowired
-	private IInStockService inStockService;
+	private IManureInStockService inStockService;
 	
 	@RequestMapping("add")
 	public String add(HttpServletRequest request) {

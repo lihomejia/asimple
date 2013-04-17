@@ -6,20 +6,20 @@ import org.springframework.stereotype.Service;
 import com.company.gap.base.dao.IBaseDao;
 import com.company.gap.base.model.Status;
 import com.company.gap.base.service.impl.BaseServiceImpl;
-import com.company.gap.manure.dao.IInStockDao;
+import com.company.gap.manure.dao.IManureInStockDao;
 import com.company.gap.manure.model.InStock;
 import com.company.gap.manure.model.Stock;
-import com.company.gap.manure.service.IInStockService;
-import com.company.gap.manure.service.IStockService;
+import com.company.gap.manure.service.IManureInStockService;
+import com.company.gap.manure.service.IManureStockService;
 
 @Service
-public class InStockServiceImpl extends BaseServiceImpl<InStock> implements IInStockService {
+public class ManureInStockServiceImpl extends BaseServiceImpl<InStock> implements IManureInStockService {
 	
 	@Autowired
-	private IInStockDao<InStock> dao;
+	private IManureInStockDao<InStock> dao;
 	
 	@Autowired
-	private IStockService stockService;
+	private IManureStockService stockService;
 	
 	@Override
 	protected IBaseDao<InStock> get() {

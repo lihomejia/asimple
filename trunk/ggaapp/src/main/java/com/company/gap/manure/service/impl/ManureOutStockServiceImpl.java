@@ -8,19 +8,19 @@ import com.company.gap.base.model.Status;
 import com.company.gap.base.service.impl.BaseServiceImpl;
 import com.company.gap.grow.model.Register;
 import com.company.gap.grow.service.IRegisterService;
-import com.company.gap.manure.dao.IOutStockDao;
+import com.company.gap.manure.dao.IManureOutStockDao;
 import com.company.gap.manure.model.OutStock;
 import com.company.gap.manure.model.Stock;
-import com.company.gap.manure.service.IOutStockService;
-import com.company.gap.manure.service.IStockService;
+import com.company.gap.manure.service.IManureOutStockService;
+import com.company.gap.manure.service.IManureStockService;
 
 @Service
-public class OutStockServiceImpl extends BaseServiceImpl<OutStock> implements IOutStockService {
+public class ManureOutStockServiceImpl extends BaseServiceImpl<OutStock> implements IManureOutStockService {
 
 	@Autowired
-	private IOutStockDao<OutStock> dao;
+	private IManureOutStockDao<OutStock> dao;
 	@Autowired
-	private IStockService stockService;
+	private IManureStockService stockService;
 	@Autowired
 	private IRegisterService registerService;
 	

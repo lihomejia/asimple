@@ -18,22 +18,22 @@ import com.company.gap.grow.enumeration.GrowStatus;
 import com.company.gap.grow.service.IRegisterService;
 import com.company.gap.manure.model.OutStock;
 import com.company.gap.manure.model.Stock;
-import com.company.gap.manure.service.IOutStockService;
-import com.company.gap.manure.service.IResourceService;
-import com.company.gap.manure.service.IStockService;
+import com.company.gap.manure.service.IManureOutStockService;
+import com.company.gap.manure.service.IManureResourceService;
+import com.company.gap.manure.service.IManureStockService;
 
 @Controller
 @RequestMapping("manure/outstock")
-public class OutStockEntryController extends EntryController {
+public class ManureOutStockEntryController extends EntryController {
 	
 	@Autowired
-	private IOutStockService outStockService;
+	private IManureOutStockService outStockService;
 	@Autowired
-	private IStockService stockService;
+	private IManureStockService stockService;
 	@Autowired
 	private IRegisterService registerService;
 	@Autowired
-	private IResourceService resourceService;
+	private IManureResourceService resourceService;
 	@Autowired
 	private ICellService cellService;
 	

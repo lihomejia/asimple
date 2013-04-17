@@ -17,16 +17,16 @@ import com.company.gap.base.util.DateUtils;
 import com.company.gap.base.util.Dto;
 import com.company.gap.manure.enumeration.ResourceType;
 import com.company.gap.manure.model.InStock;
-import com.company.gap.manure.service.IResourceService;
+import com.company.gap.manure.service.IManureResourceService;
 
 @Controller
 @RequestMapping("manure/instock")
-public class InStockViewController extends BeanViewController<InStock> {
+public class ManureInStockViewController extends BeanViewController<InStock> {
 
 	@Autowired
-	private IResourceService resourceService;
+	private IManureResourceService resourceService;
 	
-	public InStockViewController() {
+	public ManureInStockViewController() {
 		super(InStock.class);
 	}
 	

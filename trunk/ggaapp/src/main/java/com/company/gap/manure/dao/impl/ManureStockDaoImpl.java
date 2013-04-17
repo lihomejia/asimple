@@ -5,13 +5,13 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.company.gap.base.dao.impl.BaseDaoImpl;
-import com.company.gap.manure.dao.IStockDao;
+import com.company.gap.manure.dao.IManureStockDao;
 import com.company.gap.manure.model.Stock;
 
 @Repository
-public class StockDaoImpl extends BaseDaoImpl<Stock> implements IStockDao<Stock> {
+public class ManureStockDaoImpl extends BaseDaoImpl<Stock> implements IManureStockDao<Stock> {
 
-	public StockDaoImpl() {
+	public ManureStockDaoImpl() {
 		super(Stock.class);
 	}
 

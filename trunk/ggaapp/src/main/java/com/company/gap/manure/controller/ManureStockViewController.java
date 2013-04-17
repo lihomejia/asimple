@@ -15,16 +15,16 @@ import com.company.gap.base.model.ViewFormModel;
 import com.company.gap.base.util.Dto;
 import com.company.gap.manure.enumeration.ResourceType;
 import com.company.gap.manure.model.Stock;
-import com.company.gap.manure.service.IResourceService;
+import com.company.gap.manure.service.IManureResourceService;
 
 @Controller
 @RequestMapping("manure/stock")
-public class StockController extends BeanViewController<Stock> {
+public class ManureStockViewController extends BeanViewController<Stock> {
 	
 	@Autowired
-	private IResourceService resourceService;
+	private IManureResourceService resourceService;
 	
-	public StockController() {
+	public ManureStockViewController() {
 		super(Stock.class);
 	}
 	
