@@ -86,7 +86,7 @@ public class GeneralModelUtil {
 				} catch (IllegalArgumentException e) {
 				} catch (IllegalAccessException e) {}
 				
-				if (value == null || "__disp".equals(column)) continue;
+				if (!isUsefulField(column, value)) continue;
 
 				fields.append(COMMA).append(column);
 				feilds2.append(COMMA).append("?");
@@ -122,7 +122,7 @@ public class GeneralModelUtil {
 				} catch (IllegalArgumentException e) {
 				} catch (IllegalAccessException e) {}
 				
-				if (value == null || "__disp".equals(column)) continue;
+				if (!isUsefulField(column, value)) continue;
 
 				if ("id".equals(column)) {
 					keys.append(AND).append(column).append("=?");
@@ -162,7 +162,7 @@ public class GeneralModelUtil {
 				} catch (IllegalArgumentException e) {
 				} catch (IllegalAccessException e) {}
 				
-				if (value == null || "__disp".equals(column)) continue;
+				if (!isUsefulField(column, value)) continue;
 				
 				conditions.append(AND).append(column).append("=?");
 				values.add(value);
@@ -206,5 +206,9 @@ public class GeneralModelUtil {
 
 	public static String getTableName(Object model) {
 		return getTableName(model.getClass());
+	}
+	
+	private static boolean isUsefulField(String field, Object value) {
+		return value != null && !"__disp".equals(field); 
 	}
 }
