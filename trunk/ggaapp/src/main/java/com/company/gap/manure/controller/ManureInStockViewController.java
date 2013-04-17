@@ -45,8 +45,6 @@ public class ManureInStockViewController extends BeanViewController<InStock> {
 			request.setAttribute("stockId", stockId);
 			searcher.addSf("stock_id", Op.EQ, stockId);
 		}
-		
-		searcher.setTable("t_manure_instock");
 	}
 	
 	@Override

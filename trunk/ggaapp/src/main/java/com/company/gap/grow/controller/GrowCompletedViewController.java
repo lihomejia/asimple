@@ -39,7 +39,6 @@ public class GrowCompletedViewController extends BeanViewController<Register> {
 	@Override
 	protected void dowithSearcher(HttpServletRequest request, ViewFormModel model) {
 		searcher.addSf("growstatus", Op.EQ, String.valueOf(GrowStatus.COMPLETED.getStatus()));
-		searcher.setTable("t_grow_register");
 	}
 	
 	@Override
