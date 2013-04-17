@@ -42,7 +42,7 @@ public class StockServiceImpl extends BaseServiceImpl<Stock> implements IStockSe
 		int id = 0;
 		if (findStock == null) {
 			//不存在时，新增并返回库存ID
-			id = dao.insert2(stock);
+			id = dao.insert(stock);
 		}
 		else {
 			//存在时， 从检索的库存对象中取得库存ID
