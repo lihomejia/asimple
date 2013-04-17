@@ -16,10 +16,6 @@ import com.company.gap.grow.model.Harvest;
 @Controller
 @RequestMapping("grow/harvest")
 public class GrowHarvestViewController extends BeanViewController<Harvest> {
-	
-	public GrowHarvestViewController() {
-		super(Harvest.class);
-	}
 
 	@Override
 	protected void dowithSearcher(HttpServletRequest request, ViewFormModel model) {

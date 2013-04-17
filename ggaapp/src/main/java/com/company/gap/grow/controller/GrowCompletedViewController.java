@@ -25,10 +25,6 @@ public class GrowCompletedViewController extends BeanViewController<Register> {
 	@Autowired
 	private ICellService cellService;
 	
-	public GrowCompletedViewController() {
-		super(Register.class);
-	}
-	
 	@Override
 	protected void preparing(HttpServletRequest request, ViewFormModel model) {
 		super.preparing(request, model);

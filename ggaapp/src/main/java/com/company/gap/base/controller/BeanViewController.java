@@ -1,4 +1,6 @@
 package com.company.gap.base.controller;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,8 +30,15 @@ public abstract class BeanViewController<T> extends BaseController {
 	
 	private Class<T> clazz;
 	
-	public BeanViewController(Class<T> clazz) {
-		this.clazz = clazz;
+	@SuppressWarnings("unchecked")
+	public BeanViewController() {
+		Type type = this.getClass().getGenericSuperclass();
+		if (type instanceof ParameterizedType) {
+			Type[] types = ((ParameterizedType) type).getActualTypeArguments();
+			if (types != null && types.length > 0){
+				this.clazz = (Class) types[0];
+			}
+		}
 	}
 	
 	@RequestMapping("list")

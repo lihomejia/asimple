@@ -17,11 +17,6 @@ import com.company.gap.grow.model.Irrigate;
 @RequestMapping("grow/irrigate")
 public class GrowIrrigateViewController extends BeanViewController<Irrigate> {
 
-	public GrowIrrigateViewController() {
-		super(Irrigate.class);
-	}
-
-
 	@Override
 	protected void dowithSearcher(HttpServletRequest request, ViewFormModel model) {
 		String registerId = request.getParameter("registerId");

@@ -17,11 +17,6 @@ import com.company.gap.grow.model.Farm;
 @RequestMapping("grow/farm")
 public class GrowFarmViewController extends BeanViewController<Farm> {
 
-	public GrowFarmViewController() {
-		super(Farm.class);
-	}
-
-
 	@Override
 	protected void dowithSearcher(HttpServletRequest request, ViewFormModel model) {
 		String registerId = request.getParameter("registerId");
