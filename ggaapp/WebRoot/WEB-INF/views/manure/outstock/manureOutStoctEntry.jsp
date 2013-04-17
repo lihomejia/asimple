@@ -114,7 +114,7 @@
 								      					<c:if test="${_action == 'add'}">
 										      				<select id="registerId" name="registerId" style="width:100%">
 														 		<c:forEach items="${registerList}" var="register">
-														 			<option value="${register.id}">${register.code} ${register.location}</option>
+														 			<option value="${register.id}">${register.description}</option>
 														 		</c:forEach>
 														 	</select>
 														 </c:if>
@@ -127,7 +127,7 @@
 								      				<td><font color=red>*</font></td>
 								      				<td>
 								      					<input type="hidden" id="oquantity" name="__disp.quantity" size="5" value="${data.quantity}"/>
-								      					<input type="text" id="quantity" name="quantity'" size="5" value="${data.quantity}"/>
+								      					<input type="text" id="quantity" name="quantity" size="5" value="${data.quantity}"/>
 								      				</td>
 								      				<td><font color=red>*</font>公斤</td>
 								      			</tr>

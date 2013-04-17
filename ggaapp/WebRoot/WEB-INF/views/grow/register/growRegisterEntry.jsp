@@ -33,7 +33,7 @@
 </head>
 <body>
 	<form id="form1" name="form1" method="post" action="<c:url value='/grow/register/save.html'/>" onsubmit="return formCheck();">
-		<input type="hidden" name="register_id" value="${data.register_id}">
+		<input type="hidden" name="id" value="${data.id}">
 		<table width="100%">
 			<tr>
 				<td>
