@@ -8,8 +8,4 @@ import com.company.gap.grow.model.Register;
 
 @Repository
 public class GrowRegiesterDaoImpl extends BaseDaoImpl<Register> implements IGrowRegisterDao {
-	
-	public GrowRegiesterDaoImpl() {
-		super(Register.class);
-	}
 }

@@ -8,8 +8,4 @@ import com.company.gap.manure.model.Resource;
 
 @Repository
 public class ManureResourceDaoImpl extends BaseDaoImpl<Resource> implements IManureResourceDao<Resource> {
-
-	public ManureResourceDaoImpl() {
-		super(Resource.class);
-	}
 }

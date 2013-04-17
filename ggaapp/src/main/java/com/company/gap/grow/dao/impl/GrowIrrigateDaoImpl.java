@@ -8,8 +8,4 @@ import com.company.gap.grow.model.Irrigate;
 
 @Repository
 public class GrowIrrigateDaoImpl extends BaseDaoImpl<Irrigate> implements IGrowIrrigateDao {
-
-	public GrowIrrigateDaoImpl() {
-		super(Irrigate.class);
-	}
 }

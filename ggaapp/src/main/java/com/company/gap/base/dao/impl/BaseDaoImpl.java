@@ -1,5 +1,7 @@
 package com.company.gap.base.dao.impl;
 
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +17,19 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	
 	@Autowired
 	protected JdbcTemplate jdbcTemplate;
-	private Class<T> cls;
+	private Class<T> clazz;
 	private String tableName;
 	
-	public BaseDaoImpl(Class<T> cls) {
-		this.cls = cls;
-		this.tableName = GeneralModelUtil.getTableName(cls);
+	@SuppressWarnings("unchecked")
+	public BaseDaoImpl() {
+		Type type = this.getClass().getGenericSuperclass();
+		if (type instanceof ParameterizedType) {
+			Type[] types = ((ParameterizedType) type).getActualTypeArguments();
+			if (types != null && types.length > 0){
+				this.clazz = (Class) types[0];
+				this.tableName = GeneralModelUtil.getTableName(this.clazz);
+			}
+		}
 	}
 	
 	@Override
@@ -52,7 +61,7 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 
 	@Override
 	public List<T> findList(String sql, Object... args) {
-		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<T>(cls), args);
+		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<T>(clazz), args);
 	}
 	
 	@Override

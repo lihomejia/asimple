@@ -8,9 +8,4 @@ import com.company.gap.grow.model.Harvest;
 
 @Repository
 public class GrowHarvestDaoImpl extends BaseDaoImpl<Harvest> implements IGrowHarvestDao {
-	
-	public GrowHarvestDaoImpl() {
-		super(Harvest.class);
-	}
-
 }
