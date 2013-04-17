@@ -7,7 +7,7 @@ import com.company.gap.base.dao.IBaseDao;
 import com.company.gap.base.model.Status;
 import com.company.gap.base.service.impl.BaseServiceImpl;
 import com.company.gap.grow.model.Register;
-import com.company.gap.grow.service.IRegisterService;
+import com.company.gap.grow.service.IGrowRegisterService;
 import com.company.gap.manure.dao.IManureOutStockDao;
 import com.company.gap.manure.model.OutStock;
 import com.company.gap.manure.model.Stock;
@@ -22,7 +22,7 @@ public class ManureOutStockServiceImpl extends BaseServiceImpl<OutStock> impleme
 	@Autowired
 	private IManureStockService stockService;
 	@Autowired
-	private IRegisterService registerService;
+	private IGrowRegisterService registerService;
 	
 	protected IBaseDao<OutStock> get() {
 		return this.dao;

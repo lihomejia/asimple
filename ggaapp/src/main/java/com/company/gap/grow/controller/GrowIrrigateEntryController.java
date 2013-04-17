@@ -9,28 +9,29 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.company.gap.base.controller.EntryController;
 import com.company.gap.base.util.DateUtils;
-import com.company.gap.grow.model.Harvest;
-import com.company.gap.grow.service.IHarvestService;
+import com.company.gap.grow.model.Irrigate;
+import com.company.gap.grow.service.IGrowIrrigateService;
 
 @Controller
-@RequestMapping("grow/harvest")
-public class HarvestEntryController extends EntryController {
+@RequestMapping("grow/irrigate")
+public class GrowIrrigateEntryController extends EntryController {
+
 	@Autowired
-	private IHarvestService harvestService;
+	private IGrowIrrigateService irrigateService;
 	
 	@RequestMapping("add")
 	public String add(HttpServletRequest request) {
 		super.add(request);
-		return "grow/harvest/growHarvestEntry";
+		return "grow/irrigate/growIrrigateEntry";
 	}
 	
 	@RequestMapping("edit")
 	public String edit(HttpServletRequest request, @RequestParam("id") int id) {
 		super.edit(request);
-		Harvest harvest = harvestService.findById(id);
-		harvest.get__added().put("operatedate", DateUtils.format(harvest.getOperatedate()));
-		request.setAttribute("data", harvest);
-		return "grow/harvest/growHarvestEntry";
+		Irrigate irrigate = irrigateService.findById(id);
+		irrigate.get__added().put("date", DateUtils.format(irrigate.getDate()));
+		request.setAttribute("data", irrigate);
+		return "grow/irrigate/growIrrigateEntry";
 	}
 	
 	@RequestMapping("disp")
@@ -42,31 +43,32 @@ public class HarvestEntryController extends EntryController {
 	}
 	
 	@RequestMapping("save")
-	public String save(HttpServletRequest request, Harvest harvest) {
-		int registerId = harvest.getRegisterId();
-		harvestService.save(harvest);
-		return "redirect:/grow/harvest/list.html?registerId=" + registerId;
+	public String save(HttpServletRequest request, Irrigate irrigate) {
+		int registerId = irrigate.getRegisterId();
+		irrigateService.save(irrigate);
+		return "redirect:/grow/irrigate/list.html?registerId=" + registerId;
 	}
+	
 	
 	@RequestMapping("delete")
 	public String delete(HttpServletRequest request, @RequestParam("id") int id) {
-		harvestService.deleteById(id);
+		irrigateService.deleteById(id);
 		String registerId = request.getParameter("registerId");
-		return "redirect:/grow/harvest/list.html?registerId=" + registerId;
+		return "redirect:/grow/irrigate/list.html?registerId=" + registerId;
 	}
 	
 	@RequestMapping("approve")
 	public String approve(HttpServletRequest request, @RequestParam("id") int id) {
-		harvestService.approve(id);
+		irrigateService.approve(id);
 		String registerId = request.getParameter("registerId");
-		return "redirect:/grow/harvest/list.html?registerId=" + registerId;
+		return "redirect:/grow/irrigate/list.html?registerId=" + registerId;
 	}
 	
 	@RequestMapping("nullify")
 	public String nullify(HttpServletRequest request, @RequestParam("id") int id) {
-		harvestService.nullify(id);
+		irrigateService.nullify(id);
 		String registerId = request.getParameter("registerId");
-		return "redirect:/grow/harvest/list.html?registerId=" + registerId;
+		return "redirect:/grow/irrigate/list.html?registerId=" + registerId;
 	}
 	
 	protected void initialize(HttpServletRequest request) {

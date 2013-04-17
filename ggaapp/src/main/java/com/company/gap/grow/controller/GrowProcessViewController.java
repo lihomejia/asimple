@@ -20,12 +20,12 @@ import com.company.gap.grow.model.Register;
 
 @Controller
 @RequestMapping("grow/process")
-public class ProcessController extends BeanViewController<Register> {
+public class GrowProcessViewController extends BeanViewController<Register> {
 
 	@Autowired
 	private ICellService cellService;
 
-	public ProcessController() {
+	public GrowProcessViewController() {
 		super(Register.class);
 	}
 	

@@ -3,13 +3,13 @@ package com.company.gap.grow.dao.impl;
 import org.springframework.stereotype.Repository;
 
 import com.company.gap.base.dao.impl.BaseDaoImpl;
-import com.company.gap.grow.dao.IIrrigateDao;
+import com.company.gap.grow.dao.IGrowIrrigateDao;
 import com.company.gap.grow.model.Irrigate;
 
 @Repository
-public class IrrigateDaoImpl extends BaseDaoImpl<Irrigate> implements IIrrigateDao {
+public class GrowIrrigateDaoImpl extends BaseDaoImpl<Irrigate> implements IGrowIrrigateDao {
 
-	public IrrigateDaoImpl() {
+	public GrowIrrigateDaoImpl() {
 		super(Irrigate.class);
 	}
 }

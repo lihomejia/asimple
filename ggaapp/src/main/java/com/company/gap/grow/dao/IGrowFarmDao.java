@@ -4,5 +4,5 @@ import com.company.gap.base.dao.IBaseDao;
 import com.company.gap.grow.model.Farm;
 
 
-public interface IFarmDao extends IBaseDao<Farm> {
+public interface IGrowFarmDao extends IBaseDao<Farm> {
 }

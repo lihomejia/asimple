@@ -20,12 +20,12 @@ import com.company.gap.grow.model.Register;
 
 @Controller
 @RequestMapping("grow/archived")
-public class ArchivedController extends BeanViewController<Register> {
+public class GrowArchivedViewController extends BeanViewController<Register> {
 
 	@Autowired
 	private ICellService cellService;
 	
-	public ArchivedController() {
+	public GrowArchivedViewController() {
 		super(Register.class);
 	}
 	

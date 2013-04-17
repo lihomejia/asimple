@@ -9,16 +9,16 @@ import com.company.gap.base.dao.IBaseDao;
 import com.company.gap.base.service.impl.BaseServiceImpl;
 import com.company.gap.cell.enumeration.CellStatus;
 import com.company.gap.cell.service.ICellService;
-import com.company.gap.grow.dao.IRegisterDao;
+import com.company.gap.grow.dao.IGrowRegisterDao;
 import com.company.gap.grow.enumeration.GrowStatus;
 import com.company.gap.grow.model.Register;
-import com.company.gap.grow.service.IRegisterService;
+import com.company.gap.grow.service.IGrowRegisterService;
 
 @Service
-public class RegisterServiceImpl extends BaseServiceImpl<Register> implements IRegisterService {
+public class GrowRegisterServiceImpl extends BaseServiceImpl<Register> implements IGrowRegisterService {
 
 	@Autowired
-	private IRegisterDao dao;
+	private IGrowRegisterDao dao;
 	@Autowired
 	private ICellService cellService;
 
