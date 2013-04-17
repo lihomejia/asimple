@@ -11,16 +11,16 @@ import com.company.gap.base.controller.EntryController;
 import com.company.gap.cell.model.Cell;
 import com.company.gap.cell.service.ICellService;
 import com.company.gap.grow.model.Register;
-import com.company.gap.grow.service.IRegisterService;
+import com.company.gap.grow.service.IGrowRegisterService;
 
 @Controller
 @RequestMapping("grow/register")
-public class RegisterController extends EntryController {
+public class GrowRegisterEntryController extends EntryController {
 	
 	@Autowired
 	private ICellService cellService;
 	@Autowired
-	private IRegisterService registerService;
+	private IGrowRegisterService registerService;
 	
 	
 	@RequestMapping("add")

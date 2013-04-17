@@ -5,15 +5,15 @@ import org.springframework.stereotype.Service;
 
 import com.company.gap.base.dao.IBaseDao;
 import com.company.gap.base.service.impl.BaseServiceImpl;
-import com.company.gap.grow.dao.IHarvestDao;
+import com.company.gap.grow.dao.IGrowHarvestDao;
 import com.company.gap.grow.model.Harvest;
-import com.company.gap.grow.service.IHarvestService;
+import com.company.gap.grow.service.IGrowHarvestService;
 
 @Service
-public class HarvestServiceImpl extends BaseServiceImpl<Harvest> implements IHarvestService {
+public class GrowHarvestServiceImpl extends BaseServiceImpl<Harvest> implements IGrowHarvestService {
 
 	@Autowired
-	private IHarvestDao dao;
+	private IGrowHarvestDao dao;
 
 	@Override
 	protected IBaseDao<Harvest> get() {

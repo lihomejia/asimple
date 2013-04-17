@@ -11,40 +11,37 @@ import com.company.gap.base.model.Status;
 import com.company.gap.base.model.ViewFormModel;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.base.util.Dto;
-import com.company.gap.grow.model.Harvest;
+import com.company.gap.grow.model.Irrigate;
 
 @Controller
-@RequestMapping("grow/harvest")
-public class HarvestViewController extends BeanViewController<Harvest> {
-	
-	public HarvestViewController() {
-		super(Harvest.class);
+@RequestMapping("grow/irrigate")
+public class GrowIrrigateViewController extends BeanViewController<Irrigate> {
+
+	public GrowIrrigateViewController() {
+		super(Irrigate.class);
 	}
+
 
 	@Override
 	protected void dowithSearcher(HttpServletRequest request, ViewFormModel model) {
 		String registerId = request.getParameter("registerId");
 		request.setAttribute("registerId", registerId);
 		searcher.addSf("register_id", Op.EQ, registerId);
-		
-		
-		searcher.setTable("t_grow_harvest");
+		searcher.setTable("t_grow_irrigate");
 	}
 	
 
 	@Override
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
-		for (Harvest harvest : datas) {
-			Dto __added = harvest.get__added();
-			__added.put("operatedate", DateUtils.format(harvest.getOperatedate()));
-			__added.put("status", Status.valueOf(harvest.getStatus()).getName());
+		for (Irrigate  irrigate : datas) {
+			Dto __added = irrigate.get__added();
+			__added.put("date", DateUtils.format(irrigate.getDate()));
+			__added.put("status", Status.valueOf(irrigate.getStatus()).getName());
 		}
 	}
 	
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "grow/harvest/growHarvestList";
+		return "grow/irrigate/growIrrigateList";
 	}
-
-
 }

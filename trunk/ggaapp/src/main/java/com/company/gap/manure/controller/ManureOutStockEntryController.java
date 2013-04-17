@@ -15,7 +15,7 @@ import com.company.gap.base.controller.EntryController;
 import com.company.gap.cell.model.Cell;
 import com.company.gap.cell.service.ICellService;
 import com.company.gap.grow.enumeration.GrowStatus;
-import com.company.gap.grow.service.IRegisterService;
+import com.company.gap.grow.service.IGrowRegisterService;
 import com.company.gap.manure.model.OutStock;
 import com.company.gap.manure.model.Stock;
 import com.company.gap.manure.service.IManureOutStockService;
@@ -31,7 +31,7 @@ public class ManureOutStockEntryController extends EntryController {
 	@Autowired
 	private IManureStockService stockService;
 	@Autowired
-	private IRegisterService registerService;
+	private IGrowRegisterService registerService;
 	@Autowired
 	private IManureResourceService resourceService;
 	@Autowired

@@ -5,15 +5,15 @@ import org.springframework.stereotype.Service;
 
 import com.company.gap.base.dao.IBaseDao;
 import com.company.gap.base.service.impl.BaseServiceImpl;
-import com.company.gap.grow.dao.IFarmDao;
+import com.company.gap.grow.dao.IGrowFarmDao;
 import com.company.gap.grow.model.Farm;
-import com.company.gap.grow.service.IFarmService;
+import com.company.gap.grow.service.IGrowFarmService;
 
 @Service
-public class FarmServiceImpl extends BaseServiceImpl<Farm> implements IFarmService {
+public class GrowFarmServiceImpl extends BaseServiceImpl<Farm> implements IGrowFarmService {
 
 	@Autowired
-	private IFarmDao dao;
+	private IGrowFarmDao dao;
 
 	@Override
 	protected IBaseDao<Farm> get() {

@@ -3,13 +3,13 @@ package com.company.gap.grow.dao.impl;
 import org.springframework.stereotype.Repository;
 
 import com.company.gap.base.dao.impl.BaseDaoImpl;
-import com.company.gap.grow.dao.IHarvestDao;
+import com.company.gap.grow.dao.IGrowHarvestDao;
 import com.company.gap.grow.model.Harvest;
 
 @Repository
-public class HarvestDaoImpl extends BaseDaoImpl<Harvest> implements IHarvestDao {
+public class GrowHarvestDaoImpl extends BaseDaoImpl<Harvest> implements IGrowHarvestDao {
 	
-	public HarvestDaoImpl() {
+	public GrowHarvestDaoImpl() {
 		super(Harvest.class);
 	}
 
