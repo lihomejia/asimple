@@ -64,14 +64,14 @@
 						            <c:forEach items="${datas}" var="data" varStatus="status">
 						              	<tr>
 						              		<td>${pager.start+status.index}</td>
-						              		<td>${data.__added.usedate}</td>
-						              		<td>${data.__added.nameId }</td>
+						              		<td>${data.__disp.usedate}</td>
+						              		<td>${data.__disp.nameId }</td>
 						              		<td>${data.reason }</td>
 						              		<td>${data.useqty }</td>
 						              		<td>${data.machinecate }</td>
 						              		<td>${data.method}</td>
 						              		<td>${data.isolation }</td>
-						              		<td>${data.__added.status}</td>
+						              		<td>${data.__disp.status}</td>
 						              		<td>
 						              			<c:if test="${data.status == 0}">
 						              				<a class=linkStyle href="grow/manure/approve.html?id=${data.id}&registerId=${registerId}" onclick="return confirm('确定批准吗?')">批准</a>
