@@ -110,13 +110,13 @@
 											<td>${data.code}</td>
 											<td>${data.location}</td>
 											<td style="text-align:right">${data.area}</td>
-											<td>${data.__added.builddate}</td>
+											<td>${data.__disp.builddate}</td>
 											<td>
 												<c:if test="${data.status == 2}">
-													${data.__added.usestatus}
+													${data.__disp.usestatus}
 												</c:if>
 											</td>
-											<td>${data.__added.status}</td>
+											<td>${data.__disp.status}</td>
 											<td>
 												<c:if test="${data.status == 0}">
 							                		<a class=linkStyle href="cell/approve.html?id=${data.id}" onclick="return confirm('确定批准吗?')">批准</a>

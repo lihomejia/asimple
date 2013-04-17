@@ -113,14 +113,14 @@
 						            <c:forEach items="${datas}" var="data" varStatus="status">
 						              	<tr>
 							                <td>${pager.start+status.index}</td>
-							                <td>${data.__added.cellId}</td>
+							                <td>${data.__disp.cellId}</td>
 							                <td>${data.description}</td>
-							                <td>${data.__added.regdate}</td>
+							                <td>${data.__disp.regdate}</td>
 							                <td>${data.person}</td>
 							                <td>
-							                	${data.__added.growstatus}
+							                	${data.__disp.growstatus}
 							                </td>
-							                <td>${data.__added.status}</td>
+							                <td>${data.__disp.status}</td>
 							                <td>
 								                <a class=linkStyle href="<c:url value='/grow/farm/list.html?registerId=${data.id}'/>">农事活动</a>
 							                </td>

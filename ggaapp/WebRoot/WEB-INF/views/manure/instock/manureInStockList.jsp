@@ -123,14 +123,14 @@
 						            <c:forEach items="${datas}" var="data" varStatus="status">
 						              	<tr>
 							                <td>${pager.start+status.index}</td>
-							                <td>${data.__added.nameId}</td>
-							                <td>${data.__added.specId}</td>
-							                <td>${data.__added.batchId}</td>
-							                <td>${data.__added.producerId}</td>
+							                <td>${data.__disp.nameId}</td>
+							                <td>${data.__disp.specId}</td>
+							                <td>${data.__disp.batchId}</td>
+							                <td>${data.__disp.producerId}</td>
 							                <td style="text-align:right">${data.quantity}</td>
-							                <td>${data.__added.inuserId}</td>
-							                <td>${data.__added.indate}</td>
-							                <td>${data.__added.status}</td>
+							                <td>${data.__disp.inuserId}</td>
+							                <td>${data.__disp.indate}</td>
+							                <td>${data.__disp.status}</td>
 							                <td>
 							                	<c:if test="${data.status == 0 }">
 							                		<a class=linkStyle href="manure/instock/approve.html?id=${data.id}" onclick="return confirm('确定批准吗?')">批准</a>
