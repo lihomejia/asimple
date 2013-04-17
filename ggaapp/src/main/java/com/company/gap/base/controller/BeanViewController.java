@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.company.gap.base.dao.search.Pager;
 import com.company.gap.base.dao.search.SimpleSearcher;
+import com.company.gap.base.model.GeneralModelUtil;
 import com.company.gap.base.model.ViewFormModel;
 import com.company.gap.base.service.IBeanViewService;
 
@@ -25,10 +26,10 @@ public abstract class BeanViewController<T> extends BaseController {
 	/** 查询器 */
 	protected SimpleSearcher searcher;
 	
-	private Class<T> cls;
+	private Class<T> clazz;
 	
-	public BeanViewController(Class<T> cls) {
-		this.cls = cls;
+	public BeanViewController(Class<T> clazz) {
+		this.clazz = clazz;
 	}
 	
 	@RequestMapping("list")
@@ -70,6 +71,7 @@ public abstract class BeanViewController<T> extends BaseController {
 		if (searcher == null){
 			searcher = new SimpleSearcher();
 		}
+		searcher.setTable(GeneralModelUtil.getTableName(this.clazz));
 		if (pager == null) {
 			pager = Pager.getDefault();
 		}
@@ -89,7 +91,7 @@ public abstract class BeanViewController<T> extends BaseController {
 	 * 执行查询.
 	 */
 	protected void searching(HttpServletRequest request, ViewFormModel model) {
-		this.datas = viewService.queryList(searcher, pager, cls);
+		this.datas = viewService.queryList(searcher, pager, clazz);
 	}
 	
 	/**

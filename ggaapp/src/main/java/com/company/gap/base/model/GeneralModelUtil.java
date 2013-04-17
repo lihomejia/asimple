@@ -196,8 +196,8 @@ public class GeneralModelUtil {
 		return m.toString();
 	}
 	
-	public static String getTableName(Class<?> cls) {
-		Entity entity = cls.getAnnotation(Entity.class);
+	public static String getTableName(Class<?> clazz) {
+		Entity entity = clazz.getAnnotation(Entity.class);
 		if (entity != null) {
 			return entity.name();
 		}
