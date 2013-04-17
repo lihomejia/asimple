@@ -18,18 +18,18 @@ import com.company.gap.base.util.DateUtils;
 import com.company.gap.base.util.Dto;
 import com.company.gap.manure.enumeration.ResourceType;
 import com.company.gap.manure.model.OutStock;
-import com.company.gap.manure.service.IResourceService;
+import com.company.gap.manure.service.IManureResourceService;
 
 @Controller
 @RequestMapping("manure/outstock")
-public class OutStockViewController extends BeanViewController<OutStock> {
+public class ManureOutStockViewController extends BeanViewController<OutStock> {
 	
-	public OutStockViewController() {
+	public ManureOutStockViewController() {
 		super(OutStock.class);
 	}
 	
 	@Autowired
-	private IResourceService resourceService;
+	private IManureResourceService resourceService;
 	
 	@Override
 	protected void preparing(HttpServletRequest request, ViewFormModel model) {

@@ -10,16 +10,16 @@ import org.springframework.stereotype.Service;
 import com.company.gap.base.controller.BaseController;
 import com.company.gap.base.dao.IBaseDao;
 import com.company.gap.base.service.impl.BaseServiceImpl;
-import com.company.gap.manure.dao.IResourceDao;
+import com.company.gap.manure.dao.IManureResourceDao;
 import com.company.gap.manure.enumeration.ResourceType;
 import com.company.gap.manure.model.Resource;
-import com.company.gap.manure.service.IResourceService;
+import com.company.gap.manure.service.IManureResourceService;
 
 @Service
-public class ResourceServiceImpl extends BaseServiceImpl<Resource> implements IResourceService {
+public class ManureResourceServiceImpl extends BaseServiceImpl<Resource> implements IManureResourceService {
 
 	@Autowired
-	private IResourceDao<Resource> dao;
+	private IManureResourceDao<Resource> dao;
 	
 	protected IBaseDao<Resource> get() {
 		return this.dao;

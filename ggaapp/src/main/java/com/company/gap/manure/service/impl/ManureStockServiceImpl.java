@@ -9,20 +9,20 @@ import org.springframework.stereotype.Service;
 import com.company.gap.base.dao.IBaseDao;
 import com.company.gap.base.service.impl.BaseServiceImpl;
 import com.company.gap.base.util.Dto;
-import com.company.gap.manure.dao.IStockDao;
+import com.company.gap.manure.dao.IManureStockDao;
 import com.company.gap.manure.model.InStock;
 import com.company.gap.manure.model.Stock;
-import com.company.gap.manure.service.IResourceService;
-import com.company.gap.manure.service.IStockService;
+import com.company.gap.manure.service.IManureResourceService;
+import com.company.gap.manure.service.IManureStockService;
 
 @Service
-public class StockServiceImpl extends BaseServiceImpl<Stock> implements IStockService {
+public class ManureStockServiceImpl extends BaseServiceImpl<Stock> implements IManureStockService {
 
 	@Autowired
-	private IStockDao<Stock> dao;
+	private IManureStockDao<Stock> dao;
 	
 	@Autowired
-	private IResourceService resourceService;
+	private IManureResourceService resourceService;
 
 	@Override
 	protected IBaseDao<Stock> get() {

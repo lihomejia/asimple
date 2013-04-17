@@ -7,7 +7,7 @@ import com.company.gap.base.service.IBaseService;
 import com.company.gap.manure.enumeration.ResourceType;
 import com.company.gap.manure.model.Resource;
 
-public interface IResourceService extends IBaseService<Resource> {
+public interface IManureResourceService extends IBaseService<Resource> {
 	
 	List<Resource> queryByType(ResourceType type);
 	

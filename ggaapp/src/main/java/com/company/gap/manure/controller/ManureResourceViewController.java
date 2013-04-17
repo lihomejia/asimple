@@ -16,9 +16,9 @@ import com.company.gap.manure.model.Resource;
 
 @Controller
 @RequestMapping("manure/resource")
-public class ResourceViewController extends BeanViewController<Resource> {
+public class ManureResourceViewController extends BeanViewController<Resource> {
 	
-	public ResourceViewController() {
+	public ManureResourceViewController() {
 		super(Resource.class);
 	}
 

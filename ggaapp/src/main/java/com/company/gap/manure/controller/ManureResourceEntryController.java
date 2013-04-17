@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.company.gap.base.controller.EntryController;
 import com.company.gap.manure.enumeration.ResourceType;
 import com.company.gap.manure.model.Resource;
-import com.company.gap.manure.service.IResourceService;
+import com.company.gap.manure.service.IManureResourceService;
 
 @Controller
 @RequestMapping("manure/resource")
-public class ResourceEntryController extends EntryController {
+public class ManureResourceEntryController extends EntryController {
 	
 	@Autowired
-	private IResourceService resourceService;
+	private IManureResourceService resourceService;
 	
 	
 	@RequestMapping("add")
