@@ -29,7 +29,7 @@ public class GrowFarmEntryController extends EntryController {
 	public String edit(HttpServletRequest request, @RequestParam("id") int id) {
 		super.edit(request);
 		Farm farm = farmService.findById(id);
-		farm.get__added().put("activitydate", DateUtils.format(farm.getActivitydate()));
+		farm.get__disp().put("activitydate", DateUtils.format(farm.getActivitydate()));
 		request.setAttribute("data", farm);
 		return "grow/farm/growFarmEntry";
 	}

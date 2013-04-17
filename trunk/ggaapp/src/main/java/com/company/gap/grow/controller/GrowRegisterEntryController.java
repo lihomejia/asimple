@@ -35,7 +35,7 @@ public class GrowRegisterEntryController extends EntryController {
 		super.edit(request);
 		Register register = registerService.findById(id);
 		Cell cell = cellService.findById(register.getCellId());
-		register.get__added().put("register_cellid", cell.getCode());
+		register.get__disp().put("register_cellid", cell.getCode());
 		request.setAttribute("data", register);
 		return "grow/register/growRegisterEntry";
 	}

@@ -49,7 +49,7 @@ public class ManureOutStockServiceImpl extends BaseServiceImpl<OutStock> impleme
 		} else {
 			ret = dao.update(outStock);
 		}
-		double diff = outStock.getQuantity() - outStock.get__added().getDouble("quantity");
+		double diff = outStock.getQuantity() - outStock.get__disp().getDouble("quantity");
 		if (diff != 0) {
 			stockService.addStockQuantity(stockId, -diff);
 		}

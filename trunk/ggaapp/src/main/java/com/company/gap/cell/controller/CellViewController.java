@@ -33,9 +33,9 @@ public class CellViewController extends BeanViewController<Cell> {
 	@Override
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
 		for (Cell cell : this.datas) {
-			cell.get__added().put("status", Status.valueOf(cell.getStatus()).getName());
-			cell.get__added().put("usestatus", CellStatus.valueOf(cell.getUsestatus()).getName());
-			cell.get__added().put("builddate", DateUtils.format(cell.getBuilddate()));
+			cell.get__disp().put("status", Status.valueOf(cell.getStatus()).getName());
+			cell.get__disp().put("usestatus", CellStatus.valueOf(cell.getUsestatus()).getName());
+			cell.get__disp().put("builddate", DateUtils.format(cell.getBuilddate()));
 		}
 	}
 	

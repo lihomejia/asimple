@@ -35,9 +35,9 @@ public class GrowHarvestViewController extends BeanViewController<Harvest> {
 	@Override
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
 		for (Harvest harvest : datas) {
-			Dto __added = harvest.get__added();
-			__added.put("operatedate", DateUtils.format(harvest.getOperatedate()));
-			__added.put("status", Status.valueOf(harvest.getStatus()).getName());
+			Dto __disp = harvest.get__disp();
+			__disp.put("operatedate", DateUtils.format(harvest.getOperatedate()));
+			__disp.put("status", Status.valueOf(harvest.getStatus()).getName());
 		}
 	}
 	

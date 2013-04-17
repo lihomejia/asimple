@@ -47,11 +47,11 @@ public class GrowProcessViewController extends BeanViewController<Register> {
 		Map<Integer, String> cellId2Code = cellService.queryId2Code();
 		
 		for (Register register : datas) {
-			Dto __added = register.get__added();
-			__added.put("cellId", 		cellId2Code.get(register.getCellId()));
-			__added.put("regdate", 		DateUtils.format(register.getRegdate()));
-			__added.put("status", 		Status.valueOf(register.getStatus()).getName());
-			__added.put("growstatus", 	GrowStatus.valueOf(register.getGrowstatus()).getName());
+			Dto __disp = register.get__disp();
+			__disp.put("cellId", 		cellId2Code.get(register.getCellId()));
+			__disp.put("regdate", 		DateUtils.format(register.getRegdate()));
+			__disp.put("status", 		Status.valueOf(register.getStatus()).getName());
+			__disp.put("growstatus", 	GrowStatus.valueOf(register.getGrowstatus()).getName());
 		}
 	}
 

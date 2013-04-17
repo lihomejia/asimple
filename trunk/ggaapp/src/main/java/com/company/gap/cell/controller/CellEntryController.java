@@ -42,7 +42,7 @@ public class CellEntryController extends EntryController {
 	public String edit(HttpServletRequest request, @RequestParam("id") Integer id) {
 		super.edit(request);
 		Cell data = this.cellService.findById(id);
-		data.get__added().put("builddate", DateUtils.format(data.getBuilddate()));
+		data.get__disp().put("builddate", DateUtils.format(data.getBuilddate()));
 		request.setAttribute("data", data);
 		return "cell/entry";
 	}
@@ -51,7 +51,7 @@ public class CellEntryController extends EntryController {
 	public String disp(HttpServletRequest request, @RequestParam("id") int id) {
 		super.disp(request);
 		Cell data = this.cellService.findById(id);
-		data.get__added().put("builddate", DateUtils.format(data.getBuilddate()));
+		data.get__disp().put("builddate", DateUtils.format(data.getBuilddate()));
 		request.setAttribute("data", data);
 		return "cell/entry";
 	}
