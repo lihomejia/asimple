@@ -59,6 +59,12 @@ public class ManureOutStockEntryController extends BeanEntryController<OutStock>
 		return (stock != null) && (stock.getQuantity() >= quantity);
 	}
 	
+	@RequestMapping("update")
+	public String update(HttpServletRequest request, OutStock t) {
+		this.get().update(t);
+		return this.toList(request);
+	}
+	
 	@Override
 	protected void initializeAdd(HttpServletRequest request) {
 		super.initializeAdd(request);

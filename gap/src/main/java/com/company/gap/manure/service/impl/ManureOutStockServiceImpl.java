@@ -29,32 +29,38 @@ public class ManureOutStockServiceImpl extends BaseServiceImpl<OutStock> impleme
 	}
 
 	@Override
-	public int save(OutStock outStock) {
-		int stockId = outStock.getStockId();
+	public int save(OutStock t) {
+		int stockId = t.getStockId();
 		Stock stock = stockService.findById(stockId);
 
-		outStock.setNameId(stock.getNameId());
-		outStock.setSpecId(stock.getSpecId());
-		outStock.setBatchId(stock.getBatchId());
-		outStock.setProducerId(stock.getProducerId());
-		outStock.setKindId(stock.getKindId());
+		t.setNameId(stock.getNameId());
+		t.setSpecId(stock.getSpecId());
+		t.setBatchId(stock.getBatchId());
+		t.setProducerId(stock.getProducerId());
+		t.setKindId(stock.getKindId());
 		
-		int ret = 0;
-		if (outStock.getId() == null) {
-			int registerId = outStock.getRegisterId();
-			Register register = registerService.findById(registerId);
-			outStock.setCellId(register.getCellId());
-			
-			ret = dao.insert(outStock);
-		} else {
-			ret = dao.update(outStock);
-		}
-		double diff = outStock.getQuantity() - outStock.get__disp().getDouble("quantity");
-		if (diff != 0) {
-			stockService.addStockQuantity(stockId, -diff);
-		}
-		
-		return ret;
+		Register register = registerService.findById(t.getRegisterId());
+		t.setCellId(register.getCellId());
+		stockService.addStockQuantity(stockId, -t.getQuantity());
+		return dao.insert(t);
+	}
+	
+	@Override
+	public int update(OutStock t) {
+		double quantity = t.getQuantity();
+		double oquantity = t.get__disp().getDouble("quantity");
+		stockService.addStockQuantity(t.getStockId(), oquantity - quantity);
+		return dao.update(t);
+	}
+	
+	
+	@Override
+	public int deleteById(Integer id) {
+		OutStock outStock = dao.findById(id);
+		int stockId = outStock.getStockId();
+		//对于彻底删除的出库记录，故需要在此将库存加回去.
+		stockService.addStockQuantity(stockId, outStock.getQuantity());
+		return dao.deleteById(id);
 	}
 	
 	@Override
