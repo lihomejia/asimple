@@ -1,17 +1,7 @@
 function subform(flag) {
 	beforeSubmit();
-
-	if(flag === "save") {
-		document.forms[0].action=window.savepath;
-		return _subform(document.forms[0], true);
-	} else if(flag === "update") {
-		document.forms[0].action=window.updatepath;
-		return _subform(document.forms[0], true);
-	} else if(flag === "delete") {
-		document.forms[0].action=window.deletepath;
-		return _subform(document.forms[0], true);
-	}
-	return true;
+	document.forms[0].action=window.actionPath + flag + '.html';
+	return _subform(document.forms[0], true);
 }
 
 function _subform(form, validation){
@@ -25,3 +15,7 @@ function _subform(form, validation){
 }
 
 function beforeSubmit(){}
+
+function goBack(path) {
+	window.location.href = window.actionPath + (path || 'list.html');
+}
