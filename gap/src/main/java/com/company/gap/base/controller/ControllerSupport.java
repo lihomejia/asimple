@@ -2,6 +2,7 @@ package com.company.gap.base.controller;
 
 public interface ControllerSupport {
 	String ACT_NAME   = "_action";
+	String ACT_PATH   = "actionPath";
 	
 	String ACT_DELETE = "delete";
 	String ACT_GOPAGE = "gopage";

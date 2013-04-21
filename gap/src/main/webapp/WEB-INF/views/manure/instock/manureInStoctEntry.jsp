@@ -6,60 +6,23 @@
 <head>
 	<base href="<%=basePath%>">
     <title></title>
-  	<%@include file="/public/jsp/common.jsp"%>
+  	<%@include file="/public/jsp/commonEntry.jsp"%>
     <script type="text/javascript">
-  		function formCheck(){
-			if (document.form1.nameId.value == ""){
-	                alert("请输入肥料名称!");
-	                document.form1.nameId.focus();
-	                return false;
-	        }  
-			if (document.form1.indate.value == ""){
-	                alert("请输入入库时间!");
-	                document.form1.indate.focus();
-	                return false;
-	        }
-			if (document.form1.specId.value == ""){
-	                alert("请输入规格!");
-	                document.form1.specId.focus();
-	                return false;
-	        } 
-			if (document.form1.kindId.value == ""){
-	                alert("请输入所属类别!");
-	                document.form1.kindId.focus();
-	                return false;
-	        }
-			if (document.form1.batchId.value == ""){
-	                alert("请输入生产批号!");
-	                document.form1.batchId.focus();
-	                return false;
-	        } 
-			if (document.form1.expirydate.value == ""){
-	                alert("请输入有效期!");
-	                document.form1.expirydate.focus();
-	                return false;
-	        }
-			if (document.form1.producerId.value == ""){
-	                alert("请输入生产厂家!");
-	                document.form1.producerId.focus();
-	                return false;
-	        } 
-	        if (document.form1.quantity.value == "" || isNaN(document.form1.quantity.value)){
-	        	alert("请输入正确的入库数量!");
-	            document.form1.quantity.focus();
-	            return false;
-	        }
-			if (document.form1.inuserId.value == ""){
-                alert("请输入入库人!");
-                document.form1.inuserId.focus();
-                return false;
-	        }
-	        return true;
-		}
+    	JGAP.on(window, 'load', function() {
+	    	validator.regist({id : "nameId", name : "肥料名称"}, "notnull");
+	    	validator.regist({id : "specId", name : "规格"}, "notnull");
+	    	validator.regist({id : "kindId", name : "所属类别"}, "notnull");
+	    	validator.regist({id : "batchId", name : "生产批号"}, "notnull");
+	    	validator.regist({id : "producerId", name : "生产厂家"}, "notnull");
+	    	validator.regist({id : "quantity", name : "入库数量"}, "notnull", "number");
+	    	validator.regist({id : "indate", name : "入库时间"}, "date");
+	    	validator.regist({id : "expirydate", name : "有效期"}, "date");
+	    	validator.bindForm("form1");
+	   	});
     </script>
 </head>
 <body>
-	<form id="form1" name="form1" method="post" action="<c:url value='/manure/instock/save.html'/>" onsubmit="return formCheck();">
+	<form id="form1" name="form1" method="post">
 		<input type="hidden" name="id" value="${data.id}">
 		<table width="100%">
 			<tr>
@@ -89,10 +52,10 @@
 													<option value="${rs.id }" <c:if test="${rs.id==data.nameId}">selected</c:if>>${rs.name }</option>
 												</c:forEach>
 											</select>
-											<font color=red>*</font>
+											<font class=required>*</font>
 									  	</td>
 								      	<td width="15%" class=forumrow><div align="right">入库时间：</div></td>
-								      	<td width="35%" class=forumrow><input id="indate" name="indate" size="25" value="${data.__disp.indate}" class="Wdate" onClick="WdatePicker()"/><font color=red>*</font></td>
+								      	<td width="35%" class=forumrow><input id="indate" name="indate" size="25" value="${data.__disp.indate}" class="Wdate" onClick="WdatePicker()"/><font class=required>*</font></td>
 								    </tr>
 								    <tr> 
 								      	<td class=forumrow><div align="right">规格/型号：</div></td>
@@ -103,7 +66,7 @@
 													<option value="${rs.id }" <c:if test="${rs.id==data.specId}">selected</c:if>>${rs.name }</option>
 												</c:forEach>
 											</select>
-											<font color=red>*</font>
+											<font class=required>*</font>
 									  	</td>
 								      	<td class=forumrow><div align="right">所属类别：</div></td>
 								      	<td class=forumrow>
@@ -113,7 +76,7 @@
 													<option value="${rs.id }" <c:if test="${rs.id==data.kindId}">selected</c:if>>${rs.name }</option>
 											  	</c:forEach>
 										    </select>
-										    <font color=red>*</font>
+										    <font class=required>*</font>
 								      	</td>
 								    </tr>
 								    <tr> 
@@ -125,10 +88,10 @@
 													<option value="${rs.id }" <c:if test="${rs.id==data.batchId}">selected</c:if>>${rs.name }</option>
 										 		</c:forEach>
 								         	</select>
-								         	<font color=red>*</font>
+								         	<font class=required>*</font>
 									  	</td>
 								      	<td class=forumrow><div align="right">有效期：</div></td>
-								      	<td class=forumrow><input id="expirydate" name="expirydate" size="25" value="${data.__disp.expirydate}" class="Wdate" onClick="WdatePicker()"/><font color=red>*</font></td>
+								      	<td class=forumrow><input id="expirydate" name="expirydate" size="25" value="${data.__disp.expirydate}" class="Wdate" onClick="WdatePicker()"/><font class=required>*</font></td>
 								    </tr>
 								    <tr> 
 								    	<td class=forumrow><div align="right">生产商：</div></td>
@@ -139,7 +102,7 @@
 													<option value="${rs.id }" <c:if test="${rs.id==data.producerId}">selected</c:if>>${rs.name }</option>
 												</c:forEach>
 									        </select>
-									        <font color=red>*</font>
+									        <font class=required>*</font>
 									  	</td>
 								      	<td class=forumrow><div align="right">供应商：</div></td>
 								      	<td class=forumrow><input name="vendor" type="text" size="25" maxlength="30" value="${data.vendor}"/></td>
@@ -147,7 +110,7 @@
 								    <tr> 
 								    	<td class=forumrow><div align="right">入库数量：</div></td>
 								      	<td colspan="3" class=forumrow>
-								      		<input name="quantity" type="text" id="quantity" onkeypress="javascript:CheckNum();"  size="15" maxlength="10" value="${data.quantity}"/><font color=red>*</font> 公斤 <font color=red>(注意：输入数量必须统一单位，这里的单位是公斤。)</font>
+								      		<input name="quantity" type="text" id="quantity" onkeypress="javascript:CheckNum();"  size="15" maxlength="10" value="${data.quantity}"/><font class=required>*</font> 公斤 <font color=red>(注意：输入数量必须统一单位，这里的单位是公斤。)</font>
 								       	 	<div align="right"></div>
 								        </td>
 								    </tr>
@@ -173,14 +136,14 @@
 								    <tr> 
 								      	<td colspan="4" align="center">
 								      		<c:if test="${_action == 'add'}">
-										      	<input type="submit" class="btnStyle" value="添&nbsp;加" /> 
+										      	<input type="button" class="btnStyle" value="添&nbsp;加" onclick="subform('save');"/> 
 										        <input type="reset" class="btnStyle" value="清&nbsp;空" />
 								      		</c:if>
 								      		<c:if test="${_action == 'edit'}">
-								      			<input type="submit" class="btnStyle" value="保&nbsp;存" /> 
+								      			<input type="button" class="btnStyle" value="保&nbsp;存" onclick="subform('update');"/> 
 								      		</c:if>
 								      		<c:if test="${_action == 'edit' || _action == 'disp'}">
-								      			<input type="button" class="btnStyle" value="返&nbsp;回" onclick="window.location.href='<c:url value="/manure/instock/list.html"/>'"/>
+								      			<input type="button" class="btnStyle" value="返&nbsp;回" onclick="history.back();"/>
 								      		</c:if>
 								      	</td>
 								    </tr>

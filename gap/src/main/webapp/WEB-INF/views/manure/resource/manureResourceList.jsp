@@ -95,12 +95,14 @@
 												<c:if test="${data.status == 0}">
 													<a class=linkStyle href="manure/resource/approve.html?type=${type}&id=${data.id}" onclick="return confirm('确定批准吗?');">批准</a>
 													&nbsp;|&nbsp;
-													<a class=linkStyle href="manure/resource/entry.html?type=${type}&id=${data.id}">修改</a>
+													<a class=linkStyle href="manure/resource/edit.html?type=${type}&id=${data.id}">修改</a>
 													&nbsp;|&nbsp;
-													<a class=linkStyle href="manure/resource/delete.html?type=${type}&idd=${data.id}" onclick="return confirm('确定删除吗?');">删除</a>
+													<a class=linkStyle href="manure/resource/delete.html?type=${type}&id=${data.id}" onclick="return confirm('确定删除吗?');">删除</a>
 												</c:if>
 												<c:if test="${data.status == 2}">
 													<a class=linkStyle href="manure/resource/nullify.html?type=${type}&id=${data.id}" onclick="return confirm('确定作废吗?');">作废</a>
+													&nbsp;|&nbsp;
+													<a class=linkStyle href="manure/resource/disp.html?type=${type}&id=${data.id}">查看</a>
 												</c:if>
 											</td> 
 										</tr>

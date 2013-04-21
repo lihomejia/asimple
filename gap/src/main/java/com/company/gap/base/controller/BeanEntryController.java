@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.company.gap.base.model.Status;
 import com.company.gap.base.service.IBaseService;
 
 /**
@@ -96,13 +95,13 @@ public class BeanEntryController<T> extends BaseController {
 	
 	@RequestMapping("approve")
 	public String approve(HttpServletRequest request, @RequestParam("id") Integer id) {
-		this.get().updateStatus(id, Status.APPROVED.getStatus());
+		this.get().approve(id);
 		return toList(request);
 	}
 	
 	@RequestMapping("nullify")
 	public String nullify(HttpServletRequest request, @RequestParam("id") Integer id) {
-		this.get().updateStatus(id, Status.NULLIFY.getStatus());
+		this.get().nullify(id);
 		return toList(request);
 	}
 	
@@ -112,6 +111,7 @@ public class BeanEntryController<T> extends BaseController {
 	 */
 	protected void initialize(HttpServletRequest request) {
 		request.setAttribute(ACT_NAME, this._action);
+		request.setAttribute(ACT_PATH, this.getActionPath(request));
 	}
 	
 	/** 初始化与新建有关的资源 */

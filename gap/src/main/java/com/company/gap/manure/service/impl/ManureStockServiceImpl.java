@@ -36,6 +36,7 @@ public class ManureStockServiceImpl extends BaseServiceImpl<Stock> implements IM
 		stock.setSpecId(inStock.getSpecId());
 		stock.setBatchId(inStock.getBatchId());
 		stock.setProducerId(inStock.getProducerId());
+		stock.setQuantity(inStock.getQuantity());
 		//检索数据库中是否存在该库存对象.
 		Stock findStock = this.findBean(stock);
 		

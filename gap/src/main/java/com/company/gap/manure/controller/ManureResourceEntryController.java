@@ -6,57 +6,48 @@ import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.company.gap.base.controller.EntryController;
+import com.company.gap.base.controller.BeanEntryController;
+import com.company.gap.base.service.IBaseService;
 import com.company.gap.manure.enumeration.ResourceType;
 import com.company.gap.manure.model.Resource;
 import com.company.gap.manure.service.IManureResourceService;
 
 @Controller
 @RequestMapping("manure/resource")
-public class ManureResourceEntryController extends EntryController {
+public class ManureResourceEntryController extends BeanEntryController<Resource> {
 	
 	@Autowired
-	private IManureResourceService resourceService;
+	private IManureResourceService service;
 	
+	@Override
+	protected IBaseService<Resource> get() {return this.service;}
 	
-	@RequestMapping("add")
-	public String add(HttpServletRequest request) {
+	@Override
+	protected String toList(HttpServletRequest request) {
+		String type = request.getParameter("type");
+		return "redirect:/manure/resource/list.html?type=" + type;
+	}
+	
+	@Override
+	protected String toEntry(HttpServletRequest request) {
+		return "manure/resource/manureResourceEntry";
+	}
+	
+	@Override
+	protected void initializeAdd(HttpServletRequest request) {
+		super.initialize(request);
 		int type = NumberUtils.toInt(request.getParameter("type"));
 		request.setAttribute("resource", ResourceType.valueOf(type));
 		request.setAttribute("type", type);
-		return "manure/resource/manureResourceEntry";
-	}
-
-	@RequestMapping("save")
-	public String save(HttpServletRequest request, Resource resource) {
-		resourceService.save(resource);
-		String type = request.getParameter("type");
-		return "redirect:/manure/resource/list.html?type=" + type;
+		
 	}
 	
-	@RequestMapping("entry")
-	public String entry(HttpServletRequest request, @RequestParam("id") int id) {
-		Resource data = this.resourceService.findById(id);
-		int type = data.getType();
-		request.setAttribute("data", data);
+	@Override
+	protected void initializeEdit(HttpServletRequest request, Resource t) {
+		super.initializeEdit(request, t);
+		int type = t.getType();
 		request.setAttribute("resource", ResourceType.valueOf(type));
 		request.setAttribute("type", type);
-		return "manure/resource/manureResourceEntry";
-	}
-	
-	@RequestMapping("approve")
-	public String approve(HttpServletRequest request, @RequestParam("id") int id) {
-		resourceService.approve(id);
-		String type = request.getParameter("type");
-		return "redirect:/manure/resource/list.html?type=" + type;
-	}
-	
-	@RequestMapping("nullify")
-	public String nullify(HttpServletRequest request, @RequestParam("id") int id) {
-		resourceService.nullify(id);
-		String type = request.getParameter("type");
-		return "redirect:/manure/resource/list.html?type=" + type;
 	}
 }
