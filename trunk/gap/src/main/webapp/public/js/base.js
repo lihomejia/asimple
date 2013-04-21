@@ -56,6 +56,10 @@ JGAP = {
 	}
 }
 JGAP.userDf = 'Y-m-d';
+JGAP.getBp = function() {
+	var bases = document.getElementsByTagName('BASE');
+	return bases.length == 0 ? '' : bases[0].href;
+}
 JGAP.calUrl = function(url) {
 	var bp = this.getBp();
 	if (!bp) return url;
