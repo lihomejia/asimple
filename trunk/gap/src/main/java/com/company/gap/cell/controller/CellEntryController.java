@@ -38,8 +38,8 @@ public class CellEntryController extends BeanEntryController<Cell> {
 	}
 	
 	@Override
-	protected void initializeEdit(HttpServletRequest request, Cell cell) {
-		cell.get__disp().put("builddate", DateUtils.format(cell.getBuilddate()));
-		super.initializeEdit(request, cell);
+	protected void initializeEdit(HttpServletRequest request, Cell t) {
+		t.get__disp().put("builddate", DateUtils.format(t.getBuilddate()));
+		super.initializeEdit(request, t);
 	}
 }

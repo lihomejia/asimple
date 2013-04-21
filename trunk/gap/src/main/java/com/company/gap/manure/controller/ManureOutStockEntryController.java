@@ -8,10 +8,11 @@ import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.company.gap.base.controller.EntryController;
+import com.company.gap.base.controller.BeanEntryController;
+import com.company.gap.base.service.IBaseService;
+import com.company.gap.base.util.DateUtils;
 import com.company.gap.cell.model.Cell;
 import com.company.gap.cell.service.ICellService;
 import com.company.gap.grow.enumeration.GrowStatus;
@@ -24,10 +25,10 @@ import com.company.gap.manure.service.IManureStockService;
 
 @Controller
 @RequestMapping("manure/outstock")
-public class ManureOutStockEntryController extends EntryController {
+public class ManureOutStockEntryController extends BeanEntryController<OutStock> {
 	
 	@Autowired
-	private IManureOutStockService outStockService;
+	private IManureOutStockService service;
 	@Autowired
 	private IManureStockService stockService;
 	@Autowired
@@ -37,10 +38,16 @@ public class ManureOutStockEntryController extends EntryController {
 	@Autowired
 	private ICellService cellService;
 	
-	@RequestMapping("add")
-	public String add(HttpServletRequest request) {
-		super.add(request);
-		request.setAttribute("registerList", 	registerService.findListByGrowStatus(GrowStatus.GOING.getStatus()));
+	@Override
+	protected IBaseService<OutStock> get() {return this.service;}
+	
+	@Override
+	protected String toList(HttpServletRequest request) {
+		return "redirect:/manure/outstock/list.html";
+	}
+	
+	@Override
+	protected String toEntry(HttpServletRequest request) {
 		return "manure/outstock/manureOutStoctEntry";
 	}
 	
@@ -52,20 +59,17 @@ public class ManureOutStockEntryController extends EntryController {
 		return (stock != null) && (stock.getQuantity() >= quantity);
 	}
 	
-	@RequestMapping("save")
-	public String save(HttpServletRequest request, OutStock outStock) {
-		outStockService.save(outStock);
-		return "redirect:/manure/outstock/list.html";
+	@Override
+	protected void initializeAdd(HttpServletRequest request) {
+		super.initializeAdd(request);
+		request.setAttribute("registerList", 	registerService.findListByGrowStatus(GrowStatus.GOING.getStatus()));
 	}
 	
-	@RequestMapping("edit")
-	public String edit(HttpServletRequest request, @RequestParam("id") int id) {
-		super.edit(request);
+	@Override
+	protected void initializeEdit(HttpServletRequest request, OutStock t) {
 		Map<Integer, String> resId2Name = resourceService.queryResId2Name();
 		
-		OutStock outStock = outStockService.findById(id);
-		
-		Stock stock = stockService.findById(outStock.getStockId());
+		Stock stock = stockService.findById(t.getStockId());
 		StringBuffer stockId__disp = new StringBuffer();
 		stockId__disp.
 			append(resId2Name.get(stock.getNameId())).append("&nbsp;")
@@ -74,33 +78,12 @@ public class ManureOutStockEntryController extends EntryController {
 			.append(resId2Name.get(stock.getProducerId())).append("&nbsp;")
 			.toString()
 		;
-		outStock.get__disp().put("stockId", stockId__disp);
+		t.get__disp().put("stockId", stockId__disp);
 		
-		Cell cell = cellService.findById(outStock.getCellId());
-		outStock.get__disp().put("outstock_registerid__disp", cell.getCode() + "&nbsp;" + cell.getLocation());
-		
-		request.setAttribute("data", outStock);
-		return "manure/outstock/manureOutStoctEntry";
-	}
-	
-	@RequestMapping("disp")
-	public String disp(HttpServletRequest request, @RequestParam("id") int id) {
-		String result = this.edit(request, id);
-		super.disp(request);
-		
-		return result;
-	}
-	
-	@RequestMapping("approve")
-	public String approve(HttpServletRequest request, @RequestParam("id") int id) {
-		outStockService.approve(id);
-		return "redirect:/manure/outstock/list.html";
-	}
-	
-	@RequestMapping("nullify")
-	public String nullify(HttpServletRequest request, @RequestParam("id") int id) {
-		outStockService.nullify(id);
-		return "redirect:/manure/outstock/list.html";
+		Cell cell = cellService.findById(t.getCellId());
+		t.get__disp().put("outdate", DateUtils.format(t.getOutdate()));
+		t.get__disp().put("registerId", cell.getCode() + "&nbsp;" + cell.getLocation());
+		super.initializeEdit(request, t);
 	}
 	
 	

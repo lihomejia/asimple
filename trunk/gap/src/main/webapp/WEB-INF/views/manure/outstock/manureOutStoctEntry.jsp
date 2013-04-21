@@ -6,65 +6,50 @@
 <head>
 	<base href="<%=basePath%>">
     <title></title>
-    <%@include file="/public/jsp/commonjq.jsp"%>
+    <%@include file="/public/jsp/commonjqEntry.jsp"%>
     <script type="text/javascript">
-		function formCheck(){
-			if (document.form1.stockId.value == ""){
-                alert("请选择库存肥料!");
-                document.form1.stockId.focus();
-                return (false);
-        	}  
-			if (document.form1.outdate.value == ""){
-                alert("请输入出库时间!");
-                document.form1.outdate.focus();
-                return (false);
-        	}
-        	if(document.form1.registerId.value == ""){
-        		alert("请输入肥料用途!");
-                document.form1.registerId.focus();
-                return (false);
-        	}
-        	if (document.form1.quantity.value == "" 
-        		|| isNaN(document.form1.quantity.value)
-        		|| document.form1.quantity.value == 0){
-	        	alert("请输入正确的出库数量!");
-	            document.form1.quantity.focus();
-	            return false;
-		     }
-        	return true;
-        }
-        
-        function doOutStock(){
-        	if(formCheck()) {
-        		var quantity =$('#quantity').val();
-        		var oquantity = $('#oquantity').val();
-        		quantity = (quantity == '' || isNaN(quantity)) ? 0 : parseFloat(quantity);
-        		oquantity = (oquantity == '' || isNaN(oquantity)) ? 0 : parseFloat(oquantity);
-        		var dquantity = quantity - oquantity;
-        		if (dquantity <= 0) {
-        			//当修改的金额比原来的还小，则无需校验库存.
-        			$('#form1').submit();
-        			return;
-        		}
-        		
-        		$.ajax({
-				   type: "POST",
-				   url: "<%=basePath%>/manure/outstock/checkOutStock.html",
-				   data: 'stockId=' + $('#stockId').val() + '&quantity=' + dquantity,
-				   success: function(rs){
-				     	if(!rs){
-				     		alert("当前肥料库存不足!");
-				     		return;
-				     	}
-				     	$('#form1').submit();
-				   }
-				});
-        	}
+    	JGAP.on(window, 'load', function() {
+	    	validator.regist({id : "stockId", name : "库存肥料"}, "notnull");
+	    	validator.regist({id : "registerId", name : "肥料用途"}, "notnull");
+	    	validator.regist({id : "quantity", name : "出库数量"}, "notnull", "number");
+	    	validator.regist({id : "outdate", name : "出库时间"}, "date");
+	    	validator.bindForm("form1");
+	   	});
+	   	
+	   	function subform2(flag) {
+	   		var form = document.forms[0];
+        	if (typeof(form._onsubmit) == "function" && !form._onsubmit() 
+        		|| typeof(form.onsubmit) == "function" && !form.onsubmit()) {
+				return false;	
+			}
+       		var quantity =document.getElementById('quantity').value;
+       		var oquantity = document.getElementById('oquantity').value;
+       		quantity = (quantity == '' || isNaN(quantity)) ? 0 : parseFloat(quantity);
+       		oquantity = (oquantity == '' || isNaN(oquantity)) ? 0 : parseFloat(oquantity);
+       		var dquantity = quantity - oquantity;
+       		if (dquantity <= 0) {
+       			//当修改的金额比原来的还小，则无需校验库存.
+       			subform(flag);
+       			return;
+       		}
+       		
+       		$.ajax({
+			   type: "POST",
+			   url: "<%=basePath%>/manure/outstock/checkOutStock.html",
+			   data: 'stockId=' + document.getElementById('stockId').value + '&quantity=' + dquantity,
+			   success: function(rs){
+			     	if(!rs){
+			     		alert("当前肥料库存不足!");
+			     		return;
+			     	}
+			     	subform(flag);
+			   }
+			});
         }
     </script>
 </head>
 <body>
-	<form id="form1" name="form1" method="post" action="<c:url value='/manure/outstock/save.html'/>">
+	<form id="form1" name="form1" method="post">
 		<input type="hidden" name="id" value="${data.id}">
 		<table width="100%">
 			<tr>
@@ -120,7 +105,7 @@
 														 </c:if>
 														 <c:if test="${_action != 'add'}">
 														 	<input type="hidden" id="registerId" name="registerId" value="${data.registerId}"/>
-														 	<input type="hidden" name="cellId" value="cellId"/>
+														 	<input type="hidden" name="cellId" value="${data.cellId}"/>
 														 	<input type="text" value="${data.__disp.registerId}" disabled="disabled" />
 														 </c:if>
 								      				</td>
@@ -146,14 +131,14 @@
 								    <tr> 
 								      	<td colspan="4" align="center" class=forumrow>
 								        	<c:if test="${_action == 'add'}">
-										      	<input type="button" class="btnStyle" value="添&nbsp;加" onclick="doOutStock()"/> 
-								        		<input type="reset" class="btnStyle" value="清&nbsp; 空" />
+										      	<input type="button" class="btnStyle" value="添&nbsp;加" onclick="subform2('save');"/> 
+								        		<input type="reset" class="btnStyle" value="清&nbsp;空" />
 								      		</c:if>
 								      		<c:if test="${_action == 'edit'}">
-								      			<input type="button" class="btnStyle" value="保&nbsp;存" onclick="doOutStock()"/> 
+								      			<input type="button" class="btnStyle" value="保&nbsp;存" onclick="subform2('update');"/> 
 								      		</c:if>
 								      		<c:if test="${_action == 'edit' || _action == 'disp'}">
-								      			<input type="button" class="btnStyle" value="返&nbsp;回" onclick="window.location.href='<c:url value="/manure/outstock/list.html"/>'"/>
+								      			<input type="button" class="btnStyle" value="返&nbsp;回" onclick="history.back();"/>
 								      		</c:if>
 								        </td>
 								    </tr>

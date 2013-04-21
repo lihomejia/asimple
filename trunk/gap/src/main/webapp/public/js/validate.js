@@ -147,7 +147,8 @@ var validator = function() {
 				var ops = field.ops;
 
 				// 获得当前域值.
-				var fvalue = $(field.id).value;
+				var ovalue = document.getElementById(field.id);
+				var fvalue = ovalue && ovalue.value;
 				ops.gofor((function(stflag, op) {
 					var fn = this[op.type] || op.fn;
 					var ret = fn.apply(this, [fvalue].concat(op));
@@ -205,7 +206,7 @@ var validator = function() {
 
 		focus : function(f) {
 			try {
-				$(f).focus()
+				document.getElementById(f).focus()
 			} catch (e) {
 			}
 		},
@@ -217,7 +218,7 @@ var validator = function() {
 			var onsub = this.validate;
 			var _this = this;
 			if (document.body)
-				$(form).onsubmit = onsub.bind(_this);
+				document.getElementById(form).onsubmit = onsub.bind(_this);
 			else
 				JGAP.on(window, "load", function() {
 					_this.bindForm(form);

@@ -6,24 +6,16 @@
 <head>
 	<base href="<%=basePath%>">
     <title></title>
-    <%@include file="/public/jsp/commonjq.jsp"%>
+    <%@include file="/public/jsp/commonEntry.jsp"%>
     <script type="text/javascript">
-    
-	    function doSubmit() {
-	    	if (document.getElementById('name').value == '') {
-	    		alert('${resource.name}不能为空');
-	    		return false;
-	    	}
-	    	$('#form1').submit();
-		}
-		
-		function doCancel() {
-			window.location.href = "<c:url value='/manure/resource/list.html?type=${type}'/>";
-		}
+	    JGAP.on(window, 'load', function() {
+	    	validator.regist({id : "name", name : "${resource.name}"}, "notnull");
+	    	validator.bindForm("form1");
+	   	});
     </script>
 </head>
 <body>
-	<form id="form1" method="post" action="<c:url value='/manure/resource/save.html'/>">
+	<form id="form1" method="post">
 		<input type="hidden" name="id" value="${data.id}"/>
 		<input type="hidden" name="type" value="${type}"/>
 		<table width="100%">
@@ -43,8 +35,16 @@
 										</td>
 									</tr>
 									<tr>
-										<td style="text-align:right"><input type="button" value="&nbsp;取&nbsp;消&nbsp;" class="btnStyle" onclick="doCancel();"/></td>
-										<td style="text-align:left"><input type="button" value="&nbsp;确&nbsp;认&nbsp;" class="btnStyle" onclick="doSubmit();"/></td>
+										<td>&nbsp;</td>
+										<td>
+											<c:if test="${_action == 'add'}">
+										      	<input type="button" class="btnStyle" value="确&nbsp;认" onclick="subform('save');"/>
+								      		</c:if>
+								      		<c:if test="${_action == 'edit'}">
+								      			<input type="button" class="btnStyle" value="保&nbsp;存" onclick="subform('update');"/> 
+								      		</c:if>
+								      		<input type="button" class="btnStyle" value="返&nbsp;回" onclick="history.back();"/>
+										</td>
 									</tr>
 								</table>
 							</td>

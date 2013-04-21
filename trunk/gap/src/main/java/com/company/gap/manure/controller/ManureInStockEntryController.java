@@ -5,9 +5,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.company.gap.base.controller.EntryController;
+import com.company.gap.base.controller.BeanEntryController;
+import com.company.gap.base.service.IBaseService;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.base.util.Dto;
 import com.company.gap.manure.enumeration.ResourceType;
@@ -17,62 +17,35 @@ import com.company.gap.manure.service.IManureResourceService;
 
 @Controller
 @RequestMapping("manure/instock")
-public class ManureInStockEntryController extends EntryController {
+public class ManureInStockEntryController extends BeanEntryController<InStock> {
 
 	@Autowired
 	private IManureResourceService resourceService;
 	@Autowired
-	private IManureInStockService inStockService;
+	private IManureInStockService service;
 	
-	@RequestMapping("add")
-	public String add(HttpServletRequest request) {
-		super.add(request);
-		InStock inStock = new InStock();
-		inStock.setInuserId(10001);
-		inStock.get__disp().put("inuserId", "XXX");
-		request.setAttribute("data", inStock);
-		return "manure/instock/manureInStoctEntry";
-	}
+	@Override
+	protected IBaseService<InStock> get() {return this.service;}
 	
-	@RequestMapping("save")
-	public String save(HttpServletRequest request, InStock inStock) {
-		super.save(request);
-		inStockService.save(inStock);
+	@Override
+	protected String toList(HttpServletRequest request) {
 		return "redirect:/manure/instock/list.html";
 	}
 	
-	@RequestMapping("edit")
-	public String edit(HttpServletRequest request, @RequestParam("id") int id) {
-		super.edit(request);
-		InStock inStock = inStockService.findById(id);
-		Dto __disp = inStock.get__disp();
-		__disp.put("indate", DateUtils.format(inStock.getIndate()));
-		__disp.put("expirydate", DateUtils.format(inStock.getExpirydate()));
+	@Override
+	protected String toEntry(HttpServletRequest request) {
+		return "manure/instock/manureInStoctEntry";
+	}
+	
+	
+	@Override
+	protected void initializeEdit(HttpServletRequest request, InStock t) {
+		Dto __disp = t.get__disp();
+		__disp.put("indate", DateUtils.format(t.getIndate()));
+		__disp.put("expirydate", DateUtils.format(t.getExpirydate()));
 		__disp.put("inuserId", "XXX");
-		request.setAttribute("data", inStock);
-		return "manure/instock/manureInStoctEntry";
+		super.initializeEdit(request, t);
 	}
-	
-	@RequestMapping("disp")
-	public String disp(HttpServletRequest request, @RequestParam("id") int id) {
-		String result = this.edit(request, id);
-		super.disp(request);
-		return result;
-	}
-	
-	
-	@RequestMapping("approve")
-	public String approve(HttpServletRequest request, @RequestParam("id") int id) {
-		inStockService.approve(id);
-		return "redirect:/manure/instock/list.html";
-	}
-	
-	@RequestMapping("nullify")
-	public String nullify(HttpServletRequest request, @RequestParam("id") int id) {
-		inStockService.nullify(id);
-		return "redirect:/manure/instock/list.html";
-	}
-	
 	
 	@Override
 	protected void initialize(HttpServletRequest request) {

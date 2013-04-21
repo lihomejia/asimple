@@ -6,8 +6,6 @@
     <title></title>
     <%@include file="/public/jsp/commonEntry.jsp"%>
     <script type="text/javascript">
-   		window.savepath = "<c:url value='/cell/save.html'/>";
-    	window.updatepath = "<c:url value='/cell/update.html'/>";
 		JGAP.on(window, 'load', function() {
 	    	validator.regist({id : "code", name : "单元代码"}, "notnull");
 	    	validator.regist({id : "location", name : "单元位置"}, "notnull");
@@ -18,8 +16,8 @@
     </script>
 </head>
 <body>
-	<form id="form1" method="post" action="<c:url value='/cell/save.html'/>">
-		<input type="hidden" name="id" value="${data.id }"/>
+	<form id="form1" method="post">
+		<input type="hidden" name="id" value="${data.id}"/>
 		<table width="100%">
 			<tr>
 				<td>
@@ -58,15 +56,12 @@
 										<td>&nbsp;</td>
 										<td>
 											<c:if test="${_action == 'add'}">
-										      	<input type="button" value="确&nbsp;认" class="btnStyle" onclick="subform('save');"/>
-												<input type="button" value="返&nbsp;回" class="btnStyle" onclick="window.location.href='<c:url value="/cell/list.html"/>'"/>
+										      	<input type="button" class="btnStyle" value="确&nbsp;认" onclick="subform('save');"/>
 								      		</c:if>
 								      		<c:if test="${_action == 'edit'}">
 								      			<input type="button" class="btnStyle" value="保&nbsp;存" onclick="subform('update');"/> 
 								      		</c:if>
-								      		<c:if test="${_action == 'edit' || _action == 'disp'}">
-								      			<input type="button" class="btnStyle" value="返&nbsp;回" onclick="window.location.href='<c:url value="/cell/list.html"/>'"/>
-								      		</c:if>
+								      		<input type="button" class="btnStyle" value="返&nbsp;回" onclick="history.back();"/>
 										</td>
 									</tr>
 								</table>

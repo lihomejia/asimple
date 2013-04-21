@@ -1,5 +1,5 @@
 function subform(flag) {
-	beforeSubmit();
+	if (!beforeSubmit()) return false;
 	document.forms[0].action=window.actionPath + flag + '.html';
 	return _subform(document.forms[0], true);
 }
@@ -14,7 +14,7 @@ function _subform(form, validation){
 	form.submit();
 }
 
-function beforeSubmit(){}
+function beforeSubmit(){return true;}
 
 function goBack(path) {
 	window.location.href = window.actionPath + (path || 'list.html');

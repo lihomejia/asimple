@@ -4,35 +4,19 @@
 <head>
 	<base href="<%=basePath%>">
     <title></title>
-    <%@include file="/public/jsp/common.jsp"%>
+    <%@include file="/public/jsp/commonEntry.jsp"%>
     <script type="text/javascript">
-  		function formCheck(){
-			if (document.form1.cellId.value == ""){
-                alert("请选择生产单元!");
-            	document.form1.cellId.focus();
-                return false;
-	        }  
-			if (document.form1.regdate.value == ""){
-                alert("请输入登记时间!");
-                document.form1.regdate.focus();
-                return false;
-	        }
-			if (document.form1.description.value == ""){
-                alert("请输入描述!");
-                document.form1.description.focus();
-                return false;
-	        } 
-			if (document.form1.person.value == ""){
-                alert("请输入登记人!");
-                document.form1.person.focus();
-                return false;
-	        }
-	        return true;
-		}
+    	JGAP.on(window, 'load', function() {
+	    	validator.regist({id : "cellId", name : "生产单元"}, "notnull");
+	    	validator.regist({id : "description", name : "描述"}, "notnull");
+	    	validator.regist({id : "person", name : "登记人"}, "notnull");
+	    	validator.regist({id : "regdate", name : "登记时间"}, "date");
+	    	validator.bindForm("form1");
+	   	});
     </script>
 </head>
 <body>
-	<form id="form1" name="form1" method="post" action="<c:url value='/grow/register/save.html'/>" onsubmit="return formCheck();">
+	<form id="form1" name="form1" method="post">
 		<input type="hidden" name="id" value="${data.id}">
 		<table width="100%">
 			<tr>
@@ -66,7 +50,7 @@
 												<font color=red>*</font>
 											</c:if>
 											<c:if test="${_action != 'add'}">
-												<input type="hidden" name="cellId" value="${data.cellId}"/>
+												<input type="hidden" id="cellId" name="cellId" value="${data.cellId}"/>
 												<input type="text" value="${data.__disp.cellId}" disabled="disabled"/>
 											</c:if>
 									  	</td>
@@ -86,14 +70,14 @@
 								    <tr> 
 								      	<td colspan="4" align="center">
 								      		<c:if test="${_action == 'add'}">
-										      	<input type="submit" class="btnStyle" value="添&nbsp;加" /> 
+										      	<input type="button" class="btnStyle" value="添&nbsp;加" onclick="subform('save');"/>
 										        <input type="reset" class="btnStyle" value="清&nbsp;空" />
 								      		</c:if>
 								      		<c:if test="${_action == 'edit'}">
-								      			<input type="submit" class="btnStyle" value="保&nbsp;存" /> 
+								      			<input type="button" class="btnStyle" value="保&nbsp;存" onclick="subform('update');"/>
 								      		</c:if>
 								      		<c:if test="${_action == 'edit' || _action == 'disp'}">
-								      			<input type="button" class="btnStyle" value="返&nbsp;回" onclick="window.location.href='<c:url value="/grow/process/list.html"/>'"/>
+								      			<input type="button" class="btnStyle" value="返&nbsp;回" onclick="history.back();"/>
 								      		</c:if>
 								      	</td>
 								    </tr>
