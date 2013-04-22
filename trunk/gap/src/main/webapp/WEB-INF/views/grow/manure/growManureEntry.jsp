@@ -4,11 +4,12 @@
 <head>
 	<base href="<%=basePath%>">
     <title></title>
-    <%@include file="/public/jsp/common.jsp"%>
+    <%@include file="/public/jsp/commonEntry.jsp"%>
     <script type="text/javascript">
-  		function formCheck(){
-	        return true;
-		}
+  		JGAP.on(window, 'load', function() {
+	    	validator.regist({id : "usedate", name : "使用时间"}, "date");
+	    	validator.bindForm("form1");
+	    });
     </script>
 </head>
 <body>
@@ -35,24 +36,22 @@
 							<td>
 								<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="dataList">
 								    <tr> 
-								   	 	<td class=forumrow style="70%"><div align="right">时间:</div></td>
+								   	 	<td class=forumrow style="70%"><div align="right">使用时间:</div></td>
 										<td class=forumrow>
-											<input type="text" name="activitydate" value="${data.__disp.usedate }" class="Wdate" onClick="WdatePicker()"/>
+											<input type="text" id="usedate" name="usedate" value="${data.__disp.usedate }" class="Wdate" onClick="WdatePicker()"/>
 										</td>
 								    </tr>
 								    <tr> 
 								      	<td>&nbsp;</td>
 										<td>
 											<c:if test="${_action == 'add'}">
-										      	<input type="submit" class="btnStyle" value="添&nbsp;加" />
-										        <input type="reset" class="btnStyle" value="清&nbsp;空" />
+										      	<input type="button" value="确&nbsp;认" class="btnStyle" onclick="subform('save');"/>
+												<input type="reset" class="btnStyle" value="清&nbsp;空"/>
 								      		</c:if>
 								      		<c:if test="${_action == 'edit'}">
-								      			<input type="submit" class="btnStyle" value="保&nbsp;存" /> 
+								      			<input type="button" class="btnStyle" value="保&nbsp;存" onclick="subform('update');"/>
 								      		</c:if>
-								      		<c:if test="${_action == 'edit' || _action == 'disp'}">
-								      			<input type="button" class="btnStyle" value="返&nbsp;回" onclick="window.location.href='<c:url value="/grow/manure/list.html?registerId=${registerId}"/>'"/>
-								      		</c:if>
+								      		<input type="button" class="btnStyle" value="返&nbsp;回" onclick="history.back();"/>
 										</td>
 								    </tr>
 								</table>

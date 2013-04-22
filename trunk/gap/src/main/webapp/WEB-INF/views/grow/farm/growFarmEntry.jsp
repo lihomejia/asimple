@@ -4,15 +4,18 @@
 <head>
 	<base href="<%=basePath%>">
     <title></title>
-    <%@include file="/public/jsp/common.jsp"%>
+    <%@include file="/public/jsp/commonEntry.jsp"%>
     <script type="text/javascript">
-  		function formCheck(){
-	        return true;
-		}
+  		JGAP.on(window, 'load', function() {
+	    	validator.regist({id : "scale", name : "农事活动规模(亩)"}, "notnull", "number");
+	    	validator.regist({id : "persons", name : "参与人员数量"}, "notnull", "number");
+	    	validator.regist({id : "activitydate", name : "活动时间"}, "date");
+	    	validator.bindForm("form1");
+	   	});
     </script>
 </head>
 <body>
-	<form id="form1" name="form1" method="post" action="<c:url value='/grow/farm/save.html'/>" onsubmit="return formCheck();">
+	<form id="form1" name="form1" method="post">
 		<input type="hidden" name="id" value="${data.id}"/>
 		<input type="hidden" name="registerId" value="${registerId}"/>
 		<table width="100%">
@@ -35,9 +38,9 @@
 							<td>
 								<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="dataList">
 								    <tr> 
-								   	 	<td class=forumrow style="70%"><div align="right">时间:</div></td>
+								   	 	<td class=forumrow style="70%"><div align="right">活动时间:</div></td>
 										<td class=forumrow>
-											<input type="text" name="activitydate" value="${data.__disp.activitydate }" class="Wdate" onClick="WdatePicker()"/>
+											<input type="text" id="activitydate" name="activitydate" value="${data.__disp.activitydate }" class="Wdate" onClick="WdatePicker()"/>
 										</td>
 								    </tr>
 								    <tr>
@@ -47,15 +50,15 @@
 										</td>
 									</tr>
 								    <tr>
-										<td class=forumrow><div align="right">农事活动规模(亩）:</div></td>
+										<td class=forumrow><div align="right">农事活动规模(亩):</div></td>
 										<td class=forumrow>
-											<input type="text" name="scale" value="${data.scale }"/>
+											<input type="text" id="scale" name="scale" value="${data.scale }"/>
 										</td>
 									</tr>
 								    <tr>
 										<td class=forumrow><div align="right">参与人员数量:</div></td>
 										<td class=forumrow>
-											<input type="text" name="persons" value="${data.persons }"/>
+											<input type="text" id="persons" name="persons" value="${data.persons }"/>
 										</td>
 									</tr>
 								    <tr>
@@ -74,15 +77,13 @@
 								      	<td>&nbsp;</td>
 										<td>
 											<c:if test="${_action == 'add'}">
-										      	<input type="submit" class="btnStyle" value="添&nbsp;加" />
+										      	<input type="button" class="btnStyle" value="确&nbsp;认" onclick="subform('save');"/>
 										        <input type="reset" class="btnStyle" value="清&nbsp;空" />
 								      		</c:if>
 								      		<c:if test="${_action == 'edit'}">
-								      			<input type="submit" class="btnStyle" value="保&nbsp;存" /> 
+								      			<input type="button" class="btnStyle" value="保&nbsp;存" onclick="subform('update');"/> 
 								      		</c:if>
-								      		<c:if test="${_action == 'edit' || _action == 'disp'}">
-								      			<input type="button" class="btnStyle" value="返&nbsp;回" onclick="window.location.href='<c:url value="/grow/farm/list.html?registerId=${registerId}"/>'"/>
-								      		</c:if>
+								      		<input type="button" class="btnStyle" value="返&nbsp;回" onclick="history.back();"/>
 										</td>
 								    </tr>
 								</table>
