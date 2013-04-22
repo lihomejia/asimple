@@ -4,11 +4,14 @@
 <head>
 	<base href="<%=basePath%>">
     <title></title>
-    <%@include file="/public/jsp/common.jsp"%>
+    <%@include file="/public/jsp/commonEntry.jsp"%>
     <script type="text/javascript">
-  		function formCheck(){
-	        return true;
-		}
+  		JGAP.on(window, 'load', function() {
+	    	validator.regist({id : "date", name : "灌溉时间"}, "date");
+	    	validator.regist({id : "area", name : "灌溉面积"}, "notnull", "number");
+	    	validator.regist({id : "quantum", name : "灌溉量"}, "notnull", "number");
+	    	validator.bindForm("form1");
+	    });
     </script>
 </head>
 <body>
@@ -37,7 +40,7 @@
 								    <tr> 
 								   	 	<td class=forumrow style="70%"><div align="right">时间:</div></td>
 										<td class=forumrow>
-											<input type="text" name="date" value="${data.__disp.date }" class="Wdate" onClick="WdatePicker()"/>
+											<input type="text" id="date" name="date" value="${data.__disp.date }" class="Wdate" onClick="WdatePicker()"/>
 										</td>
 								    </tr>
 								    <tr>
@@ -49,13 +52,13 @@
 								    <tr>
 										<td class=forumrow><div align="right">灌溉面积:</div></td>
 										<td class=forumrow>
-											<input type="text" name="area" value="${data.area }"/>
+											<input type="text" id="area" name="area" value="${data.area }"/>
 										</td>
 									</tr>
 								    <tr>
 										<td class=forumrow><div align="right">灌溉量:</div></td>
 										<td class=forumrow>
-											<input type="text" name="quantum" value="${data.quantum}"/>
+											<input type="text" id="quantum" name="quantum" value="${data.quantum}"/>
 										</td>
 									</tr>
 								    <tr>
@@ -74,15 +77,13 @@
 								      	<td>&nbsp;</td>
 										<td>
 											<c:if test="${_action == 'add'}">
-										      	<input type="submit" class="btnStyle" value="添&nbsp;加" />
-										        <input type="reset" class="btnStyle" value="清&nbsp;空" />
+										      	<input type="button" value="确&nbsp;认" class="btnStyle" onclick="subform('save');"/>
+												<input type="reset" class="btnStyle" value="清&nbsp;空"/>
 								      		</c:if>
 								      		<c:if test="${_action == 'edit'}">
-								      			<input type="submit" class="btnStyle" value="保&nbsp;存" /> 
+								      			<input type="button" class="btnStyle" value="保&nbsp;存" onclick="subform('update');"/>
 								      		</c:if>
-								      		<c:if test="${_action == 'edit' || _action == 'disp'}">
-								      			<input type="button" class="btnStyle" value="返&nbsp;回" onclick="window.location.href='<c:url value="/grow/irrigate/list.html?registerId=${registerId}"/>'"/>
-								      		</c:if>
+								      		<input type="button" class="btnStyle" value="返&nbsp;回" onclick="history.back();"/>
 										</td>
 								    </tr>
 								</table>

@@ -6,8 +6,6 @@
     <title></title>
     <%@include file="/public/jsp/commonEntry.jsp"%>
     <script type="text/javascript">
-    	window.savepath = "<c:url value='/{action}/save.html}'/>";
-    	window.updatepath = "<c:url value='/{action}/update.html}'/>";
 	    JGAP.on(window, 'load', function() {
 	    	validator.regist({id : "", name : ""}, "notnull");
 	    	validator.bindForm("form1");
@@ -44,13 +42,13 @@
 										<td>
 											<c:if test="${_action == 'add'}">
 										      	<input type="button" value="确&nbsp;认" class="btnStyle" onclick="subform('save');"/>
-												<input type="button" value="返&nbsp;回" class="btnStyle" onclick="window.location.href='<c:url value="/{action}/list.html"/>'"/>
+												<input type="reset" class="btnStyle" value="清&nbsp;空"/>
 								      		</c:if>
 								      		<c:if test="${_action == 'edit'}">
-								      			<input type="button" class="btnStyle" value="保&nbsp;存" onclick="subform('update');"/> 
+								      			<input type="button" class="btnStyle" value="保&nbsp;存" onclick="subform('update');"/>
 								      		</c:if>
 								      		<c:if test="${_action == 'edit' || _action == 'disp'}">
-								      			<input type="button" class="btnStyle" value="返&nbsp;回" onclick="window.location.href='<c:url value="/{action}/list.html"/>'"/>
+								      			<input type="button" class="btnStyle" value="返&nbsp;回" onclick="history.back();"/>
 								      		</c:if>
 										</td>
 									</tr>
