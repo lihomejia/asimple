@@ -81,9 +81,9 @@
 										        <input type="reset" class="btnStyle" value="清&nbsp;空" />
 								      		</c:if>
 								      		<c:if test="${_action == 'edit'}">
-								      			<input type="button" class="btnStyle" value="保&nbsp;存" onclick="subform('update');"/> 
+								      			<input type="button" class="btnStyle" value="保&nbsp;存" onclick="subform('update');"/>
 								      		</c:if>
-								      		<input type="button" class="btnStyle" value="返&nbsp;回" onclick="history.back();"/>
+								      		<input type="button" class="btnStyle" value="返&nbsp;回" onclick="goBack();"/>
 										</td>
 								    </tr>
 								</table>

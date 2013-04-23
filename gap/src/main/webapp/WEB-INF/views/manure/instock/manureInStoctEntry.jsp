@@ -143,7 +143,7 @@
 								      			<input type="button" class="btnStyle" value="保&nbsp;存" onclick="subform('update');"/> 
 								      		</c:if>
 								      		<c:if test="${_action == 'edit' || _action == 'disp'}">
-								      			<input type="button" class="btnStyle" value="返&nbsp;回" onclick="history.back();"/>
+								      			<input type="button" class="btnStyle" value="返&nbsp;回" onclick="goBack();"/>
 								      		</c:if>
 								      	</td>
 								    </tr>
