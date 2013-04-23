@@ -16,6 +16,6 @@ function _subform(form, validation){
 
 function beforeSubmit(){return true;}
 
-function goBack(path) {
-	window.location.href = window.actionPath + (path || 'list.html');
+function goBack() {
+	location.replace(document.referrer);
 }
