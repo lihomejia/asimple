@@ -8,6 +8,6 @@ public class BaseController implements ControllerSupport {
 	protected String BASE_URL = "baseURL";
 	
 	protected String getActionPath(HttpServletRequest request) {
-		return request.getRequestURL().toString().replaceFirst("\\w+\\.html.*", "");
+		return request.getRequestURI().toString().replaceFirst("\\w+\\.html.*", "");
 	}
 }
