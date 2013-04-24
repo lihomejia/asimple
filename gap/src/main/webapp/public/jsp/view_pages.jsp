@@ -13,12 +13,12 @@
 	<input type="hidden" name="searcherId" id="searcherId" value="${searcherId}"/>
 </div> 
 <div>
-	<a href="javascript:first()" class="img_bullet"><img src="public/icons/resultset_first.png" /> </a>
-	<a href="javascript:prev()" class="img_bullet"><img src="public/icons/resultset_previous.png" /> </a>
+	<a href="javascript:first()" class="img_bullet"><img src="<%=basePath %>public/icons/resultset_first.png" /> </a>
+	<a href="javascript:prev()" class="img_bullet"><img src="<%=basePath %>public/icons/resultset_previous.png" /> </a>
 	<input size=5 id="page" value="${pager.page}" onkeyup="checkPageCode(this)" style="width: 35px; vertical-align: top" />
-	<a href="javascript:goPage()" class="img_bullet"><img src="public/icons/shape_square_go.png" /> </a>
-	<a href="javascript:next()" class="img_bullet"><img src="public/icons/resultset_next.png" /> </a>
-	<a href="javascript:last()" class="img_bullet"><img src="public/icons/resultset_last.png" /> </a>
+	<a href="javascript:goPage()" class="img_bullet"><img src="<%=basePath %>public/icons/shape_square_go.png" /> </a>
+	<a href="javascript:next()" class="img_bullet"><img src="<%=basePath %>public/icons/resultset_next.png" /> </a>
+	<a href="javascript:last()" class="img_bullet"><img src="<%=basePath %>public/icons/resultset_last.png" /> </a>
 </div>
 <script language="javascript">
 	function doMethod(method) {
