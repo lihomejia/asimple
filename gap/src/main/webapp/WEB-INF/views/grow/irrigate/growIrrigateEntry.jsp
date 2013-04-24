@@ -15,7 +15,7 @@
     </script>
 </head>
 <body>
-	<form id="form1" name="form1" method="post" action="<c:url value='/grow/irrigate/save.html'/>" onsubmit="return formCheck();">
+	<form id="form1" name="form1" method="post">
 		<input type="hidden" name="id" value="${data.id}"/>
 		<input type="hidden" name="registerId" value="${registerId}"/>
 		<table width="100%">

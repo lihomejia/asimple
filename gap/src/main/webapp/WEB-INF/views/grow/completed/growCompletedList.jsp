@@ -122,22 +122,22 @@
 							                </td>
 							                <td>${data.__disp.status}</td>
 							              	<td>
-								                <a class=linkStyle href="<c:url value='/grow/farm/list.html?registerId=${data.id}'/>">农事活动</a>
+								                <a class=linkStyle href="<%=basePath%>grow/farm/list.html?registerId=${data.id}">农事活动</a>
 							                </td>
 							                <td>
-								                <a class=linkStyle href="<c:url value='/grow/irrigate/list.html?registerId=${data.id}'/>">灌溉记录</a>
+								                <a class=linkStyle href="<%=basePath%>grow/irrigate/list.html?registerId=${data.id}">灌溉记录</a>
 											</td>
 							                <td>
-							                	<a class=linkStyle href="<c:url value='/manure/outstock/list.html?registerId=${data.id}'/>">肥料</a>&nbsp;|&nbsp;
-							                	<a class=linkStyle href="<c:url value='/manure/outstock/list.html?registerId=${data.id}'/>">农药</a>
+							                	<a class=linkStyle href="<%=basePath%>manure/outstock/list.html?registerId=${data.id}">肥料</a>&nbsp;|&nbsp;
+							                	<a class=linkStyle href="<%=basePath%>manure/outstock/list.html?registerId=${data.id}">农药</a>
 							                </td>
 							                <td>
-								                <a class=linkStyle href="<c:url value='/grow/harvest/list.html?registerId=${data.id}'/>">收割记录</a>
+								                <a class=linkStyle href="<%=basePath%>grow/harvest/list.html?registerId=${data.id}">收割记录</a>
 							                </td>
 							                <td>
-							                	<a class=linkStyle href="grow/register/archive.html?id=${data.id}" onclick="return confirm('确定归档吗?')">归档</a>
+							                	<a class=linkStyle href="<%=basePath%>grow/register/archive.html?id=${data.id}" onclick="return confirm('确定归档吗?')">归档</a>
 							                	&nbsp;|&nbsp;
-							                	<a class=linkStyle href="<c:url value='/grow/register/disp.html?id=${data.id}'/>">查看</a>
+							                	<a class=linkStyle href="<%=basePath%>grow/register/disp.html?id=${data.id}">查看</a>
 							                </td>
 						              	</tr>
 						        	</c:forEach>

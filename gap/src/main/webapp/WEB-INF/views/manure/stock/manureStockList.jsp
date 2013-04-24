@@ -126,8 +126,8 @@
 							                <td>${data.__disp.batchId}</td>
 							                <td>${data.__disp.producerId}</td>
 							                <td style="text-align:right">${data.quantity}</td>
-							                <td><a href="manure/instock/list.html?stockId=${data.id}">入库记录</a></td>
-							                <td><a href="manure/outstock/list.html?stockId=${data.id}">出库记录</a></td>
+							                <td><a href="<%=basePath%>manure/instock/list.html?stockId=${data.id}">入库记录</a></td>
+							                <td><a href="<%=basePath%>manure/outstock/list.html?stockId=${data.id}">出库记录</a></td>
 							                <td></td>
 						              	</tr>
 						        	</c:forEach>

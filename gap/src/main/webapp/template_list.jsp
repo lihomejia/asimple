@@ -89,16 +89,16 @@
 											<td>${data.__disp.status}</td>
 											<td>
 												<c:if test="${data.status == 0}">
-							                		<a class=linkStyle href="<c:url value='/{action}/approve.html?id=${data.id}'/>" onclick="return confirm('确定批准吗?')">批准</a>
+							                		<a class=linkStyle href="<%=basePath%>{action}/approve.html?id=${data.id}" onclick="return confirm('确定批准吗?')">批准</a>
 							                		&nbsp;|&nbsp;
-							                		<a class=linkStyle href="<c:url value='/{action}/edit.html?id=${data.id}'/>">修改</a>
+							                		<a class=linkStyle href="<%=basePath%>{action}/edit.html?id=${data.id}">修改</a>
 													&nbsp;|&nbsp;
-							                		<a class=linkStyle href="<c:url value='/{action}/delete.html?id=${data.id}'/>" onclick="return confirm('确定删除吗?')">删除</a>
+							                		<a class=linkStyle href="<%=basePath%>{action}/delete.html?id=${data.id}" onclick="return confirm('确定删除吗?')">删除</a>
 							                	</c:if>
 							                	<c:if test="${data.status == 2}">
-							                		<a class=linkStyle href="<c:url value='/{action}/disp.html?id=${data.id}'/>">查看</a>
+							                		<a class=linkStyle href="<%=basePath%>{action}/disp.html?id=${data.id}">查看</a>
 							                		&nbsp;|&nbsp;
-							                		<a class=linkStyle href="<c:url value='/{action}/nullify.html?id=${data.id}'/>" onclick="return confirm('确定作废吗?')">作废</a>
+							                		<a class=linkStyle href="<%=basePath%>{action}/nullify.html?id=${data.id}" onclick="return confirm('确定作废吗?')">作废</a>
 							                	</c:if>
 											</td>
 										</tr>
@@ -112,7 +112,7 @@
 			<tr><td>&nbsp;</td></tr>
 			<tr>
 				<td style="text-align:right">
-					<input type="button" class="btnStyle" value="&nbsp;新&nbsp;建&nbsp;" onclick="window.location.href='<c:url value="/{action}/add.html"/>';"/>
+					<input type="button" class="btnStyle" value="&nbsp;新&nbsp;建&nbsp;" onclick="window.location.href='<%=basePath%>{action}/add.html';"/>
 				</td>
 			</tr>
 		</table>
