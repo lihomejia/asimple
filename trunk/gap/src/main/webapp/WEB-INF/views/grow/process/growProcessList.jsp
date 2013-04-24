@@ -125,42 +125,42 @@
 							                <td>${data.__disp.status}</td>
 							                <td>
 							                	<c:if test="${data.status != 0 }">
-								                	<a class=linkStyle href="<c:url value='/grow/farm/list.html?registerId=${data.id}'/>">农事活动</a>
+								                	<a class=linkStyle href="<%=basePath%>grow/farm/list.html?registerId=${data.id}">农事活动</a>
 							                	</c:if>
 							                </td>
 							                <td>
 							                	<c:if test="${data.status != 0 }">
-								                	<a class=linkStyle href="<c:url value='/grow/irrigate/list.html?registerId=${data.id}'/>">灌溉记录</a>
+								                	<a class=linkStyle href="<%=basePath%>grow/irrigate/list.html?registerId=${data.id}">灌溉记录</a>
 								                </c:if>
 											</td>
 							                <td>
 							                	<c:if test="${data.status != 0 }">
-								                	<a class=linkStyle href="<c:url value='/grow/manure/list.html?registerId=${data.id}'/>">肥料</a>&nbsp;|&nbsp;
-								                	<a class=linkStyle href="<c:url value='/manure/outstock/list.html?registerId=${data.id}'/>">农药</a>
+								                	<a class=linkStyle href="<%=basePath%>grow/manure/list.html?registerId=${data.id}">肥料</a>&nbsp;|&nbsp;
+								                	<a class=linkStyle href="<%=basePath%>manure/outstock/list.html?registerId=${data.id}">农药</a>
 							                	</c:if>
 							                </td>
 							                <td>
 							                	<c:if test="${data.status != 0 }">
-								                	<a class=linkStyle href="<c:url value='/grow/harvest/list.html?registerId=${data.id}'/>">收割记录</a>
+								                	<a class=linkStyle href="<%=basePath%>grow/harvest/list.html?registerId=${data.id}">收割记录</a>
 							                	</c:if>
 							                </td>
 							                <td>
 							                	<c:if test="${data.status == 0 }">
-							                		<a class=linkStyle href="grow/register/approve.html?id=${data.id}" onclick="return confirm('确定批准吗?')">批准</a>
+							                		<a class=linkStyle href="<%=basePath%>grow/register/approve.html?id=${data.id}" onclick="return confirm('确定批准吗?')">批准</a>
 													&nbsp;|&nbsp;
-							                		<a class=linkStyle href="grow/register/edit.html?id=${data.id}">修改</a>
+							                		<a class=linkStyle href="<%=basePath%>grow/register/edit.html?id=${data.id}">修改</a>
 													&nbsp;|&nbsp;
-							                		<a class=linkStyle href="grow/register/delete.html?id=${data.id}" onclick="return confirm('确定删除吗?')">删除</a>
+							                		<a class=linkStyle href="<%=basePath%>grow/register/delete.html?id=${data.id}" onclick="return confirm('确定删除吗?')">删除</a>
 							                	</c:if>
 							                	<c:if test="${data.status == 2}">
-							                		<a class=linkStyle href="grow/register/complete.html?id=${data.id}" onclick="return confirm('确定完成吗?')">完成</a>
+							                		<a class=linkStyle href="<%=basePath%>grow/register/complete.html?id=${data.id}" onclick="return confirm('确定完成吗?')">完成</a>
 							                		&nbsp;|&nbsp;
-							                		<a class=linkStyle href="grow/register/nullify.html?id=${data.id}" onclick="return confirm('确定作废吗?')">作废</a>
+							                		<a class=linkStyle href="<%=basePath%>grow/register/nullify.html?id=${data.id}" onclick="return confirm('确定作废吗?')">作废</a>
 							                		&nbsp;|&nbsp;
-							                		<a class=linkStyle href="grow/register/disp.html?id=${data.id}">查看</a>
+							                		<a class=linkStyle href="<%=basePath%>grow/register/disp.html?id=${data.id}">查看</a>
 							                	</c:if>
 							                	<c:if test="${data.status == 3}">
-							                		<a class=linkStyle href="grow/register/disp.html?id=${data.id}">查看</a>
+							                		<a class=linkStyle href="<%=basePath%>grow/register/disp.html?id=${data.id}">查看</a>
 							                	</c:if>
 							                </td>
 						              	</tr>

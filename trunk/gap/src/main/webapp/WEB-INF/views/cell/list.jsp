@@ -142,7 +142,7 @@
 			<tr><td>&nbsp;</td></tr>
 			<tr>
 				<td style="text-align:right">
-					<input type="button" class="btnStyle" value="&nbsp;新&nbsp;建&nbsp;" onclick="window.location.href='<c:url value="/cell/add.html"/>';"/>
+					<input type="button" class="btnStyle" value="&nbsp;新&nbsp;建&nbsp;" onclick="window.location.href='<%=basePath%>cell/add.html';"/>
 				</td>
 			</tr>
 		</table>

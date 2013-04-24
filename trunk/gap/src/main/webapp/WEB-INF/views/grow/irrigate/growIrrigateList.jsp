@@ -72,16 +72,16 @@
 						              		<td>${data.comment }</td>
 						              		<td>
 						              			<c:if test="${data.status == 0}">
-						              				<a class=linkStyle href="grow/irrigate/approve.html?id=${data.id}&registerId=${registerId}" onclick="return confirm('确定批准吗?')">批准</a>
+						              				<a class=linkStyle href="<%=basePath%>grow/irrigate/approve.html?id=${data.id}&registerId=${registerId}" onclick="return confirm('确定批准吗?')">批准</a>
 													&nbsp;|&nbsp;
-						              				<a class=linkStyle href="grow/irrigate/edit.html?id=${data.id}&registerId=${registerId}">修改</a>
+						              				<a class=linkStyle href="<%=basePath%>grow/irrigate/edit.html?id=${data.id}&registerId=${registerId}">修改</a>
 													&nbsp;|&nbsp;
-							                		<a class=linkStyle href="grow/irrigate/delete.html?id=${data.id}&registerId=${registerId}" onclick="return confirm('确定删除吗?')">删除</a>
+							                		<a class=linkStyle href="<%=basePath%>grow/irrigate/delete.html?id=${data.id}&registerId=${registerId}" onclick="return confirm('确定删除吗?')">删除</a>
 						              			</c:if>
 						              			<c:if test="${data.status == 2}">
-						              				<a class=linkStyle href="grow/irrigate/disp.html?id=${data.id}&registerId=${registerId}">查看</a>
+						              				<a class=linkStyle href="<%=basePath%>grow/irrigate/disp.html?id=${data.id}&registerId=${registerId}">查看</a>
 													&nbsp;|&nbsp;
-							                		<a class=linkStyle href="grow/irrigate/nullify.html?id=${data.id}&registerId=${registerId}" onclick="return confirm('确定作废吗?')">作废</a>
+							                		<a class=linkStyle href="<%=basePath%>grow/irrigate/nullify.html?id=${data.id}&registerId=${registerId}" onclick="return confirm('确定作废吗?')">作废</a>
 						              			</c:if>
 						              		</td>
 						              	</tr>
@@ -95,7 +95,7 @@
 			<tr><td>&nbsp;</td></tr>
 			</tr>
 				<td style="text-align:right">
-					<input type="button" class="btnStyle" value="&nbsp;添&nbsp;加&nbsp;" onclick='window.location.href="<c:url value='/grow/irrigate/add.html'/>?registerId=${registerId}"'/>
+					<input type="button" class="btnStyle" value="&nbsp;添&nbsp;加&nbsp;" onclick='window.location.href="<%=basePath%>grow/irrigate/add.html?registerId=${registerId}"'/>
 				</td>
 			</tr>
 		</table>

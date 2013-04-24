@@ -4,15 +4,6 @@
 <head>
 	<base href="<%=basePath%>">
     <title></title>
-    <link rel="stylesheet" type="text/css" href="<c:url value='/public/css/style.css'/>" />
-    <script type="text/javascript">
-	    function doMethod(method) {
-			var form = document.getElementById('form1');
-			var url = form.action || window.location.href;
-			form.action = url.replace(/(\/\w+\.html)/i, "/" + method + ".html");
-			form.submit();
-		}
-    </script>
 </head>
 <body>
 	<form id="form1" method="post">

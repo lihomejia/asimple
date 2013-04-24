@@ -93,16 +93,16 @@
 											<td>${data.__disp.status}</td>
 											<td>
 												<c:if test="${data.status == 0}">
-													<a class=linkStyle href="manure/resource/approve.html?type=${type}&id=${data.id}" onclick="return confirm('确定批准吗?');">批准</a>
+													<a class=linkStyle href="<%=basePath%>manure/resource/approve.html?type=${type}&id=${data.id}" onclick="return confirm('确定批准吗?');">批准</a>
 													&nbsp;|&nbsp;
-													<a class=linkStyle href="manure/resource/edit.html?type=${type}&id=${data.id}">修改</a>
+													<a class=linkStyle href="<%=basePath%>manure/resource/edit.html?type=${type}&id=${data.id}">修改</a>
 													&nbsp;|&nbsp;
-													<a class=linkStyle href="manure/resource/delete.html?type=${type}&id=${data.id}" onclick="return confirm('确定删除吗?');">删除</a>
+													<a class=linkStyle href="<%=basePath%>manure/resource/delete.html?type=${type}&id=${data.id}" onclick="return confirm('确定删除吗?');">删除</a>
 												</c:if>
 												<c:if test="${data.status == 2}">
-													<a class=linkStyle href="manure/resource/nullify.html?type=${type}&id=${data.id}" onclick="return confirm('确定作废吗?');">作废</a>
+													<a class=linkStyle href="<%=basePath%>manure/resource/nullify.html?type=${type}&id=${data.id}" onclick="return confirm('确定作废吗?');">作废</a>
 													&nbsp;|&nbsp;
-													<a class=linkStyle href="manure/resource/disp.html?type=${type}&id=${data.id}">查看</a>
+													<a class=linkStyle href="<%=basePath%>manure/resource/disp.html?type=${type}&id=${data.id}">查看</a>
 												</c:if>
 											</td> 
 										</tr>
@@ -116,7 +116,7 @@
 			<tr><td>&nbsp;</td></tr>
 			<tr>
 				<td style="text-align:right">
-					<input type="button" class="btnStyle" value="&nbsp;新&nbsp;建&nbsp;" onclick="window.location.href='<c:url value="/manure/resource/add.html?type=${type}"/>';"/>
+					<input type="button" class="btnStyle" value="&nbsp;新&nbsp;建&nbsp;" onclick="window.location.href='<%=basePath%>manure/resource/add.html?type=${type}';"/>
 				</td>
 			</tr>
 		</table>

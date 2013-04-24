@@ -133,19 +133,19 @@
 							                <td>${data.__disp.status }</td>
 							                <td>
 							                	<c:if test="${data.status == 0 }">
-							                		<a class=linkStyle href="manure/outstock/approve.html?id=${data.id}" onclick="return confirm('确定批准吗?')">批准</a>
+							                		<a class=linkStyle href="<%=basePath%>manure/outstock/approve.html?id=${data.id}" onclick="return confirm('确定批准吗?')">批准</a>
 													&nbsp;|&nbsp;
-							                		<a class=linkStyle href="manure/outstock/edit.html?id=${data.id}">修改</a>
+							                		<a class=linkStyle href="<%=basePath%>manure/outstock/edit.html?id=${data.id}">修改</a>
 													&nbsp;|&nbsp;
-							                		<a class=linkStyle href="manure/outstock/delete.html?id=${data.id}" onclick="return confirm('确定删除吗?')">删除</a>
+							                		<a class=linkStyle href="<%=basePath%>manure/outstock/delete.html?id=${data.id}" onclick="return confirm('确定删除吗?')">删除</a>
 							                	</c:if>
 							                	<c:if test="${data.status == 2}">
-							                		<a class=linkStyle href="manure/outstock/disp.html?id=${data.id}">查看</a>
+							                		<a class=linkStyle href="<%=basePath%>manure/outstock/disp.html?id=${data.id}">查看</a>
 							                		&nbsp;|&nbsp;
-							                		<a class=linkStyle href="manure/outstock/nullify.html?id=${data.id}" onclick="return confirm('确定作废吗?')">作废</a>
+							                		<a class=linkStyle href="<%=basePath%>manure/outstock/nullify.html?id=${data.id}" onclick="return confirm('确定作废吗?')">作废</a>
 							                	</c:if>
 							                	<c:if test="${data.status == 3 }">
-							                		<a class=linkStyle href="manure/outstock/disp.html?id=${data.id}">查看</a>
+							                		<a class=linkStyle href="<%=basePath%>manure/outstock/disp.html?id=${data.id}">查看</a>
 							                	</c:if>
 							               	</td>
 						              	</tr>
