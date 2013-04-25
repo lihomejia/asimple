@@ -209,6 +209,6 @@ public class GeneralModelUtil {
 	}
 	
 	private static boolean isUsefulField(String field, Object value) {
-		return value != null && !"__disp".equals(field); 
+		return value != null && !"disp".equals(field); 
 	}
 }

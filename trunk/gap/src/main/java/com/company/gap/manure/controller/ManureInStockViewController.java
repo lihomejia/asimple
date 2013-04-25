@@ -47,14 +47,14 @@ public class ManureInStockViewController extends BeanViewController<InStock> {
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
 		Map<Integer, String> resId2Res = resourceService.queryResId2Name();
 		for (InStock inStock : datas) {
-			Dto __disp = inStock.get__disp();
-			__disp.put("nameId", 		resId2Res.get(inStock.getNameId()));
-			__disp.put("specId", 		resId2Res.get(inStock.getSpecId()));
-			__disp.put("batchId", 		resId2Res.get(inStock.getBatchId()));
-			__disp.put("producerId", 	resId2Res.get(inStock.getProducerId()));
-			__disp.put("indate", 		DateUtils.format(inStock.getIndate()));
-			__disp.put("status", 		Status.valueOf(inStock.getStatus()).getName());
-			__disp.put("inuserId", 	"XXX");
+			Dto disp = inStock.getDisp();
+			disp.put("nameId", 		resId2Res.get(inStock.getNameId()));
+			disp.put("specId", 		resId2Res.get(inStock.getSpecId()));
+			disp.put("batchId", 		resId2Res.get(inStock.getBatchId()));
+			disp.put("producerId", 	resId2Res.get(inStock.getProducerId()));
+			disp.put("indate", 		DateUtils.format(inStock.getIndate()));
+			disp.put("status", 		Status.valueOf(inStock.getStatus()).getName());
+			disp.put("inuserId", 	"XXX");
 		}
 	}
 	

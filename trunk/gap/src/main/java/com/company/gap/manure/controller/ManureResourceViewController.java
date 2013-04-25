@@ -34,8 +34,8 @@ public class ManureResourceViewController extends BeanViewController<Resource> {
 	@Override
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
 		for (Resource resource : datas) {
-			Dto __disp = resource.get__disp();
-			__disp.put("status", Status.valueOf(resource.getStatus()).getName());
+			Dto disp = resource.getDisp();
+			disp.put("status", Status.valueOf(resource.getStatus()).getName());
 		}
 	} 
 

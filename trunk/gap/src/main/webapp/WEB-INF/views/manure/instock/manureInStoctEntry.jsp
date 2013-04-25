@@ -55,7 +55,7 @@
 											<font class=required>*</font>
 									  	</td>
 								      	<td width="15%" class=forumrow><div align="right">入库时间：</div></td>
-								      	<td width="35%" class=forumrow><input id="indate" name="indate" size="25" value="${data.__disp.indate}" class="Wdate" onClick="WdatePicker()"/><font class=required>*</font></td>
+								      	<td width="35%" class=forumrow><input id="indate" name="indate" size="25" value="${data.disp.indate}" class="Wdate" onClick="WdatePicker()"/><font class=required>*</font></td>
 								    </tr>
 								    <tr> 
 								      	<td class=forumrow><div align="right">规格/型号：</div></td>
@@ -91,7 +91,7 @@
 								         	<font class=required>*</font>
 									  	</td>
 								      	<td class=forumrow><div align="right">有效期：</div></td>
-								      	<td class=forumrow><input id="expirydate" name="expirydate" size="25" value="${data.__disp.expirydate}" class="Wdate" onClick="WdatePicker()"/><font class=required>*</font></td>
+								      	<td class=forumrow><input id="expirydate" name="expirydate" size="25" value="${data.disp.expirydate}" class="Wdate" onClick="WdatePicker()"/><font class=required>*</font></td>
 								    </tr>
 								    <tr> 
 								    	<td class=forumrow><div align="right">生产商：</div></td>
@@ -126,7 +126,7 @@
 								      	<td class=forumrow><div align="right">入库人：</div></td>
 								      	<td class=forumrow>
 								      		<input type="hidden" name="inuserId" size="25" maxlength="30" value="${data.inuserId}"/>
-								      		<input type="text" value="${data.__disp.inuserId}" disabled="disabled"/>
+								      		<input type="text" value="${data.disp.inuserId}" disabled="disabled"/>
 								      	</td>
 								    </tr>
 								    <tr> 

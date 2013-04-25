@@ -86,7 +86,7 @@
 											<td></td>
 											<td></td>
 											<td></td>
-											<td>${data.__disp.status}</td>
+											<td>${data.disp.status}</td>
 											<td>
 												<c:if test="${data.status == 0}">
 							                		<a class=linkStyle href="<%=basePath%>{action}/approve.html?id=${data.id}" onclick="return confirm('确定批准吗?')">批准</a>

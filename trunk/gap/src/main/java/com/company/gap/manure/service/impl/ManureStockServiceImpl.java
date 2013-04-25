@@ -64,11 +64,11 @@ public class ManureStockServiceImpl extends BaseServiceImpl<Stock> implements IM
 		Map<Integer, String> resId2Name = resourceService.queryResId2Name();
 		List<Stock> list = dao.findStockList();
 		for (Stock stock : list) {
-			Dto __disp = stock.get__disp();
-			__disp.put("nameId", resId2Name.get(stock.getNameId()));
-			__disp.put("specId", resId2Name.get(stock.getSpecId()));
-			__disp.put("batchId", resId2Name.get(stock.getBatchId()));
-			__disp.put("producerId", resId2Name.get(stock.getProducerId()));
+			Dto disp = stock.getDisp();
+			disp.put("nameId", resId2Name.get(stock.getNameId()));
+			disp.put("specId", resId2Name.get(stock.getSpecId()));
+			disp.put("batchId", resId2Name.get(stock.getBatchId()));
+			disp.put("producerId", resId2Name.get(stock.getProducerId()));
 		}
 		return list;
 	}

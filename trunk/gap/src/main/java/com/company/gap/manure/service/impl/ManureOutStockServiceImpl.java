@@ -48,7 +48,7 @@ public class ManureOutStockServiceImpl extends BaseServiceImpl<OutStock> impleme
 	@Override
 	public int update(OutStock t) {
 		double quantity = t.getQuantity();
-		double oquantity = t.get__disp().getDouble("quantity");
+		double oquantity = t.getDisp().getDouble("quantity");
 		stockService.addStockQuantity(t.getStockId(), oquantity - quantity);
 		return dao.update(t);
 	}

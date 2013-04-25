@@ -51,11 +51,11 @@
 											</c:if>
 											<c:if test="${_action != 'add'}">
 												<input type="hidden" id="cellId" name="cellId" value="${data.cellId}"/>
-												<input type="text" value="${data.__disp.cellId}" disabled="disabled"/>
+												<input type="text" value="${data.disp.cellId}" disabled="disabled"/>
 											</c:if>
 									  	</td>
 								      	<td width="15%" class=forumrow><div align="right">登记时间：</div></td>
-								      	<td width="35%" class=forumrow><input id="regdate" name="regdate" size="25" value="${data.__disp.regdate}" class="Wdate" onClick="WdatePicker()"/><font color=red>*</font></td>
+								      	<td width="35%" class=forumrow><input id="regdate" name="regdate" size="25" value="${data.disp.regdate}" class="Wdate" onClick="WdatePicker()"/><font color=red>*</font></td>
 								    </tr>
 								    <tr> 
 								   	 	<td class=forumrow><div align="right">描述：</div></td>

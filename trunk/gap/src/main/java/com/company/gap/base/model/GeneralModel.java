@@ -36,7 +36,7 @@ public class GeneralModel {
 	private Date 		adate;
 	
 	@Transient
-	private Dto  __disp = new BaseDto();
+	private Dto  disp = new BaseDto();
 
 	@Override
 	public String toString() {
@@ -94,11 +94,11 @@ public class GeneralModel {
 		this.adate = adate;
 	}
 
-	public Dto get__disp() {
-		return __disp;
+	public Dto getDisp() {
+		return disp;
 	}
 
-	public void set__disp(Dto __disp) {
-		this.__disp = __disp;
+	public void setDisp(Dto disp) {
+		this.disp = disp;
 	}
 }
