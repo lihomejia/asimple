@@ -49,7 +49,7 @@
 									<tr>
 										<td class=forumrow style="70%"><div align="right">建档时间:</div></td>
 										<td class=forumrow>
-											<input type="text" id="builddate" name="builddate" value="${data.__disp.builddate}" class="Wdate" onClick="WdatePicker()"/><font class=required>*</font>
+											<input type="text" id="builddate" name="builddate" value="${data.disp.builddate}" class="Wdate" onClick="WdatePicker()"/><font class=required>*</font>
 										</td>
 									</tr>
 									<tr>
