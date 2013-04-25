@@ -111,7 +111,7 @@
 								      				</td>
 								      				<td><font color=red>*</font></td>
 								      				<td>
-								      					<input type="text" id="oquantity" name="disp['quantity']" size="5" value="${data.quantity}"/>
+								      					<input type="hidden" id="oquantity" name="disp['quantity']" size="5" value="${data.quantity}"/>
 								      					<input type="text" id="quantity" name="quantity" size="5" value="${data.quantity}"/>
 								      				</td>
 								      				<td><font color=red>*</font>公斤</td>
