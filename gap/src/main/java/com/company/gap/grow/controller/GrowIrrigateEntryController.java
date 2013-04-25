@@ -34,7 +34,7 @@ public class GrowIrrigateEntryController extends BeanEntryController<Irrigate> {
 	
 	@Override
 	public void initializeEdit(HttpServletRequest request, Irrigate t) {
-		t.get__disp().put("date", DateUtils.format(t.getDate()));
+		t.getDisp().put("date", DateUtils.format(t.getDate()));
 		super.initializeEdit(request, t);
 	}
 	

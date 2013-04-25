@@ -90,7 +90,7 @@
 										<tr>
 											<td>${pager.start+status.index}</td>
 											<td>${data.name}</td>
-											<td>${data.__disp.status}</td>
+											<td>${data.disp.status}</td>
 											<td>
 												<c:if test="${data.status == 0}">
 													<a class=linkStyle href="<%=basePath%>manure/resource/approve.html?type=${type}&id=${data.id}" onclick="return confirm('确定批准吗?');">批准</a>

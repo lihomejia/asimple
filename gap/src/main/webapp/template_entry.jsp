@@ -34,7 +34,7 @@
 									<tr>
 										<td class=forumrow><div align="right">日期框:</div></td>
 										<td class=forumrow>
-											<input type="text" name="date" value="${data.__disp.date}" class="Wdate" onClick="WdatePicker()"/>
+											<input type="text" name="date" value="${data.disp.date}" class="Wdate" onClick="WdatePicker()"/>
 										</td>
 									</tr>
 									<tr>

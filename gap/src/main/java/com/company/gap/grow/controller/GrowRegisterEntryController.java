@@ -39,8 +39,8 @@ public class GrowRegisterEntryController extends BeanEntryController<Register> {
 
 	@Override
 	protected void initializeEdit(HttpServletRequest request, Register t) {
-		t.get__disp().put("cellId", t.getCellId());
-		t.get__disp().put("regdate", DateUtils.format(t.getRegdate()));
+		t.getDisp().put("cellId", t.getCellId());
+		t.getDisp().put("regdate", DateUtils.format(t.getRegdate()));
 		super.initializeEdit(request, t);
 	}
 

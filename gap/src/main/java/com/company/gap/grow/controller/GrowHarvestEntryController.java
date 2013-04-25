@@ -34,7 +34,7 @@ public class GrowHarvestEntryController extends BeanEntryController<Harvest> {
 	
 	@Override
 	public void initializeEdit(HttpServletRequest request, Harvest t) {
-		t.get__disp().put("operatedate", DateUtils.format(t.getOperatedate()));
+		t.getDisp().put("operatedate", DateUtils.format(t.getOperatedate()));
 		super.initializeEdit(request, t);
 	}
 	

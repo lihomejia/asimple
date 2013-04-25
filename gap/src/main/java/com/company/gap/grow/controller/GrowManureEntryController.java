@@ -35,7 +35,7 @@ public class GrowManureEntryController extends BeanEntryController<Manure> {
 	
 	@Override
 	public void initializeEdit(HttpServletRequest request, Manure t) {
-		t.get__disp().put("usedate", DateUtils.format(t.getUsedate()));
+		t.getDisp().put("usedate", DateUtils.format(t.getUsedate()));
 		super.initializeEdit(request, t);
 	}
 	

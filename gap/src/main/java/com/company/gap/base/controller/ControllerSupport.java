@@ -13,9 +13,5 @@ public interface ControllerSupport {
 	String ACT_EDIT   = "edit";
 	String ACT_DISP   = "disp";
 	
-	String __DISP	  = "__disp";
-	
 	String __ALL      = "--全部--";
-	
-	
 }

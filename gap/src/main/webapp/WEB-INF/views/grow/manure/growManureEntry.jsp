@@ -38,7 +38,7 @@
 								    <tr> 
 								   	 	<td class=forumrow style="70%"><div align="right">使用时间:</div></td>
 										<td class=forumrow>
-											<input type="text" id="usedate" name="usedate" value="${data.__disp.usedate }" class="Wdate" onClick="WdatePicker()"/>
+											<input type="text" id="usedate" name="usedate" value="${data.disp.usedate }" class="Wdate" onClick="WdatePicker()"/>
 										</td>
 								    </tr>
 								    <tr> 

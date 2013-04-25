@@ -40,10 +40,10 @@ public class ManureInStockEntryController extends BeanEntryController<InStock> {
 	
 	@Override
 	protected void initializeEdit(HttpServletRequest request, InStock t) {
-		Dto __disp = t.get__disp();
-		__disp.put("indate", DateUtils.format(t.getIndate()));
-		__disp.put("expirydate", DateUtils.format(t.getExpirydate()));
-		__disp.put("inuserId", "XXX");
+		Dto disp = t.getDisp();
+		disp.put("indate", DateUtils.format(t.getIndate()));
+		disp.put("expirydate", DateUtils.format(t.getExpirydate()));
+		disp.put("inuserId", "XXX");
 		super.initializeEdit(request, t);
 	}
 	

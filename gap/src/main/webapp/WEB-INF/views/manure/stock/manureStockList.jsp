@@ -121,10 +121,10 @@
 				              		<c:forEach items="${datas}" var="data" varStatus="status">
 				              			<tr>
 							                <td>${pager.start+status.index}</td>
-							                <td>${data.__disp.nameId}</td>
-							                <td>${data.__disp.specId}</td>
-							                <td>${data.__disp.batchId}</td>
-							                <td>${data.__disp.producerId}</td>
+							                <td>${data.disp.nameId}</td>
+							                <td>${data.disp.specId}</td>
+							                <td>${data.disp.batchId}</td>
+							                <td>${data.disp.producerId}</td>
 							                <td style="text-align:right">${data.quantity}</td>
 							                <td><a href="<%=basePath%>manure/instock/list.html?stockId=${data.id}">入库记录</a></td>
 							                <td><a href="<%=basePath%>manure/outstock/list.html?stockId=${data.id}">出库记录</a></td>

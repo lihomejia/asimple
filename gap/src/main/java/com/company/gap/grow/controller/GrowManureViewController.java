@@ -31,9 +31,9 @@ public class GrowManureViewController extends BeanViewController<Manure> {
 	@Override
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
 		for (Manure farm : datas) {
-			Dto __disp = farm.get__disp();
-			__disp.put("usedate", DateUtils.format(farm.getUsedate()));
-			__disp.put("status", Status.valueOf(farm.getStatus()).getName());
+			Dto disp = farm.getDisp();
+			disp.put("usedate", DateUtils.format(farm.getUsedate()));
+			disp.put("status", Status.valueOf(farm.getStatus()).getName());
 		}
 	}
 

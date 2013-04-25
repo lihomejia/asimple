@@ -76,19 +76,19 @@ public class ManureOutStockEntryController extends BeanEntryController<OutStock>
 		Map<Integer, String> resId2Name = resourceService.queryResId2Name();
 		
 		Stock stock = stockService.findById(t.getStockId());
-		StringBuffer stockId__disp = new StringBuffer();
-		stockId__disp.
+		StringBuffer stockIddisp = new StringBuffer();
+		stockIddisp.
 			append(resId2Name.get(stock.getNameId())).append("&nbsp;")
 			.append(resId2Name.get(stock.getSpecId())).append("&nbsp;")
 			.append(resId2Name.get(stock.getBatchId())).append("&nbsp;")
 			.append(resId2Name.get(stock.getProducerId())).append("&nbsp;")
 			.toString()
 		;
-		t.get__disp().put("stockId", stockId__disp);
+		t.getDisp().put("stockId", stockIddisp);
 		
 		Cell cell = cellService.findById(t.getCellId());
-		t.get__disp().put("outdate", DateUtils.format(t.getOutdate()));
-		t.get__disp().put("registerId", cell.getCode() + "&nbsp;" + cell.getLocation());
+		t.getDisp().put("outdate", DateUtils.format(t.getOutdate()));
+		t.getDisp().put("registerId", cell.getCode() + "&nbsp;" + cell.getLocation());
 		super.initializeEdit(request, t);
 	}
 	

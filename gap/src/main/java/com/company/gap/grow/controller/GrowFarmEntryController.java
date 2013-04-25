@@ -35,7 +35,7 @@ public class GrowFarmEntryController extends BeanEntryController<Farm> {
 	
 	@Override
 	public void initializeEdit(HttpServletRequest request, Farm t) {
-		t.get__disp().put("activitydate", DateUtils.format(t.getActivitydate()));
+		t.getDisp().put("activitydate", DateUtils.format(t.getActivitydate()));
 		super.initializeEdit(request, t);
 	}
 	

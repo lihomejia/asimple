@@ -28,9 +28,9 @@ public class GrowFarmViewController extends BeanViewController<Farm> {
 	@Override
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
 		for (Farm farm : datas) {
-			Dto __disp = farm.get__disp();
-			__disp.put("activitydate", DateUtils.format(farm.getActivitydate()));
-			__disp.put("status", Status.valueOf(farm.getStatus()).getName());
+			Dto disp = farm.getDisp();
+			disp.put("activitydate", DateUtils.format(farm.getActivitydate()));
+			disp.put("status", Status.valueOf(farm.getStatus()).getName());
 		}
 	}
 	

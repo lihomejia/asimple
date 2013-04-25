@@ -68,13 +68,13 @@
 						              		<td>${pager.start+status.index}</td>
 						              		<td>${data.product}</td>
 						              		<td>${data.batch }</td>
-						              		<td>${data.__disp.operatedate }</td>
+						              		<td>${data.disp.operatedate }</td>
 						              		<td>${data.scale }</td>
 						              		<td>${data.yield }</td>
 						              		<td>${data.storage }</td>
 						              		<td>${data.respmanager }</td>
 						              		<td>${data.storemanager }</td>
-						              		<td>${data.__disp.status}</td>
+						              		<td>${data.disp.status}</td>
 						              		<td>${data.comment }</td>
 						              		<td>
 						              			<c:if test="${data.status == 0}">
