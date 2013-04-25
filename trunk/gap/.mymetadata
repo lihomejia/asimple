@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project-module type="WEB" name="app" id="app" context-root="/app" j2ee-spec="1.4" archive="app.war">
+<project-module
+  type="WEB"
+  name="gap"
+  id="gap"
+  context-root="/gap"
+  j2ee-spec="1.4"
+  archive="gap.war">
   <attributes>
-    <attribute name="webrootdir" value="src/main/webapp"/>
+    <attribute name="webrootdir" value="src/main/webapp" />
   </attributes>
 </project-module>
+
