@@ -2,6 +2,8 @@ package com.company.gap.base.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.company.gap.base.util.FieldPropertyConvert;
+
 public class BaseController implements ControllerSupport {
 	protected String _action;
 	
@@ -9,5 +11,13 @@ public class BaseController implements ControllerSupport {
 	
 	protected String getActionPath(HttpServletRequest request) {
 		return request.getRequestURI().toString().replaceFirst("\\w+\\.html.*", "");
+	}
+	
+	protected String toField(String property) {
+		return FieldPropertyConvert.propertyToField(property);
+	}
+	
+	protected String toProperty(String field) {
+		return FieldPropertyConvert.fieldToProperty(field);
 	}
 }
