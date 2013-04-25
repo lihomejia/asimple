@@ -42,7 +42,6 @@
 										<td></td>
 										<td></td>
 									</tr>
-									<%@include file="/public/jsp/searchBtn.jsp"%>
 								</table>
 							</td>
 						</tr>
