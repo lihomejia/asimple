@@ -7,10 +7,10 @@
 		<base href="<%=basePath%>">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Homepage</title>
-		<link rel="stylesheet" type="text/css" href="public/css/reset.css" />
-		<link rel="stylesheet" type="text/css" href="public/css/style.css" />
-		<script type="text/javascript" src="public/js/menujs.js"></script>
-		<script type="text/javascript" src="public/js/jquery-1.9.1.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="<%=basePath%>public/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="<%=basePath%>public/css/style.css" />
+		<script type="text/javascript" src="<%=basePath%>public/js/menujs.js"></script>
+		<script type="text/javascript" src="<%=basePath%>public/js/jquery-1.9.1.min.js"></script>
 		
 		<script type="text/javascript">
 		
