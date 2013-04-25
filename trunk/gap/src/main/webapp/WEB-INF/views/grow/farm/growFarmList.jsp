@@ -7,6 +7,8 @@
 	<base href="<%=basePath%>">
 	<title>农事活动</title>
 	<%@include file="/public/jsp/common.jsp"%>
+	<script type="text/javascript">
+	</script>
 </head>
 
 <body>
@@ -95,7 +97,7 @@
 			<tr><td>&nbsp;</td></tr>
 			</tr>
 				<td style="text-align:right">
-					<input type="button" class="btnStyle" value="&nbsp;添&nbsp;加&nbsp;" onclick="window.location.href='<%=basePath%>grow/farm/add.html?registerId=${registerId}'"/>
+					<input type="button" class="btnStyle" value="添&nbsp;加" onclick="window.location.href='<%=basePath%>grow/farm/add.html?registerId=${registerId}'"/>
 				</td>
 			</tr>
 		</table>
