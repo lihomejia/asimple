@@ -77,13 +77,13 @@
 								      	<td>&nbsp;</td>
 										<td>
 											<c:if test="${_action == 'add'}">
-										      	<input type="button" class="btnStyle" value="确&nbsp;认" onclick="subform('save');"/>
-										        <input type="reset" class="btnStyle" value="清&nbsp;空" />
+										      	<%@include file="/public/jsp/btn/save.jsp"%>
+										      	<%@include file="/public/jsp/btn/empty.jsp"%>
 								      		</c:if>
 								      		<c:if test="${_action == 'edit'}">
-								      			<input type="button" class="btnStyle" value="保&nbsp;存" onclick="subform('update');"/>
+								      			<%@include file="/public/jsp/btn/update.jsp"%>
 								      		</c:if>
-								      		<input type="button" class="btnStyle" value="返&nbsp;回" onclick="JGAP.goBack();"/>
+								      		<%@include file="/public/jsp/btn/back.jsp"%>
 										</td>
 								    </tr>
 								</table>
