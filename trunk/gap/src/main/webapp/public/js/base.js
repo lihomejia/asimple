@@ -69,6 +69,9 @@ JGAP.calUrl = function(url) {
 	}
 	return bp + url;
 }
+JGAP.goBack = function() {
+	location.replace(document.referrer);
+}
 /*
 if (!window.$) window.$ = function() {
 	var elements = new Array();

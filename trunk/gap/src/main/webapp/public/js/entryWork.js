@@ -15,7 +15,3 @@ function _subform(form, validation){
 }
 
 function beforeSubmit(){return true;}
-
-function goBack() {
-	location.replace(document.referrer);
-}
