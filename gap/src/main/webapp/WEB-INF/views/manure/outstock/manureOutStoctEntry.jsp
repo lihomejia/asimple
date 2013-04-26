@@ -35,7 +35,7 @@
        		
        		$.ajax({
 			   type: "POST",
-			   url: "<%=basePath%>/manure/outstock/checkOutStock.html",
+			   url: "<%=basePath%>manure/outstock/checkOutStock.html",
 			   data: 'stockId=' + document.getElementById('stockId').value + '&quantity=' + dquantity,
 			   success: function(rs){
 			     	if(!rs){
@@ -46,11 +46,22 @@
 			   }
 			});
         }
+        
+        function doStockList() {
+			var record = window.showModalDialog("<%=basePath%>manure/stock/select/list.html", 'dialogWidth:780px; dialogHeight:280px; edge:Raised; center:yes; help:no; status:no;scroll=no;');
+			if (!record) return;
+			document.getElementById('stockId').value = record.stockId;
+			document.getElementById('nameId').value = record.nameId;
+			document.getElementById('specId').value = record.specId;
+			document.getElementById('batchId').value = record.batchId;
+			document.getElementById('producerId').value = record.producerId;
+		}
     </script>
 </head>
 <body>
 	<form id="form1" name="form1" method="post">
 		<input type="hidden" name="id" value="${data.id}">
+		<input type="hidden" name="stockId" id="stockId" value="${data.stockId}"/>
 		<table width="100%">
 			<tr>
 				<td>
@@ -70,59 +81,54 @@
 						<tr>
 							<td>
 								<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="dataList">
-									<tr> 
+									<tr>
 								    	<td width="15%" class=forumrow><div align="right">肥料名称：</div></td>
-								      	<td width="45%" class=forumrow>
-								      		<c:if test="${_action == 'add'}">
-										  		<select id="stockId" name="stockId" style="width :90%">
-										  			<option value="">请选择出库肥料</option>
-										  			<c:forEach items="${stocks}" var="stock">
-										  				<option value="${stock.id}">${stock.disp.nameId}_${stock.disp.sizeId}_${stock.disp.batchId}_${stock.disp.producerId}</option>
-										  			</c:forEach>
-										  		</select>
-										  		<font color=red>*</font>
-										  	</c:if>
-										  	<c:if test="${_action != 'add'}">
-										  		<input type="hidden" id="stockId" name="stockId" value="${data.stockId}"/>
-										  		<input type="text" value="${data.disp.stockId}" disabled="disabled" size="40"/>
+								      	<td width="35%" class=forumrow>
+										  	<input id="nameId" value="${data.disp.nameId}" readonly="readonly" class="tdbgcolor_txtleft"/>
+										  	<c:if test="${_action == 'add'}">
+										  		<input type=button class="btnStyle" value="选择库存" onclick="doStockList();" />
 										  	</c:if>
 									  	</td>
 								      	<td width="15%" class=forumrow><div align="right">出库时间：</div></td>
-								      	<td width="25%" class=forumrow><input id="outdate" name="outdate" value="${data.disp.outdate}" class="Wdate" onClick="WdatePicker()"/><font color=red>*</font></td>
+								      	<td width="35%" class=forumrow><input id="outdate" name="outdate" value="${data.disp.outdate}" class="Wdate" onClick="WdatePicker()"/><font color=red>*</font></td>
 								    </tr>
-								    <tr> 
-								      	<td  class=forumrow><div align="right">施用于：</div></td>
-								      	<td  class=forumrow>
-								      		<table cellpadding="0" cellspacing="0" style="width:100%">
-								      			<tr>
-								      				<td style="width:50%">
-								      					<c:if test="${_action == 'add'}">
-										      				<select id="registerId" name="registerId" style="width:100%">
-														 		<c:forEach items="${registerList}" var="register">
-														 			<option value="${register.id}">${register.description}</option>
-														 		</c:forEach>
-														 	</select>
-														 </c:if>
-														 <c:if test="${_action != 'add'}">
-														 	<input type="hidden" id="registerId" name="registerId" value="${data.registerId}"/>
-														 	<input type="hidden" name="cellId" value="${data.cellId}"/>
-														 	<input type="text" value="${data.disp.registerId}" disabled="disabled" />
-														 </c:if>
-								      				</td>
-								      				<td><font color=red>*</font></td>
-								      				<td>
-								      					<input type="hidden" id="oquantity" name="disp['quantity']" size="5" value="${data.quantity}"/>
-								      					<input type="text" id="quantity" name="quantity" size="5" value="${data.quantity}"/>
-								      				</td>
-								      				<td><font color=red>*</font>公斤</td>
-								      			</tr>
-								      		</table>
-									 	</td>
-										<td class=forumrow><div align="right">出库人员：</div></td>
+								    <tr>
+								    	<td class=forumrow><div align="right">规格/型号：</div></td>
+								    	<td><input id="specId" value="${data.disp.specId}" readonly="readonly" class="tdbgcolor_txtleft"/></td>
+								    	<td class=forumrow><div align="right">出库人员：</div></td>
 								      	<td class=forumrow>
 								      		<input type="hidden" name="outuserId" size="25" maxlength="30" value="${data.outuserId}"/>
 								      		<input type="text" value="${data.disp.outuserId}" disabled="disabled"/>
 								      	</td>
+								    </tr>
+								    <tr>
+								    	<td class=forumrow><div align="right">生产批号：</div></td>
+								    	<td><input id="batchId" value="${data.disp.batchId}" readonly="readonly" class="tdbgcolor_txtleft"/></td>
+								    	<td class=forumrow><div align="right">施用于：</div></td>
+								    	<td>
+					      					<c:if test="${_action == 'add'}">
+							      				<select id="registerId" name="registerId" style="width:80%">
+											 		<c:forEach items="${registerList}" var="register">
+											 			<option value="${register.id}">${register.description}</option>
+											 		</c:forEach>
+											 	</select>
+											 	<font color=red>*</font>
+											 </c:if>
+											 <c:if test="${_action != 'add'}">
+											 	<input type="hidden" id="registerId" name="registerId" value="${data.registerId}"/>
+											 	<input type="hidden" name="cellId" value="${data.cellId}"/>
+											 	<input type="text" value="${data.disp.registerId}" disabled="disabled" />
+											 </c:if>
+					      				</td>
+								    </tr>
+								    <tr>
+								    	<td class=forumrow><div align="right">生产商：</div></td>
+								    	<td><input id="producerId" value="${data.disp.producerId}" readonly="readonly" class="tdbgcolor_txtleft"/></td>
+								    	<td class=forumrow><div align="right">数量(公斤)：</div></td>
+								    	<td>
+					      					<input type="hidden" id="oquantity" name="disp['quantity']" size="5" value="${data.quantity}"/>
+					      					<input type="text" id="quantity" name="quantity" size="10" value="${data.quantity}"/><font color=red>*</font>
+					      				</td>
 								    </tr>
 								    <tr> 
 								      	<td rowspan="2" class=forumrow><div align="right">备注：</div></td>

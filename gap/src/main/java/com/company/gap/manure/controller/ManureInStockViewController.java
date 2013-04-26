@@ -39,7 +39,7 @@ public class ManureInStockViewController extends BeanViewController<InStock> {
 		String stockId = request.getParameter("stockId");
 		if (StringUtils.isNotEmpty(stockId)) {
 			request.setAttribute("stockId", stockId);
-			searcher.addSf("stock_id", Op.EQ, stockId);
+			searcher.addSf(toField("stockId"), Op.EQ, stockId);
 		}
 	}
 	

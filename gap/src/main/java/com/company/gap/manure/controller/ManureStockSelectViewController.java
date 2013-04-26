@@ -4,7 +4,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,8 +18,8 @@ import com.company.gap.manure.model.Stock;
 import com.company.gap.manure.service.IManureResourceService;
 
 @Controller
-@RequestMapping("manure/stock")
-public class ManureStockViewController extends BeanViewController<Stock> {
+@RequestMapping("manure/stock/select")
+public class ManureStockSelectViewController extends BeanViewController<Stock> {
 	
 	@Autowired
 	private IManureResourceService resourceService;
@@ -46,6 +45,8 @@ public class ManureStockViewController extends BeanViewController<Stock> {
 		if (StringUtils.isNotEmpty(sizeId)) 	searcher.addSf(toField("sizeId"), Op.EQ, sizeId);
 		if (StringUtils.isNotEmpty(batchId)) 	searcher.addSf(toField("batchId"), Op.EQ, batchId);
 		if (StringUtils.isNotEmpty(producerId)) searcher.addSf(toField("producerId"), Op.EQ, producerId);
+		
+		searcher.setAddsql("quantity > 0");
 	}
 
 	
@@ -63,7 +64,7 @@ public class ManureStockViewController extends BeanViewController<Stock> {
 
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "manure/stock/manureStockList";
+		return "manure/stock/manureStockSelectList";
 	}
 
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.company.gap.base.controller.BeanEntryController;
 import com.company.gap.base.service.IBaseService;
 import com.company.gap.base.util.DateUtils;
+import com.company.gap.base.util.Dto;
 import com.company.gap.cell.model.Cell;
 import com.company.gap.cell.service.ICellService;
 import com.company.gap.grow.enumeration.GrowStatus;
@@ -75,20 +76,16 @@ public class ManureOutStockEntryController extends BeanEntryController<OutStock>
 	protected void initializeEdit(HttpServletRequest request, OutStock t) {
 		Map<Integer, String> resId2Name = resourceService.queryResId2Name();
 		
-		Stock stock = stockService.findById(t.getStockId());
-		StringBuffer stockIddisp = new StringBuffer();
-		stockIddisp.
-			append(resId2Name.get(stock.getNameId())).append("&nbsp;")
-			.append(resId2Name.get(stock.getSpecId())).append("&nbsp;")
-			.append(resId2Name.get(stock.getBatchId())).append("&nbsp;")
-			.append(resId2Name.get(stock.getProducerId())).append("&nbsp;")
-			.toString()
-		;
-		t.getDisp().put("stockId", stockIddisp);
+		Dto disp = t.getDisp();
+		
+		disp.put("nameId", 		resId2Name.get(t.getNameId()));
+		disp.put("specId", 		resId2Name.get(t.getSpecId()));
+		disp.put("batchId", 	resId2Name.get(t.getBatchId()));
+		disp.put("producerId", 	resId2Name.get(t.getProducerId()));
 		
 		Cell cell = cellService.findById(t.getCellId());
-		t.getDisp().put("outdate", DateUtils.format(t.getOutdate()));
-		t.getDisp().put("registerId", cell.getCode() + "&nbsp;" + cell.getLocation());
+		disp.put("outdate", DateUtils.format(t.getOutdate()));
+		disp.put("registerId", cell.getCode() + "&nbsp;" + cell.getLocation());
 		super.initializeEdit(request, t);
 	}
 	
