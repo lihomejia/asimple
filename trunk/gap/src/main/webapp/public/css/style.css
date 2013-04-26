@@ -497,3 +497,16 @@ text-decoration:underline;}
 	color: red; 
 	font-height: 900;
 }
+.tdbgcolor_txtright {
+	border: 1px solid #7F9DB9;
+	background-color: #F1EFE6;
+	text-align: right;
+	color: #ACA899;
+}
+
+.tdbgcolor_txtleft {
+	border: 1px solid #7F9DB9;
+	background-color: #F1EFE6;
+	color: #ACA899;
+	word-break:break-all;
+}
