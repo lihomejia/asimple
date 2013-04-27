@@ -4,7 +4,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -56,7 +55,7 @@ public class ManureStockViewController extends BeanViewController<Stock> {
 			Dto disp = stock.getDisp();
 			disp.put("nameId", 		resId2Res.get(stock.getNameId()));
 			disp.put("specId", 		resId2Res.get(stock.getSpecId()));
-			disp.put("batchId", 		resId2Res.get(stock.getBatchId()));
+			disp.put("batchId", 	resId2Res.get(stock.getBatchId()));
 			disp.put("producerId",	resId2Res.get(stock.getProducerId()));
 		}
 	}
@@ -65,5 +64,4 @@ public class ManureStockViewController extends BeanViewController<Stock> {
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
 		return "manure/stock/manureStockList";
 	}
-
 }

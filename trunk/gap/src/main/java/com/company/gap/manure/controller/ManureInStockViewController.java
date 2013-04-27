@@ -50,7 +50,7 @@ public class ManureInStockViewController extends BeanViewController<InStock> {
 			Dto disp = inStock.getDisp();
 			disp.put("nameId", 		resId2Res.get(inStock.getNameId()));
 			disp.put("specId", 		resId2Res.get(inStock.getSpecId()));
-			disp.put("batchId", 		resId2Res.get(inStock.getBatchId()));
+			disp.put("batchId", 	resId2Res.get(inStock.getBatchId()));
 			disp.put("producerId", 	resId2Res.get(inStock.getProducerId()));
 			disp.put("indate", 		DateUtils.format(inStock.getIndate()));
 			disp.put("status", 		Status.valueOf(inStock.getStatus()).getName());

@@ -57,7 +57,7 @@ public class ManureStockSelectViewController extends BeanViewController<Stock> {
 			Dto disp = stock.getDisp();
 			disp.put("nameId", 		resId2Res.get(stock.getNameId()));
 			disp.put("specId", 		resId2Res.get(stock.getSpecId()));
-			disp.put("batchId", 		resId2Res.get(stock.getBatchId()));
+			disp.put("batchId", 	resId2Res.get(stock.getBatchId()));
 			disp.put("producerId",	resId2Res.get(stock.getProducerId()));
 		}
 	}
@@ -66,5 +66,4 @@ public class ManureStockSelectViewController extends BeanViewController<Stock> {
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
 		return "manure/stock/manureStockSelectList";
 	}
-
 }
