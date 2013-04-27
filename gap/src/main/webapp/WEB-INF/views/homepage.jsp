@@ -9,18 +9,8 @@
 		<link rel="stylesheet" type="text/css" href="<%=basePath%>public/css/reset.css" />
 		<link rel="stylesheet" type="text/css" href="<%=basePath%>public/css/style.css" />
 		<script type="text/javascript" src="<%=basePath%>public/js/menujs.js"></script>
-		<script type="text/javascript" src="<%=basePath%>public/js/jquery-1.9.1.min.js"></script>
 		
 		<script type="text/javascript">
-		
-			$(function() {
-				$('#rightframe').load( 
-					function() { 
-						$(this).height(800);
-			     	} 
-		    	); 
-			}); 
-			   
 
 			function shows(names) {
 				document.getElementById(names).style.display='block';
@@ -584,7 +574,7 @@
 							</td>
 						</tr>
 					</table> -->
-					<iframe id="rightframe" name="rightframe" height="100%" style="width:100%; height:100%; border:0" scrolling="no"></iframe>
+					<iframe id="rightframe" name="rightframe" style="width:100%; height:600px; border:0" scrolling="no"></iframe>
 				</td>
 			</tr>
 		</table>
