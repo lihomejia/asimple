@@ -69,24 +69,7 @@
 			<tr>
 				<td>
 					<table cellpadding="0" cellspacing="0" style="width:100%;">
-						<tr>
-							<td>
-								<table cellspacing="0" style="width: 100%;">
-									<tr>
-										<td>
-											<div style="margin-bottom: -4px">
-												<%@include file="/public/jsp/view_infos.jsp"%>
-											</div>
-										</td>
-										<td style="text-align: right;">
-											<div>
-												<%@include file="/public/jsp/view_pages.jsp"%>
-											</div>
-										</td>
-									</tr>
-								</table>
-							</td>
-						</tr>
+						<%@include file="/public/jsp/pager.jsp"%>
 						<tr>
          					 <td class="dataListTitle"><span class="pl10">生产单元管理</span></td>
        					</tr>
@@ -141,7 +124,7 @@
 			<tr><td>&nbsp;</td></tr>
 			<tr>
 				<td style="text-align:right">
-					<input type="button" class="btnStyle" value="&nbsp;新&nbsp;建&nbsp;" onclick="window.location.href='<%=basePath%>cell/add.html';"/>
+					<input type="button" class="btnStyle" value="新&nbsp;建" onclick="window.location.href='<%=basePath%>cell/add.html';"/>
 				</td>
 			</tr>
 		</table>
