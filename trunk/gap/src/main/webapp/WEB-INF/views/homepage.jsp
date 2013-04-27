@@ -167,25 +167,25 @@
 																</p>
 															</div>
 															<ul id="shiyunul3" class="shiyunul">
-																<li onclick="changeBgColor('shiyunul3',this)">
+																<li onclick="changeBgColor('shiyunul4',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;登记</a>
+																	<a href="nurture/register/add.html" target="rightframe">&nbsp;登记</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul3',this)">
+																<li onclick="changeBgColor('shiyunul4',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;养殖过程</a>
+																	<a href="nurture/process/list.html" target="rightframe">&nbsp;养殖过程</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul3',this)">
+																<li onclick="changeBgColor('shiyunul4',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;已完成信息</a>
+																	<a href="nurture/completed/list.html" target="rightframe">&nbsp;已完成信息</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul3',this)">
+																<li onclick="changeBgColor('shiyunul4',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;已归档信息</a>
+																	<a href="nurture/archived/list.html" target="rightframe">&nbsp;已归档信息</a>
 																</li>
 															</ul>
 															<div id="menudiv4" class="shiyunlei2"
@@ -223,55 +223,55 @@
 																</p>
 															</div>
 															<ul id="shiyunul5" class="shiyunul">
-																<li onclick="changeBgColor('shiyunul5',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="feed/toStorage.html" target="rightframe">&nbsp;饲料入库单</a>
+																	<a href="feed/instock/add.html" target="rightframe">&nbsp;饲料入库单</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul5',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="feed/findGodownEntryList.html" target="rightframe">&nbsp;饲料入库记录</a>
+																	<a href="feed/instock/list.html" target="rightframe">&nbsp;饲料入库记录</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul5',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="feed/toDelivery.html" target="rightframe">&nbsp;饲料出库单</a>
+																	<a href="feed/outstock/add.html" target="rightframe">&nbsp;饲料出库单</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul5',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="feed/deliverOrderList.html" target="rightframe">&nbsp;饲料出库记录</a>
+																	<a href="feed/outstock/list.html" target="rightframe">&nbsp;饲料出库记录</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul5',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="feed/stockList.html" target="rightframe">&nbsp;饲料库存</a>
+																	<a href="feed/stock/list.html" target="rightframe">&nbsp;饲料库存</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul1',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="feed/resource/index.html?resourceNumber=1" target="rightframe">&nbsp;饲料品名维护</a>
+																	<a href="feed/resource/list.html?type=1" target="rightframe">&nbsp;饲料品名维护</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul1',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="feed/resource/index.html?resourceNumber=2" target="rightframe">&nbsp;饲料规格维护</a>
+																	<a href="feed/resource/list.html?type=2" target="rightframe">&nbsp;饲料规格维护</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul1',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="feed/resource/index.html?resourceNumber=3" target="rightframe">&nbsp;饲料生产批号维护</a>
+																	<a href="feed/resource/list.html?type=3" target="rightframe">&nbsp;饲料生产批号维护</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul1',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="feed/resource/index.html?resourceNumber=4" target="rightframe">&nbsp;饲料生产商维护</a>
+																	<a href="feed/resource/list.html?type=4" target="rightframe">&nbsp;饲料生产商维护</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul1',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="feed/resource/index.html?resourceNumber=5" target="rightframe">&nbsp;饲料种类维护</a>
+																	<a href="feed/resource/list.html?type=5" target="rightframe">&nbsp;饲料种类维护</a>
 																</li>
 															</ul>
 															<div id="menudiv6" class="shiyunlei2"
@@ -397,55 +397,55 @@
 																</p>
 															</div>
 															<ul id="shiyunul8" class="shiyunul">
-																<li onclick="changeBgColor('shiyunul8',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;兽药入库单</a>
+																	<a href="medicine/instock/add.html" target="rightframe">&nbsp;兽药入库单</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul8',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;兽药入库记录</a>
+																	<a href="medicine/instock/list.html" target="rightframe">&nbsp;兽药入库记录</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul8',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;兽药出库单</a>
+																	<a href="medicine/outstock/add.html" target="rightframe">&nbsp;兽药出库单</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul8',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;兽药出库记录</a>
+																	<a href="medicine/outstock/list.html" target="rightframe">&nbsp;兽药出库记录</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul8',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;兽药库存</a>
+																	<a href="medicine/stock/list.html" target="rightframe">&nbsp;兽药库存</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul8',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;兽药品名维护</a>
+																	<a href="medicine/resource/list.html?type=1" target="rightframe">&nbsp;兽药品名维护</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul8',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;兽药规格维护</a>
+																	<a href="medicine/resource/list.html?type=2" target="rightframe">&nbsp;兽药规格维护</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul8',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;兽药生产批号维护</a>
+																	<a href="medicine/resource/list.html?type=3" target="rightframe">&nbsp;兽药生产批号维护</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul8',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;兽药生产商维护</a>
+																	<a href="medicine/resource/list.html?type=4" target="rightframe">&nbsp;兽药生产商维护</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul8',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;兽药种类维护</a>
+																	<a href="medicine/resource/list.html?type=5" target="rightframe">&nbsp;兽药种类维护</a>
 																</li>
 															</ul>
 															<div id="menudiv9" class="shiyunlei2"
@@ -455,55 +455,55 @@
 																</p>
 															</div>
 															<ul id="shiyunul9" class="shiyunul">
-																<li onclick="changeBgColor('shiyunul9',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;消毒剂入库单</a>
+																	<a href="disinfectant/instock/add.html" target="rightframe">&nbsp;消毒剂入库单</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul9',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;消毒剂入库记录</a>
+																	<a href="disinfectant/instock/list.html" target="rightframe">&nbsp;消毒剂入库记录</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul9',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;消毒剂出库单</a>
+																	<a href="disinfectant/outstock/add.html" target="rightframe">&nbsp;消毒剂出库单</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul9',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;消毒剂出库记录</a>
+																	<a href="disinfectant/outstock/list.html" target="rightframe">&nbsp;消毒剂出库记录</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul9',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;消毒剂库存</a>
+																	<a href="disinfectant/stock/list.html" target="rightframe">&nbsp;消毒剂库存</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul9',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;消毒剂品名维护</a>
+																	<a href="disinfectant/resource/list.html?type=1" target="rightframe">&nbsp;消毒剂品名维护</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul9',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;消毒剂规格维护</a>
+																	<a href="disinfectant/resource/list.html?type=2" target="rightframe">&nbsp;消毒剂规格维护</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul9',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;消毒剂生产批号维护</a>
+																	<a href="disinfectant/resource/list.html?type=3" target="rightframe">&nbsp;消毒剂生产批号维护</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul9',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;消毒剂生产商维护</a>
+																	<a href="disinfectant/resource/list.html?type=4" target="rightframe">&nbsp;消毒剂生产商维护</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul9',this)">
+																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="tab.html" target="rightframe">&nbsp;消毒剂种类维护</a>
+																	<a href="disinfectant/resource/list.html?type=5" target="rightframe">&nbsp;消毒剂种类维护</a>
 																</li>
 															</ul>
 															<div id="menudiv10" class="shiyunlei2"
