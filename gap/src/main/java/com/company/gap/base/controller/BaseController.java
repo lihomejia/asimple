@@ -13,6 +13,10 @@ public class BaseController implements ControllerSupport {
 		return request.getRequestURI().toString().replaceFirst("\\w+\\.html.*", "");
 	}
 	
+	protected String getRedirect(HttpServletRequest request) {
+		return "redirect:" + request.getContextPath();
+	}
+	
 	protected String toField(String property) {
 		return FieldPropertyConvert.propertyToField(property);
 	}
