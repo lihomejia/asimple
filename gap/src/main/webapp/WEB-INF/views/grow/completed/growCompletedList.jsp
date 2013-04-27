@@ -110,8 +110,8 @@
 								                <a class=linkStyle href="<%=basePath%>grow/irrigate/list.html?registerId=${data.id}">灌溉记录</a>
 											</td>
 							                <td>
-							                	<a class=linkStyle href="<%=basePath%>manure/outstock/list.html?registerId=${data.id}">肥料</a>&nbsp;|&nbsp;
-							                	<a class=linkStyle href="<%=basePath%>manure/outstock/list.html?registerId=${data.id}">农药</a>
+							                	<a class=linkStyle href="<%=basePath%>grow/manure/list.html?registerId=${data.id}">肥料</a>&nbsp;|&nbsp;
+								                <a class=linkStyle href="<%=basePath%>grow/pesticide/list.html?registerId=${data.id}">农药</a>
 							                </td>
 							                <td>
 								                <a class=linkStyle href="<%=basePath%>grow/harvest/list.html?registerId=${data.id}">收割记录</a>
