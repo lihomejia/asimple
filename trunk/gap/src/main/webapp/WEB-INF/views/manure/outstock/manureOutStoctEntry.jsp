@@ -48,7 +48,7 @@
         }
         
         function doStockList() {
-			var record = window.showModalDialog("<%=basePath%>manure/stock/select/list.html", 'dialogWidth:780px; dialogHeight:280px; edge:Raised; center:yes; help:no; status:no;scroll=no;');
+			var record = window.showModalDialog("<%=basePath%>manure/stock/select/list.html", '', 'dialogWidth:650px; dialogHeight:400px; edge:Raised; center:yes; help:no; status:no;scroll=no;');
 			if (!record) return;
 			document.getElementById('stockId').value = record.stockId;
 			document.getElementById('nameId').value = record.nameId;
