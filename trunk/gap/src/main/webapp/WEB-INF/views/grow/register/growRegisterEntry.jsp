@@ -67,7 +67,7 @@
 								      	<td class=forumrow><div align="right">备注：</div></td>
 								      	<td colspan="3" class=forumrow><textarea name="comment" cols="73" rows="10">${data.comment}</textarea></td>
 								    </tr>
-								    <c:if test="${data.growstatus != 1}">
+								    <c:if test="${data.growstatus != null && data.growstatus != 1}">
 								    	<tr>
 								    		<td class=forumrow><div align="right">二维码：</div></td>
 								    		<td colspan="3">

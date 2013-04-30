@@ -43,7 +43,9 @@ public class GrowRegisterEntryController extends BeanEntryController<Register> {
 	protected void initializeEdit(HttpServletRequest request, Register t) {
 		t.getDisp().put("cellId", t.getCellId());
 		t.getDisp().put("regdate", DateUtils.format(t.getRegdate()));
-		t.getDisp().put("qrcode", new BASE64Encoder().encode(t.getQrcode()));
+		if (t.getGrowstatus() != null && t.getGrowstatus() != 1 && t.getQrcode() != null) {
+			t.getDisp().put("qrcode", new BASE64Encoder().encode(t.getQrcode()));
+		}
 		super.initializeEdit(request, t);
 	}
 
