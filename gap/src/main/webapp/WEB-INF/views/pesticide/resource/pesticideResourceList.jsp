@@ -65,6 +65,7 @@
 									<tr>
 										<th>编号</th>
 										<th>${resource.name}</th>
+										<th>备注</th>
 										<th>状态</th>
 										<th>操作</th>
 									</tr>
@@ -72,6 +73,7 @@
 										<tr>
 											<td>${pager.start+status.index}</td>
 											<td>${data.name}</td>
+											<td>${data.comment}</td>
 											<td>${data.disp.status}</td>
 											<td>
 												<c:if test="${data.status == 0}">

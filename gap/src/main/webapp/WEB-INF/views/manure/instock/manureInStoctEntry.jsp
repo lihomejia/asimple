@@ -19,8 +19,10 @@
 	    	validator.bindForm("form1");
 	   	});
     </script>
+   
 </head>
 <body>
+ <%=request.getHeader("referer") %>
 	<form id="form1" name="form1" method="post">
 		<input type="hidden" name="id" value="${data.id}">
 		<table width="100%">

@@ -34,6 +34,12 @@
 										</td>
 									</tr>
 									<tr>
+										<td class=forumrow style="30%"><div align="right">备注:</div></td>
+										<td class=forumrow>
+											<textarea name="comment" cols="73" rows="10">${data.comment}</textarea>
+										</td>
+									</tr>
+									<tr>
 										<td>&nbsp;</td>
 										<td>
 											<c:if test="${_action == 'add'}">

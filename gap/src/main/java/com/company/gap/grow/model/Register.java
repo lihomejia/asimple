@@ -29,8 +29,8 @@ public class Register extends GeneralModel {
 	@Column(columnDefinition="int default 0")
 	private Integer growstatus;
 	
-	@Column(length=255)
-	private String comment;
+	@Column(columnDefinition="longblob")
+	private byte[] qrcode;
 
 	public Integer getCellId() {
 		return cellId;
@@ -80,11 +80,12 @@ public class Register extends GeneralModel {
 		this.growstatus = growstatus;
 	}
 
-	public String getComment() {
-		return comment;
+	public byte[] getQrcode() {
+		return qrcode;
 	}
 
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setQrcode(byte[] qrcode) {
+		this.qrcode = qrcode;
 	}
+	
 }

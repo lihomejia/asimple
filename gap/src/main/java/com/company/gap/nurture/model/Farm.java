@@ -32,9 +32,6 @@ public class Farm extends GeneralModel {
 	@Column(length=60)
 	private String manager;;
 	
-	@Column(length=255)
-	private String comment;
-
 	public Integer getRegisterId() {
 		return registerId;
 	}
@@ -89,13 +86,5 @@ public class Farm extends GeneralModel {
 
 	public void setManager(String manager) {
 		this.manager = manager;
-	}
-
-	public String getComment() {
-		return comment;
-	}
-
-	public void setComment(String comment) {
-		this.comment = comment;
 	}
 }
