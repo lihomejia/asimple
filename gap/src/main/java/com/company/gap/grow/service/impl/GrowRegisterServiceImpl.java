@@ -63,6 +63,7 @@ public class GrowRegisterServiceImpl extends BaseServiceImpl<Register> implement
 		TwoDimensionCode dimensionCode = new TwoDimensionCode();
 		
 		String content = new StringBuffer()
+			.append("gap:")
 			.append(t.getId()).append("|")
 			.append("产品名称").append("|")
 			.append("生产厂家").append("|")
