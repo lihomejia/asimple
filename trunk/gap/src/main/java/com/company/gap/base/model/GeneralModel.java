@@ -35,6 +35,9 @@ public class GeneralModel {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date 		adate;
 	
+	@Column(length=255)
+	private String comment;
+	
 	@Transient
 	private Dto  disp = new BaseDto();
 
@@ -100,5 +103,13 @@ public class GeneralModel {
 
 	public void setDisp(Dto disp) {
 		this.disp = disp;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 }

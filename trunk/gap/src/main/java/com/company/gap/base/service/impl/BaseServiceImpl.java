@@ -14,11 +14,7 @@ public abstract class BaseServiceImpl<T extends GeneralModel> implements IBaseSe
 
 	@Override
 	public int save(T t) {
-		if (t.getId() == null) {
-			return get().insert(t);
-		} else {
-			return get().update(t);
-		}
+		return get().insert(t);
 	}
 	
 	@Override

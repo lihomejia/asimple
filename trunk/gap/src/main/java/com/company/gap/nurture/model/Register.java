@@ -28,9 +28,6 @@ public class Register extends GeneralModel {
 	
 	@Column(columnDefinition="int default 0")
 	private Integer nurturestatus;
-	
-	@Column(length=255)
-	private String comment;
 
 	public Integer getCellId() {
 		return cellId;
@@ -78,13 +75,5 @@ public class Register extends GeneralModel {
 
 	public void setNurturestatus(Integer nurturestatus) {
 		this.nurturestatus = nurturestatus;
-	}
-
-	public String getComment() {
-		return comment;
-	}
-
-	public void setComment(String comment) {
-		this.comment = comment;
 	}
 }

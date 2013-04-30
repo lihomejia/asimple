@@ -44,9 +44,6 @@ public class Harvest extends GeneralModel {
 	
 	@Column(length=60)
 	private String storemanager;
-	
-	@Column(length=255)
-	private String comment;
 
 	public Integer getRegisterId() {
 		return registerId;
@@ -134,13 +131,5 @@ public class Harvest extends GeneralModel {
 
 	public void setStoremanager(String storemanager) {
 		this.storemanager = storemanager;
-	}
-
-	public String getComment() {
-		return comment;
-	}
-
-	public void setComment(String comment) {
-		this.comment = comment;
 	}
 }

@@ -33,9 +33,6 @@ public class InStock extends BaseStock {
 	@Column(name="inuser_id", columnDefinition="int default 0")
 	private Integer inuserId;
 	
-	@Column(length=255)
-	private String comment;
-
 	public Integer getStockId() {
 		return stockId;
 	}
@@ -98,13 +95,5 @@ public class InStock extends BaseStock {
 
 	public void setInuserId(Integer inuserId) {
 		this.inuserId = inuserId;
-	}
-
-	public String getComment() {
-		return comment;
-	}
-
-	public void setComment(String comment) {
-		this.comment = comment;
 	}
 }

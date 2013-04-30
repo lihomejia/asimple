@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import sun.misc.BASE64Encoder;
+
 import com.company.gap.base.controller.BeanEntryController;
 import com.company.gap.base.service.IBaseService;
 import com.company.gap.base.util.DateUtils;
@@ -41,6 +43,7 @@ public class GrowRegisterEntryController extends BeanEntryController<Register> {
 	protected void initializeEdit(HttpServletRequest request, Register t) {
 		t.getDisp().put("cellId", t.getCellId());
 		t.getDisp().put("regdate", DateUtils.format(t.getRegdate()));
+		t.getDisp().put("qrcode", new BASE64Encoder().encode(t.getQrcode()));
 		super.initializeEdit(request, t);
 	}
 

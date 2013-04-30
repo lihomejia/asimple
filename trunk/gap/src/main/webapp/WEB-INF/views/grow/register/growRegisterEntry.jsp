@@ -63,12 +63,21 @@
 								      	<td class=forumrow><div align="right">登记人：</div></td>
 								      	<td width="35%" class=forumrow><input id="person" name="person" size="25" value="${data.person}"/><font color=red>*</font></td>
 								    </tr>
-								    <tr> 
-								      	<td rowspan="2" class=forumrow><div align="right">备注：</div></td>
+								    <tr>
+								      	<td class=forumrow><div align="right">备注：</div></td>
 								      	<td colspan="3" class=forumrow><textarea name="comment" cols="73" rows="10">${data.comment}</textarea></td>
 								    </tr>
+								    <c:if test="${data.growstatus != 1}">
+								    	<tr>
+								    		<td class=forumrow><div align="right">二维码：</div></td>
+								    		<td colspan="3">
+								    			<img src="data:image/png;base64,${data.disp.qrcode}"/>
+								    		</td>
+								    	</tr>
+								    </c:if>
 								    <tr> 
-								      	<td colspan="4" align="center">
+								    	<td>&nbsp;</td>
+								      	<td colspan="3" align="center">
 								      		<c:if test="${_action == 'add'}">
 										      	<input type="button" class="btnStyle" value="添&nbsp;加" onclick="subform('save');"/>
 										        <input type="reset" class="btnStyle" value="清&nbsp;空" />
