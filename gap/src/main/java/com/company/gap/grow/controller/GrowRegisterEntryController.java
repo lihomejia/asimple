@@ -13,8 +13,11 @@ import com.company.gap.base.controller.BeanEntryController;
 import com.company.gap.base.service.IBaseService;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.cell.service.ICellService;
+import com.company.gap.grow.enumeration.ResourceType;
 import com.company.gap.grow.model.Register;
+import com.company.gap.grow.model.Resource;
 import com.company.gap.grow.service.IGrowRegisterService;
+import com.company.gap.grow.service.IGrowResourceService;
 
 @Controller
 @RequestMapping("grow/register")
@@ -24,6 +27,9 @@ public class GrowRegisterEntryController extends BeanEntryController<Register> {
 	private ICellService cellService;
 	@Autowired
 	private IGrowRegisterService service;
+	
+	@Autowired
+	private IGrowResourceService resourceService;
 	
 	@Override
 	protected IBaseService<Register> get() {return this.service;}
@@ -42,6 +48,11 @@ public class GrowRegisterEntryController extends BeanEntryController<Register> {
 	@Override
 	protected void initializeEdit(HttpServletRequest request, Register t) {
 		t.getDisp().put("cellId", t.getCellId());
+
+		Resource resource = resourceService.findById(t.getProductId());
+		if (resource != null) {
+			t.getDisp().put("productId", resource.getName());
+		}
 		t.getDisp().put("regdate", DateUtils.format(t.getRegdate()));
 		if (t.getGrowstatus() != null && t.getGrowstatus() != 1 && t.getQrcode() != null) {
 			t.getDisp().put("qrcode", new BASE64Encoder().encode(t.getQrcode()));
@@ -63,5 +74,6 @@ public class GrowRegisterEntryController extends BeanEntryController<Register> {
 	
 	protected void initializeAdd(HttpServletRequest request) {
 		request.setAttribute("cellList", 	cellService.findUsableList());
+		request.setAttribute("kindList", 	resourceService.queryByType(ResourceType.KIND));
 	}
 }

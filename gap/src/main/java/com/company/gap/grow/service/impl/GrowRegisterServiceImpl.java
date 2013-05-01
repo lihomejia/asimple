@@ -1,6 +1,7 @@
 package com.company.gap.grow.service.impl;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +10,15 @@ import org.springframework.stereotype.Service;
 import com.company.gap.base.dao.IBaseDao;
 import com.company.gap.base.qrcode.TwoDimensionCode;
 import com.company.gap.base.service.impl.BaseServiceImpl;
+import com.company.gap.base.util.DateUtils;
 import com.company.gap.cell.enumeration.CellStatus;
 import com.company.gap.cell.service.ICellService;
 import com.company.gap.grow.dao.IGrowRegisterDao;
 import com.company.gap.grow.enumeration.GrowStatus;
 import com.company.gap.grow.model.Register;
+import com.company.gap.grow.model.Resource;
 import com.company.gap.grow.service.IGrowRegisterService;
+import com.company.gap.grow.service.IGrowResourceService;
 
 @Service
 public class GrowRegisterServiceImpl extends BaseServiceImpl<Register> implements IGrowRegisterService {
@@ -23,6 +27,8 @@ public class GrowRegisterServiceImpl extends BaseServiceImpl<Register> implement
 	private IGrowRegisterDao dao;
 	@Autowired
 	private ICellService cellService;
+	@Autowired
+	private IGrowResourceService resourceService;
 
 	@Override
 	protected IBaseDao<Register> get() {
@@ -60,14 +66,21 @@ public class GrowRegisterServiceImpl extends BaseServiceImpl<Register> implement
 		Register t = this.findById(id);
 		t.setGrowstatus(GrowStatus.COMPLETED.getStatus());
 		
+		Resource resource = resourceService.findById(t.getProductId());
+		if (resource == null) resource = new Resource();
+		
 		TwoDimensionCode dimensionCode = new TwoDimensionCode();
 		
+		Calendar factory = Calendar.getInstance();
+		factory.set(Calendar.DATE, -3);
+		
 		String content = new StringBuffer()
-			.append("gap:")
-			.append(t.getId()).append("|")
-			.append("产品名称").append("|")
-			.append("生产厂家").append("|")
-			.append("出厂日期")
+			.append("gap://scan/")
+			.append(t.getProductId()).append("|")//产品编号
+			.append(resource.getName()).append("|")//产品名称
+			.append("北京世外桃源农业科技").append("|")//生产厂家
+			.append(DateUtils.format(t.getRegdate())).append("|")//生产日期
+			.append(DateUtils.format(factory.getTime()))//出厂日期
 			.toString()
 		;
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
