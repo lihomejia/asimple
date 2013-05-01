@@ -215,6 +215,11 @@
 																	&nbsp;
 																	<a href="grow/archived/list.html" target="rightframe">&nbsp;已归档信息</a>
 																</li>
+																<li onclick="changeBgColor('shiyunul4',this)">
+																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	&nbsp;
+																	<a href="grow/resource/list.html?type=1" target="rightframe">&nbsp;产品种类维护</a>
+																</li>
 															</ul>
 															<div id="menudiv5" class="shiyunlei2"
 																onclick="zhedie('shiyunul5',this)">
