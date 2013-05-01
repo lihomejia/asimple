@@ -8,6 +8,7 @@
     <script type="text/javascript">
     	JGAP.on(window, 'load', function() {
 	    	validator.regist({id : "cellId", name : "生产单元"}, "notnull");
+	    	validator.regist({id : "productId", name : "产品"}, "notnull");
 	    	validator.regist({id : "description", name : "描述"}, "notnull");
 	    	validator.regist({id : "person", name : "登记人"}, "notnull");
 	    	validator.regist({id : "regdate", name : "登记时间"}, "date");
@@ -58,10 +59,30 @@
 								      	<td width="35%" class=forumrow><input id="regdate" name="regdate" size="25" value="${data.disp.regdate}" class="Wdate" onClick="WdatePicker()"/><font color=red>*</font></td>
 								    </tr>
 								    <tr> 
-								   	 	<td class=forumrow><div align="right">描述：</div></td>
-								      	<td width="35%" class=forumrow><input id="description" name="description" size="25" value="${data.description}"/><font color=red>*</font></td>
+								   	 	<td class=forumrow><div align="right">产品：</div></td>
+								      	<td class=forumrow>
+								      		<c:if test="${_action == 'add'}">
+												<select id=productId name="productId">
+													<option selected value="">请选择产品种类</option>
+													<c:forEach items="${kindList}" var="rs">
+														<option value="${rs.id }">${rs.name}</option>
+													</c:forEach>
+												</select>
+												<font color=red>*</font>
+											</c:if>
+											<c:if test="${_action != 'add'}">
+												<input type="hidden" id="productId" name="productId" value="${data.productId}"/>
+												<input type="text" value="${data.disp.productId}" disabled="disabled"/>
+											</c:if>
+								      	</td>
 								      	<td class=forumrow><div align="right">登记人：</div></td>
-								      	<td width="35%" class=forumrow><input id="person" name="person" size="25" value="${data.person}"/><font color=red>*</font></td>
+								      	<td class=forumrow><input id="person" name="person" size="25" value="${data.person}"/><font color=red>*</font></td>
+								    </tr>
+								    <tr>
+								   	 	<td class=forumrow><div align="right">描述：</div></td>
+								      	<td class=forumrow><input id="description" name="description" size="25" value="${data.description}"/><font color=red>*</font></td>
+								      	<td>&nbsp;</td>
+								      	<td>&nbsp;</td>
 								    </tr>
 								    <tr>
 								      	<td class=forumrow><div align="right">备注：</div></td>

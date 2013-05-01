@@ -8,6 +8,13 @@
     <script type="text/javascript">
   		JGAP.on(window, 'load', function() {
 	    	validator.regist({id : "usedate", name : "使用时间"}, "date");
+	    	validator.regist({id : "reason", name : "使用原因"}, "notnull");
+	    	validator.regist({id : "useqty", name : "使用量"}, "notnull", "number");
+	    	validator.regist({id : "machinecate", name : "施用机械类别"}, "notnull");
+	    	validator.regist({id : "method", name : "使用方法"}, "notnull");
+	    	validator.regist({id : "isolation", name : "安全间隔期"}, "notnull", "number");
+	    	validator.regist({id : "useperson", name : "使用人员"}, "notnull");
+	    	validator.regist({id : "tech", name : "技术负责人"}, "notnull");
 	    	validator.bindForm("form1");
 	    });
     </script>
@@ -35,10 +42,52 @@
 						<tr>
 							<td>
 								<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="dataList">
-								    <tr> 
+								   <tr> 
 								   	 	<td class=forumrow style="70%"><div align="right">使用时间:</div></td>
 										<td class=forumrow>
-											<input type="text" id="usedate" name="usedate" value="${data.disp.usedate }" class="Wdate" onClick="WdatePicker()"/>
+											<input type="text" id="usedate" name="usedate" value="${data.disp.usedate }" class="Wdate" onClick="WdatePicker()"/><font class=required>*</font>
+										</td>
+								    </tr>
+								    <tr> 
+								   	 	<td class=forumrow><div align="right">使用原因:</div></td>
+										<td class=forumrow>
+											<input type="text" id="reason" name="reason" value="${data.reason}"/><font class=required>*</font>
+										</td>
+								    </tr>
+								    <tr> 
+								   	 	<td class=forumrow><div align="right">使用量:</div></td>
+										<td class=forumrow>
+											<input type="text" id="useqty" name="useqty" value="${data.useqty}"/><font class=required>*</font>
+										</td>
+								    </tr>
+								    <tr> 
+								   	 	<td class=forumrow><div align="right">施用机械类别:</div></td>
+										<td class=forumrow>
+											<input type="text" id="machinecate" name="machinecate" value="${data.machinecate}"/><font class=required>*</font>
+										</td>
+								    </tr>
+								    <tr> 
+								   	 	<td class=forumrow><div align="right">使用方法:</div></td>
+										<td class=forumrow>
+											<input type="text" id="method" name="method" value="${data.method}"/><font class=required>*</font>
+										</td>
+								    </tr>
+								    <tr> 
+								   	 	<td class=forumrow><div align="right">安全间隔期:</div></td>
+										<td class=forumrow>
+											<input type="text" id="isolation" name="isolation" value="${data.isolation}"/><font class=required>*</font>
+										</td>
+								    </tr>
+								    <tr> 
+								   	 	<td class=forumrow><div align="right">使用人员:</div></td>
+										<td class=forumrow>
+											<input type="text" id="useperson" name="useperson" value="${data.useperson}"/><font class=required>*</font>
+										</td>
+								    </tr>
+								    <tr> 
+								   	 	<td class=forumrow><div align="right">技术负责人:</div></td>
+										<td class=forumrow>
+											<input type="text" id="tech" name="tech" value="${data.tech}"/><font class=required>*</font>
 										</td>
 								    </tr>
 								    <tr> 
