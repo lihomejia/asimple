@@ -591,7 +591,7 @@
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 						<tr>
 							<td height="24" align="center">
-								本网站由：中国质量认证中心产品认证七部&nbsp;&nbsp;北京中认环宇技术支持
+								本网站由：中国质量认证中心产品认证七部&nbsp;&nbsp;北京中认环宇技术支持 <a href="CaptureActivity.apk" style="color:blue">安卓下载</a>
 							</td>
 						</tr>
 						<tr>
