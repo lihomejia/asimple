@@ -10,11 +10,12 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.company.gap.base.dao.IBaseDao;
+import com.company.gap.base.model.GeneralModel;
 import com.company.gap.base.model.GeneralModelUtil;
 import com.company.gap.base.util.sql.SqlResult;
 
 
-public class BaseDaoImpl<T> implements IBaseDao<T> {
+public class BaseDaoImpl<T extends GeneralModel> implements IBaseDao<T> {
 	
 	@Autowired
 	protected JdbcTemplate jdbcTemplate;
@@ -35,6 +36,7 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	
 	@Override
 	public int insert(T t) {
+		t.setCdate(new Date());
 		return GeneralModelUtil.insert(jdbcTemplate, t);
 	}
 

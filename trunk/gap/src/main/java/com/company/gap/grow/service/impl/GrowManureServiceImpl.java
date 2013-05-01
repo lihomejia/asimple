@@ -1,5 +1,7 @@
 package com.company.gap.grow.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,13 @@ public class GrowManureServiceImpl extends BaseServiceImpl<Manure> implements IG
 	@Override
 	protected IBaseDao<Manure> get() {
 		return this.dao;
+	}
+	
+	@Override
+	public List<Manure> findByRegisterId(Integer registerId) {
+		Manure t = new Manure();
+		t.setRegisterId(registerId);
+		return this.findList(t);
 	}
 
 }

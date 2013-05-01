@@ -1,4 +1,5 @@
-package com.company.gap;
+package com.company.gap.base.util.xmlmodel;
+
 
 public class TextNode implements INode {
 
@@ -12,7 +13,7 @@ public class TextNode implements INode {
 
 
 	@Override
-	public void writerXml(StringBuilder sb) {
+	public void writer(StringBuilder sb) {
 		sb.append(XmlUtil.text(text));
 	}
 
