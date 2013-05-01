@@ -76,7 +76,7 @@ public class GrowRegisterServiceImpl extends BaseServiceImpl<Register> implement
 		
 		String content = new StringBuffer()
 			.append("gap://scan/")
-			.append(t.getProductId()).append("|")//产品编号
+			.append(t.getId()).append("|")//产品编号
 			.append(resource.getName()).append("|")//产品名称
 			.append("北京世外桃源农业科技").append("|")//生产厂家
 			.append(DateUtils.format(t.getRegdate())).append("|")//生产日期

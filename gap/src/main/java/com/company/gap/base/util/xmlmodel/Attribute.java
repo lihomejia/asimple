@@ -1,10 +1,9 @@
-package com.company.gap;
+package com.company.gap.base.util.xmlmodel;
 
 public class Attribute implements INode {
 	private String name;
 	
 	private String value;
-	
 	
 
 	public Attribute(String name, String value) {
@@ -13,11 +12,8 @@ public class Attribute implements INode {
 		this.value = value;
 	}
 
-
-
-
 	@Override
-	public void writerXml(StringBuilder sb) {
+	public void writer(StringBuilder sb) {
 		sb.append(" ").append(XmlUtil.attributeName(name)).append("=\"").append(XmlUtil.attributeValue(value)).append("\"");
 	}
 

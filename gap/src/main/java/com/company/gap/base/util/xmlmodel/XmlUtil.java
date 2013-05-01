@@ -1,4 +1,4 @@
-package com.company.gap;
+package com.company.gap.base.util.xmlmodel;
 
 public class XmlUtil {
 

@@ -1,18 +1,18 @@
-package com.company.gap;
+package com.company.gap.base.util.xmlmodel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbstractElement implements INode, IElement {
+public abstract class AbstractElement implements IElement {
 
-	private String tagName;
+private String tagName;
 	
 	private List<INode> children;
 	
 	private List<Attribute> attributes;
 	
 	
-	public AbstractElement(String tagName) {
+	protected AbstractElement(String tagName) {
 		super();
 		this.tagName = tagName;
 		this.children = new ArrayList<INode>();
@@ -27,28 +27,28 @@ public class AbstractElement implements INode, IElement {
 	
 
 	@Override
-	public void writerXml(StringBuilder sb) {
+	public void writer(StringBuilder sb) {
 		sb.append("<").append(XmlUtil.tagName(getTagName()));
 		
 		for (Attribute attribute : attributes) {
-			attribute.writerXml(sb);
+			attribute.writer(sb);
 		}
 		
 		sb.append(">");
 		
 		for (INode node : children()) {
-			node.writerXml(sb);
+			node.writer(sb);
 		}
 		
 		sb.append("</").append(XmlUtil.tagName(getTagName())).append(">");
 	}
 	
-	public AbstractElement addChild(INode node) {
+	protected AbstractElement addChild(INode node) {
 		children.add(node);
 		return this;
 	}
 	
-	public AbstractElement addAttribute(Attribute attribute) {
+	protected AbstractElement addAttribute(Attribute attribute) {
 		attributes.add(attribute);
 		return this;
 	}
@@ -62,9 +62,4 @@ public class AbstractElement implements INode, IElement {
 	public List<INode> children() {
 		return children;
 	}
-
-
-
-	
-	
 }
