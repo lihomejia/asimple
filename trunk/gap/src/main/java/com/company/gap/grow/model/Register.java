@@ -29,6 +29,9 @@ public class Register extends GeneralModel {
 	@Column(columnDefinition="int default 0")
 	private Integer growstatus;
 	
+	@Column(name="product_id")
+	private Integer productId;
+	
 	@Column(columnDefinition="longblob")
 	private byte[] qrcode;
 
@@ -86,6 +89,14 @@ public class Register extends GeneralModel {
 
 	public void setQrcode(byte[] qrcode) {
 		this.qrcode = qrcode;
+	}
+
+	public Integer getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Integer productId) {
+		this.productId = productId;
 	}
 	
 }
