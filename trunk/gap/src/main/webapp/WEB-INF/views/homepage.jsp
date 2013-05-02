@@ -1,3 +1,5 @@
+<%@page import="com.company.gap.resource.enumeration.DictType"%>
+<%@page import="com.company.gap.resource.model.Dict"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@include file="/public/jsp/taglibs.jsp"%>
 
@@ -214,11 +216,6 @@
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
 																	<a href="grow/archived/list.html" target="rightframe">&nbsp;已归档信息</a>
-																</li>
-																<li onclick="changeBgColor('shiyunul4',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
-																	&nbsp;
-																	<a href="grow/resource/list.html?type=1" target="rightframe">&nbsp;产品种类维护</a>
 																</li>
 															</ul>
 															<div id="menudiv5" class="shiyunlei2"
@@ -514,9 +511,26 @@
 															<div id="menudiv10" class="shiyunlei2"
 																onclick="zhedie('shiyunul10',this)">
 																<p>
-																	投入品使用
+																	数据字典
 																</p>
 															</div>
+															<ul id="shiyunul10" class="shiyunul">
+															<%
+															
+															for (DictType dictType : DictType.values()) {
+															%>
+															
+															<li onclick="changeBgColor('shiyunul4',this)">
+																<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																&nbsp;
+																<a href="resource/dict/list.html?type=<%=dictType %>" target="rightframe">&nbsp;<%=dictType.getTitle() %></a>
+															</li>
+															
+															<%
+															}
+															 %>
+																
+															</ul>
 															<div id="menudiv11" class="shiyunlei2"
 																onclick="zhedie('shiyunul11',this)">
 																<p>

@@ -13,11 +13,12 @@ import com.company.gap.base.controller.BeanEntryController;
 import com.company.gap.base.service.IBaseService;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.cell.service.ICellService;
-import com.company.gap.grow.enumeration.ResourceType;
 import com.company.gap.grow.model.Register;
 import com.company.gap.grow.model.Resource;
 import com.company.gap.grow.service.IGrowRegisterService;
 import com.company.gap.grow.service.IGrowResourceService;
+import com.company.gap.resource.enumeration.DictType;
+import com.company.gap.resource.service.impl.DictHelper;
 
 @Controller
 @RequestMapping("grow/register")
@@ -74,6 +75,6 @@ public class GrowRegisterEntryController extends BeanEntryController<Register> {
 	
 	protected void initializeAdd(HttpServletRequest request) {
 		request.setAttribute("cellList", 	cellService.findUsableList());
-		request.setAttribute("kindList", 	resourceService.queryByType(ResourceType.KIND));
+		request.setAttribute("cplbList", 	DictHelper.getList(DictType.CPLB));
 	}
 }

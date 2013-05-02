@@ -510,3 +510,11 @@ text-decoration:underline;}
 	color: #ACA899;
 	word-break:break-all;
 }
+
+.line_no {
+	text-align: right;
+}
+
+.line_header {
+	width: 15px;
+}

@@ -32,11 +32,9 @@ public class Input extends GeneralModel {
 	@Column(columnDefinition="decimal(10,2) default 0")
 	private Double useqty;
 	
-	@Column(length=100)
-	private String machinecate;
+	private Integer machinecate;
 	
-	@Column(length=100)
-	private String method;
+	private Integer method;
 	
 	@Column(columnDefinition="decimal(10,2) default 0")
 	private Double isolation;
@@ -62,7 +60,7 @@ public class Input extends GeneralModel {
 	public void setCellId(Integer cellId) {
 		this.cellId = cellId;
 	}
-
+	
 	public Integer getNameId() {
 		return nameId;
 	}
@@ -103,19 +101,20 @@ public class Input extends GeneralModel {
 		this.useqty = useqty;
 	}
 
-	public String getMachinecate() {
+
+	public Integer getMachinecate() {
 		return machinecate;
 	}
 
-	public void setMachinecate(String machinecate) {
+	public void setMachinecate(Integer machinecate) {
 		this.machinecate = machinecate;
 	}
 
-	public String getMethod() {
+	public Integer getMethod() {
 		return method;
 	}
 
-	public void setMethod(String method) {
+	public void setMethod(Integer method) {
 		this.method = method;
 	}
 
