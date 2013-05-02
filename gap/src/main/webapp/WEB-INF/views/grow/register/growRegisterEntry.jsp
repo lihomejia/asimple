@@ -64,8 +64,8 @@
 								      		<c:if test="${_action == 'add'}">
 												<select id=productId name="productId">
 													<option selected value="">请选择产品种类</option>
-													<c:forEach items="${kindList}" var="rs">
-														<option value="${rs.id }">${rs.name}</option>
+													<c:forEach items="${cplbList}" var="dict">
+														<option value="${dict.id }">${dict.name}</option>
 													</c:forEach>
 												</select>
 												<font color=red>*</font>

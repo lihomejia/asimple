@@ -50,8 +50,8 @@
 						              		<td>${data.disp.nameId }</td>
 						              		<td>${data.reason }</td>
 						              		<td>${data.useqty }</td>
-						              		<td>${data.machinecate }</td>
-						              		<td>${data.method}</td>
+						              		<td>${data.disp.machinecate }</td>
+						              		<td>${data.disp.method}</td>
 						              		<td>${data.isolation }</td>
 						              		<td>${data.disp.status}</td>
 						              		<td>

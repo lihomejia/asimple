@@ -83,6 +83,9 @@ public class GeneralModelUtil {
 				Object value = null;
 				try {
 					value = f.get(model);
+					if (value instanceof Enum) {
+						value = value.toString();
+					}
 				} catch (IllegalArgumentException e) {
 				} catch (IllegalAccessException e) {}
 				
@@ -90,6 +93,7 @@ public class GeneralModelUtil {
 
 				fields.append(COMMA).append(column);
 				feilds2.append(COMMA).append("?");
+				
 				values.add(value);
 			}
 		}
@@ -119,10 +123,14 @@ public class GeneralModelUtil {
 				Object value = null;
 				try {
 					value = f.get(model);
+					if (value instanceof Enum) {
+						value = value.toString();
+					}
 				} catch (IllegalArgumentException e) {
 				} catch (IllegalAccessException e) {}
 				
 				if (!isUsefulField(column, value)) continue;
+				
 
 				if ("id".equals(column)) {
 					keys.append(AND).append(column).append("=?");

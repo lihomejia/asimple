@@ -41,7 +41,20 @@
 						</tr>
 						<tr>
 							<td>
-								<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="dataList">
+								<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="dataList">	
+									
+								    <tr> 
+								   	 	<td class=forumrow style="70%"><div align="right">肥料名称:</div></td>
+										<td class=forumrow>
+											<select id=nameId name="nameId">
+												<option value=""> 请选择肥料名称</option>
+												<c:forEach items="${nameList}" var="rs">
+													<option value="${rs.id }" <c:if test="${rs.id==data.nameId}">selected</c:if>>${rs.name }</option>
+												</c:forEach>
+											</select>
+											<font class=required>*</font>
+										</td>
+								    </tr>
 								    <tr> 
 								   	 	<td class=forumrow style="70%"><div align="right">使用时间:</div></td>
 										<td class=forumrow>
@@ -63,13 +76,25 @@
 								    <tr> 
 								   	 	<td class=forumrow><div align="right">施用机械类别:</div></td>
 										<td class=forumrow>
-											<input type="text" id="machinecate" name="machinecate" value="${data.machinecate}"/><font class=required>*</font>
+											<select id=machinecate name="machinecate">
+												<option value=""> 请选择施用机械类别</option>
+												<c:forEach items="${jxlbList}" var="dict">
+													<option value="${dict.id }" <c:if test="${dict.id==data.machinecate}">selected</c:if>>${dict.name }</option>
+												</c:forEach>
+											</select>
+											<font class=required>*</font>
 										</td>
 								    </tr>
 								    <tr> 
 								   	 	<td class=forumrow><div align="right">使用方法:</div></td>
 										<td class=forumrow>
-											<input type="text" id="method" name="method" value="${data.method}"/><font class=required>*</font>
+											<select id=method name="method">
+												<option value=""> 请选择使用方法</option>
+												<c:forEach items="${syffList}" var="dict">
+													<option value="${dict.id }" <c:if test="${dict.id==data.method}">selected</c:if>>${dict.name }</option>
+												</c:forEach>
+											</select>
+											<font class=required>*</font>
 										</td>
 								    </tr>
 								    <tr> 
