@@ -1,6 +1,6 @@
 package com.company.gap.base.util.xmlmodel.gap;
 
-import com.company.gap.base.util.xmlmodel.Element;
+import com.company.util.xmlmodel.Element;
 
 public class TableElement extends Element {
 

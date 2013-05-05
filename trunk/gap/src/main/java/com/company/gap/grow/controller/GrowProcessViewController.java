@@ -1,13 +1,12 @@
 package com.company.gap.grow.controller;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.company.gap.base.component.TranslatorWithCell;
 import com.company.gap.base.controller.BeanViewController;
 import com.company.gap.base.dao.search.Op;
 import com.company.gap.base.model.Status;
@@ -37,14 +36,17 @@ public class GrowProcessViewController extends BeanViewController<Register> {
 		searcher.addSf("growstatus", Op.IN, "0;1");
 	}
 	
+	@Autowired
+	public void needTranslatorCell(TranslatorWithCell translator) {
+		registerTranslator("cellId", translator);
+	}
+	
 	@Override
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
-		Map<Integer, String> cellId2Code = cellService.queryId2Code();
 		
 		for (Register register : datas) {
 			Dto disp = register.getDisp();
-			disp.put("cellId", 		cellId2Code.get(register.getCellId()));
-			disp.put("regdate", 		DateUtils.format(register.getRegdate()));
+			disp.put("regdate", 	DateUtils.format(register.getRegdate()));
 			disp.put("status", 		Status.valueOf(register.getStatus()).getName());
 			disp.put("growstatus", 	GrowStatus.valueOf(register.getGrowstatus()).getName());
 		}
