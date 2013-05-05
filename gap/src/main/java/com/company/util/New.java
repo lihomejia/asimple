@@ -1,4 +1,4 @@
-package com.company.gap.base.util;
+package com.company.util;
 
 import java.util.ArrayList;
 import java.util.Collection;

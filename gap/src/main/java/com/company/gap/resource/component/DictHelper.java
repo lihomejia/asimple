@@ -1,4 +1,4 @@
-package com.company.gap.resource.service.impl;
+package com.company.gap.resource.component;
 
 import java.util.List;
 import java.util.Map;
@@ -6,10 +6,10 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.company.gap.base.util.New;
 import com.company.gap.resource.enumeration.DictType;
 import com.company.gap.resource.model.Dict;
 import com.company.gap.resource.service.IDictService;
+import com.company.util.New;
 
 @Component
 public class DictHelper {

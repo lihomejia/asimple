@@ -14,7 +14,7 @@ import com.company.gap.base.util.DateUtils;
 import com.company.gap.base.util.Dto;
 import com.company.gap.grow.model.Manure;
 import com.company.gap.manure.service.IManureResourceService;
-import com.company.gap.resource.service.impl.DictHelper;
+import com.company.gap.resource.component.DictHelper;
 
 @Controller
 @RequestMapping("grow/manure")

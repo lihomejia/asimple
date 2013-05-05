@@ -1,4 +1,4 @@
-package com.company.gap.base.util.xmlmodel;
+package com.company.util.xmlmodel;
 
 public class Attribute implements INode {
 	private String name;

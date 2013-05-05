@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.company.gap.base.controller.BeanEntryController;
 import com.company.gap.base.service.IBaseService;
+import com.company.gap.resource.component.DictHelper;
 import com.company.gap.resource.enumeration.DictType;
 import com.company.gap.resource.model.Dict;
 import com.company.gap.resource.service.IDictService;
-import com.company.gap.resource.service.impl.DictHelper;
 
 @Controller
 @RequestMapping("resource/dict")

@@ -13,8 +13,8 @@ import com.company.gap.grow.model.Manure;
 import com.company.gap.grow.service.IGrowManureService;
 import com.company.gap.manure.enumeration.ResourceType;
 import com.company.gap.manure.service.IManureResourceService;
+import com.company.gap.resource.component.DictHelper;
 import com.company.gap.resource.enumeration.DictType;
-import com.company.gap.resource.service.impl.DictHelper;
 
 @Controller
 @RequestMapping("grow/manure")

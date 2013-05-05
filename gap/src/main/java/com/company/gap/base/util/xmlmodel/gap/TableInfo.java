@@ -1,7 +1,7 @@
 package com.company.gap.base.util.xmlmodel.gap;
 
-import com.company.gap.base.util.xmlmodel.Attribute;
-import com.company.gap.base.util.xmlmodel.TextNode;
+import com.company.util.xmlmodel.Attribute;
+import com.company.util.xmlmodel.TextNode;
 
 public class TableInfo extends TableElement {
 

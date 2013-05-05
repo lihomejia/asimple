@@ -17,8 +17,8 @@ import com.company.gap.grow.model.Register;
 import com.company.gap.grow.model.Resource;
 import com.company.gap.grow.service.IGrowRegisterService;
 import com.company.gap.grow.service.IGrowResourceService;
+import com.company.gap.resource.component.DictHelper;
 import com.company.gap.resource.enumeration.DictType;
-import com.company.gap.resource.service.impl.DictHelper;
 
 @Controller
 @RequestMapping("grow/register")
