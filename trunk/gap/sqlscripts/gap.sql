@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50521
 File Encoding         : 65001
 
-Date: 2013-05-03 00:37:41
+Date: 2013-05-08 00:12:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,18 +29,12 @@ CREATE TABLE `t_dict` (
   `status` int(11) DEFAULT '0',
   `name` varchar(100) DEFAULT NULL,
   `type` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `type_name` (`type`,`name`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_dict
 -- ----------------------------
-INSERT INTO `t_dict` VALUES ('31', null, '0', '2013-05-03 00:13:23', 'Teee', '0', '0', 'Teee', 'CPLB');
-INSERT INTO `t_dict` VALUES ('32', null, '0', '2013-05-03 00:30:05', '', '0', '0', '机械1', 'JXLB');
-INSERT INTO `t_dict` VALUES ('33', null, '0', '2013-05-03 00:30:09', '', '0', '0', '机械2', 'JXLB');
-INSERT INTO `t_dict` VALUES ('34', null, '0', '2013-05-03 00:30:15', '', '0', '0', '使用方法1', 'SYFF');
-INSERT INTO `t_dict` VALUES ('35', null, '0', '2013-05-03 00:30:19', '', '0', '0', '使用方法2', 'SYFF');
 
 -- ----------------------------
 -- Table structure for `t_disinfectant_instock`
@@ -280,13 +274,11 @@ CREATE TABLE `t_grow_farm` (
   `register_id` int(11) DEFAULT '0',
   `scale` decimal(10,2) DEFAULT '0.00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_grow_farm
 -- ----------------------------
-INSERT INTO `t_grow_farm` VALUES ('1', null, '0', '2013-05-01 23:56:17', '按个', '0', '0', '2013-04-29 00:00:00', '0', '阿贵', '想法', '13', '2', '13.00');
-INSERT INTO `t_grow_farm` VALUES ('2', null, '0', '2013-05-01 23:56:29', '2', '0', '0', '2013-05-22 00:00:00', '0', 'sssss', '2', '2', '2', '2.00');
 
 -- ----------------------------
 -- Table structure for `t_grow_harvest`
@@ -312,12 +304,11 @@ CREATE TABLE `t_grow_harvest` (
   `storemanager` varchar(60) DEFAULT NULL,
   `yield` decimal(10,2) DEFAULT '0.00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_grow_harvest
 -- ----------------------------
-INSERT INTO `t_grow_harvest` VALUES ('1', null, '0', '2013-05-01 23:57:16', 'ag', '0', '0', '2', '0', 'ag', '2013-04-09 00:00:00', 'ag', '2', '1ag', '1.00', '1', 'ag', '1.00');
 
 -- ----------------------------
 -- Table structure for `t_grow_irrigate`
@@ -339,12 +330,11 @@ CREATE TABLE `t_grow_irrigate` (
   `register_id` int(11) DEFAULT '0',
   `way` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_grow_irrigate
 -- ----------------------------
-INSERT INTO `t_grow_irrigate` VALUES ('1', null, '0', '2013-05-01 23:56:49', 'ag', '0', '0', '2.00', '0', '2013-05-07 00:00:00', 'ga', '2.00', '2', 'a');
 
 -- ----------------------------
 -- Table structure for `t_grow_manure`
@@ -371,12 +361,11 @@ CREATE TABLE `t_grow_manure` (
   `useperson` varchar(60) DEFAULT NULL,
   `useqty` decimal(10,2) DEFAULT '0.00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_grow_manure
 -- ----------------------------
-INSERT INTO `t_grow_manure` VALUES ('1', null, '0', '2013-05-03 00:30:39', null, '0', '0', '0', '1.00', '32', '34', '2', '1', '3', '0', '1', '2013-05-07 00:00:00', '1', '1.00');
 
 -- ----------------------------
 -- Table structure for `t_grow_pesticide`
@@ -425,17 +414,16 @@ CREATE TABLE `t_grow_register` (
   `description` varchar(100) DEFAULT NULL,
   `growstatus` int(11) DEFAULT '0',
   `person` varchar(36) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
   `qrcode` longblob,
   `regdate` datetime DEFAULT NULL,
   `reguser_id` int(11) DEFAULT '0',
-  `product_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_grow_register
 -- ----------------------------
-INSERT INTO `t_grow_register` VALUES ('3', null, '0', '2013-05-03 00:13:58', '', '0', '2', '4', 'ag', '1', 'ag', null, '2013-04-28 00:00:00', '0', '31');
 
 -- ----------------------------
 -- Table structure for `t_grow_resource`
@@ -452,12 +440,11 @@ CREATE TABLE `t_grow_resource` (
   `name` varchar(60) DEFAULT NULL,
   `type` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_grow_resource
 -- ----------------------------
-INSERT INTO `t_grow_resource` VALUES ('2', null, '0', null, '山楂', '0', '2', '山楂', '1');
 
 -- ----------------------------
 -- Table structure for `t_manure_instock`
@@ -535,16 +522,13 @@ CREATE TABLE `t_manure_resource` (
   `cuser_id` int(11) DEFAULT '0',
   `status` int(11) DEFAULT '0',
   `name` varchar(60) DEFAULT NULL,
-  `type` int(11) DEFAULT '0',
+  `type` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_manure_resource
 -- ----------------------------
-INSERT INTO `t_manure_resource` VALUES ('1', null, '0', '2013-05-02 21:56:50', 'DDDD', '0', '0', 'DDDD', '0');
-INSERT INTO `t_manure_resource` VALUES ('2', null, '0', '2013-05-03 00:24:06', '', '0', '0', 'Test', '1');
-INSERT INTO `t_manure_resource` VALUES ('3', null, '0', '2013-05-03 00:24:10', '', '0', '0', 'Test2', '1');
 
 -- ----------------------------
 -- Table structure for `t_manure_stock`
@@ -925,7 +909,7 @@ CREATE TABLE `t_pesticide_resource` (
   `cuser_id` int(11) DEFAULT '0',
   `status` int(11) DEFAULT '0',
   `name` varchar(60) DEFAULT NULL,
-  `type` int(11) DEFAULT '0',
+  `type` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -976,9 +960,8 @@ CREATE TABLE `t_production_cell` (
   `location` varchar(255) DEFAULT NULL,
   `usestatus` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_production_cell
 -- ----------------------------
-INSERT INTO `t_production_cell` VALUES ('4', null, '0', '2013-05-03 00:13:40', null, '0', '2', '2.00', '2013-04-29 00:00:00', 'T', 'T', '1');

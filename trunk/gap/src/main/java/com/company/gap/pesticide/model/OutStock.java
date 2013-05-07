@@ -23,7 +23,7 @@ public class OutStock extends BaseStock {
 	
 	@Column(name="outuser_id", columnDefinition="int default 0")
 	private Integer outuserId;
-	
+
 	public Integer getStockId() {
 		return stockId;
 	}
