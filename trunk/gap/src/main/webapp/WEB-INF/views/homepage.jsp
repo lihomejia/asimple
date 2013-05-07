@@ -1,3 +1,4 @@
+<%@page import="com.company.gap.manure.enumeration.ManureResourceType"%>
 <%@page import="com.company.gap.resource.enumeration.DictType"%>
 <%@page import="com.company.gap.resource.model.Dict"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
@@ -308,31 +309,17 @@
 																	&nbsp;
 																	<a href="manure/stock/list.html" target="rightframe">&nbsp;肥料库存</a>
 																</li>
+																<%
+																	for (ManureResourceType resourceType : ManureResourceType.values()) {
+																%>
 																<li onclick="changeBgColor('shiyunul6',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="manure/resource/list.html?type=1" target="rightframe">&nbsp;肥料品名维护</a>
+																	<a href="manure/resource/list.html?type=<%=resourceType %>" target="rightframe">&nbsp;<%=resourceType.getTitle() %></a>
 																</li>
-																<li onclick="changeBgColor('shiyunul6',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
-																	&nbsp;
-																	<a href="manure/resource/list.html?type=2" target="rightframe">&nbsp;肥料规格维护</a>
-																</li>
-																<li onclick="changeBgColor('shiyunul6',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
-																	&nbsp;
-																	<a href="manure/resource/list.html?type=3" target="rightframe">&nbsp;肥料生产批号维护</a>
-																</li>
-																<li onclick="changeBgColor('shiyunul6',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
-																	&nbsp;
-																	<a href="manure/resource/list.html?type=4" target="rightframe">&nbsp;肥料生产商维护</a>
-																</li>
-																<li onclick="changeBgColor('shiyunul6',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
-																	&nbsp;
-																	<a href="manure/resource/list.html?type=5" target="rightframe">&nbsp;肥料种类维护</a>
-																</li>
+																<%
+																}
+																 %>
 															</ul>
 															<div id="menudiv7" class="shiyunlei2"
 																onclick="zhedie('shiyunul7',this)">

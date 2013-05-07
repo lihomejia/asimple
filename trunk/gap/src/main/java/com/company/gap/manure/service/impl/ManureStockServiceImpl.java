@@ -1,18 +1,13 @@
 package com.company.gap.manure.service.impl;
 
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.company.gap.base.dao.IBaseDao;
 import com.company.gap.base.service.impl.BaseServiceImpl;
-import com.company.gap.base.util.Dto;
 import com.company.gap.manure.dao.IManureStockDao;
 import com.company.gap.manure.model.InStock;
 import com.company.gap.manure.model.Stock;
-import com.company.gap.manure.service.IManureResourceService;
 import com.company.gap.manure.service.IManureStockService;
 
 @Service
@@ -21,9 +16,6 @@ public class ManureStockServiceImpl extends BaseServiceImpl<Stock> implements IM
 	@Autowired
 	private IManureStockDao<Stock> dao;
 	
-	@Autowired
-	private IManureResourceService resourceService;
-
 	@Override
 	protected IBaseDao<Stock> get() {
 		return this.dao;
@@ -57,19 +49,5 @@ public class ManureStockServiceImpl extends BaseServiceImpl<Stock> implements IM
 	@Override
 	public int addStockQuantity(Integer id, double quantity) {
 		return dao.addStockQuantity(id, quantity);
-	}
-	
-	@Override
-	public List<Stock> findStockList() {
-		Map<Integer, String> resId2Name = resourceService.queryResId2Name();
-		List<Stock> list = dao.findStockList();
-		for (Stock stock : list) {
-			Dto disp = stock.getDisp();
-			disp.put("nameId", resId2Name.get(stock.getNameId()));
-			disp.put("specId", resId2Name.get(stock.getSpecId()));
-			disp.put("batchId", resId2Name.get(stock.getBatchId()));
-			disp.put("producerId", resId2Name.get(stock.getProducerId()));
-		}
-		return list;
 	}
 }

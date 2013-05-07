@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -16,23 +15,21 @@ import com.company.gap.base.model.Status;
 import com.company.gap.base.model.ViewFormModel;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.base.util.Dto;
-import com.company.gap.manure.enumeration.ResourceType;
+import com.company.gap.manure.component.ManureResourceHelper;
+import com.company.gap.manure.enumeration.ManureResourceType;
 import com.company.gap.manure.model.OutStock;
-import com.company.gap.manure.service.IManureResourceService;
+import com.company.gap.manure.model.Resource;
 
 @Controller
 @RequestMapping("manure/outstock")
 public class ManureOutStockViewController extends BeanViewController<OutStock> {
 	
-	@Autowired
-	private IManureResourceService resourceService;
-	
 	@Override
 	protected void preparing(HttpServletRequest request, ViewFormModel model) {
-		request.setAttribute("nameList", 	resourceService.queryByType(ResourceType.NAME, true));
-		request.setAttribute("specList", 	resourceService.queryByType(ResourceType.SPEC, true));
-		request.setAttribute("batchList", 	resourceService.queryByType(ResourceType.BATCH, true));
-		request.setAttribute("producerList",resourceService.queryByType(ResourceType.PRODUCER, true));
+		request.setAttribute("nameList", 	ManureResourceHelper.getList(ManureResourceType.PM, Resource.RS_ALL));
+		request.setAttribute("specList", 	ManureResourceHelper.getList(ManureResourceType.GG,  Resource.RS_ALL));
+		request.setAttribute("batchList", 	ManureResourceHelper.getList(ManureResourceType.SCPH,  Resource.RS_ALL));
+		request.setAttribute("producerList",ManureResourceHelper.getList(ManureResourceType.SCS,  Resource.RS_ALL));
 		
 	}
 	
@@ -62,16 +59,15 @@ public class ManureOutStockViewController extends BeanViewController<OutStock> {
 	
 	@Override
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
-		Map<Integer, String> resId2Res = resourceService.queryResId2Name();
 		for (OutStock outStock : datas) {
-			Dto __adde = outStock.getDisp();
-			__adde.put("nameId", 		resId2Res.get(outStock.getNameId()));
-			__adde.put("specId", 		resId2Res.get(outStock.getSpecId()));
-			__adde.put("batchId", 		resId2Res.get(outStock.getBatchId()));
-			__adde.put("producerId", 	resId2Res.get(outStock.getProducerId()));
-			__adde.put("outdate", 		DateUtils.format(outStock.getOutdate()));
+			Dto disp = outStock.getDisp();
+			disp.put("nameId", 		ManureResourceHelper.getText(outStock.getNameId()));
+			disp.put("specId", 		ManureResourceHelper.getText(outStock.getSpecId()));
+			disp.put("batchId", 	ManureResourceHelper.getText(outStock.getBatchId()));
+			disp.put("producerId", 	ManureResourceHelper.getText(outStock.getProducerId()));
+			disp.put("outdate", 	DateUtils.format(outStock.getOutdate()));
 			Status status = Status.valueOf(outStock.getStatus());
-			__adde.put("status", 		status.getName());
+			disp.put("status", 		status.getName());
 		}
 	}
 	

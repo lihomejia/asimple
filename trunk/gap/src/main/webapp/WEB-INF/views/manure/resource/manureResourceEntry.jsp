@@ -8,7 +8,7 @@
     <%@include file="/public/jsp/commonEntry.jsp"%>
     <script type="text/javascript">
 	    JGAP.on(window, 'load', function() {
-	    	validator.regist({id : "name", name : "${resource.name}"}, "notnull");
+	    	validator.regist({id : "name", name : "${resourceType.name}"}, "notnull");
 	    	validator.bindForm("form1");
 	   	});
     </script>
@@ -22,19 +22,19 @@
 				<td>
 					<table style="width:100%;">
 						<tr>
-							<td class="dataListTitle"><span class="pl10">${resource.title}</span></td>
+							<td class="dataListTitle"><span class="pl10">${resourceType.title}</span></td>
 						</tr>
 						<tr>
 							<td>
-								<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0" class="dataList">
+								<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="dataList">
 									<tr>
-										<td class=forumrow style="30%"><div align="right">${resource.name}:</div></td>
+										<td class=forumrow style="40%"><div align="right">${resourceType.name}:</div></td>
 										<td class=forumrow>
 											<input id="name" type="text" name="name" value="${data.name }"/>
 										</td>
 									</tr>
 									<tr>
-										<td class=forumrow style="30%"><div align="right">备注:</div></td>
+										<td class=forumrow><div align="right">备注:</div></td>
 										<td class=forumrow>
 											<textarea name="comment" cols="73" rows="10">${data.comment}</textarea>
 										</td>

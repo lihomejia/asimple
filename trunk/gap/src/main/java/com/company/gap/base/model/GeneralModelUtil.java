@@ -10,7 +10,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
@@ -78,6 +80,7 @@ public class GeneralModelUtil {
 		List<Object> values 	= new ArrayList<Object>();
 		for (Class<?> c = model.getClass(); c != Object.class; c = c.getSuperclass()) {
 			for (Field f : c.getDeclaredFields()) {
+				if (f.getAnnotation(Transient.class) != null) continue;
 				f.setAccessible(true);
 				String column = FieldPropertyConvert.propertyToField(f.getName());
 				Object value = null;
@@ -118,6 +121,11 @@ public class GeneralModelUtil {
 		List<Object> kvalues= new ArrayList<Object>();
 		for (Class<?> c = model.getClass(); c != Object.class; c = c.getSuperclass()) {
 			for (Field f : c.getDeclaredFields()) {
+				if (f.getAnnotation(Transient.class) != null) continue;
+				
+				Column columnAnnotation = f.getAnnotation(Column.class);
+				if (columnAnnotation != null && !columnAnnotation.updatable()) continue;
+				
 				f.setAccessible(true);
 				String column = FieldPropertyConvert.propertyToField(f.getName());
 				Object value = null;
@@ -131,7 +139,6 @@ public class GeneralModelUtil {
 				
 				if (!isUsefulField(column, value)) continue;
 				
-
 				if ("id".equals(column)) {
 					keys.append(AND).append(column).append("=?");
 					kvalues.add(value);
@@ -162,6 +169,7 @@ public class GeneralModelUtil {
 		List<Object> values= new ArrayList<Object>();
 		for (Class<?> c = model.getClass(); c != Object.class; c = c.getSuperclass()) {
 			for (Field f : c.getDeclaredFields()) {
+				if (f.getAnnotation(Transient.class) != null) continue;
 				f.setAccessible(true);
 				String column = FieldPropertyConvert.propertyToField(f.getName());
 				Object value = null;
@@ -217,6 +225,6 @@ public class GeneralModelUtil {
 	}
 	
 	private static boolean isUsefulField(String field, Object value) {
-		return value != null && !"disp".equals(field); 
+		return value != null; 
 	}
 }

@@ -3,7 +3,7 @@ package com.company.gap.grow.enumeration;
 
 public enum ResourceType {
 	
-	KIND(1, "产品种类维护 ", "产品种类");
+	KIND(1, "产品种类维护 ", "产品种类维");
 	
 	private int type;
 	private String title;
