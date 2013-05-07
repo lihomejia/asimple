@@ -10,17 +10,15 @@ import com.company.gap.base.controller.BeanEntryController;
 import com.company.gap.base.service.IBaseService;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.base.util.Dto;
-import com.company.gap.manure.enumeration.ResourceType;
+import com.company.gap.manure.component.ManureResourceHelper;
+import com.company.gap.manure.enumeration.ManureResourceType;
 import com.company.gap.manure.model.InStock;
 import com.company.gap.manure.service.IManureInStockService;
-import com.company.gap.manure.service.IManureResourceService;
 
 @Controller
 @RequestMapping("manure/instock")
 public class ManureInStockEntryController extends BeanEntryController<InStock> {
 
-	@Autowired
-	private IManureResourceService resourceService;
 	@Autowired
 	private IManureInStockService service;
 	
@@ -50,10 +48,10 @@ public class ManureInStockEntryController extends BeanEntryController<InStock> {
 	@Override
 	protected void initialize(HttpServletRequest request) {
 		super.initialize(request);
-		request.setAttribute("nameList", 	resourceService.queryByType(ResourceType.NAME));
-		request.setAttribute("specList", 	resourceService.queryByType(ResourceType.SPEC));
-		request.setAttribute("batchList", 	resourceService.queryByType(ResourceType.BATCH));
-		request.setAttribute("producerList",resourceService.queryByType(ResourceType.PRODUCER));
-		request.setAttribute("kindList", 	resourceService.queryByType(ResourceType.KIND));
+		request.setAttribute("nameList", 	ManureResourceHelper.getList(ManureResourceType.PM));
+		request.setAttribute("specList", 	ManureResourceHelper.getList(ManureResourceType.GG));
+		request.setAttribute("batchList", 	ManureResourceHelper.getList(ManureResourceType.SCPH));
+		request.setAttribute("producerList",ManureResourceHelper.getList(ManureResourceType.SCS));
+		request.setAttribute("kindList", 	ManureResourceHelper.getList(ManureResourceType.ZL));
 	}
 }

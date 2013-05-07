@@ -2,7 +2,6 @@ package com.company.gap.manure.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -11,7 +10,7 @@ import com.company.gap.base.dao.search.Op;
 import com.company.gap.base.model.Status;
 import com.company.gap.base.model.ViewFormModel;
 import com.company.gap.base.util.Dto;
-import com.company.gap.manure.enumeration.ResourceType;
+import com.company.gap.manure.enumeration.ManureResourceType;
 import com.company.gap.manure.model.Resource;
 
 @Controller
@@ -20,9 +19,9 @@ public class ManureResourceViewController extends BeanViewController<Resource> {
 	
 	@Override
 	protected void preparing(HttpServletRequest request, ViewFormModel model) {
-		int type = NumberUtils.toInt(request.getParameter("type"));
+		String type = request.getParameter("type");
 		request.setAttribute("type", type);
-		request.setAttribute("resource", ResourceType.valueOf(type));
+		request.setAttribute("resource", ManureResourceType.valueOf(type));
 	}
 
 	@Override

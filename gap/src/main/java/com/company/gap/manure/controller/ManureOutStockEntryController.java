@@ -1,7 +1,5 @@
 package com.company.gap.manure.controller;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.math.NumberUtils;
@@ -18,10 +16,10 @@ import com.company.gap.cell.model.Cell;
 import com.company.gap.cell.service.ICellService;
 import com.company.gap.grow.enumeration.GrowStatus;
 import com.company.gap.grow.service.IGrowRegisterService;
+import com.company.gap.manure.component.ManureResourceHelper;
 import com.company.gap.manure.model.OutStock;
 import com.company.gap.manure.model.Stock;
 import com.company.gap.manure.service.IManureOutStockService;
-import com.company.gap.manure.service.IManureResourceService;
 import com.company.gap.manure.service.IManureStockService;
 
 @Controller
@@ -34,8 +32,6 @@ public class ManureOutStockEntryController extends BeanEntryController<OutStock>
 	private IManureStockService stockService;
 	@Autowired
 	private IGrowRegisterService registerService;
-	@Autowired
-	private IManureResourceService resourceService;
 	@Autowired
 	private ICellService cellService;
 	
@@ -74,14 +70,13 @@ public class ManureOutStockEntryController extends BeanEntryController<OutStock>
 	
 	@Override
 	protected void initializeEdit(HttpServletRequest request, OutStock t) {
-		Map<Integer, String> resId2Name = resourceService.queryResId2Name();
 		
 		Dto disp = t.getDisp();
 		
-		disp.put("nameId", 		resId2Name.get(t.getNameId()));
-		disp.put("specId", 		resId2Name.get(t.getSpecId()));
-		disp.put("batchId", 	resId2Name.get(t.getBatchId()));
-		disp.put("producerId", 	resId2Name.get(t.getProducerId()));
+		disp.put("nameId", 		ManureResourceHelper.getText(t.getNameId()));
+		disp.put("specId", 		ManureResourceHelper.getText(t.getSpecId()));
+		disp.put("batchId", 	ManureResourceHelper.getText(t.getBatchId()));
+		disp.put("producerId", 	ManureResourceHelper.getText(t.getProducerId()));
 		
 		Cell cell = cellService.findById(t.getCellId());
 		disp.put("outdate", DateUtils.format(t.getOutdate()));
@@ -92,6 +87,5 @@ public class ManureOutStockEntryController extends BeanEntryController<OutStock>
 	
 	protected void initialize(HttpServletRequest request) {
 		super.initialize(request);
-		request.setAttribute("stocks", 		stockService.findStockList());
 	}
 }

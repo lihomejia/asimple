@@ -11,8 +11,8 @@ import com.company.gap.base.service.IBaseService;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.grow.model.Manure;
 import com.company.gap.grow.service.IGrowManureService;
-import com.company.gap.manure.enumeration.ResourceType;
-import com.company.gap.manure.service.IManureResourceService;
+import com.company.gap.manure.component.ManureResourceHelper;
+import com.company.gap.manure.enumeration.ManureResourceType;
 import com.company.gap.resource.component.DictHelper;
 import com.company.gap.resource.enumeration.DictType;
 
@@ -22,9 +22,6 @@ public class GrowManureEntryController extends BeanEntryController<Manure> {
 
 	@Autowired
 	private IGrowManureService service;
-	
-	@Autowired
-	private IManureResourceService manureResourceService;
 	
 	@Override
 	protected IBaseService<Manure> get() {return this.service;}
@@ -50,7 +47,7 @@ public class GrowManureEntryController extends BeanEntryController<Manure> {
 	protected void initialize(HttpServletRequest request) {
 		super.initialize(request);
 		request.setAttribute("registerId", request.getParameter("registerId"));
-		request.setAttribute("nameList", manureResourceService.queryByType(ResourceType.NAME));
+		request.setAttribute("nameList", ManureResourceHelper.getList(ManureResourceType.PM));
 		request.setAttribute("jxlbList", DictHelper.getList(DictType.JXLB));
 		request.setAttribute("syffList", DictHelper.getList(DictType.SYFF));
 	}

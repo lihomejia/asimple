@@ -30,6 +30,10 @@ public class DictHelper {
 		}
 		
 		for (Dict dict : dictService.findList()) {
+			if (!datas2.containsKey(dict.getType())) {
+				continue;
+			}
+			
 			dicts2.put(dict.getId(), dict);
 			datas2.get(dict.getType()).add(dict);
 		}
