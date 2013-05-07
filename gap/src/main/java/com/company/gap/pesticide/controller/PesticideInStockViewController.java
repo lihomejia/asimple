@@ -1,11 +1,8 @@
 package com.company.gap.pesticide.controller;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -15,23 +12,21 @@ import com.company.gap.base.model.Status;
 import com.company.gap.base.model.ViewFormModel;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.base.util.Dto;
-import com.company.gap.pesticide.enumeration.ResourceType;
+import com.company.gap.pesticide.component.PesticideResourceHelper;
+import com.company.gap.pesticide.enumeration.PesticideResourceType;
 import com.company.gap.pesticide.model.InStock;
-import com.company.gap.pesticide.service.IPesticideResourceService;
+import com.company.gap.pesticide.model.Resource;
 
 @Controller
 @RequestMapping("pesticide/instock")
 public class PesticideInStockViewController extends BeanViewController<InStock> {
-
-	@Autowired
-	private IPesticideResourceService resourceService;
 	
 	@Override
 	protected void preparing(HttpServletRequest request, ViewFormModel model) {
-		request.setAttribute("nameList", 	resourceService.queryByType(ResourceType.NAME, true));
-		request.setAttribute("specList", 	resourceService.queryByType(ResourceType.SPEC, true));
-		request.setAttribute("batchList", 	resourceService.queryByType(ResourceType.BATCH, true));
-		request.setAttribute("producerList",resourceService.queryByType(ResourceType.PRODUCER, true));
+		request.setAttribute("nameList", 	PesticideResourceHelper.getList(PesticideResourceType.PM, Resource.RS_ALL));
+		request.setAttribute("specList", 	PesticideResourceHelper.getList(PesticideResourceType.GG,  Resource.RS_ALL));
+		request.setAttribute("batchList", 	PesticideResourceHelper.getList(PesticideResourceType.SCPH,  Resource.RS_ALL));
+		request.setAttribute("producerList",PesticideResourceHelper.getList(PesticideResourceType.SCS,  Resource.RS_ALL));
 	}
 	
 	@Override
@@ -45,13 +40,12 @@ public class PesticideInStockViewController extends BeanViewController<InStock> 
 	
 	@Override
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
-		Map<Integer, String> resId2Res = resourceService.queryResId2Name();
 		for (InStock inStock : datas) {
 			Dto disp = inStock.getDisp();
-			disp.put("nameId", 		resId2Res.get(inStock.getNameId()));
-			disp.put("specId", 		resId2Res.get(inStock.getSpecId()));
-			disp.put("batchId", 	resId2Res.get(inStock.getBatchId()));
-			disp.put("producerId", 	resId2Res.get(inStock.getProducerId()));
+			disp.put("nameId", 		PesticideResourceHelper.getText(inStock.getNameId()));
+			disp.put("specId", 		PesticideResourceHelper.getText(inStock.getSpecId()));
+			disp.put("batchId", 	PesticideResourceHelper.getText(inStock.getBatchId()));
+			disp.put("producerId", 	PesticideResourceHelper.getText(inStock.getProducerId()));
 			disp.put("indate", 		DateUtils.format(inStock.getIndate()));
 			disp.put("status", 		Status.valueOf(inStock.getStatus()).getName());
 			disp.put("inuserId", 	"XXX");

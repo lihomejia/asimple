@@ -10,17 +10,15 @@ import com.company.gap.base.controller.BeanEntryController;
 import com.company.gap.base.service.IBaseService;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.base.util.Dto;
-import com.company.gap.pesticide.enumeration.ResourceType;
+import com.company.gap.pesticide.component.PesticideResourceHelper;
+import com.company.gap.pesticide.enumeration.PesticideResourceType;
 import com.company.gap.pesticide.model.InStock;
 import com.company.gap.pesticide.service.IPesticideInStockService;
-import com.company.gap.pesticide.service.IPesticideResourceService;
 
 @Controller
 @RequestMapping("pesticide/instock")
 public class PesticideInStockEntryController extends BeanEntryController<InStock> {
 
-	@Autowired
-	private IPesticideResourceService resourceService;
 	@Autowired
 	private IPesticideInStockService service;
 	
@@ -50,10 +48,10 @@ public class PesticideInStockEntryController extends BeanEntryController<InStock
 	@Override
 	protected void initialize(HttpServletRequest request) {
 		super.initialize(request);
-		request.setAttribute("nameList", 	resourceService.queryByType(ResourceType.NAME));
-		request.setAttribute("specList", 	resourceService.queryByType(ResourceType.SPEC));
-		request.setAttribute("batchList", 	resourceService.queryByType(ResourceType.BATCH));
-		request.setAttribute("producerList",resourceService.queryByType(ResourceType.PRODUCER));
-		request.setAttribute("kindList", 	resourceService.queryByType(ResourceType.KIND));
+		request.setAttribute("nameList", 	PesticideResourceHelper.getList(PesticideResourceType.PM));
+		request.setAttribute("specList", 	PesticideResourceHelper.getList(PesticideResourceType.GG));
+		request.setAttribute("batchList", 	PesticideResourceHelper.getList(PesticideResourceType.SCPH));
+		request.setAttribute("producerList",PesticideResourceHelper.getList(PesticideResourceType.SCS));
+		request.setAttribute("kindList", 	PesticideResourceHelper.getList(PesticideResourceType.ZL));
 	}
 }

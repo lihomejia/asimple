@@ -1,3 +1,4 @@
+<%@page import="com.company.gap.pesticide.enumeration.PesticideResourceType"%>
 <%@page import="com.company.gap.manure.enumeration.ManureResourceType"%>
 <%@page import="com.company.gap.resource.enumeration.DictType"%>
 <%@page import="com.company.gap.resource.model.Dict"%>
@@ -353,31 +354,17 @@
 																	&nbsp;
 																	<a href="pesticide/stock/list.html" target="rightframe">&nbsp;农药库存</a>
 																</li>
+																<%
+																	for (PesticideResourceType resourceType : PesticideResourceType.values()) {
+																%>
 																<li onclick="changeBgColor('shiyunul7',this)">
 																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="pesticide/resource/list.html?type=1" target="rightframe">&nbsp;农药品名维护</a>
+																	<a href="pesticide/resource/list.html?type=<%=resourceType %>" target="rightframe">&nbsp;<%=resourceType.getTitle() %></a>
 																</li>
-																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
-																	&nbsp;
-																	<a href="pesticide/resource/list.html?type=2" target="rightframe">&nbsp;农药规格维护</a>
-																</li>
-																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
-																	&nbsp;
-																	<a href="pesticide/resource/list.html?type=3" target="rightframe">&nbsp;农药生产批号维护</a>
-																</li>
-																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
-																	&nbsp;
-																	<a href="pesticide/resource/list.html?type=4" target="rightframe">&nbsp;农药生产商维护</a>
-																</li>
-																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
-																	&nbsp;
-																	<a href="pesticide/resource/list.html?type=5" target="rightframe">&nbsp;农药种类维护</a>
-																</li>
+																<%
+																}
+																 %>
 															</ul>
 															<div id="menudiv8" class="shiyunlei2"
 																onclick="zhedie('shiyunul8',this)">

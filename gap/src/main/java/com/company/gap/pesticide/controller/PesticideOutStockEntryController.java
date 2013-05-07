@@ -1,7 +1,5 @@
 package com.company.gap.pesticide.controller;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.math.NumberUtils;
@@ -18,10 +16,10 @@ import com.company.gap.cell.model.Cell;
 import com.company.gap.cell.service.ICellService;
 import com.company.gap.grow.enumeration.GrowStatus;
 import com.company.gap.grow.service.IGrowRegisterService;
+import com.company.gap.pesticide.component.PesticideResourceHelper;
 import com.company.gap.pesticide.model.OutStock;
 import com.company.gap.pesticide.model.Stock;
 import com.company.gap.pesticide.service.IPesticideOutStockService;
-import com.company.gap.pesticide.service.IPesticideResourceService;
 import com.company.gap.pesticide.service.IPesticideStockService;
 
 @Controller
@@ -34,8 +32,6 @@ public class PesticideOutStockEntryController extends BeanEntryController<OutSto
 	private IPesticideStockService stockService;
 	@Autowired
 	private IGrowRegisterService registerService;
-	@Autowired
-	private IPesticideResourceService resourceService;
 	@Autowired
 	private ICellService cellService;
 	
@@ -74,14 +70,13 @@ public class PesticideOutStockEntryController extends BeanEntryController<OutSto
 	
 	@Override
 	protected void initializeEdit(HttpServletRequest request, OutStock t) {
-		Map<Integer, String> resId2Name = resourceService.queryResId2Name();
 		
 		Dto disp = t.getDisp();
 		
-		disp.put("nameId", 		resId2Name.get(t.getNameId()));
-		disp.put("specId", 		resId2Name.get(t.getSpecId()));
-		disp.put("batchId", 	resId2Name.get(t.getBatchId()));
-		disp.put("producerId", 	resId2Name.get(t.getProducerId()));
+		disp.put("nameId", 		PesticideResourceHelper.getText(t.getNameId()));
+		disp.put("specId", 		PesticideResourceHelper.getText(t.getSpecId()));
+		disp.put("batchId", 	PesticideResourceHelper.getText(t.getBatchId()));
+		disp.put("producerId", 	PesticideResourceHelper.getText(t.getProducerId()));
 		
 		Cell cell = cellService.findById(t.getCellId());
 		disp.put("outdate", DateUtils.format(t.getOutdate()));
@@ -92,6 +87,5 @@ public class PesticideOutStockEntryController extends BeanEntryController<OutSto
 	
 	protected void initialize(HttpServletRequest request) {
 		super.initialize(request);
-		request.setAttribute("stocks", 		stockService.findStockList());
 	}
 }
