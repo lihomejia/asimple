@@ -64,6 +64,9 @@ public abstract class BeanViewController<T> extends BaseController {
 	
 	private List<Object> getValues(List<T> datas, String field) {
 		List<Object> ret = New.arrayList();
+		
+		if (datas.size() == 0) return ret;
+		
 		if (datas.get(0) instanceof Map) {
 			for (T t : datas) {
 				Map<?, ?> map = (Map<?, ?>) t;
@@ -97,6 +100,8 @@ public abstract class BeanViewController<T> extends BaseController {
 	}
 	
 	private void writeDisps(List<T> datas, List<Object> disps, String field) {
+		if (datas.size() == 0) return;
+		
 		if (datas.get(0) instanceof Map) {
 			for (int i = 0; i < datas.size(); i++) {
 				Map<?, ?> map = (Map<?, ?>) datas.get(i);
