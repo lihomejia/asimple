@@ -1,3 +1,4 @@
+<%@page import="com.company.gap.info.enumeration.InfoType"%>
 <%@page import="com.company.gap.pesticide.enumeration.PesticideResourceType"%>
 <%@page import="com.company.gap.manure.enumeration.ManureResourceType"%>
 <%@page import="com.company.gap.resource.enumeration.DictType"%>
@@ -54,7 +55,7 @@
 						class="userLoginBar">
 						<tr>
 							<td width="15" align="right">
-								<img src="public/images/userLeft.gif" width="15" height="30" />
+								<img src="<%=basePath%>public/images/userLeft.gif" width="15" height="30" />
 							</td>
 							<td width="92" align="left" class="content font12White_B"
 								nowrap="nowrap">
@@ -69,7 +70,7 @@
 								<a href="#">退出</a>
 							</td>
 							<td width="15" align="right">
-								<img src="public/images/userRight.gif" width="15" height="30" />
+								<img src="<%=basePath%>public/images/userRight.gif" width="15" height="30" />
 							</td>
 						</tr>
 					</table>
@@ -116,27 +117,27 @@
 															</div>
 															<ul id="shiyunul1" class="shiyunul">
 																<li onclick="changeBgColor('shiyunul1',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
 																	<a href="tab.html" target="rightframe">&nbsp;公司简介</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul1',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
 																	<a href="tab.html" target="rightframe">&nbsp;公司资质</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul1',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
 																	<a href="tab.html" target="rightframe">&nbsp;公司新闻</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul1',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
 																	<a href="tab.html" target="rightframe">&nbsp;产品与服务</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul1',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
 																	<a href="tab.html" target="rightframe">&nbsp;联系我们</a>
 																</li>
@@ -149,19 +150,19 @@
 															</div>
 															<ul id="shiyunul2" class="shiyunul">
 																<li onclick="changeBgColor('shiyunul2',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
 																	<a href="password.html" target="rightframe">&nbsp;生产单元编号</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul2',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
 																	<a href="WWFW010202.html" target="rightframe">&nbsp;生产单元面积</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul2',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="cell/list.html" target="rightframe">&nbsp;生产单元信息</a>
+																	<a href="<%=basePath%>cell/list.html" target="rightframe">&nbsp;生产单元信息</a>
 																</li>
 															</ul>
 															<div id="menudiv3" class="shiyunlei2"
@@ -172,24 +173,24 @@
 															</div>
 															<ul id="shiyunul3" class="shiyunul">
 																<li onclick="changeBgColor('shiyunul4',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="nurture/register/add.html" target="rightframe">&nbsp;登记</a>
+																	<a href="<%=basePath%>nurture/register/add.html" target="rightframe">&nbsp;登记</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul4',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="nurture/process/list.html" target="rightframe">&nbsp;养殖过程</a>
+																	<a href="<%=basePath%>nurture/process/list.html" target="rightframe">&nbsp;养殖过程</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul4',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="nurture/completed/list.html" target="rightframe">&nbsp;已完成信息</a>
+																	<a href="<%=basePath%>nurture/completed/list.html" target="rightframe">&nbsp;已完成信息</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul4',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="nurture/archived/list.html" target="rightframe">&nbsp;已归档信息</a>
+																	<a href="<%=basePath%>nurture/archived/list.html" target="rightframe">&nbsp;已归档信息</a>
 																</li>
 															</ul>
 															<div id="menudiv4" class="shiyunlei2"
@@ -200,24 +201,24 @@
 															</div>
 															<ul id="shiyunul4" class="shiyunul">
 																<li onclick="changeBgColor('shiyunul4',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="grow/register/add.html" target="rightframe">&nbsp;登记</a>
+																	<a href="<%=basePath%>grow/register/add.html" target="rightframe">&nbsp;登记</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul4',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="grow/process/list.html" target="rightframe">&nbsp;种植过程</a>
+																	<a href="<%=basePath%>grow/process/list.html" target="rightframe">&nbsp;种植过程</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul4',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="grow/completed/list.html" target="rightframe">&nbsp;已完成信息</a>
+																	<a href="<%=basePath%>grow/completed/list.html" target="rightframe">&nbsp;已完成信息</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul4',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="grow/archived/list.html" target="rightframe">&nbsp;已归档信息</a>
+																	<a href="<%=basePath%>grow/archived/list.html" target="rightframe">&nbsp;已归档信息</a>
 																</li>
 															</ul>
 															<div id="menudiv5" class="shiyunlei2"
@@ -228,54 +229,54 @@
 															</div>
 															<ul id="shiyunul5" class="shiyunul">
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="feed/instock/add.html" target="rightframe">&nbsp;饲料入库单</a>
+																	<a href="<%=basePath%>feed/instock/add.html" target="rightframe">&nbsp;饲料入库单</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="feed/instock/list.html" target="rightframe">&nbsp;饲料入库记录</a>
+																	<a href="<%=basePath%>feed/instock/list.html" target="rightframe">&nbsp;饲料入库记录</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="feed/outstock/add.html" target="rightframe">&nbsp;饲料出库单</a>
+																	<a href="<%=basePath%>feed/outstock/add.html" target="rightframe">&nbsp;饲料出库单</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="feed/outstock/list.html" target="rightframe">&nbsp;饲料出库记录</a>
+																	<a href="<%=basePath%>feed/outstock/list.html" target="rightframe">&nbsp;饲料出库记录</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="feed/stock/list.html" target="rightframe">&nbsp;饲料库存</a>
+																	<a href="<%=basePath%>feed/stock/list.html" target="rightframe">&nbsp;饲料库存</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="feed/resource/list.html?type=1" target="rightframe">&nbsp;饲料品名维护</a>
+																	<a href="<%=basePath%>feed/resource/list.html?type=1" target="rightframe">&nbsp;饲料品名维护</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="feed/resource/list.html?type=2" target="rightframe">&nbsp;饲料规格维护</a>
+																	<a href="<%=basePath%>feed/resource/list.html?type=2" target="rightframe">&nbsp;饲料规格维护</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="feed/resource/list.html?type=3" target="rightframe">&nbsp;饲料生产批号维护</a>
+																	<a href="<%=basePath%>feed/resource/list.html?type=3" target="rightframe">&nbsp;饲料生产批号维护</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="feed/resource/list.html?type=4" target="rightframe">&nbsp;饲料生产商维护</a>
+																	<a href="<%=basePath%>feed/resource/list.html?type=4" target="rightframe">&nbsp;饲料生产商维护</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="feed/resource/list.html?type=5" target="rightframe">&nbsp;饲料种类维护</a>
+																	<a href="<%=basePath%>feed/resource/list.html?type=5" target="rightframe">&nbsp;饲料种类维护</a>
 																</li>
 															</ul>
 															<div id="menudiv6" class="shiyunlei2"
@@ -286,37 +287,37 @@
 															</div>
 															<ul id="shiyunul6" class="shiyunul">
 																<li onclick="changeBgColor('shiyunul6',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="manure/instock/add.html" target="rightframe">&nbsp;肥料入库单</a>
+																	<a href="<%=basePath%>manure/instock/add.html" target="rightframe">&nbsp;肥料入库单</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul6',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="manure/instock/list.html" target="rightframe">&nbsp;肥料入库记录</a>
+																	<a href="<%=basePath%>manure/instock/list.html" target="rightframe">&nbsp;肥料入库记录</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul6',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="manure/outstock/add.html" target="rightframe">&nbsp;肥料出库单</a>
+																	<a href="<%=basePath%>manure/outstock/add.html" target="rightframe">&nbsp;肥料出库单</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul6',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="manure/outstock/list.html" target="rightframe">&nbsp;肥料出库记录</a>
+																	<a href="<%=basePath%>manure/outstock/list.html" target="rightframe">&nbsp;肥料出库记录</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul6',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="manure/stock/list.html" target="rightframe">&nbsp;肥料库存</a>
+																	<a href="<%=basePath%>manure/stock/list.html" target="rightframe">&nbsp;肥料库存</a>
 																</li>
 																<%
 																	for (ManureResourceType resourceType : ManureResourceType.values()) {
 																%>
 																<li onclick="changeBgColor('shiyunul6',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="manure/resource/list.html?type=<%=resourceType %>" target="rightframe">&nbsp;<%=resourceType.getTitle() %></a>
+																	<a href="<%=basePath%>manure/resource/list.html?type=<%=resourceType %>" target="rightframe">&nbsp;<%=resourceType.getTitle() %></a>
 																</li>
 																<%
 																}
@@ -330,37 +331,37 @@
 															</div>
 															<ul id="shiyunul7" class="shiyunul">
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="pesticide/instock/add.html" target="rightframe">&nbsp;农药入库单</a>
+																	<a href="<%=basePath%>pesticide/instock/add.html" target="rightframe">&nbsp;农药入库单</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="pesticide/instock/list.html" target="rightframe">&nbsp;农药入库记录</a>
+																	<a href="<%=basePath%>pesticide/instock/list.html" target="rightframe">&nbsp;农药入库记录</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="pesticide/outstock/add.html" target="rightframe">&nbsp;农药出库单</a>
+																	<a href="<%=basePath%>pesticide/outstock/add.html" target="rightframe">&nbsp;农药出库单</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="pesticide/outstock/list.html" target="rightframe">&nbsp;农药出库记录</a>
+																	<a href="<%=basePath%>pesticide/outstock/list.html" target="rightframe">&nbsp;农药出库记录</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="pesticide/stock/list.html" target="rightframe">&nbsp;农药库存</a>
+																	<a href="<%=basePath%>pesticide/stock/list.html" target="rightframe">&nbsp;农药库存</a>
 																</li>
 																<%
 																	for (PesticideResourceType resourceType : PesticideResourceType.values()) {
 																%>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="pesticide/resource/list.html?type=<%=resourceType %>" target="rightframe">&nbsp;<%=resourceType.getTitle() %></a>
+																	<a href="<%=basePath%>pesticide/resource/list.html?type=<%=resourceType %>" target="rightframe">&nbsp;<%=resourceType.getTitle() %></a>
 																</li>
 																<%
 																}
@@ -374,54 +375,54 @@
 															</div>
 															<ul id="shiyunul8" class="shiyunul">
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="medicine/instock/add.html" target="rightframe">&nbsp;兽药入库单</a>
+																	<a href="<%=basePath%>medicine/instock/add.html" target="rightframe">&nbsp;兽药入库单</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="medicine/instock/list.html" target="rightframe">&nbsp;兽药入库记录</a>
+																	<a href="<%=basePath%>medicine/instock/list.html" target="rightframe">&nbsp;兽药入库记录</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="medicine/outstock/add.html" target="rightframe">&nbsp;兽药出库单</a>
+																	<a href="<%=basePath%>medicine/outstock/add.html" target="rightframe">&nbsp;兽药出库单</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="medicine/outstock/list.html" target="rightframe">&nbsp;兽药出库记录</a>
+																	<a href="<%=basePath%>medicine/outstock/list.html" target="rightframe">&nbsp;兽药出库记录</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="medicine/stock/list.html" target="rightframe">&nbsp;兽药库存</a>
+																	<a href="<%=basePath%>medicine/stock/list.html" target="rightframe">&nbsp;兽药库存</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="medicine/resource/list.html?type=1" target="rightframe">&nbsp;兽药品名维护</a>
+																	<a href="<%=basePath%>medicine/resource/list.html?type=1" target="rightframe">&nbsp;兽药品名维护</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="medicine/resource/list.html?type=2" target="rightframe">&nbsp;兽药规格维护</a>
+																	<a href="<%=basePath%>medicine/resource/list.html?type=2" target="rightframe">&nbsp;兽药规格维护</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="medicine/resource/list.html?type=3" target="rightframe">&nbsp;兽药生产批号维护</a>
+																	<a href="<%=basePath%>medicine/resource/list.html?type=3" target="rightframe">&nbsp;兽药生产批号维护</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="medicine/resource/list.html?type=4" target="rightframe">&nbsp;兽药生产商维护</a>
+																	<a href="<%=basePath%>medicine/resource/list.html?type=4" target="rightframe">&nbsp;兽药生产商维护</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="medicine/resource/list.html?type=5" target="rightframe">&nbsp;兽药种类维护</a>
+																	<a href="<%=basePath%>medicine/resource/list.html?type=5" target="rightframe">&nbsp;兽药种类维护</a>
 																</li>
 															</ul>
 															<div id="menudiv9" class="shiyunlei2"
@@ -432,54 +433,54 @@
 															</div>
 															<ul id="shiyunul9" class="shiyunul">
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="disinfectant/instock/add.html" target="rightframe">&nbsp;消毒剂入库单</a>
+																	<a href="<%=basePath%>disinfectant/instock/add.html" target="rightframe">&nbsp;消毒剂入库单</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="disinfectant/instock/list.html" target="rightframe">&nbsp;消毒剂入库记录</a>
+																	<a href="<%=basePath%>disinfectant/instock/list.html" target="rightframe">&nbsp;消毒剂入库记录</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="disinfectant/outstock/add.html" target="rightframe">&nbsp;消毒剂出库单</a>
+																	<a href="<%=basePath%>disinfectant/outstock/add.html" target="rightframe">&nbsp;消毒剂出库单</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="disinfectant/outstock/list.html" target="rightframe">&nbsp;消毒剂出库记录</a>
+																	<a href="<%=basePath%>disinfectant/outstock/list.html" target="rightframe">&nbsp;消毒剂出库记录</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="disinfectant/stock/list.html" target="rightframe">&nbsp;消毒剂库存</a>
+																	<a href="<%=basePath%>disinfectant/stock/list.html" target="rightframe">&nbsp;消毒剂库存</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="disinfectant/resource/list.html?type=1" target="rightframe">&nbsp;消毒剂品名维护</a>
+																	<a href="<%=basePath%>disinfectant/resource/list.html?type=1" target="rightframe">&nbsp;消毒剂品名维护</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="disinfectant/resource/list.html?type=2" target="rightframe">&nbsp;消毒剂规格维护</a>
+																	<a href="<%=basePath%>disinfectant/resource/list.html?type=2" target="rightframe">&nbsp;消毒剂规格维护</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="disinfectant/resource/list.html?type=3" target="rightframe">&nbsp;消毒剂生产批号维护</a>
+																	<a href="<%=basePath%>disinfectant/resource/list.html?type=3" target="rightframe">&nbsp;消毒剂生产批号维护</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="disinfectant/resource/list.html?type=4" target="rightframe">&nbsp;消毒剂生产商维护</a>
+																	<a href="<%=basePath%>disinfectant/resource/list.html?type=4" target="rightframe">&nbsp;消毒剂生产商维护</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="disinfectant/resource/list.html?type=5" target="rightframe">&nbsp;消毒剂种类维护</a>
+																	<a href="<%=basePath%>disinfectant/resource/list.html?type=5" target="rightframe">&nbsp;消毒剂种类维护</a>
 																</li>
 															</ul>
 															<div id="menudiv10" class="shiyunlei2"
@@ -495,9 +496,9 @@
 															%>
 															
 															<li onclick="changeBgColor('shiyunul4',this)">
-																<img src="public/images/fangdian_06.gif" align="absmiddle" />
+																<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																&nbsp;
-																<a href="resource/dict/list.html?type=<%=dictType %>" target="rightframe">&nbsp;<%=dictType.getTitle() %></a>
+																<a href="<%=basePath%>resource/dict/list.html?type=<%=dictType %>" target="rightframe">&nbsp;<%=dictType.getTitle() %></a>
 															</li>
 															
 															<%
@@ -508,9 +509,22 @@
 															<div id="menudiv11" class="shiyunlei2"
 																onclick="zhedie('shiyunul11',this)">
 																<p>
-																	产品出入库
+																	新闻公告
 																</p>
 															</div>
+															<ul id="shiyunul11" class="shiyunul">
+															<%
+															for (InfoType infoType : InfoType.values()) {
+															%>
+																<li onclick="changeBgColor('shiyunul7',this)">
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
+																	&nbsp;
+																	<a href="<%=basePath%>admin/info/list.html?type=<%=infoType %>" target="rightframe">&nbsp;<%=infoType.getTitle() %></a>
+																</li>
+															 <%
+															 }
+															 %>
+															</ul>
 															<div id="menudiv12" class="shiyunlei2"
 																onclick="zhedie('shiyunul12',this)">
 																<p>
@@ -579,7 +593,7 @@
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 						<tr>
 							<td height="24" align="center">
-								本网站由：中国质量认证中心产品认证七部&nbsp;&nbsp;北京中认环宇技术支持 <a href="CaptureActivity.apk" style="color:blue">安卓下载</a>
+								本网站由：中国质量认证中心产品认证七部&nbsp;&nbsp;北京中认环宇技术支持 <a href="<%=basePath%>CaptureActivity.apk" style="color:blue">安卓下载</a>
 							</td>
 						</tr>
 						<tr>
