@@ -354,27 +354,31 @@
       <!--用户注册-->
 		<table border="0" cellspacing="0" cellpadding="0" class="userReg">
         <tr>
-          <td class="p10"><form id="form1" name="form1" method="post" action="">
+          <td class="p10">
+          	<form id="form1" name="form1" method="post" action="<%=basePath%>admin/login.html" target="_blank">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <td height="23" colspan="2" align="left" class="title">用户登录</td>
                 </tr>
                 <tr>
-                  <td width="15%" height="24" align="left">&nbsp;</td>
-                  <td width="85%" height="24" align="left">请选择证书：</td>
+                  <td width="30%" height="24" align="center">用户名:</td>
+                  <td width="70%" height="24" align="left">
+                  	<input name="userName" value="admin"/>
+                  </td>
                 </tr>
                 <tr>
-                  <td height="24" align="center">&nbsp;</td>
-                  <td height="24" align="left"><select name="select" id="select" class="userReg_inputSelect">
-                      <option>RA超级管理员</option>
-                    </select></td>
+                  <td height="24" align="center">密&nbsp;&nbsp;&nbsp;码:</td>
+                  <td height="24" align="left">
+                  	<input type="password" name="passWord" value="admin"/>
+                  </td>
                 </tr>
                 <tr>
                   <td height="30" colspan="2" align="center"><input type="submit" name="button" id="button" value="登 录" class="btnStyle" />
                     <input type="button" name="button2" id="button2" value="注 册" class="btnStyle" /></td>
                 </tr>
               </table>
-            </form></td>
+            </form>
+           </td>
         </tr>
       </table>
       <!--企业新闻-->
