@@ -165,35 +165,13 @@
           <td colspan="2" align="left" valign="top" class="p10" style="height:182px;">
 		  <MARQUEE  direction="up" HEIGHT="170" WIDTH="170" VSPACE="2" scrollAmount="2" ONMOUSEOUT=this.start() ONMOUSEOVER=this.stop()>
 		  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="font12Blue">
-              <tr>
-                <td width="10" height="26" align="left" class="font12Blue_B">·</td>
-                <td height="26" colspan="2" align="left"><a href="#">关于2013年春节放假安排的...</a></td>
-              </tr>
-              <tr>
-                <td width="10" height="26" align="left" class="font12Blue_B">·</td>
-                <td height="26" colspan="2" align="left"><a href="#">关于2013年春节期间证书邮...</a></td>
-              </tr>
-              <tr>
-                <td width="10" height="26" align="left" class="font12Blue_B">·</td>
-                <td height="26" colspan="2" align="left"><a href="#">财政部 发展改革委关于调整...</a></td>
-              </tr>
-              <tr>
-                <td width="10" height="26" align="left" class="font12Blue_B">·</td>
-                <td height="26" colspan="2" align="left"><a href="#">2013年有机产品认证获证企...</a></td>
-              </tr>
-              <tr>
-                <td width="10" height="26" align="left" class="font12Blue_B">·</td>
-                <td height="26" colspan="2" align="left"><a href="#">良好农业规范认证获证企业...</a></td>
-              </tr>
-              <tr>
-                <td width="10" height="26" align="left" class="font12Blue_B">·</td>
-                <td height="26" colspan="2" align="left"><a href="#">信息安全管理体系认证获证...</a></td>
-              </tr>
-              <tr>
-                <td width="10" height="26" align="left" class="font12Blue_B">·</td>
-                <td height="26" colspan="2" align="left"><a href="#">关于2004年和2009年获证...</a></td>
-              </tr>
-            </table>
+		  	<c:forEach items="${TZGG}" var="info">
+		  		<tr>
+                	<td width="10" height="26" align="left" class="font12Blue_B">·</td>
+                	<td height="26" colspan="2" align="left"><a href="#">${info.title}</a></td>
+              	</tr>
+		  	</c:forEach>
+          </table>
 		  </MARQUEE>
 		  </td>
         </tr>
@@ -246,106 +224,14 @@
           <td colspan="2" valign="top" class="p10" style="height:182px;">
 		   <MARQUEE  direction="up" HEIGHT="178" WIDTH="450" VSPACE="2" scrollAmount="2" ONMOUSEOUT=this.start() ONMOUSEOVER=this.stop()>
 		  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="font12Blue">
+		  	<c:forEach items="${QYXXH}" var="info">
+		  		<tr>
+	              <td width="8" height="26" align="left" class="font12Blue_B">·</td>
+			      <td align="left"><a href="content.html" target="_blank">${info.title}</a></td>
+			      <td height="26" colspan="3" align="right" class="font12Gray">2013年05月15日</td>
+			    </tr>
 		    <tr>
-              <td width="8" height="26" align="left" class="font12Blue_B">·</td>
-		      <td align="left"><a href="content.html" target="_blank">中心派员参加IQnet亚洲成员机构会...</a></td>
-		      <td height="26" colspan="3" align="right" class="font12Gray">2013年01月12日</td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26" align="left"><a href="content.html" target="_blank">中心与天祥公证行有限公司签订CCC认...</a></td>
-		      <td height="26" colspan="3" align="right" class="font12Gray">2013年01月12日</td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26" align="left"><a href="content.html" target="_blank">广州分中心低碳工作获得广东省发改委认...</a></td>
-		      <td height="26" colspan="3" align="right" class="font12Gray">2013年01月12日</td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26" align="left"><a href="content.html" target="_blank">王克娇主任到广州调研工作</a></td>
-		      <td height="26" colspan="3" align="right" class="font12Gray">2013年01月12日</td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26"  align="left"><a href="content.html" target="_blank">中心积极做好节能产品惠民工程相关工作</a></td>
-		      <td height="26" colspan="3" align="right" class="font12Gray">2013年01月12日</td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26"  align="left"><a href="content.html" target="_blank">中心派员参加IQnet亚洲成员机构会...</a></td>
-		      <td height="26" colspan="3" align="right" class="font12Gray">2013年01月12日</td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26" align="left"><a href="content.html" target="_blank">中心与天祥公证行有限公司签订CCC认...</a></td>
-		      <td height="26" colspan="3" align="right" class="font12Gray">2013年01月12日</td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td align="left"><a href="content.html" target="_blank">中心派员参加IQnet亚洲成员机构会...</a></td>
-		      <td height="26" colspan="3" align="right" class="font12Gray">2013年01月12日</td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26" align="left"><a href="content.html" target="_blank">中心与天祥公证行有限公司签订CCC认...</a></td>
-		      <td height="26" colspan="3" align="right" class="font12Gray">2013年01月12日</td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26" align="left"><a href="content.html" target="_blank">广州分中心低碳工作获得广东省发改委认...</a></td>
-		      <td height="26" colspan="3" align="right" class="font12Gray">2013年01月12日</td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26" align="left"><a href="content.html" target="_blank">王克娇主任到广州调研工作</a></td>
-		      <td height="26" colspan="3" align="right" class="font12Gray">2013年01月12日</td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26"  align="left"><a href="content.html" target="_blank">中心积极做好节能产品惠民工程相关工作</a></td>
-		      <td height="26" colspan="3" align="right" class="font12Gray">2013年01月12日</td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26"  align="left"><a href="content.html" target="_blank">中心派员参加IQnet亚洲成员机构会...</a></td>
-		      <td height="26" colspan="3" align="right" class="font12Gray">2013年01月12日</td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26" align="left"><a href="content.html" target="_blank">中心与天祥公证行有限公司签订CCC认...</a></td>
-		      <td height="26" colspan="3" align="right" class="font12Gray">2013年01月12日</td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26" align="left"><a href="content.html" target="_blank">中心与天祥公证行有限公司签订CCC认...</a></td>
-		      <td height="26" colspan="3" align="right" class="font12Gray">2013年01月12日</td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26" align="left"><a href="content.html" target="_blank">广州分中心低碳工作获得广东省发改委认...</a></td>
-		      <td height="26" colspan="3" align="right" class="font12Gray">2013年01月12日</td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26" align="left"><a href="content.html" target="_blank">王克娇主任到广州调研工作</a></td>
-		      <td height="26" colspan="3" align="right" class="font12Gray">2013年01月12日</td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26"  align="left"><a href="content.html" target="_blank">中心积极做好节能产品惠民工程相关工作</a></td>
-		      <td height="26" colspan="3" align="right" class="font12Gray">2013年01月12日</td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26"  align="left"><a href="content.html" target="_blank">中心派员参加IQnet亚洲成员机构会...</a></td>
-		      <td height="26" colspan="3" align="right" class="font12Gray">2013年01月12日</td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26" align="left"><a href="content.html" target="_blank">中心与天祥公证行有限公司签订CCC认...</a></td>
-		      <td height="26" colspan="3" align="right" class="font12Gray">2013年01月12日</td>
-		      </tr>
+		  	</c:forEach>
             </table>
 			</MARQUEE>		  </td>
         </tr>
@@ -395,87 +281,12 @@
           <td valign="top" class="p10" style="height:298px;">
 		  <MARQUEE  direction="up" HEIGHT="290" WIDTH="230" VSPACE="2" scrollAmount="2" ONMOUSEOUT=this.start() ONMOUSEOVER=this.stop()>
 		  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="font12Blue">
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26" colspan="2" align="left"><a href="#">关于2013年春节放假安排年春节放假安...</a></td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26" colspan="2" align="left"><a href="#">关于2013年春节期间证书邮...</a></td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26" colspan="2" align="left"><a href="#">财政部 发展改革委关于调整...</a></td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26" colspan="2" align="left"><a href="#">2013年有机产品认证获证企...</a></td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26" colspan="2" align="left"><a href="#">良好农业规范认证获证企业...</a></td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26" colspan="2" align="left"><a href="#">信息安全管理体系认证获证...</a></td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26" colspan="2" align="left"><a href="#">关于2013年春节放假安排的...</a></td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26" colspan="2" align="left"><a href="#">关于2013年春节期间证书邮...</a></td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26" colspan="2" align="left"><a href="#">财政部 发展改革委关于调整...</a></td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26" colspan="2" align="left"><a href="#">2013年有机产品认证获证企...</a></td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26" colspan="2" align="left"><a href="#">良好农业规范认证获证企业...</a></td>
-		      </tr>
-		    <tr>
-              <td height="26" align="left" class="font12Blue_B">·</td>
-		      <td height="26" colspan="2" align="left"><a href="#">信息安全管理体系认证获证...</a></td>
-		      </tr>
-              
-              <tr>
-                <td width="10" height="26" align="left" class="font12Blue_B">·</td>
-                <td height="26" colspan="2" align="left"><a href="#">关于2013年春节放假安排的...</a></td>
-              </tr>
-              <tr>
-                <td width="10" height="26" align="left" class="font12Blue_B">·</td>
-                <td height="26" colspan="2" align="left"><a href="#">关于2013年春节期间证书邮...</a></td>
-              </tr>
-              <tr>
-                <td width="10" height="26" align="left" class="font12Blue_B">·</td>
-                <td height="26" colspan="2" align="left"><a href="#">财政部 发展改革委关于调整...</a></td>
-              </tr>
-              <tr>
-                <td width="10" height="26" align="left" class="font12Blue_B">·</td>
-                <td height="26" colspan="2" align="left"><a href="#">2013年有机产品认证获证企...</a></td>
-              </tr>
-              <tr>
-                <td width="10" height="26" align="left" class="font12Blue_B">·</td>
-                <td height="26" colspan="2" align="left"><a href="#">良好农业规范认证获证企业...</a></td>
-              </tr>
-              <tr>
-                <td height="26" align="left" class="font12Blue_B">·</td>
-                <td height="26" colspan="2" align="left"><a href="#">关于2013年春节期间证书邮...</a></td>
-              </tr>
-              <tr>
-                <td height="26" align="left" class="font12Blue_B">·</td>
-                <td height="26" colspan="2" align="left"><a href="#">良好农业规范认证获证企业...</a></td>
-              </tr>
-              <tr>
-                <td width="10" height="26" align="left" class="font12Blue_B">·</td>
-                <td height="26" colspan="2" align="left"><a href="#">信息安全管理体系认证获证...</a></td>
-              </tr>
+		  	<c:forEach items="${QYXW}" var="info">
+		  		<tr>
+	              	<td height="26" align="left" class="font12Blue_B">·</td>
+			      	<td height="26" colspan="2" align="left"><a href="#">${info.title}</a></td>
+		    	</tr>
+		  	</c:forEach>
             </table>
 		  </MARQUEE>
 		  </td>

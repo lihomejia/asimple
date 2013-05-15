@@ -32,13 +32,13 @@
 									<tr>
 										<td class=forumrow style="40%"><div align="right">标题:</div></td>
 										<td class=forumrow>
-											<input id="title" type="text" name="title" value="${data.title }"/>
+											<input id="title" type="text" name="title" value="${data.title }" size="90"/>
 										</td>
 									</tr>
 									<tr>
 										<td class=forumrow><div align="right">关键字:</div></td>
 										<td class=forumrow>
-											<input id="keyword" type="text" name="keyword" value="${data.keyword }"/>
+											<input id="keyword" type="text" name="keyword" value="${data.keyword }" size="90"/>
 										</td>
 									</tr>
 									

@@ -1,9 +1,10 @@
 package com.company.gap.system.controller;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import com.company.gap.system.model.User;
+import com.company.gap.system.service.impl.ServiceContext;
 
 
 @Controller
@@ -12,13 +13,13 @@ public class LoginController {
 
 	
 	@RequestMapping("login")
-	public String login(@RequestParam("userName") String userName, @RequestParam("passWord") String passWord) {
+	public String login(User user) {
 		
-		if (!"admin".equals(passWord)) {
+		if (!"admin".equals(user.getPassWord())) {
 			return "redirect:/web/index.html";
 		}
 		
-		
+		ServiceContext.setUser(user);
 		
 		return "redirect:/admin/homepage.html";
 	}
