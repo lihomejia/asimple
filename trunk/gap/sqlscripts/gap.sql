@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : app-onceatime.rhcloud.com
+Source Server         : localhost_root_root
 Source Server Version : 50521
-Source Host           : 127.12.45.129:3306
+Source Host           : localhost:3306
 Source Database       : gap
 
 Target Server Type    : MYSQL
 Target Server Version : 50521
 File Encoding         : 65001
 
-Date: 2013-05-08 00:12:31
+Date: 2013-05-15 23:37:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -445,6 +445,63 @@ CREATE TABLE `t_grow_resource` (
 -- ----------------------------
 -- Records of t_grow_resource
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for `t_info`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_info`;
+CREATE TABLE `t_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `adate` datetime DEFAULT NULL,
+  `auser_id` int(11) DEFAULT '0',
+  `cdate` datetime DEFAULT NULL,
+  `comment` varchar(255) DEFAULT NULL,
+  `cuser_id` int(11) DEFAULT '0',
+  `status` int(11) DEFAULT '0',
+  `content` text,
+  `keyword` varchar(250) DEFAULT NULL,
+  `title` varchar(250) DEFAULT NULL,
+  `type` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_info
+-- ----------------------------
+INSERT INTO `t_info` VALUES ('1', null, '0', '2013-05-15 00:44:01', 'GGagag', '0', '0', '关于2013年春节放假安排的...', '关于2013年春节放假安排的...', '关于2013年春节放假安排的...', 'TZGG');
+INSERT INTO `t_info` VALUES ('2', null, '0', '2013-05-15 23:04:52', null, '0', '0', '关于2013年春节期间证书邮...', '关于2013年春节期间证书邮...', '关于2013年春节期间证书邮...', 'TZGG');
+INSERT INTO `t_info` VALUES ('3', null, '0', '2013-05-15 23:05:03', null, '0', '0', '财政部 发展改革委关于调整...', '财政部 发展改革委关于调整...', '财政部 发展改革委关于调整...', 'TZGG');
+INSERT INTO `t_info` VALUES ('4', null, '0', '2013-05-15 23:05:13', null, '0', '0', '2013年有机产品认证获证企...', '2013年有机产品认证获证企...', '2013年有机产品认证获证企...', 'TZGG');
+INSERT INTO `t_info` VALUES ('5', null, '0', '2013-05-15 23:05:21', null, '0', '0', '良好农业规范认证获证企业...', '良好农业规范认证获证企业...', '良好农业规范认证获证企业...', 'TZGG');
+INSERT INTO `t_info` VALUES ('6', null, '0', '2013-05-15 23:05:31', null, '0', '0', '信息安全管理体系认证获证...', '信息安全管理体系认证获证...', '信息安全管理体系认证获证...', 'TZGG');
+INSERT INTO `t_info` VALUES ('7', null, '0', '2013-05-15 23:05:43', null, '0', '0', '关于2004年和2009年获证...', '关于2004年和2009年获证...', '关于2004年和2009年获证...', 'TZGG');
+INSERT INTO `t_info` VALUES ('8', null, '0', '2013-05-15 23:07:27', null, '0', '0', '中心派员参加IQnet亚洲成员机构会...', '中心派员参加IQnet亚洲成员机构会...', '中心派员参加IQnet亚洲成员机构会...', 'QYXXH');
+INSERT INTO `t_info` VALUES ('9', null, '0', '2013-05-15 23:07:38', null, '0', '0', '中心与天祥公证行有限公司签订CCC认..', '中心与天祥公证行有限公司签订CCC认..', '中心与天祥公证行有限公司签订CCC认..', 'QYXXH');
+INSERT INTO `t_info` VALUES ('10', null, '0', '2013-05-15 23:07:46', null, '0', '0', '广州分中心低碳工作获得广东省发改委认...', '广州分中心低碳工作获得广东省发改委认...', '广州分中心低碳工作获得广东省发改委认...', 'QYXXH');
+INSERT INTO `t_info` VALUES ('11', null, '0', '2013-05-15 23:07:54', null, '0', '0', '王克娇主任到广州调研工作', '王克娇主任到广州调研工作', '王克娇主任到广州调研工作', 'QYXXH');
+INSERT INTO `t_info` VALUES ('12', null, '0', '2013-05-15 23:08:04', null, '0', '0', '中心积极做好节能产品惠民工程相关工作', '中心积极做好节能产品惠民工程相关工作', '中心积极做好节能产品惠民工程相关工作', 'QYXXH');
+INSERT INTO `t_info` VALUES ('13', null, '0', '2013-05-15 23:08:14', null, '0', '0', '中心派员参加IQnet亚洲成员机构会...', '中心派员参加IQnet亚洲成员机构会...', '中心派员参加IQnet亚洲成员机构会...', 'QYXXH');
+INSERT INTO `t_info` VALUES ('14', null, '0', '2013-05-15 23:08:25', null, '0', '0', '中心与天祥公证行有限公司签订CCC认..', '中心与天祥公证行有限公司签订CCC认..', '中心与天祥公证行有限公司签订CCC认..', 'QYXXH');
+INSERT INTO `t_info` VALUES ('15', null, '0', '2013-05-15 23:08:35', null, '0', '0', '中心派员参加IQnet亚洲成员机构会...', '中心派员参加IQnet亚洲成员机构会...', '中心派员参加IQnet亚洲成员机构会...', 'QYXXH');
+INSERT INTO `t_info` VALUES ('16', null, '0', '2013-05-15 23:08:47', null, '0', '0', '中心与天祥公证行有限公司签订CCC认...', '中心与天祥公证行有限公司签订CCC认...', '中心与天祥公证行有限公司签订CCC认...', 'QYXXH');
+INSERT INTO `t_info` VALUES ('17', null, '0', '2013-05-15 23:08:56', null, '0', '0', '广州分中心低碳工作获得广东省发改委认...', '广州分中心低碳工作获得广东省发改委认...', '广州分中心低碳工作获得广东省发改委认...', 'QYXXH');
+INSERT INTO `t_info` VALUES ('18', null, '0', '2013-05-15 23:09:04', null, '0', '0', '王克娇主任到广州调研工作', '王克娇主任到广州调研工作', '王克娇主任到广州调研工作', 'QYXXH');
+INSERT INTO `t_info` VALUES ('19', null, '0', '2013-05-15 23:09:13', null, '0', '0', '中心积极做好节能产品惠民工程相关工作', '中心积极做好节能产品惠民工程相关工作', '中心积极做好节能产品惠民工程相关工作', 'QYXXH');
+INSERT INTO `t_info` VALUES ('20', null, '0', '2013-05-15 23:09:24', null, '0', '0', '中心派员参加IQnet亚洲成员机构会..', '中心派员参加IQnet亚洲成员机构会..', '中心派员参加IQnet亚洲成员机构会..', 'QYXXH');
+INSERT INTO `t_info` VALUES ('21', null, '0', '2013-05-15 23:09:35', null, '0', '0', '中心与天祥公证行有限公司签订CCC认...', '中心与天祥公证行有限公司签订CCC认...', '中心与天祥公证行有限公司签订CCC认...', 'QYXXH');
+INSERT INTO `t_info` VALUES ('22', null, '0', '2013-05-15 23:09:50', null, '0', '0', '中心与天祥公证行有限公司签订CCC认..', '中心与天祥公证行有限公司签订CCC认..', '中心与天祥公证行有限公司签订CCC认..', 'QYXXH');
+INSERT INTO `t_info` VALUES ('23', null, '0', '2013-05-15 23:10:02', null, '0', '0', '广州分中心低碳工作获得广东省发改委认...', '广州分中心低碳工作获得广东省发改委认...', '广州分中心低碳工作获得广东省发改委认...', 'QYXXH');
+INSERT INTO `t_info` VALUES ('24', null, '0', '2013-05-15 23:10:15', null, '0', '0', '王克娇主任到广州调研工作', '王克娇主任到广州调研工作', '王克娇主任到广州调研工作', 'QYXXH');
+INSERT INTO `t_info` VALUES ('25', null, '0', '2013-05-15 23:10:27', null, '0', '0', '中心积极做好节能产品惠民工程相关工作', '中心积极做好节能产品惠民工程相关工作', '中心积极做好节能产品惠民工程相关工作', 'QYXXH');
+INSERT INTO `t_info` VALUES ('26', null, '0', '2013-05-15 23:10:36', null, '0', '0', '中心派员参加IQnet亚洲成员机构会...', '中心派员参加IQnet亚洲成员机构会...', '中心派员参加IQnet亚洲成员机构会...', 'QYXXH');
+INSERT INTO `t_info` VALUES ('27', null, '0', '2013-05-15 23:10:45', null, '0', '0', '中心与天祥公证行有限公司签订CCC认...', '中心与天祥公证行有限公司签订CCC认...', '中心与天祥公证行有限公司签订CCC认...', 'QYXXH');
+INSERT INTO `t_info` VALUES ('28', null, '0', '2013-05-15 23:10:59', null, '0', '0', '关于2013年春节放假安排年春节放假安...', '关于2013年春节放假安排年春节放假安...', '关于2013年春节放假安排年春节放假安...', 'QYXW');
+INSERT INTO `t_info` VALUES ('29', null, '0', '2013-05-15 23:11:13', null, '0', '0', '关于2013年春节期间证书邮...', '关于2013年春节期间证书邮...', '关于2013年春节期间证书邮...', 'QYXW');
+INSERT INTO `t_info` VALUES ('30', null, '0', '2013-05-15 23:11:22', null, '0', '0', '财政部 发展改革委关于调整..', '财政部 发展改革委关于调整..', '财政部 发展改革委关于调整..', 'QYXW');
+INSERT INTO `t_info` VALUES ('31', null, '0', '2013-05-15 23:11:34', null, '0', '0', '2013年有机产品认证获证企...', '2013年有机产品认证获证企...', '2013年有机产品认证获证企...', 'QYXW');
+INSERT INTO `t_info` VALUES ('32', null, '0', '2013-05-15 23:11:42', null, '0', '0', '良好农业规范认证获证企业...', '良好农业规范认证获证企业...', '良好农业规范认证获证企业...', 'QYXW');
+INSERT INTO `t_info` VALUES ('33', null, '0', '2013-05-15 23:11:51', null, '0', '0', '信息安全管理体系认证获证..', '信息安全管理体系认证获证..', '信息安全管理体系认证获证..', 'QYXW');
+INSERT INTO `t_info` VALUES ('34', null, '0', '2013-05-15 23:12:00', null, '0', '0', '关于2013年春节放假安排的...', '关于2013年春节放假安排的...', '关于2013年春节放假安排的...', 'QYXW');
 
 -- ----------------------------
 -- Table structure for `t_manure_instock`
@@ -964,4 +1021,25 @@ CREATE TABLE `t_production_cell` (
 
 -- ----------------------------
 -- Records of t_production_cell
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `t_user`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_user`;
+CREATE TABLE `t_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `adate` datetime DEFAULT NULL,
+  `auser_id` int(11) DEFAULT '0',
+  `cdate` datetime DEFAULT NULL,
+  `comment` varchar(255) DEFAULT NULL,
+  `cuser_id` int(11) DEFAULT '0',
+  `status` int(11) DEFAULT '0',
+  `pass_word` varchar(20) DEFAULT NULL,
+  `user_name` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_user
 -- ----------------------------
