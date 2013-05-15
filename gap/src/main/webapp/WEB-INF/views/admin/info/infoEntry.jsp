@@ -8,7 +8,9 @@
     <%@include file="/public/jsp/commonEntry.jsp"%>
     <script type="text/javascript">
 	    JGAP.on(window, 'load', function() {
-	    	validator.regist({id : "name", name : "${resourceType.name}"}, "notnull");
+	    	validator.regist({id : "title", name : "标题"}, "notnull");
+	    	validator.regist({id : "keyword", name : "关键字"}, "notnull");
+	    	validator.regist({id : "content", name : "内容"}, "notnull");
 	    	validator.bindForm("form1");
 	   	});
     </script>
@@ -30,20 +32,20 @@
 									<tr>
 										<td class=forumrow style="40%"><div align="right">标题:</div></td>
 										<td class=forumrow>
-											<input id="name" type="text" name="name" value="${data.title }"/>
+											<input id="title" type="text" name="title" value="${data.title }"/>
 										</td>
 									</tr>
 									<tr>
 										<td class=forumrow><div align="right">关键字:</div></td>
 										<td class=forumrow>
-											<input id="name" type="text" name="name" value="${data.keyword }"/>
+											<input id="keyword" type="text" name="keyword" value="${data.keyword }"/>
 										</td>
 									</tr>
 									
 									<tr>
 										<td class=forumrow><div align="right">内容:</div></td>
 										<td class=forumrow>
-											<textarea name="comment" cols="73" rows="10">${data.content}</textarea>
+											<textarea id="content" name="content" cols="73" rows="10">${data.content}</textarea>
 										</td>
 									</tr>
 									<tr>
