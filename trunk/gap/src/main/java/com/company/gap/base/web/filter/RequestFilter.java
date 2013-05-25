@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.company.gap.base.GapConstants;
@@ -29,6 +30,7 @@ public class RequestFilter implements Filter {
 		Thread.currentThread().setName(nextThreadId());
 		
 		HttpServletRequest request = (HttpServletRequest) req;
+		HttpServletResponse response = (HttpServletResponse) resp;
 		
 		HttpSession session = request.getSession(true);
 		
@@ -38,10 +40,11 @@ public class RequestFilter implements Filter {
 			ServiceContext.setUser(user);
 		}
 		else if (request.getRequestURI().toLowerCase().indexOf("login.html") > 0) {
-			user = new User();
-			user.setUserName(req.getParameter("username"));
-
-			ServiceContext.setUser(user);
+			
+		} 
+		else {
+			response.sendRedirect(request.getContextPath() + "/web/index.html");
+			return;
 		}
 		
 		try {
