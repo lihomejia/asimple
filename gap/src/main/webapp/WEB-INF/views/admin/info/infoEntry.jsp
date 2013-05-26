@@ -6,12 +6,27 @@
 	<base href="<%=basePath%>">
     <title></title>
     <%@include file="/public/jsp/commonEntry.jsp"%>
+    <script type="text/javascript" src="<%=basePath%>public/ueditor1_2_5_0-utf8-jsp/editor_config.js" ></script>
+	<script type="text/javascript" src="<%=basePath%>public/ueditor1_2_5_0-utf8-jsp/editor_all_min.js"></script>
     <script type="text/javascript">
 	    JGAP.on(window, 'load', function() {
 	    	validator.regist({id : "title", name : "标题"}, "notnull");
 	    	validator.regist({id : "keyword", name : "关键字"}, "notnull");
-	    	validator.regist({id : "content", name : "内容"}, "notnull");
+	    	validator.regist({id : "content_editor", name : "内容"}, function() {
+	    		var content = UE.getEditor('content_editor').getContent();
+	    		if (content != '') {
+	    			document.getElementById('content').value = content;
+	    			return true;
+	    		}
+	    		
+	    		return '不能为空';
+	    	});
 	    	validator.bindForm("form1");
+	    	
+	   		var editor = UE.getEditor('content_editor');
+	   		editor.ready(function() {
+				UE.getEditor('content_editor').setContent(document.getElementById('content').value);
+	   		});
 	   	});
     </script>
 </head>
@@ -38,14 +53,15 @@
 									<tr>
 										<td class=forumrow><div align="right">关键字:</div></td>
 										<td class=forumrow>
-											<input id="keyword" type="text" name="keyword" value="${data.keyword }" size="90"/>
+											<input id="keyword" type="text" name="keyword" value="${data.keyword}" size="90"/>
 										</td>
 									</tr>
 									
 									<tr>
 										<td class=forumrow><div align="right">内容:</div></td>
 										<td class=forumrow>
-											<textarea id="content" name="content" cols="73" rows="10">${data.content}</textarea>
+											<input type="hidden" id="content" name="content" value="${data.content}">
+											<textarea id="content_editor"></textarea>
 										</td>
 									</tr>
 									<tr>
