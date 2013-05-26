@@ -19,6 +19,8 @@ import com.company.gap.system.service.impl.ServiceContext;
 @Controller
 @RequestMapping("admin")
 public class LoginController {
+	
+	private final static String MESSAGE = "msg";
 
 	@Autowired
 	private ILoginService service;
@@ -31,20 +33,19 @@ public class LoginController {
 		
 		List<User> uList = service.findList(tempUser);
 		
-		String redirect = "redirect:/web/index.html";
+		String error = "error_user";
 		
 		if (uList.size() == 0) {
-			//not exists
-			return redirect;
+			request.setAttribute(MESSAGE, "用户名" + user.getUserName() + "不存在!");
+			return error;
 		}
 		User u = uList.get(0);
 		
 		
 		if (!StringUtils.defaultString(u.getPassWord()).equals(user.getPassWord())) {
-			//
-			return redirect;
+			request.setAttribute(MESSAGE, "用户名或密码不正确!");
+			return error;
 		}
-		
 		
 		ServiceContext.setUser(u);
 		HttpSession session = request.getSession(true);
