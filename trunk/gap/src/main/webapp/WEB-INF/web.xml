@@ -46,7 +46,7 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
-	<!--
+	<!-- 正式环境需要启用 
 	<filter>
 		<filter-name>GZipFilter</filter-name>
 		<filter-class>com.company.gap.base.web.filter.GZipFilter</filter-class>
@@ -60,10 +60,10 @@
 		<url-pattern>*.js</url-pattern>
 	</filter-mapping>
 	<filter-mapping>
-		<filter-name>ZipFilter</filter-name>
+		<filter-name>GZipFilter</filter-name>
 		<url-pattern>*.css</url-pattern>
 	</filter-mapping>
-	-->
+	 -->
 	
 	<!-- 请求拦截过滤器 -->
 	<filter>
