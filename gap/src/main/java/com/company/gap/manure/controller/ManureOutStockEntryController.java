@@ -21,9 +21,11 @@ import com.company.gap.manure.model.OutStock;
 import com.company.gap.manure.model.Stock;
 import com.company.gap.manure.service.IManureOutStockService;
 import com.company.gap.manure.service.IManureStockService;
+import com.company.gap.system.service.IUserService;
+import com.company.gap.system.service.impl.ServiceContext;
 
 @Controller
-@RequestMapping("manure/outstock")
+@RequestMapping("admin/manure/outstock")
 public class ManureOutStockEntryController extends BeanEntryController<OutStock> {
 	
 	@Autowired
@@ -34,18 +36,20 @@ public class ManureOutStockEntryController extends BeanEntryController<OutStock>
 	private IGrowRegisterService registerService;
 	@Autowired
 	private ICellService cellService;
+	@Autowired
+	private IUserService userService;
 	
 	@Override
 	protected IBaseService<OutStock> get() {return this.service;}
 	
 	@Override
 	protected String toList(HttpServletRequest request) {
-		return "redirect:/manure/outstock/list.html";
+		return "redirect:/admin/manure/outstock/list.html";
 	}
 	
 	@Override
 	protected String toEntry(HttpServletRequest request) {
-		return "manure/outstock/manureOutStoctEntry";
+		return "admin/manure/outstock/manureOutStockEntry";
 	}
 	
 	@RequestMapping("/checkOutStock")
@@ -65,6 +69,10 @@ public class ManureOutStockEntryController extends BeanEntryController<OutStock>
 	@Override
 	protected void initializeAdd(HttpServletRequest request) {
 		super.initializeAdd(request);
+		OutStock t = new OutStock();
+		t.setOutuserId(ServiceContext.getLoginId());
+		t.getDisp().put("outuserId", ServiceContext.getUserName());
+		request.setAttribute("data", t);
 		request.setAttribute("registerList", 	registerService.findListByGrowStatus(GrowStatus.GOING.getStatus()));
 	}
 	
@@ -81,6 +89,7 @@ public class ManureOutStockEntryController extends BeanEntryController<OutStock>
 		Cell cell = cellService.findById(t.getCellId());
 		disp.put("outdate", DateUtils.format(t.getOutdate()));
 		disp.put("registerId", cell.getCode() + "&nbsp;" + cell.getLocation());
+		disp.put("outuserId", userService.findNameById(t.getOutuserId()));
 		super.initializeEdit(request, t);
 	}
 	

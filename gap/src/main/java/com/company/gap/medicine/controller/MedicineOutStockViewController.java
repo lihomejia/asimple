@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -16,23 +15,21 @@ import com.company.gap.base.model.Status;
 import com.company.gap.base.model.ViewFormModel;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.base.util.Dto;
-import com.company.gap.medicine.enumeration.ResourceType;
+import com.company.gap.medicine.component.MedicineResourceHelper;
+import com.company.gap.medicine.enumeration.MedicineResourceType;
 import com.company.gap.medicine.model.OutStock;
-import com.company.gap.medicine.service.IMedicineResourceService;
+import com.company.gap.medicine.model.Resource;
 
 @Controller
-@RequestMapping("medicine/outstock")
+@RequestMapping("admin/medicine/outstock")
 public class MedicineOutStockViewController extends BeanViewController<OutStock> {
-	
-	@Autowired
-	private IMedicineResourceService resourceService;
 	
 	@Override
 	protected void preparing(HttpServletRequest request, ViewFormModel model) {
-		request.setAttribute("nameList", 	resourceService.queryByType(ResourceType.NAME, true));
-		request.setAttribute("specList", 	resourceService.queryByType(ResourceType.SPEC, true));
-		request.setAttribute("batchList", 	resourceService.queryByType(ResourceType.BATCH, true));
-		request.setAttribute("producerList",resourceService.queryByType(ResourceType.PRODUCER, true));
+		request.setAttribute("nameList", 	MedicineResourceHelper.getList(MedicineResourceType.PM, Resource.RS_ALL));
+		request.setAttribute("specList", 	MedicineResourceHelper.getList(MedicineResourceType.GG,  Resource.RS_ALL));
+		request.setAttribute("batchList", 	MedicineResourceHelper.getList(MedicineResourceType.SCPH,  Resource.RS_ALL));
+		request.setAttribute("producerList",MedicineResourceHelper.getList(MedicineResourceType.SCS,  Resource.RS_ALL));
 		
 	}
 	
@@ -62,21 +59,20 @@ public class MedicineOutStockViewController extends BeanViewController<OutStock>
 	
 	@Override
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
-		Map<Integer, String> resId2Res = resourceService.queryResId2Name();
 		for (OutStock outStock : datas) {
-			Dto __adde = outStock.getDisp();
-			__adde.put("nameId", 		resId2Res.get(outStock.getNameId()));
-			__adde.put("specId", 		resId2Res.get(outStock.getSpecId()));
-			__adde.put("batchId", 		resId2Res.get(outStock.getBatchId()));
-			__adde.put("producerId", 	resId2Res.get(outStock.getProducerId()));
-			__adde.put("outdate", 		DateUtils.format(outStock.getOutdate()));
+			Dto disp = outStock.getDisp();
+			disp.put("nameId", 		MedicineResourceHelper.getText(outStock.getNameId()));
+			disp.put("specId", 		MedicineResourceHelper.getText(outStock.getSpecId()));
+			disp.put("batchId", 	MedicineResourceHelper.getText(outStock.getBatchId()));
+			disp.put("producerId", 	MedicineResourceHelper.getText(outStock.getProducerId()));
+			disp.put("outdate", 	DateUtils.format(outStock.getOutdate()));
 			Status status = Status.valueOf(outStock.getStatus());
-			__adde.put("status", 		status.getName());
+			disp.put("status", 		status.getName());
 		}
 	}
 	
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "medicine/outstock/medicineOutStockList";
+		return "admin/medicine/outstock/medicineOutStockList";
 	}
 }

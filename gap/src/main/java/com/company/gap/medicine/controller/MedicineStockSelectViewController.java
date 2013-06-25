@@ -1,11 +1,8 @@
 package com.company.gap.medicine.controller;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -13,23 +10,21 @@ import com.company.gap.base.controller.BeanViewController;
 import com.company.gap.base.dao.search.Op;
 import com.company.gap.base.model.ViewFormModel;
 import com.company.gap.base.util.Dto;
-import com.company.gap.medicine.enumeration.ResourceType;
+import com.company.gap.medicine.component.MedicineResourceHelper;
+import com.company.gap.medicine.enumeration.MedicineResourceType;
+import com.company.gap.medicine.model.Resource;
 import com.company.gap.medicine.model.Stock;
-import com.company.gap.medicine.service.IMedicineResourceService;
 
 @Controller
-@RequestMapping("medicine/stock/select")
+@RequestMapping("admin/medicine/stock/select")
 public class MedicineStockSelectViewController extends BeanViewController<Stock> {
-	
-	@Autowired
-	private IMedicineResourceService resourceService;
 	
 	@Override
 	protected void preparing(HttpServletRequest request, ViewFormModel model) {
-		request.setAttribute("nameList", 	resourceService.queryByType(ResourceType.NAME, true));
-		request.setAttribute("specList", 	resourceService.queryByType(ResourceType.SPEC, true));
-		request.setAttribute("batchList", 	resourceService.queryByType(ResourceType.BATCH, true));
-		request.setAttribute("producerList",resourceService.queryByType(ResourceType.PRODUCER, true));
+		request.setAttribute("nameList", 	MedicineResourceHelper.getList(MedicineResourceType.PM, Resource.RS_ALL));
+		request.setAttribute("specList", 	MedicineResourceHelper.getList(MedicineResourceType.GG,  Resource.RS_ALL));
+		request.setAttribute("batchList", 	MedicineResourceHelper.getList(MedicineResourceType.SCPH,  Resource.RS_ALL));
+		request.setAttribute("producerList",MedicineResourceHelper.getList(MedicineResourceType.SCS,  Resource.RS_ALL));
 	}
 	
 	
@@ -52,18 +47,17 @@ public class MedicineStockSelectViewController extends BeanViewController<Stock>
 	
 	@Override
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
-		Map<Integer, String> resId2Res = resourceService.queryResId2Name();
-		for (Stock stock : datas) {
-			Dto disp = stock.getDisp();
-			disp.put("nameId", 		resId2Res.get(stock.getNameId()));
-			disp.put("specId", 		resId2Res.get(stock.getSpecId()));
-			disp.put("batchId", 	resId2Res.get(stock.getBatchId()));
-			disp.put("producerId",	resId2Res.get(stock.getProducerId()));
+		for (Stock t : datas) {
+			Dto disp = t.getDisp();
+			disp.put("nameId", 		MedicineResourceHelper.getText(t.getNameId()));
+			disp.put("specId", 		MedicineResourceHelper.getText(t.getSpecId()));
+			disp.put("batchId", 	MedicineResourceHelper.getText(t.getBatchId()));
+			disp.put("producerId", 	MedicineResourceHelper.getText(t.getProducerId()));
 		}
 	}
 
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "medicine/stock/medicineStockSelectList";
+		return "admin/medicine/stock/medicineStockSelectList";
 	}
 }

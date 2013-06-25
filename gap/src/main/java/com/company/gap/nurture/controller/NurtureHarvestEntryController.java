@@ -13,7 +13,7 @@ import com.company.gap.nurture.model.Harvest;
 import com.company.gap.nurture.service.INurtureHarvestService;
 
 @Controller
-@RequestMapping("nurture/harvest")
+@RequestMapping("admin/nurture/harvest")
 public class NurtureHarvestEntryController extends BeanEntryController<Harvest> {
 	@Autowired
 	private INurtureHarvestService service;
@@ -24,12 +24,12 @@ public class NurtureHarvestEntryController extends BeanEntryController<Harvest> 
 	@Override
 	protected String toList(HttpServletRequest request) {
 		String registerId = request.getParameter("registerId");
-		return "redirect:/nurture/harvest/list.html?registerId=" + registerId;
+		return "redirect:/admin/nurture/harvest/list.html?registerId=" + registerId;
 	}
 	
 	@Override
 	protected String toEntry(HttpServletRequest request) {
-		return "nurture/harvest/nurtureHarvestEntry";
+		return "admin/nurture/harvest/nurtureHarvestEntry";
 	}
 	
 	@Override

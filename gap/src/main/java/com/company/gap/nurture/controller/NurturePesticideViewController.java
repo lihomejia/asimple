@@ -14,7 +14,7 @@ import com.company.gap.base.util.Dto;
 import com.company.gap.nurture.model.Pesticide;
 
 @Controller
-@RequestMapping("nurture/pesticide")
+@RequestMapping("admin/nurture/pesticide")
 public class NurturePesticideViewController extends BeanViewController<Pesticide> {
 
 	@Override
@@ -39,6 +39,6 @@ public class NurturePesticideViewController extends BeanViewController<Pesticide
 
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "nurture/pesticide/nurturePesticideList";
+		return "admin/nurture/pesticide/nurturePesticideList";
 	}
 }

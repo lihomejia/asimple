@@ -18,7 +18,7 @@ import com.company.gap.grow.enumeration.GrowStatus;
 import com.company.gap.grow.model.Register;
 
 @Controller
-@RequestMapping("grow/process")
+@RequestMapping("admin/grow/process")
 public class GrowProcessViewController extends BeanViewController<Register> {
 
 	@Autowired
@@ -55,6 +55,6 @@ public class GrowProcessViewController extends BeanViewController<Register> {
 
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "grow/process/growProcessList";
+		return "admin/grow/process/growProcessList";
 	}
 }

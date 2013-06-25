@@ -13,7 +13,7 @@ import com.company.gap.nurture.model.Irrigate;
 import com.company.gap.nurture.service.INurtureIrrigateService;
 
 @Controller
-@RequestMapping("nurture/irrigate")
+@RequestMapping("admin/nurture/irrigate")
 public class NurtureIrrigateEntryController extends BeanEntryController<Irrigate> {
 	@Autowired
 	private INurtureIrrigateService service;
@@ -24,12 +24,12 @@ public class NurtureIrrigateEntryController extends BeanEntryController<Irrigate
 	@Override
 	protected String toList(HttpServletRequest request) {
 		String registerId = request.getParameter("registerId");
-		return "redirect:/nurture/irrigate/list.html?registerId=" + registerId;
+		return "redirect:/admin/nurture/irrigate/list.html?registerId=" + registerId;
 	}
 	
 	@Override
 	protected String toEntry(HttpServletRequest request) {
-		return "nurture/irrigate/nurtureIrrigateEntry";
+		return "admin/nurture/irrigate/nurtureIrrigateEntry";
 	}
 	
 	@Override

@@ -18,7 +18,7 @@ import com.company.gap.pesticide.model.InStock;
 import com.company.gap.pesticide.model.Resource;
 
 @Controller
-@RequestMapping("pesticide/instock")
+@RequestMapping("admin/pesticide/instock")
 public class PesticideInStockViewController extends BeanViewController<InStock> {
 	
 	@Override
@@ -54,6 +54,6 @@ public class PesticideInStockViewController extends BeanViewController<InStock> 
 	
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "pesticide/instock/pesticideInStockList";
+		return "admin/pesticide/instock/pesticideInStockList";
 	}
 }

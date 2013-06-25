@@ -19,7 +19,7 @@ import com.company.gap.nurture.enumeration.NurtureStatus;
 import com.company.gap.nurture.model.Register;
 
 @Controller
-@RequestMapping("nurture/archived")
+@RequestMapping("admin/nurture/archived")
 public class NurtureArchivedViewController extends BeanViewController<Register> {
 
 	@Autowired
@@ -53,7 +53,7 @@ public class NurtureArchivedViewController extends BeanViewController<Register> 
 
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "nurture/archived/nurtureArchivedList";
+		return "admin/nurture/archived/nurtureArchivedList";
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.company.gap.nurture.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,13 @@ public class NurtureFarmServiceImpl extends BaseServiceImpl<Farm> implements INu
 	@Override
 	protected IBaseDao<Farm> get() {
 		return this.dao;
+	}
+
+	@Override
+	public List<Farm> findByRegisterId(Integer registerId) {
+		Farm t = new Farm();
+		t.setRegisterId(registerId);
+		return this.findList(t);
 	}
 	
 	

@@ -13,7 +13,7 @@ import com.company.gap.grow.model.Irrigate;
 import com.company.gap.grow.service.IGrowIrrigateService;
 
 @Controller
-@RequestMapping("grow/irrigate")
+@RequestMapping("admin/grow/irrigate")
 public class GrowIrrigateEntryController extends BeanEntryController<Irrigate> {
 	@Autowired
 	private IGrowIrrigateService service;
@@ -24,12 +24,12 @@ public class GrowIrrigateEntryController extends BeanEntryController<Irrigate> {
 	@Override
 	protected String toList(HttpServletRequest request) {
 		String registerId = request.getParameter("registerId");
-		return "redirect:/grow/irrigate/list.html?registerId=" + registerId;
+		return "redirect:/admin/grow/irrigate/list.html?registerId=" + registerId;
 	}
 	
 	@Override
 	protected String toEntry(HttpServletRequest request) {
-		return "grow/irrigate/growIrrigateEntry";
+		return "admin/grow/irrigate/growIrrigateEntry";
 	}
 	
 	@Override

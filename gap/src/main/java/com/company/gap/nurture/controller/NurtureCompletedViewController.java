@@ -19,7 +19,7 @@ import com.company.gap.nurture.enumeration.NurtureStatus;
 import com.company.gap.nurture.model.Register;
 
 @Controller
-@RequestMapping("nurture/completed")
+@RequestMapping("admin/nurture/completed")
 public class NurtureCompletedViewController extends BeanViewController<Register> {
 
 	@Autowired
@@ -53,7 +53,7 @@ public class NurtureCompletedViewController extends BeanViewController<Register>
 
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "nurture/completed/nurtureCompletedList";
+		return "admin/nurture/completed/nurtureCompletedList";
 	}
 
 }

@@ -14,34 +14,51 @@ import com.company.gap.manure.component.ManureResourceHelper;
 import com.company.gap.manure.enumeration.ManureResourceType;
 import com.company.gap.manure.model.InStock;
 import com.company.gap.manure.service.IManureInStockService;
+import com.company.gap.system.service.IUserService;
+import com.company.gap.system.service.impl.ServiceContext;
 
 @Controller
-@RequestMapping("manure/instock")
+@RequestMapping("admin/manure/instock")
 public class ManureInStockEntryController extends BeanEntryController<InStock> {
 
 	@Autowired
 	private IManureInStockService service;
+	
+	@Autowired
+	private IUserService userService;
 	
 	@Override
 	protected IBaseService<InStock> get() {return this.service;}
 	
 	@Override
 	protected String toList(HttpServletRequest request) {
-		return "redirect:/manure/instock/list.html";
+		return "redirect:/admin/manure/instock/list.html";
 	}
 	
 	@Override
 	protected String toEntry(HttpServletRequest request) {
-		return "manure/instock/manureInStoctEntry";
+		return "admin/manure/instock/manureInStockEntry";
 	}
 	
 	
+	
+	
+	@Override
+	protected void initializeAdd(HttpServletRequest request) {
+		InStock t = new InStock();
+		t.setInuserId(ServiceContext.getLoginId());
+		t.getDisp().put("inuserId", ServiceContext.getUserName());
+		
+		request.setAttribute("data", t);
+		super.initializeAdd(request);
+	}
+
 	@Override
 	protected void initializeEdit(HttpServletRequest request, InStock t) {
 		Dto disp = t.getDisp();
 		disp.put("indate", DateUtils.format(t.getIndate()));
 		disp.put("expirydate", DateUtils.format(t.getExpirydate()));
-		disp.put("inuserId", "XXX");
+		disp.put("inuserId", userService.findNameById(t.getInuserId()));
 		super.initializeEdit(request, t);
 	}
 	

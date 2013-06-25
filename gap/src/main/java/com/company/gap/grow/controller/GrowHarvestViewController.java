@@ -14,7 +14,7 @@ import com.company.gap.base.util.Dto;
 import com.company.gap.grow.model.Harvest;
 
 @Controller
-@RequestMapping("grow/harvest")
+@RequestMapping("admin/grow/harvest")
 public class GrowHarvestViewController extends BeanViewController<Harvest> {
 
 	@Override
@@ -36,7 +36,7 @@ public class GrowHarvestViewController extends BeanViewController<Harvest> {
 	
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "grow/harvest/growHarvestList";
+		return "admin/grow/harvest/growHarvestList";
 	}
 
 

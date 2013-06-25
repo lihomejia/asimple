@@ -13,7 +13,7 @@ import com.company.gap.grow.model.Pesticide;
 import com.company.gap.grow.service.IGrowPesticideService;
 
 @Controller
-@RequestMapping("grow/pesticide")
+@RequestMapping("admin/grow/pesticide")
 public class GrowPesticideEntryController extends BeanEntryController<Pesticide> {
 
 	@Autowired
@@ -25,12 +25,12 @@ public class GrowPesticideEntryController extends BeanEntryController<Pesticide>
 	@Override
 	protected String toList(HttpServletRequest request) {
 		String registerId = request.getParameter("registerId");
-		return "redirect:/grow/pesticide/list.html?registerId=" + registerId;
+		return "redirect:/admin/grow/pesticide/list.html?registerId=" + registerId;
 	}
 	
 	@Override
 	protected String toEntry(HttpServletRequest request) {
-		return "grow/pesticide/growPesticideEntry";
+		return "admin/grow/pesticide/growPesticideEntry";
 	}
 	
 	@Override

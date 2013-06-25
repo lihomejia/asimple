@@ -7,6 +7,7 @@ import com.company.gap.base.dao.IBaseDao;
 import com.company.gap.base.model.GeneralModel;
 import com.company.gap.base.model.Status;
 import com.company.gap.base.service.IBaseService;
+import com.company.gap.system.service.impl.ServiceContext;
 
 public abstract class BaseServiceImpl<T extends GeneralModel> implements IBaseService<T> {
 	
@@ -14,11 +15,17 @@ public abstract class BaseServiceImpl<T extends GeneralModel> implements IBaseSe
 
 	@Override
 	public int save(T t) {
+		t.setCuserId(ServiceContext.getLoginId());
+		t.setCdate(new Date());
+		t.setUuserId(ServiceContext.getLoginId());
+		t.setUdate(new Date());
 		return get().insert(t);
 	}
 	
 	@Override
 	public int update(T t) {
+		t.setUuserId(ServiceContext.getLoginId());
+		t.setUdate(new Date());
 		return get().update(t);
 	}
 	
@@ -28,23 +35,18 @@ public abstract class BaseServiceImpl<T extends GeneralModel> implements IBaseSe
 	}
 	
 	@Override
-	public int updateStatus(Integer id, Integer status, Integer cuserId, Date cdate) {
-		return get().updateStatus(id, status, cuserId, cdate);
-	}
-	
-	@Override
 	public int deleteById(Integer id) {
 		return get().deleteById(id);
 	}
 	
 	@Override
 	public int approve(Integer id) {
-		return get().updateStatus(id, Status.APPROVED.getStatus());
+		return get().updateStatus(id, Status.APPROVED.getStatus(), ServiceContext.getLoginId(), new Date());
 	}
 	
 	@Override
 	public int nullify(Integer id) {
-		return get().updateStatus(id, Status.NULLIFY.getStatus());
+		return this.updateStatus(id, Status.NULLIFY.getStatus());
 	}
 	
 	@Override

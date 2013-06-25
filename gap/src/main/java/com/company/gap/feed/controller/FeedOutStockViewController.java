@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -16,23 +15,21 @@ import com.company.gap.base.model.Status;
 import com.company.gap.base.model.ViewFormModel;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.base.util.Dto;
-import com.company.gap.feed.enumeration.ResourceType;
+import com.company.gap.feed.component.FeedResourceHelper;
+import com.company.gap.feed.enumeration.FeedResourceType;
 import com.company.gap.feed.model.OutStock;
-import com.company.gap.feed.service.IFeedResourceService;
+import com.company.gap.feed.model.Resource;
 
 @Controller
-@RequestMapping("feed/outstock")
+@RequestMapping("admin/feed/outstock")
 public class FeedOutStockViewController extends BeanViewController<OutStock> {
-	
-	@Autowired
-	private IFeedResourceService resourceService;
 	
 	@Override
 	protected void preparing(HttpServletRequest request, ViewFormModel model) {
-		request.setAttribute("nameList", 	resourceService.queryByType(ResourceType.NAME, true));
-		request.setAttribute("specList", 	resourceService.queryByType(ResourceType.SPEC, true));
-		request.setAttribute("batchList", 	resourceService.queryByType(ResourceType.BATCH, true));
-		request.setAttribute("producerList",resourceService.queryByType(ResourceType.PRODUCER, true));
+		request.setAttribute("nameList", 	FeedResourceHelper.getList(FeedResourceType.PM, Resource.RS_ALL));
+		request.setAttribute("specList", 	FeedResourceHelper.getList(FeedResourceType.GG,  Resource.RS_ALL));
+		request.setAttribute("batchList", 	FeedResourceHelper.getList(FeedResourceType.SCPH,  Resource.RS_ALL));
+		request.setAttribute("producerList",FeedResourceHelper.getList(FeedResourceType.SCS,  Resource.RS_ALL));
 		
 	}
 	
@@ -62,21 +59,20 @@ public class FeedOutStockViewController extends BeanViewController<OutStock> {
 	
 	@Override
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
-		Map<Integer, String> resId2Res = resourceService.queryResId2Name();
 		for (OutStock outStock : datas) {
-			Dto __adde = outStock.getDisp();
-			__adde.put("nameId", 		resId2Res.get(outStock.getNameId()));
-			__adde.put("specId", 		resId2Res.get(outStock.getSpecId()));
-			__adde.put("batchId", 		resId2Res.get(outStock.getBatchId()));
-			__adde.put("producerId", 	resId2Res.get(outStock.getProducerId()));
-			__adde.put("outdate", 		DateUtils.format(outStock.getOutdate()));
+			Dto disp = outStock.getDisp();
+			disp.put("nameId", 		FeedResourceHelper.getText(outStock.getNameId()));
+			disp.put("specId", 		FeedResourceHelper.getText(outStock.getSpecId()));
+			disp.put("batchId", 	FeedResourceHelper.getText(outStock.getBatchId()));
+			disp.put("producerId", 	FeedResourceHelper.getText(outStock.getProducerId()));
+			disp.put("outdate", 	DateUtils.format(outStock.getOutdate()));
 			Status status = Status.valueOf(outStock.getStatus());
-			__adde.put("status", 		status.getName());
+			disp.put("status", 		status.getName());
 		}
 	}
 	
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "feed/outstock/feedOutStockList";
+		return "admin/feed/outstock/feedOutStockList";
 	}
 }

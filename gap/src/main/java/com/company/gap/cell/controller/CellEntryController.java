@@ -18,7 +18,7 @@ import com.company.gap.cell.service.ICellService;
  *
  */
 @Controller
-@RequestMapping("cell")
+@RequestMapping("admin/cell")
 public class CellEntryController extends BeanEntryController<Cell> {
 	
 	@Autowired
@@ -29,12 +29,12 @@ public class CellEntryController extends BeanEntryController<Cell> {
 	
 	@Override
 	protected String toList(HttpServletRequest request) {
-		return "redirect:/cell/list.html";
+		return "redirect:/admin/cell/list.html";
 	}
 	
 	@Override
 	protected String toEntry(HttpServletRequest request) {
-		return "cell/entry";
+		return "admin/cell/entry";
 	}
 	
 	@Override

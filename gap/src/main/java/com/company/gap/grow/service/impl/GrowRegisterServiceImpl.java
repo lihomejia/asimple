@@ -16,9 +16,8 @@ import com.company.gap.cell.service.ICellService;
 import com.company.gap.grow.dao.IGrowRegisterDao;
 import com.company.gap.grow.enumeration.GrowStatus;
 import com.company.gap.grow.model.Register;
-import com.company.gap.grow.model.Resource;
 import com.company.gap.grow.service.IGrowRegisterService;
-import com.company.gap.grow.service.IGrowResourceService;
+import com.company.gap.resource.component.DictHelper;
 
 @Service
 public class GrowRegisterServiceImpl extends BaseServiceImpl<Register> implements IGrowRegisterService {
@@ -27,8 +26,6 @@ public class GrowRegisterServiceImpl extends BaseServiceImpl<Register> implement
 	private IGrowRegisterDao dao;
 	@Autowired
 	private ICellService cellService;
-	@Autowired
-	private IGrowResourceService resourceService;
 
 	@Override
 	protected IBaseDao<Register> get() {
@@ -66,9 +63,6 @@ public class GrowRegisterServiceImpl extends BaseServiceImpl<Register> implement
 		Register t = this.findById(id);
 		t.setGrowstatus(GrowStatus.COMPLETED.getStatus());
 		
-		Resource resource = resourceService.findById(t.getProductId());
-		if (resource == null) resource = new Resource();
-		
 		TwoDimensionCode dimensionCode = new TwoDimensionCode();
 		
 		Calendar factory = Calendar.getInstance();
@@ -77,7 +71,7 @@ public class GrowRegisterServiceImpl extends BaseServiceImpl<Register> implement
 		String content = new StringBuffer()
 			.append("gap://scan/")
 			.append(t.getId()).append("|")//产品编号
-			.append(resource.getName()).append("|")//产品名称
+			.append(DictHelper.getText(t.getProductId())).append("|")//产品名称
 			.append("北京世外桃源农业科技").append("|")//生产厂家
 			.append(DateUtils.format(t.getRegdate())).append("|")//生产日期
 			.append(DateUtils.format(factory.getTime()))//出厂日期

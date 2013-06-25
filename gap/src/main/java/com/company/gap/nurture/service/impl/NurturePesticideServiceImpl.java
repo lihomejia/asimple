@@ -1,5 +1,7 @@
 package com.company.gap.nurture.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +21,11 @@ public class NurturePesticideServiceImpl extends BaseServiceImpl<Pesticide> impl
 	protected IBaseDao<Pesticide> get() {
 		return this.dao;
 	}
-
+	
+	@Override
+	public List<Pesticide> findByRegisterId(Integer registerId) {
+		Pesticide t = new Pesticide();
+		t.setRegisterId(registerId);
+		return this.findList(t);
+	}
 }

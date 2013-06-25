@@ -1,7 +1,5 @@
 package com.company.gap.feed.controller;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.math.NumberUtils;
@@ -16,16 +14,18 @@ import com.company.gap.base.util.DateUtils;
 import com.company.gap.base.util.Dto;
 import com.company.gap.cell.model.Cell;
 import com.company.gap.cell.service.ICellService;
-import com.company.gap.grow.enumeration.GrowStatus;
-import com.company.gap.grow.service.IGrowRegisterService;
+import com.company.gap.feed.component.FeedResourceHelper;
 import com.company.gap.feed.model.OutStock;
 import com.company.gap.feed.model.Stock;
 import com.company.gap.feed.service.IFeedOutStockService;
-import com.company.gap.feed.service.IFeedResourceService;
 import com.company.gap.feed.service.IFeedStockService;
+import com.company.gap.grow.enumeration.GrowStatus;
+import com.company.gap.grow.service.IGrowRegisterService;
+import com.company.gap.system.service.IUserService;
+import com.company.gap.system.service.impl.ServiceContext;
 
 @Controller
-@RequestMapping("feed/outstock")
+@RequestMapping("admin/feed/outstock")
 public class FeedOutStockEntryController extends BeanEntryController<OutStock> {
 	
 	@Autowired
@@ -35,21 +35,21 @@ public class FeedOutStockEntryController extends BeanEntryController<OutStock> {
 	@Autowired
 	private IGrowRegisterService registerService;
 	@Autowired
-	private IFeedResourceService resourceService;
-	@Autowired
 	private ICellService cellService;
+	@Autowired
+	private IUserService userService;
 	
 	@Override
 	protected IBaseService<OutStock> get() {return this.service;}
 	
 	@Override
 	protected String toList(HttpServletRequest request) {
-		return "redirect:/feed/outstock/list.html";
+		return "redirect:/admin/feed/outstock/list.html";
 	}
 	
 	@Override
 	protected String toEntry(HttpServletRequest request) {
-		return "feed/outstock/feedOutStoctEntry";
+		return "admin/feed/outstock/feedOutStockEntry";
 	}
 	
 	@RequestMapping("/checkOutStock")
@@ -69,29 +69,32 @@ public class FeedOutStockEntryController extends BeanEntryController<OutStock> {
 	@Override
 	protected void initializeAdd(HttpServletRequest request) {
 		super.initializeAdd(request);
+		OutStock t = new OutStock();
+		t.setOutuserId(ServiceContext.getLoginId());
+		t.getDisp().put("outuserId", ServiceContext.getUserName());
+		request.setAttribute("data", t);
 		request.setAttribute("registerList", 	registerService.findListByGrowStatus(GrowStatus.GOING.getStatus()));
 	}
 	
 	@Override
 	protected void initializeEdit(HttpServletRequest request, OutStock t) {
-		Map<Integer, String> resId2Name = resourceService.queryResId2Name();
 		
 		Dto disp = t.getDisp();
 		
-		disp.put("nameId", 		resId2Name.get(t.getNameId()));
-		disp.put("specId", 		resId2Name.get(t.getSpecId()));
-		disp.put("batchId", 	resId2Name.get(t.getBatchId()));
-		disp.put("producerId", 	resId2Name.get(t.getProducerId()));
+		disp.put("nameId", 		FeedResourceHelper.getText(t.getNameId()));
+		disp.put("specId", 		FeedResourceHelper.getText(t.getSpecId()));
+		disp.put("batchId", 	FeedResourceHelper.getText(t.getBatchId()));
+		disp.put("producerId", 	FeedResourceHelper.getText(t.getProducerId()));
 		
 		Cell cell = cellService.findById(t.getCellId());
 		disp.put("outdate", DateUtils.format(t.getOutdate()));
 		disp.put("registerId", cell.getCode() + "&nbsp;" + cell.getLocation());
+		disp.put("outuserId", userService.findNameById(t.getOutuserId()));
 		super.initializeEdit(request, t);
 	}
 	
 	
 	protected void initialize(HttpServletRequest request) {
 		super.initialize(request);
-		request.setAttribute("stocks", 		stockService.findStockList());
 	}
 }

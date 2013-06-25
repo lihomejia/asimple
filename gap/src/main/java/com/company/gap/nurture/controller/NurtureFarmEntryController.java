@@ -13,7 +13,7 @@ import com.company.gap.nurture.model.Farm;
 import com.company.gap.nurture.service.INurtureFarmService;
 
 @Controller
-@RequestMapping("nurture/farm")
+@RequestMapping("admin/nurture/farm")
 public class NurtureFarmEntryController extends BeanEntryController<Farm> {
 
 	@Autowired
@@ -25,12 +25,12 @@ public class NurtureFarmEntryController extends BeanEntryController<Farm> {
 	@Override
 	protected String toList(HttpServletRequest request) {
 		String registerId = request.getParameter("registerId");
-		return "redirect:/nurture/farm/list.html?registerId=" + registerId;
+		return "redirect:/admin/nurture/farm/list.html?registerId=" + registerId;
 	}
 	
 	@Override
 	protected String toEntry(HttpServletRequest request) {
-		return "nurture/farm/nurtureFarmEntry";
+		return "admin/nurture/farm/nurtureFarmEntry";
 	}
 	
 	@Override

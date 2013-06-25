@@ -58,9 +58,9 @@ public class BaseDaoImpl<T extends GeneralModel> implements IBaseDao<T> {
 	}
 	
 	@Override
-	public int updateStatus(Integer id, Integer status, Integer cuserId, Date cdate) {
-		String sql = "update " + tableName + " set status=?,cuser_id=?,cdate=? where id=?";
-		return jdbcTemplate.update(sql, status, cuserId, cdate, id);
+	public int updateStatus(Integer id, Integer status, Integer auserId, Date adate) {
+		String sql = "update " + tableName + " set status=?,auser_id=?,adate=? where id=?";
+		return jdbcTemplate.update(sql, status, auserId, adate, id);
 	}
 	
 	@Override

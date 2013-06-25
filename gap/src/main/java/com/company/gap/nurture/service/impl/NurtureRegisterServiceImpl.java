@@ -1,18 +1,23 @@
 package com.company.gap.nurture.service.impl;
 
+import java.io.ByteArrayOutputStream;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.company.gap.base.dao.IBaseDao;
+import com.company.gap.base.qrcode.TwoDimensionCode;
 import com.company.gap.base.service.impl.BaseServiceImpl;
+import com.company.gap.base.util.DateUtils;
 import com.company.gap.cell.enumeration.CellStatus;
 import com.company.gap.cell.service.ICellService;
 import com.company.gap.nurture.dao.INurtureRegisterDao;
 import com.company.gap.nurture.enumeration.NurtureStatus;
 import com.company.gap.nurture.model.Register;
 import com.company.gap.nurture.service.INurtureRegisterService;
+import com.company.gap.resource.component.DictHelper;
 
 @Service
 public class NurtureRegisterServiceImpl extends BaseServiceImpl<Register> implements INurtureRegisterService {
@@ -28,19 +33,24 @@ public class NurtureRegisterServiceImpl extends BaseServiceImpl<Register> implem
 	}
 	
 	@Override
-	public int save(Register register) {
-		int ret = 0;
-		if (register.getId() == null) {
-			register.setNurturestatus(NurtureStatus.GOING.getStatus());
-			ret = dao.insert(register);
-			cellService.updateUseStatus(register.getCellId(), CellStatus.OCCUPY.getStatus());
+	public int save(Register t) {
+		
+		if (t.getId() == null) {
+			t.setNurturestatus(NurtureStatus.GOING.getStatus());
 		}
-		else {
-			ret = dao.update(register);
-		}
-		return ret;
+		cellService.updateUseStatus(t.getCellId(), CellStatus.OCCUPY.getStatus());
+		return super.save(t);
 	}
-	
+
+	@Override
+	public int deleteById(Integer id) {
+		Register t = this.findById(id);
+		if (t != null) {
+			cellService.updateUseStatus(t.getCellId(), CellStatus.IDLE.getStatus());
+		}
+		return super.deleteById(id);
+	}
+
 	@Override
 	public List<Register> findListByNurtureStatus(Integer nurturestatus) {
 		Register register = new Register();
@@ -50,11 +60,29 @@ public class NurtureRegisterServiceImpl extends BaseServiceImpl<Register> implem
 	
 	@Override
 	public int complete(Integer id) {
-		Register register = new Register();
-		register.setId(id);
-		register.setNurturestatus(NurtureStatus.COMPLETED.getStatus());
+		Register t = this.findById(id);
+		t.setNurturestatus(NurtureStatus.COMPLETED.getStatus());
 		
-		return dao.update(register);
+		TwoDimensionCode dimensionCode = new TwoDimensionCode();
+		
+		Calendar factory = Calendar.getInstance();
+		factory.set(Calendar.DATE, -3);
+		
+		String content = new StringBuffer()
+			.append("gap://scan/")
+			.append(t.getId()).append("|")//产品编号
+			.append(DictHelper.getText(t.getProductId())).append("|")//产品名称
+			.append("北京世外桃源农业科技").append("|")//生产厂家
+			.append(DateUtils.format(t.getRegdate())).append("|")//生产日期
+			.append(DateUtils.format(factory.getTime()))//出厂日期
+			.toString()
+		;
+		ByteArrayOutputStream output = new ByteArrayOutputStream();
+		dimensionCode.encoderQRCode(content, output, "png");
+		
+		t.setQrcode(output.toByteArray());
+		
+		return dao.update(t);
 	}
 	
 

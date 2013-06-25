@@ -2,6 +2,7 @@ package com.company.gap.nurture.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -11,12 +12,17 @@ import com.company.gap.base.model.Status;
 import com.company.gap.base.model.ViewFormModel;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.base.util.Dto;
+import com.company.gap.manure.service.IManureResourceService;
 import com.company.gap.nurture.model.Manure;
+import com.company.gap.resource.component.DictHelper;
 
 @Controller
-@RequestMapping("nurture/manure")
+@RequestMapping("admin/nurture/manure")
 public class NurtureManureViewController extends BeanViewController<Manure> {
 
+	@Autowired
+	private IManureResourceService manureResourceService;
+	
 	@Override
 	protected void preparing(HttpServletRequest request, ViewFormModel model) {
 	}
@@ -30,15 +36,18 @@ public class NurtureManureViewController extends BeanViewController<Manure> {
 
 	@Override
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
-		for (Manure farm : datas) {
-			Dto disp = farm.getDisp();
-			disp.put("usedate", DateUtils.format(farm.getUsedate()));
-			disp.put("status", Status.valueOf(farm.getStatus()).getName());
+		for (Manure t : datas) {
+			Dto disp = t.getDisp();
+			disp.put("usedate", DateUtils.format(t.getUsedate()));
+			disp.put("status", Status.valueOf(t.getStatus()).getName());
+			disp.put("nameId", manureResourceService.findById(t.getNameId()).getName());
+			disp.put("machinecate", DictHelper.getText(t.getMachinecate()));
+			disp.put("method", DictHelper.getText(t.getMethod()));
 		}
 	}
 
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "nurture/manure/nurtureManureList";
+		return "admin/nurture/manure/nurtureManureList";
 	}
 }

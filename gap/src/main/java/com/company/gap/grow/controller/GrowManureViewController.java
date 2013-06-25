@@ -17,7 +17,7 @@ import com.company.gap.manure.service.IManureResourceService;
 import com.company.gap.resource.component.DictHelper;
 
 @Controller
-@RequestMapping("grow/manure")
+@RequestMapping("admin/grow/manure")
 public class GrowManureViewController extends BeanViewController<Manure> {
 
 	@Autowired
@@ -48,6 +48,6 @@ public class GrowManureViewController extends BeanViewController<Manure> {
 
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "grow/manure/growManureList";
+		return "admin/grow/manure/growManureList";
 	}
 }

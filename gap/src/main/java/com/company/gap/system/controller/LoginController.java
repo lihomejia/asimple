@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.company.gap.base.GapConstants;
 import com.company.gap.system.model.User;
-import com.company.gap.system.service.ILoginService;
+import com.company.gap.system.service.IUserService;
 import com.company.gap.system.service.impl.ServiceContext;
 
 
@@ -23,20 +23,20 @@ public class LoginController {
 	private final static String MESSAGE = "msg";
 
 	@Autowired
-	private ILoginService service;
+	private IUserService userService;
 	
 	@RequestMapping("login")
 	public String login(HttpServletRequest request, User user) {
 		
 		User tempUser = new User();
-		tempUser.setUserName(user.getUserName());
+		tempUser.setUserId(user.getUserId());
 		
-		List<User> uList = service.findList(tempUser);
+		List<User> uList = userService.findList(tempUser);
 		
 		String error = "error_user";
 		
 		if (uList.size() == 0) {
-			request.setAttribute(MESSAGE, "用户名" + user.getUserName() + "不存在!");
+			request.setAttribute(MESSAGE, "用户名" + user.getUserId() + "不存在!");
 			return error;
 		}
 		User u = uList.get(0);

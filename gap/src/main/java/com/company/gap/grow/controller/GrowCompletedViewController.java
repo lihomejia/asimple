@@ -19,7 +19,7 @@ import com.company.gap.grow.enumeration.GrowStatus;
 import com.company.gap.grow.model.Register;
 
 @Controller
-@RequestMapping("grow/completed")
+@RequestMapping("admin/grow/completed")
 public class GrowCompletedViewController extends BeanViewController<Register> {
 
 	@Autowired
@@ -53,7 +53,7 @@ public class GrowCompletedViewController extends BeanViewController<Register> {
 
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "grow/completed/growCompletedList";
+		return "admin/grow/completed/growCompletedList";
 	}
 
 }

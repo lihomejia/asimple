@@ -38,6 +38,12 @@ public class GeneralModel {
 	@Column(length=255)
 	private String comment;
 	
+	@Column(name="uuser_id", columnDefinition="int default 0")
+	private Integer 	uuserId;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date 		udate;
+	
 	@Transient
 	private Dto  disp = new BaseDto();
 
@@ -111,5 +117,21 @@ public class GeneralModel {
 
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+
+	public Integer getUuserId() {
+		return uuserId;
+	}
+
+	public void setUuserId(Integer uuserId) {
+		this.uuserId = uuserId;
+	}
+
+	public Date getUdate() {
+		return udate;
+	}
+
+	public void setUdate(Date udate) {
+		this.udate = udate;
 	}
 }

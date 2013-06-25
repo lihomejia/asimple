@@ -13,7 +13,7 @@ import com.company.gap.grow.model.Harvest;
 import com.company.gap.grow.service.IGrowHarvestService;
 
 @Controller
-@RequestMapping("grow/harvest")
+@RequestMapping("admin/grow/harvest")
 public class GrowHarvestEntryController extends BeanEntryController<Harvest> {
 	@Autowired
 	private IGrowHarvestService service;
@@ -24,12 +24,12 @@ public class GrowHarvestEntryController extends BeanEntryController<Harvest> {
 	@Override
 	protected String toList(HttpServletRequest request) {
 		String registerId = request.getParameter("registerId");
-		return "redirect:/grow/harvest/list.html?registerId=" + registerId;
+		return "redirect:/admin/grow/harvest/list.html?registerId=" + registerId;
 	}
 	
 	@Override
 	protected String toEntry(HttpServletRequest request) {
-		return "grow/harvest/growHarvestEntry";
+		return "admin/grow/harvest/growHarvestEntry";
 	}
 	
 	@Override

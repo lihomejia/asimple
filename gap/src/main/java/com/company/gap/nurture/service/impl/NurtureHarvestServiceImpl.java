@@ -1,5 +1,7 @@
 package com.company.gap.nurture.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,5 +22,10 @@ public class NurtureHarvestServiceImpl extends BaseServiceImpl<Harvest> implemen
 		return this.dao;
 	}
 	
-	
+	@Override
+	public List<Harvest> findByRegisterId(Integer registerId) {
+		Harvest t = new Harvest();
+		t.setRegisterId(registerId);
+		return this.findList(t);
+	}
 }

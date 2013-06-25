@@ -32,7 +32,7 @@ public class InStock extends BaseStock {
 	
 	@Column(name="inuser_id", columnDefinition="int default 0")
 	private Integer inuserId;
-
+	
 	public Integer getStockId() {
 		return stockId;
 	}

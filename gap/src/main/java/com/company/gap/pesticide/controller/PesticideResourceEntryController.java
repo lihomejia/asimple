@@ -15,7 +15,7 @@ import com.company.gap.pesticide.model.Resource;
 import com.company.gap.pesticide.service.IPesticideResourceService;
 
 @Controller
-@RequestMapping("pesticide/resource")
+@RequestMapping("admin/pesticide/resource")
 public class PesticideResourceEntryController extends BeanEntryController<Resource> {
 	
 	@Autowired
@@ -27,12 +27,12 @@ public class PesticideResourceEntryController extends BeanEntryController<Resour
 	@Override
 	protected String toList(HttpServletRequest request) {
 		String type = request.getParameter("type");
-		return "redirect:/pesticide/resource/list.html?type=" + type;
+		return "redirect:/admin/pesticide/resource/list.html?type=" + type;
 	}
 	
 	@Override
 	protected String toEntry(HttpServletRequest request) {
-		return "pesticide/resource/pesticideResourceEntry";
+		return "admin/pesticide/resource/pesticideResourceEntry";
 	}
 	
 	@Override

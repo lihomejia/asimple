@@ -14,7 +14,7 @@ import com.company.gap.resource.enumeration.DictType;
 import com.company.gap.resource.model.Dict;
 
 @Controller
-@RequestMapping("resource/dict")
+@RequestMapping("admin/resource/dict")
 public class DictViewController extends BeanViewController<Dict> {
 
 	@Override
@@ -40,6 +40,6 @@ public class DictViewController extends BeanViewController<Dict> {
 	
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "resource/dict/list";
+		return "admin/resource/dict/list";
 	}
 }

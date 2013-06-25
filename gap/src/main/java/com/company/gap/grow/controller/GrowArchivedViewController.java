@@ -19,7 +19,7 @@ import com.company.gap.grow.enumeration.GrowStatus;
 import com.company.gap.grow.model.Register;
 
 @Controller
-@RequestMapping("grow/archived")
+@RequestMapping("admin/grow/archived")
 public class GrowArchivedViewController extends BeanViewController<Register> {
 
 	@Autowired
@@ -53,7 +53,7 @@ public class GrowArchivedViewController extends BeanViewController<Register> {
 
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "grow/archived/growArchivedList";
+		return "admin/grow/archived/growArchivedList";
 	}
 
 }

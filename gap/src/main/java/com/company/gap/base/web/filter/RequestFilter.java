@@ -36,10 +36,13 @@ public class RequestFilter implements Filter {
 		
 		User user = (User) session.getAttribute(GapConstants.USER_BEAN);
 		
+		String uri = request.getRequestURI().toLowerCase();
 		if (user != null) {
 			ServiceContext.setUser(user);
 		}
-		else if (request.getRequestURI().toLowerCase().indexOf("login.html") > 0) {
+		else if (uri.indexOf("login.html") > 0
+				|| uri.indexOf("register.html") > 0
+				|| uri.indexOf("registersave.html") > 0) {
 			
 		} 
 		else {
