@@ -21,9 +21,11 @@ import com.company.gap.pesticide.model.OutStock;
 import com.company.gap.pesticide.model.Stock;
 import com.company.gap.pesticide.service.IPesticideOutStockService;
 import com.company.gap.pesticide.service.IPesticideStockService;
+import com.company.gap.system.service.IUserService;
+import com.company.gap.system.service.impl.ServiceContext;
 
 @Controller
-@RequestMapping("pesticide/outstock")
+@RequestMapping("admin/pesticide/outstock")
 public class PesticideOutStockEntryController extends BeanEntryController<OutStock> {
 	
 	@Autowired
@@ -34,18 +36,20 @@ public class PesticideOutStockEntryController extends BeanEntryController<OutSto
 	private IGrowRegisterService registerService;
 	@Autowired
 	private ICellService cellService;
+	@Autowired
+	private IUserService userService;
 	
 	@Override
 	protected IBaseService<OutStock> get() {return this.service;}
 	
 	@Override
 	protected String toList(HttpServletRequest request) {
-		return "redirect:/pesticide/outstock/list.html";
+		return "redirect:/admin/pesticide/outstock/list.html";
 	}
 	
 	@Override
 	protected String toEntry(HttpServletRequest request) {
-		return "pesticide/outstock/pesticideOutStoctEntry";
+		return "admin/pesticide/outstock/pesticideOutStockEntry";
 	}
 	
 	@RequestMapping("/checkOutStock")
@@ -65,6 +69,10 @@ public class PesticideOutStockEntryController extends BeanEntryController<OutSto
 	@Override
 	protected void initializeAdd(HttpServletRequest request) {
 		super.initializeAdd(request);
+		OutStock t = new OutStock();
+		t.setOutuserId(ServiceContext.getLoginId());
+		t.getDisp().put("outuserId", ServiceContext.getUserName());
+		request.setAttribute("data", t);
 		request.setAttribute("registerList", 	registerService.findListByGrowStatus(GrowStatus.GOING.getStatus()));
 	}
 	
@@ -81,6 +89,7 @@ public class PesticideOutStockEntryController extends BeanEntryController<OutSto
 		Cell cell = cellService.findById(t.getCellId());
 		disp.put("outdate", DateUtils.format(t.getOutdate()));
 		disp.put("registerId", cell.getCode() + "&nbsp;" + cell.getLocation());
+		disp.put("outuserId", userService.findNameById(t.getOutuserId()));
 		super.initializeEdit(request, t);
 	}
 	

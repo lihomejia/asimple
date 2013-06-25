@@ -7,15 +7,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import sun.misc.BASE64Encoder;
+
 import com.company.gap.base.controller.BeanEntryController;
 import com.company.gap.base.service.IBaseService;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.cell.service.ICellService;
 import com.company.gap.nurture.model.Register;
 import com.company.gap.nurture.service.INurtureRegisterService;
+import com.company.gap.resource.component.DictHelper;
+import com.company.gap.resource.enumeration.DictType;
 
 @Controller
-@RequestMapping("nurture/register")
+@RequestMapping("admin/nurture/register")
 public class NurtureRegisterEntryController extends BeanEntryController<Register> {
 	
 	@Autowired
@@ -28,19 +32,23 @@ public class NurtureRegisterEntryController extends BeanEntryController<Register
 	
 	@Override
 	protected String toList(HttpServletRequest request) {
-		return "redirect:/nurture/process/list.html";
+		return "redirect:/admin/nurture/process/list.html";
 	}
 	
 	@Override
 	protected String toEntry(HttpServletRequest request) {
-		return "nurture/register/nurtureRegisterEntry";
+		return "admin/nurture/register/nurtureRegisterEntry";
 	}
 	
 
 	@Override
 	protected void initializeEdit(HttpServletRequest request, Register t) {
 		t.getDisp().put("cellId", t.getCellId());
+		t.getDisp().put("productId", DictHelper.getText(t.getProductId()));
 		t.getDisp().put("regdate", DateUtils.format(t.getRegdate()));
+		if (t.getNurturestatus() != null && t.getNurturestatus() != 1 && t.getQrcode() != null) {
+			t.getDisp().put("qrcode", new BASE64Encoder().encode(t.getQrcode()));
+		}
 		super.initializeEdit(request, t);
 	}
 
@@ -58,5 +66,6 @@ public class NurtureRegisterEntryController extends BeanEntryController<Register
 	
 	protected void initializeAdd(HttpServletRequest request) {
 		request.setAttribute("cellList", 	cellService.findUsableList());
+		request.setAttribute("cplbList", 	DictHelper.getList(DictType.CPLB));
 	}
 }

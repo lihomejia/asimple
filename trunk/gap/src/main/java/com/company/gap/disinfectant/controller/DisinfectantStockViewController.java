@@ -1,11 +1,8 @@
 package com.company.gap.disinfectant.controller;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -13,23 +10,21 @@ import com.company.gap.base.controller.BeanViewController;
 import com.company.gap.base.dao.search.Op;
 import com.company.gap.base.model.ViewFormModel;
 import com.company.gap.base.util.Dto;
-import com.company.gap.disinfectant.enumeration.ResourceType;
+import com.company.gap.disinfectant.component.DisinfectantResourceHelper;
+import com.company.gap.disinfectant.enumeration.DisinfectantResourceType;
+import com.company.gap.disinfectant.model.Resource;
 import com.company.gap.disinfectant.model.Stock;
-import com.company.gap.disinfectant.service.IDisinfectantResourceService;
 
 @Controller
-@RequestMapping("disinfectant/stock")
+@RequestMapping("admin/disinfectant/stock")
 public class DisinfectantStockViewController extends BeanViewController<Stock> {
-	
-	@Autowired
-	private IDisinfectantResourceService resourceService;
 	
 	@Override
 	protected void preparing(HttpServletRequest request, ViewFormModel model) {
-		request.setAttribute("nameList", 	resourceService.queryByType(ResourceType.NAME, true));
-		request.setAttribute("specList", 	resourceService.queryByType(ResourceType.SPEC, true));
-		request.setAttribute("batchList", 	resourceService.queryByType(ResourceType.BATCH, true));
-		request.setAttribute("producerList",resourceService.queryByType(ResourceType.PRODUCER, true));
+		request.setAttribute("nameList", 	DisinfectantResourceHelper.getList(DisinfectantResourceType.PM, Resource.RS_ALL));
+		request.setAttribute("specList", 	DisinfectantResourceHelper.getList(DisinfectantResourceType.GG,  Resource.RS_ALL));
+		request.setAttribute("batchList", 	DisinfectantResourceHelper.getList(DisinfectantResourceType.SCPH,  Resource.RS_ALL));
+		request.setAttribute("producerList",DisinfectantResourceHelper.getList(DisinfectantResourceType.SCS,  Resource.RS_ALL));
 	}
 	
 	
@@ -50,18 +45,17 @@ public class DisinfectantStockViewController extends BeanViewController<Stock> {
 	
 	@Override
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
-		Map<Integer, String> resId2Res = resourceService.queryResId2Name();
-		for (Stock stock : datas) {
-			Dto disp = stock.getDisp();
-			disp.put("nameId", 		resId2Res.get(stock.getNameId()));
-			disp.put("specId", 		resId2Res.get(stock.getSpecId()));
-			disp.put("batchId", 	resId2Res.get(stock.getBatchId()));
-			disp.put("producerId",	resId2Res.get(stock.getProducerId()));
+		for (Stock t : datas) {
+			Dto disp = t.getDisp();
+			disp.put("nameId", 		DisinfectantResourceHelper.getText(t.getNameId()));
+			disp.put("specId", 		DisinfectantResourceHelper.getText(t.getSpecId()));
+			disp.put("batchId", 	DisinfectantResourceHelper.getText(t.getBatchId()));
+			disp.put("producerId", 	DisinfectantResourceHelper.getText(t.getProducerId()));
 		}
 	}
 
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "disinfectant/stock/disinfectantStockList";
+		return "admin/disinfectant/stock/disinfectantStockList";
 	}
 }

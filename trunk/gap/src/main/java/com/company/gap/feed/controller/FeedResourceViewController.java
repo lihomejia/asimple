@@ -2,7 +2,6 @@ package com.company.gap.feed.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -11,18 +10,18 @@ import com.company.gap.base.dao.search.Op;
 import com.company.gap.base.model.Status;
 import com.company.gap.base.model.ViewFormModel;
 import com.company.gap.base.util.Dto;
-import com.company.gap.feed.enumeration.ResourceType;
+import com.company.gap.feed.enumeration.FeedResourceType;
 import com.company.gap.feed.model.Resource;
 
 @Controller
-@RequestMapping("feed/resource")
+@RequestMapping("admin/feed/resource")
 public class FeedResourceViewController extends BeanViewController<Resource> {
 	
 	@Override
 	protected void preparing(HttpServletRequest request, ViewFormModel model) {
-		int type = NumberUtils.toInt(request.getParameter("type"));
+		String type = request.getParameter("type");
 		request.setAttribute("type", type);
-		request.setAttribute("resource", ResourceType.valueOf(type));
+		request.setAttribute("resource", FeedResourceType.valueOf(type));
 	}
 
 	@Override
@@ -41,6 +40,6 @@ public class FeedResourceViewController extends BeanViewController<Resource> {
 
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "feed/resource/feedResourceList";
+		return "admin/feed/resource/feedResourceList";
 	}
 }

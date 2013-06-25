@@ -28,6 +28,12 @@ public class Register extends GeneralModel {
 	
 	@Column(columnDefinition="int default 0")
 	private Integer nurturestatus;
+	
+	@Column(name="product_id")
+	private Integer productId;
+	
+	@Column(columnDefinition="longblob")
+	private byte[] qrcode;
 
 	public Integer getCellId() {
 		return cellId;
@@ -76,4 +82,21 @@ public class Register extends GeneralModel {
 	public void setNurturestatus(Integer nurturestatus) {
 		this.nurturestatus = nurturestatus;
 	}
+
+	public byte[] getQrcode() {
+		return qrcode;
+	}
+
+	public void setQrcode(byte[] qrcode) {
+		this.qrcode = qrcode;
+	}
+
+	public Integer getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Integer productId) {
+		this.productId = productId;
+	}
+	
 }

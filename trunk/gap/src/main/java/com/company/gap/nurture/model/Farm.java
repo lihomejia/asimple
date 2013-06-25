@@ -30,8 +30,8 @@ public class Farm extends GeneralModel {
 	private Integer persons;
 	
 	@Column(length=60)
-	private String manager;;
-	
+	private String manager;
+
 	public Integer getRegisterId() {
 		return registerId;
 	}

@@ -19,7 +19,7 @@ import com.company.gap.cell.model.Cell;
  *
  */
 @Controller
-@RequestMapping("cell")
+@RequestMapping("admin/cell")
 public class CellViewController extends BeanViewController<Cell> {
 	
 	@Override
@@ -48,6 +48,6 @@ public class CellViewController extends BeanViewController<Cell> {
 	
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "cell/list";
+		return "admin/cell/list";
 	}
 }

@@ -11,7 +11,7 @@ public interface IBaseDao<T> {
 	
 	int updateStatus(Integer id, Integer status);
 	
-	int updateStatus(Integer id, Integer status, Integer cuserId, Date cdate);
+	int updateStatus(Integer id, Integer status, Integer auserId, Date adate);
 	
 	int deleteById(Integer id);
 	

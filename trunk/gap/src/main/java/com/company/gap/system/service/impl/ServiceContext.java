@@ -12,8 +12,17 @@ public class ServiceContext implements UserSuportable {
 		ServiceContext.user.set(user);
 	}
 	
-	@Override
-	public User getUser() {
+	public static User getUser() {
 		return user.get();
+	}
+	
+	public static int getLoginId() {
+		User user = getUser();
+		if (user == null) return 0;
+		return user.getId();
+	}
+	
+	public static String getUserName() {
+		return getUser().getUserName();
 	}
 }

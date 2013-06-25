@@ -15,7 +15,7 @@ import com.company.gap.manure.model.Resource;
 import com.company.gap.manure.service.IManureResourceService;
 
 @Controller
-@RequestMapping("manure/resource")
+@RequestMapping("admin/manure/resource")
 public class ManureResourceEntryController extends BeanEntryController<Resource> {
 	
 	@Autowired
@@ -27,12 +27,12 @@ public class ManureResourceEntryController extends BeanEntryController<Resource>
 	@Override
 	protected String toList(HttpServletRequest request) {
 		String type = request.getParameter("type");
-		return "redirect:/manure/resource/list.html?type=" + type;
+		return "redirect:/admin/manure/resource/list.html?type=" + type;
 	}
 	
 	@Override
 	protected String toEntry(HttpServletRequest request) {
-		return "manure/resource/manureResourceEntry";
+		return "admin/manure/resource/manureResourceEntry";
 	}
 	
 	@Override

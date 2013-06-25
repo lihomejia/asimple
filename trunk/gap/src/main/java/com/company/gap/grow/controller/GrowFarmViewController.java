@@ -14,7 +14,7 @@ import com.company.gap.base.util.Dto;
 import com.company.gap.grow.model.Farm;
 
 @Controller
-@RequestMapping("grow/farm")
+@RequestMapping("admin/grow/farm")
 public class GrowFarmViewController extends BeanViewController<Farm> {
 
 	@Override
@@ -36,7 +36,7 @@ public class GrowFarmViewController extends BeanViewController<Farm> {
 	
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "grow/farm/growFarmList";
+		return "admin/grow/farm/growFarmList";
 	}
 
 	

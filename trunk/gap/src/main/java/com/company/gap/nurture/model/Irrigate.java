@@ -31,7 +31,7 @@ public class Irrigate extends GeneralModel {
 	
 	@Column(length=60)
 	private String manager;
-	
+
 	public Integer getRegisterId() {
 		return registerId;
 	}

@@ -17,7 +17,7 @@ import com.company.gap.resource.component.DictHelper;
 import com.company.gap.resource.enumeration.DictType;
 
 @Controller
-@RequestMapping("grow/manure")
+@RequestMapping("admin/grow/manure")
 public class GrowManureEntryController extends BeanEntryController<Manure> {
 
 	@Autowired
@@ -29,12 +29,12 @@ public class GrowManureEntryController extends BeanEntryController<Manure> {
 	@Override
 	protected String toList(HttpServletRequest request) {
 		String registerId = request.getParameter("registerId");
-		return "redirect:/grow/manure/list.html?registerId=" + registerId;
+		return "redirect:/admin/grow/manure/list.html?registerId=" + registerId;
 	}
 	
 	@Override
 	protected String toEntry(HttpServletRequest request) {
-		return "grow/manure/growManureEntry";
+		return "admin/grow/manure/growManureEntry";
 	}
 	
 	@Override

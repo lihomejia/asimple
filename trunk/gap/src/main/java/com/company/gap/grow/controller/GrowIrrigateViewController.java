@@ -14,7 +14,7 @@ import com.company.gap.base.util.Dto;
 import com.company.gap.grow.model.Irrigate;
 
 @Controller
-@RequestMapping("grow/irrigate")
+@RequestMapping("admin/grow/irrigate")
 public class GrowIrrigateViewController extends BeanViewController<Irrigate> {
 
 	@Override
@@ -36,6 +36,6 @@ public class GrowIrrigateViewController extends BeanViewController<Irrigate> {
 	
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "grow/irrigate/growIrrigateList";
+		return "admin/grow/irrigate/growIrrigateList";
 	}
 }

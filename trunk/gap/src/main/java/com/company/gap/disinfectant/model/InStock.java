@@ -96,5 +96,4 @@ public class InStock extends BaseStock {
 	public void setInuserId(Integer inuserId) {
 		this.inuserId = inuserId;
 	}
-
 }

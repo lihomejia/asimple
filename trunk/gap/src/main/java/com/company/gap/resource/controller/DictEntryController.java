@@ -15,7 +15,7 @@ import com.company.gap.resource.model.Dict;
 import com.company.gap.resource.service.IDictService;
 
 @Controller
-@RequestMapping("resource/dict")
+@RequestMapping("admin/resource/dict")
 public class DictEntryController extends BeanEntryController<Dict> {
 
 	@Autowired
@@ -27,12 +27,12 @@ public class DictEntryController extends BeanEntryController<Dict> {
 	@Override
 	protected String toList(HttpServletRequest request) {
 		String type = request.getParameter("type");
-		return "redirect:/resource/dict/list.html?type=" + type;
+		return "redirect:/admin/resource/dict/list.html?type=" + type;
 	}
 	
 	@Override
 	protected String toEntry(HttpServletRequest request) {
-		return "resource/dict/entry";
+		return "admin/resource/dict/entry";
 	}
 	
 	

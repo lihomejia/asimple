@@ -13,7 +13,7 @@ import com.company.gap.nurture.model.Pesticide;
 import com.company.gap.nurture.service.INurturePesticideService;
 
 @Controller
-@RequestMapping("nurture/pesticide")
+@RequestMapping("admin/nurture/pesticide")
 public class NurturePesticideEntryController extends BeanEntryController<Pesticide> {
 
 	@Autowired
@@ -25,12 +25,12 @@ public class NurturePesticideEntryController extends BeanEntryController<Pestici
 	@Override
 	protected String toList(HttpServletRequest request) {
 		String registerId = request.getParameter("registerId");
-		return "redirect:/nurture/pesticide/list.html?registerId=" + registerId;
+		return "redirect:/admin/nurture/pesticide/list.html?registerId=" + registerId;
 	}
 	
 	@Override
 	protected String toEntry(HttpServletRequest request) {
-		return "nurture/pesticide/nurturePesticideEntry";
+		return "admin/nurture/pesticide/nurturePesticideEntry";
 	}
 	
 	@Override

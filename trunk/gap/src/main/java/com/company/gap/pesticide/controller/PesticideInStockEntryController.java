@@ -14,34 +14,51 @@ import com.company.gap.pesticide.component.PesticideResourceHelper;
 import com.company.gap.pesticide.enumeration.PesticideResourceType;
 import com.company.gap.pesticide.model.InStock;
 import com.company.gap.pesticide.service.IPesticideInStockService;
+import com.company.gap.system.service.IUserService;
+import com.company.gap.system.service.impl.ServiceContext;
 
 @Controller
-@RequestMapping("pesticide/instock")
+@RequestMapping("admin/pesticide/instock")
 public class PesticideInStockEntryController extends BeanEntryController<InStock> {
 
 	@Autowired
 	private IPesticideInStockService service;
+	
+	@Autowired
+	private IUserService userService;
 	
 	@Override
 	protected IBaseService<InStock> get() {return this.service;}
 	
 	@Override
 	protected String toList(HttpServletRequest request) {
-		return "redirect:/pesticide/instock/list.html";
+		return "redirect:/admin/pesticide/instock/list.html";
 	}
 	
 	@Override
 	protected String toEntry(HttpServletRequest request) {
-		return "pesticide/instock/pesticideInStoctEntry";
+		return "admin/pesticide/instock/pesticideInStockEntry";
 	}
 	
 	
+	
+	
+	@Override
+	protected void initializeAdd(HttpServletRequest request) {
+		InStock t = new InStock();
+		t.setInuserId(ServiceContext.getLoginId());
+		t.getDisp().put("inuserId", ServiceContext.getUserName());
+		
+		request.setAttribute("data", t);
+		super.initializeAdd(request);
+	}
+
 	@Override
 	protected void initializeEdit(HttpServletRequest request, InStock t) {
 		Dto disp = t.getDisp();
 		disp.put("indate", DateUtils.format(t.getIndate()));
 		disp.put("expirydate", DateUtils.format(t.getExpirydate()));
-		disp.put("inuserId", "XXX");
+		disp.put("inuserId", userService.findNameById(t.getInuserId()));
 		super.initializeEdit(request, t);
 	}
 	

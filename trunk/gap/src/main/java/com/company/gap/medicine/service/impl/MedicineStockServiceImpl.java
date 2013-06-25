@@ -1,18 +1,13 @@
 package com.company.gap.medicine.service.impl;
 
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.company.gap.base.dao.IBaseDao;
 import com.company.gap.base.service.impl.BaseServiceImpl;
-import com.company.gap.base.util.Dto;
 import com.company.gap.medicine.dao.IMedicineStockDao;
 import com.company.gap.medicine.model.InStock;
 import com.company.gap.medicine.model.Stock;
-import com.company.gap.medicine.service.IMedicineResourceService;
 import com.company.gap.medicine.service.IMedicineStockService;
 
 @Service
@@ -21,9 +16,6 @@ public class MedicineStockServiceImpl extends BaseServiceImpl<Stock> implements 
 	@Autowired
 	private IMedicineStockDao<Stock> dao;
 	
-	@Autowired
-	private IMedicineResourceService resourceService;
-
 	@Override
 	protected IBaseDao<Stock> get() {
 		return this.dao;
@@ -57,19 +49,5 @@ public class MedicineStockServiceImpl extends BaseServiceImpl<Stock> implements 
 	@Override
 	public int addStockQuantity(Integer id, double quantity) {
 		return dao.addStockQuantity(id, quantity);
-	}
-	
-	@Override
-	public List<Stock> findStockList() {
-		Map<Integer, String> resId2Name = resourceService.queryResId2Name();
-		List<Stock> list = dao.findStockList();
-		for (Stock stock : list) {
-			Dto disp = stock.getDisp();
-			disp.put("nameId", resId2Name.get(stock.getNameId()));
-			disp.put("specId", resId2Name.get(stock.getSpecId()));
-			disp.put("batchId", resId2Name.get(stock.getBatchId()));
-			disp.put("producerId", resId2Name.get(stock.getProducerId()));
-		}
-		return list;
 	}
 }

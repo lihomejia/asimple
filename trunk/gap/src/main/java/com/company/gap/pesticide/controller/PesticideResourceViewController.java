@@ -14,7 +14,7 @@ import com.company.gap.pesticide.enumeration.PesticideResourceType;
 import com.company.gap.pesticide.model.Resource;
 
 @Controller
-@RequestMapping("pesticide/resource")
+@RequestMapping("admin/pesticide/resource")
 public class PesticideResourceViewController extends BeanViewController<Resource> {
 	
 	@Override
@@ -40,6 +40,6 @@ public class PesticideResourceViewController extends BeanViewController<Resource
 
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "pesticide/resource/pesticideResourceList";
+		return "admin/pesticide/resource/pesticideResourceList";
 	}
 }

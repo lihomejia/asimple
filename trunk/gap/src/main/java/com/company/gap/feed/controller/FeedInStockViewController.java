@@ -1,11 +1,8 @@
 package com.company.gap.feed.controller;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -15,23 +12,21 @@ import com.company.gap.base.model.Status;
 import com.company.gap.base.model.ViewFormModel;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.base.util.Dto;
-import com.company.gap.feed.enumeration.ResourceType;
+import com.company.gap.feed.component.FeedResourceHelper;
+import com.company.gap.feed.enumeration.FeedResourceType;
 import com.company.gap.feed.model.InStock;
-import com.company.gap.feed.service.IFeedResourceService;
+import com.company.gap.feed.model.Resource;
 
 @Controller
-@RequestMapping("feed/instock")
+@RequestMapping("admin/feed/instock")
 public class FeedInStockViewController extends BeanViewController<InStock> {
-
-	@Autowired
-	private IFeedResourceService resourceService;
 	
 	@Override
 	protected void preparing(HttpServletRequest request, ViewFormModel model) {
-		request.setAttribute("nameList", 	resourceService.queryByType(ResourceType.NAME, true));
-		request.setAttribute("specList", 	resourceService.queryByType(ResourceType.SPEC, true));
-		request.setAttribute("batchList", 	resourceService.queryByType(ResourceType.BATCH, true));
-		request.setAttribute("producerList",resourceService.queryByType(ResourceType.PRODUCER, true));
+		request.setAttribute("nameList", 	FeedResourceHelper.getList(FeedResourceType.PM, Resource.RS_ALL));
+		request.setAttribute("specList", 	FeedResourceHelper.getList(FeedResourceType.GG,  Resource.RS_ALL));
+		request.setAttribute("batchList", 	FeedResourceHelper.getList(FeedResourceType.SCPH,  Resource.RS_ALL));
+		request.setAttribute("producerList",FeedResourceHelper.getList(FeedResourceType.SCS,  Resource.RS_ALL));
 	}
 	
 	@Override
@@ -45,13 +40,12 @@ public class FeedInStockViewController extends BeanViewController<InStock> {
 	
 	@Override
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
-		Map<Integer, String> resId2Res = resourceService.queryResId2Name();
 		for (InStock inStock : datas) {
 			Dto disp = inStock.getDisp();
-			disp.put("nameId", 		resId2Res.get(inStock.getNameId()));
-			disp.put("specId", 		resId2Res.get(inStock.getSpecId()));
-			disp.put("batchId", 	resId2Res.get(inStock.getBatchId()));
-			disp.put("producerId", 	resId2Res.get(inStock.getProducerId()));
+			disp.put("nameId", 		FeedResourceHelper.getText(inStock.getNameId()));
+			disp.put("specId", 		FeedResourceHelper.getText(inStock.getSpecId()));
+			disp.put("batchId", 	FeedResourceHelper.getText(inStock.getBatchId()));
+			disp.put("producerId", 	FeedResourceHelper.getText(inStock.getProducerId()));
 			disp.put("indate", 		DateUtils.format(inStock.getIndate()));
 			disp.put("status", 		Status.valueOf(inStock.getStatus()).getName());
 			disp.put("inuserId", 	"XXX");
@@ -60,6 +54,6 @@ public class FeedInStockViewController extends BeanViewController<InStock> {
 	
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "feed/instock/feedInStockList";
+		return "admin/feed/instock/feedInStockList";
 	}
 }

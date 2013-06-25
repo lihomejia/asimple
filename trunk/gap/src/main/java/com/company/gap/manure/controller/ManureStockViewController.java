@@ -16,7 +16,7 @@ import com.company.gap.manure.model.Resource;
 import com.company.gap.manure.model.Stock;
 
 @Controller
-@RequestMapping("manure/stock")
+@RequestMapping("admin/manure/stock")
 public class ManureStockViewController extends BeanViewController<Stock> {
 	
 	@Override
@@ -56,6 +56,6 @@ public class ManureStockViewController extends BeanViewController<Stock> {
 
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "manure/stock/manureStockList";
+		return "admin/manure/stock/manureStockList";
 	}
 }

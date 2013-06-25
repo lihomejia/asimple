@@ -44,19 +44,12 @@ public class CellServiceImpl extends BaseServiceImpl<Cell> implements ICellServi
 		return cellId2Name;
 	}
 	
-	@Override
-	public int updateStatus(Integer id, Integer status) {
-		Cell cell = new Cell();
-		cell.setId(id);
-		cell.setStatus(status);
-		return dao.update(cell);
-	}
-	
+
 	@Override
 	public int updateUseStatus(Integer id, Integer usestatus) {
 		Cell cell = new Cell();
 		cell.setId(id);
 		cell.setUsestatus(usestatus);
-		return dao.update(cell);
+		return super.update(cell);
 	}
 }

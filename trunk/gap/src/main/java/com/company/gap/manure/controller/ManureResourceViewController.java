@@ -14,7 +14,7 @@ import com.company.gap.manure.enumeration.ManureResourceType;
 import com.company.gap.manure.model.Resource;
 
 @Controller
-@RequestMapping("manure/resource")
+@RequestMapping("admin/manure/resource")
 public class ManureResourceViewController extends BeanViewController<Resource> {
 	
 	@Override
@@ -40,6 +40,6 @@ public class ManureResourceViewController extends BeanViewController<Resource> {
 
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "manure/resource/manureResourceList";
+		return "admin/manure/resource/manureResourceList";
 	}
 }
