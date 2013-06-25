@@ -8,71 +8,9 @@
 <link rel="stylesheet" type="text/css" href="<%=basePath%>public/css/reset.css" />
 <link rel="stylesheet" type="text/css" href="<%=basePath%>public/css/style.css" />
 </head>
-<script language="javascript" type="text/javascript">
-	function shows(names) {
-		document.getElementById(names).style.display = 'block';
-	}
-	function hiddens(names) {
-		document.getElementById(names).style.display = 'none';
-	}
-	function shows2(names, ids) {
-		document.getElementById(ids).className = 'current';
-		document.getElementById(names).style.display = 'block';
-	}
-	function hiddens2(names, ids) {
-		document.getElementById(ids).className = '';
-		document.getElementById(names).style.display = 'none';
-	}
-</script>
+
 <body>
-<!--头部-->
-<table border="0" cellspacing="0" cellpadding="0" class="w960 mCenter">
-  <tr>
-    <td class="header">&nbsp;</td>
-  </tr>
-  <tr>
-    <td height="5"></td>
-  </tr>
-</table>
-<!--导航-->
-<div class="mainNav">
-  <div class="mainNav_downMenu1" id="mainNav_downMenu1" style="display:none;" onmouseover="shows2('mainNav_downMenu1','menu1')" onmouseout="hiddens2('mainNav_downMenu1','menu1')">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td><a href="#">通知公告</a></td>
-      </tr>
-      <tr>
-        <td><a href="#">企业新闻</a></td>
-      </tr>
-    </table>
-  </div>
-  <div class="mainNav_downMenu2" id="mainNav_downMenu2" style="display:none" onmouseover="shows2('mainNav_downMenu2','menu2')" onmouseout="hiddens2('mainNav_downMenu2','menu2')">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td><a href="#">相关法规</a></td>
-      </tr>
-      <tr>
-        <td><a href="#">相关条例</a></td>
-      </tr>
-      <tr>
-        <td><a href="#">管理办法</a></td>
-      </tr>
-      <tr>
-        <td><a href="#">相关标准</a></td>
-      </tr>
-    </table>
-  </div>
-  <table border="0" cellspacing="0" cellpadding="0" class="mCenter w960">
-    <tr>
-      <td width="5" align="left" class="mainNavLeftBg">&nbsp;</td>
-      <td class="mainNavCenterBg"><a href="#">首  页</a> <a href="#" id="menu1" onmouseover="shows('mainNav_downMenu1')" onmouseout="hiddens('mainNav_downMenu1')" >新闻公告</a> <a href="#" id="menu2" onmouseover="shows('mainNav_downMenu2')" onmouseout="hiddens('mainNav_downMenu2')" >法律法规</a> <a href="#">产品认证</a> <a href="#">GAP企业</a> <a href="#">投诉信息</a> </td>
-      <td width="5" align="right" class="mainNavRightBg">&nbsp;</td>
-    </tr>
-    <tr>
-      <td colspan="3" class="mainNavBottomBg"></td>
-    </tr>
-  </table>
-</div>
+<%@include file="/public/jsp/web/top.jsp" %>
 <!--二级导航-->
 <!--内容菜单-->
 <table border="0" cellspacing="0" cellpadding="0" class="mCenter w960 mt10">
@@ -159,7 +97,7 @@
       <table border="0" cellspacing="0" cellpadding="0" class="leftMenu mt10">
         <tr>
           <td class="titleBar"><span class="title">通知公告</span></td>
-          <td align="right" class="titleBar"><a href="#">[更多]</a>&nbsp;</td>
+          <td align="right" class="titleBar"><a href="<%=basePath%>web/info/list.html?type=TZGG" target="_blank">[更多]</a>&nbsp;</td>
         </tr>
         <tr>
           <td colspan="2" align="left" valign="top" class="p10" style="height:182px;">
@@ -168,7 +106,7 @@
 		  	<c:forEach items="${TZGG}" var="info">
 		  		<tr>
                 	<td width="10" height="26" align="left" class="font12Blue_B">·</td>
-                	<td height="26" colspan="2" align="left"><a href="#">${info.title}</a></td>
+                	<td height="26" colspan="2" align="left"><a href="<%=basePath%>web/info/detail.html?id=${info.id}" target="_blank">${info.title}</a></td>
               	</tr>
 		  	</c:forEach>
           </table>
@@ -184,11 +122,11 @@
         <tr>
           <td class="p10"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="qualitySearch">
               <tr>
-                <td class="p10"><form id="form2" name="form2" method="post" action=""><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <td class="p10"><form id="form2" name="form2" method="post" action="<%=basePath%>product/query/doHtml5.html" target="_blank"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                       <td width="19%" align="left" class="font12Blue_B">产品追溯码：</td>
-                      <td width="65%" align="left"><input name="textfield" type="text" id="textfield" size="40" class="inputText" /></td>
-                      <td width="16%" align="left"><input type="submit" name="button3" id="button3" value="查 询" class="btnStyle" /></td>
+                      <td width="65%" align="left"><input name="id" type="text" id="id" size="40" class="inputText" /></td>
+                      <td width="16%" align="left"><input type="submit" id="btnQuery" value="查 询" class="btnStyle" /></td>
                     </tr>
                   </table>
                   <table width="100%" border="0" cellspacing="0" cellpadding="0" class="mt10">
@@ -218,7 +156,7 @@
       <table width="100%" border="0" cellpadding="0" cellspacing="0" class="centerMenu mt10" style="width:100%;">
         <tr>
           <td class="titleBar"><span class="title">企业信息化</span></td>
-          <td align="right" class="titleBar"><a href="#">[更多]</a>&nbsp;</td>
+          <td align="right" class="titleBar"><a href="<%=basePath%>web/info/list.html?type=QYXXH" target="_blank">[更多]</a>&nbsp;</td>
         </tr>
         <tr>
           <td colspan="2" valign="top" class="p10" style="height:182px;">
@@ -227,7 +165,7 @@
 		  	<c:forEach items="${QYXXH}" var="info">
 		  		<tr>
 	              <td width="8" height="26" align="left" class="font12Blue_B">·</td>
-			      <td align="left"><a href="content.html" target="_blank">${info.title}</a></td>
+			      <td align="left"><a href="<%=basePath%>web/info/detail.html?id=${info.id}" target="_blank">${info.title}</a></td>
 			      <td height="26" colspan="3" align="right" class="font12Gray">2013年05月15日</td>
 			    </tr>
 		    <tr>
@@ -249,7 +187,7 @@
                 <tr>
                   <td width="30%" height="24" align="center">用户名:</td>
                   <td width="70%" height="24" align="left">
-                  	<input name="userName" value="admin"/>
+                  	<input name="userId" value="admin"/>
                   </td>
                 </tr>
                 <tr>
@@ -260,7 +198,7 @@
                 </tr>
                 <tr>
                   <td height="30" colspan="2" align="center"><input type="submit" name="button" id="button" value="登 录" class="btnStyle" />
-                    <input type="button" name="button2" id="button2" value="注 册" class="btnStyle" /></td>
+                    <input type="button" value="注 册" class="btnStyle" onclick="window.location.href='<%=basePath%>admin/register.html'"/></td>
                 </tr>
               </table>
             </form>
@@ -273,7 +211,7 @@
           <td class="titleBar"><table width="97%" border="0" align="left" cellpadding="0" cellspacing="0">
             <tr>
               <td><span class="title">企业新闻</span></td>
-              <td align="right"><a href="#" class="font12White_B">[更多]</a>&nbsp;</td>
+              <td align="right"><a href="<%=basePath%>web/info/list.html?type=QYXW" target="_blank" class="font12White_B">[更多]</a>&nbsp;</td>
             </tr>
           </table></td>
         </tr>
@@ -284,7 +222,7 @@
 		  	<c:forEach items="${QYXW}" var="info">
 		  		<tr>
 	              	<td height="26" align="left" class="font12Blue_B">·</td>
-			      	<td height="26" colspan="2" align="left"><a href="#">${info.title}</a></td>
+			      	<td height="26" colspan="2" align="left"><a href="<%=basePath%>web/info/detail.html?id=${info.id}" target="_blank">${info.title}</a></td>
 		    	</tr>
 		  	</c:forEach>
             </table>
@@ -295,17 +233,6 @@
   </tr>
 </table>
 <!--底部-->
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="footer">
-  <tr>
-    <td valign="middle"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td height="24" align="center">本网站由：中国质量认证中心产品认证七部&nbsp;&nbsp;北京中认环宇技术支持</td>
-        </tr>
-        <tr>
-          <td height="24" align="center">Copyright&nbsp;&copy;&nbsp;2000-2010&nbsp;&nbsp;&nbsp;&nbsp;中国质量认证中心&nbsp;京ICP证030724&nbsp;&nbsp;声明：各个企业发布的信息由企业自身负责法律责任</td>
-        </tr>
-      </table></td>
-  </tr>
-</table>
+<%@include file="/public/jsp/web/bottom.jsp" %>
 </body>
 </html>
