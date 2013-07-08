@@ -117,11 +117,13 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${version.mysql}</version>
+			<scope>running</scope>
 		</dependency>
 		<dependency>
 			<groupId>net.sourceforge.jtds</groupId>
 			<artifactId>jtds</artifactId>
 			<version>${version.jtds}</version>
+			<scope>running</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.oracle</groupId>
