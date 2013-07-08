@@ -9,7 +9,9 @@
 	<description />
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
+		
+		<version.java>1.7</version.java>
+		
 		<!-- lib version -->
 		<version.spring>3.2.3.RELEASE</version.spring>
 		<version.jackson>1.9.9</version.jackson>
@@ -60,6 +62,7 @@
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>${version.log4j}</version>
+			<scope>runtime</scope>
 		</dependency>
 		
 		<!-- commons -->
@@ -139,8 +142,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>${version.java}</source>
+					<target>${version.java}</target>
 				</configuration>
 			</plugin>
 			<plugin>
