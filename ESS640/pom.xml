@@ -12,7 +12,6 @@
 
 		<!-- lib version -->
 		<version.spring>3.2.3.RELEASE</version.spring>
-		<version.aspectjrt>1.7.3</version.aspectjrt>
 		<version.jackson>1.9.9</version.jackson>
 		<version.gson>2.2.3</version.gson>
 		<version.log4j>1.2.14</version.log4j>
@@ -43,11 +42,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aspects</artifactId>
 			<version>${version.spring}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjrt</artifactId>
-			<version>${version.aspectjrt}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
@@ -109,7 +103,7 @@
 			<version>${version.standard}</version>
 		</dependency>
 		
-		<!--  -->
+		<!-- hsqldb -->
 		<dependency>
 			<groupId>hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
