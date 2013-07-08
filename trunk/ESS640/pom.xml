@@ -92,6 +92,8 @@
 			<version>${version.jsp-api}</version>
 			<scope>provided</scope>
 		</dependency>
+		
+		<!-- JSTL -->
 		<dependency>
 			<groupId>javax.servlet.jsp.jstl</groupId>
 			<artifactId>javax.servlet.jsp.jstl-api</artifactId>
