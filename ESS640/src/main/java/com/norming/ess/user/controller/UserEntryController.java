@@ -23,7 +23,7 @@ public class UserEntryController {
 	@RequestMapping("/add")
 	public String add(User user) {
 		userService.addUser(user);
-		return "redirect:/user/findList.html";
+		return "redirect:/user/findList";
 	}
 
 	@RequestMapping("/toEdit")
@@ -37,13 +37,13 @@ public class UserEntryController {
 	@RequestMapping("/edit")
 	public String edit(User user) {
 		userService.editUser(user);
-		return "redirect:/user/findList.html";
+		return "redirect:/user/findList";
 	}
 	
 	@RequestMapping("/delete")
 	public String delete(HttpServletRequest request) {
 		String id = request.getParameter("id");
 		userService.deleteUser(id);
-		return "redirect:/user/findList.html";
+		return "redirect:/user/findList";
 	}
 }
