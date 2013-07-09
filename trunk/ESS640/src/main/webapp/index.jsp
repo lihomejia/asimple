@@ -5,10 +5,16 @@
 	<title>首页</title>
 	
 	<script type="text/javascript">
-		window.location.replace("homepage/index");
 	</script>
 </head>
 
 <body>
+	<div sytle="align:center">
+		<a href="user1/userList/findList">User1 Demo</a>
+		<br/>
+		<a href="user2/userList/findList">User2 Demo</a>
+		<br/>
+		<a>Login</a>
+	</div>
 </body>
 </html>
