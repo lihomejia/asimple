@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.norming.ess.user1.model.User;
 import com.norming.ess.user1.service.IUserService;
 
-@Controller(value="entry1")
+@Controller
 @RequestMapping(value="/user1/userEntry")
-public class UserEntryController {
+public class User1EntryController {
 	@Autowired
 	private IUserService userService;
 
 	@RequestMapping(value="/toAdd")
 	public String toAdd(HttpServletRequest request) {
-		return "user/userEntry/add";
+		return "user1/userEntry/add";
 	}
 
 	@RequestMapping(value="/add")
@@ -31,7 +31,7 @@ public class UserEntryController {
 		String id = request.getParameter("id");
 		User user = userService.findUserById(id);
 		request.setAttribute("user", user);
-		return "user/userEntry/edit";
+		return "user1/userEntry/edit";
 	}
 
 	@RequestMapping(value="/edit")

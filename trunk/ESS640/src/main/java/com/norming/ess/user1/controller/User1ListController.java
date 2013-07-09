@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.norming.ess.user1.model.User;
 import com.norming.ess.user1.service.IUserService;
 
-@Controller(value="list1")
+@Controller
 @RequestMapping(value="/user1/userList")
-public class UserListController {
+public class User1ListController {
 
 	@Autowired
 	private IUserService userService;
@@ -22,6 +22,6 @@ public class UserListController {
 	public String findList(HttpServletRequest request) {
 		List<User> users = userService.findAll();
 		request.setAttribute("users", users);
-		return "user/userList/list";
+		return "user1/userList/list";
 	}
 }
