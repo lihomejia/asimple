@@ -25,6 +25,12 @@
 	<aop:config proxy-target-class="true">
 		<aop:advisor pointcut="execution(* com.norming.ess.**.service.*Service.*(..))" advice-ref="txAdvice" />
 	</aop:config>
+	
+	<!-- Transaction manager for a single JDBC DataSource -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
 
 	<!--
 		基本事务定义,使用transactionManager作事务管理,默认get* find*方法的事务为readonly,其余方法按默认设置.
@@ -38,4 +44,6 @@
 			<tx:method name="*" read-only="false" />
 		</tx:attributes>
 	</tx:advice>
+	
+	
 </beans>
