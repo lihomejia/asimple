@@ -9,7 +9,7 @@
   </head>
   
   <body>
-  	<form id="form1" name="form1" action="user/edit" method="post">
+  	<form id="form1" name="form1" action="user1/userEntry/edit" method="post">
   		<input type="hidden" name="asuserUserid" value="${user.asuserUserid}"/>
 	    <table>
 	    	<tr>
