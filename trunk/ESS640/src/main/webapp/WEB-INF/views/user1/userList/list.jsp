@@ -42,7 +42,7 @@
 			<tr><td>&nbsp;</td></tr>
 			<tr>
 				<td style="text-align:right">
-					<input type="button" class="btnStyle" value="新&nbsp;建" onclick="window.location.href='<%=basePath%>user/toAdd';"/>
+					<input type="button" class="btnStyle" value="新&nbsp;建" onclick="window.location.href='<%=basePath%>user1/userEntry/toAdd';"/>
 				</td>
 			</tr>
 		</table>
