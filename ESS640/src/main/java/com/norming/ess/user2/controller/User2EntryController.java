@@ -11,7 +11,7 @@ import com.norming.ess.user1.service.IUserService;
 
 @Controller
 @RequestMapping(value="/user2/userEntry")
-public class UserEntryController {
+public class User2EntryController {
 	
 	@Autowired
 	private IUserService userService;
