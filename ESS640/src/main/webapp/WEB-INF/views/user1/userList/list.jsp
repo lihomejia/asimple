@@ -30,9 +30,9 @@
 								<td>${user.asuserUsername}</td>
 								<td>${user.asuserEmail}</td>
 								<td>
-									<a class=linkStyle href="<%=basePath%>user/toEdit?id=${user.asuserUserid}">编辑</a>
+									<a class=linkStyle href="<%=basePath%>user1/userEntry/toEdit?id=${user.asuserUserid}">编辑</a>
 								    &nbsp;|&nbsp;
-								    <a class=linkStyle href="<%=basePath%>user/delete?id=${user.asuserUserid}" onclick="return confirm('确定删除吗?')">删除</a>
+								    <a class=linkStyle href="<%=basePath%>user1/userEntry/delete?id=${user.asuserUserid}" onclick="return confirm('确定删除吗?')">删除</a>
 								</td>
 							</tr>
 						</c:forEach>
