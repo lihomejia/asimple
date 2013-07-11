@@ -78,6 +78,11 @@
 			<param-name>enabled</param-name>
 			<param-value>true</param-value>
 		</init-param>
+		<init-param>
+			<param-name>excludingPattern</param-name>
+			<!-- 无需权限检查的url,多值以符号(,或;)分隔(空格回车换行tab等忽略),正则表达式 -->
+			<param-value>/framework/login; /anonymous/; \.jpg$; \.gif$; \.png$; \.js$; \.css$; \.html$; </param-value>
+		</init-param>
 	</filter>
 	<filter-mapping>
 		<filter-name>requestFilter</filter-name>
