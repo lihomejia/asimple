@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang3.StringUtils;
 
 import com.norming.ess.base.Constants;
+import com.norming.ess.framework.service.impl.ServiceContext;
 import com.norming.ess.user1.model.User;
 
 public class RequestFilter implements Filter {
@@ -63,7 +64,7 @@ public class RequestFilter implements Filter {
 		
 		User user = (User) session.getAttribute(Constants.USER_BEAN);
 		if (user != null) {
-			//ServiceContext.setUser(user);
+			ServiceContext.setUser(user);
 		}
 		else {
 			response.sendRedirect(request.getContextPath() + "/framework/login");
