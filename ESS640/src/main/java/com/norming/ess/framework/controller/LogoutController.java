@@ -10,7 +10,7 @@ public class LogoutController {
 	
 	@RequestMapping
 	public String index() {
-		return "framework/logout/index";
+		return "redirect:/framework/login";
 	}
 
 }
