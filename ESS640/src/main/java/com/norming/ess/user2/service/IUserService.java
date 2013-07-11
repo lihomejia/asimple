@@ -2,7 +2,7 @@ package com.norming.ess.user2.service;
 
 import java.util.List;
 
-import com.norming.ess.user1.model.User;
+import com.norming.ess.user2.model.User;
 
 public interface IUserService {
 	
