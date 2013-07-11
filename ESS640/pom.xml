@@ -9,9 +9,9 @@
 	<description />
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		
+
 		<version.java>1.7</version.java>
-		
+
 		<!-- lib version -->
 		<version.spring>3.2.3.RELEASE</version.spring>
 		<version.jackson>1.9.9</version.jackson>
@@ -20,6 +20,7 @@
 		<version.commons-io>1.3.2</version.commons-io>
 		<version.commons-lang3>3.1</version.commons-lang3>
 		<version.dbcp>1.2.2</version.dbcp>
+		<version.dom4j>1.6.1</version.dom4j>
 		<version.servlet-api>2.5</version.servlet-api>
 		<version.jsp-api>2.1</version.jsp-api>
 		<version.jstl>1.2.1</version.jstl>
@@ -56,7 +57,7 @@
 			<artifactId>gson</artifactId>
 			<version>${version.gson}</version>
 		</dependency>
-		
+
 		<!-- log4j -->
 		<dependency>
 			<groupId>log4j</groupId>
@@ -64,7 +65,7 @@
 			<version>${version.log4j}</version>
 			<scope>runtime</scope>
 		</dependency>
-		
+
 		<!-- commons -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -81,7 +82,14 @@
 			<artifactId>commons-dbcp</artifactId>
 			<version>${version.dbcp}</version>
 		</dependency>
-		
+
+		<!-- dom4j -->
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>${version.dom4j}</version>
+		</dependency>
+
 		<!-- Servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -95,7 +103,7 @@
 			<version>${version.jsp-api}</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<!-- JSTL -->
 		<dependency>
 			<groupId>javax.servlet.jsp.jstl</groupId>
@@ -107,7 +115,7 @@
 			<artifactId>standard</artifactId>
 			<version>${version.standard}</version>
 		</dependency>
-		
+
 		<!-- hsqldb -->
 		<dependency>
 			<groupId>hsqldb</groupId>
