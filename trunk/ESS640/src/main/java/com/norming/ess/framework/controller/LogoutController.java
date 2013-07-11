@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value="/framework/logout")
 public class LogoutController {
 	
-	@RequestMapping(value="/index")
+	@RequestMapping
 	public String index() {
 		return "framework/logout/index";
 	}

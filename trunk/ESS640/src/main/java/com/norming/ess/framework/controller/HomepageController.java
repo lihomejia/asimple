@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value="/framework/homepage")
 public class HomepageController {
 
-	@RequestMapping(value="/index")
+	@RequestMapping
 	public String index() {
 		return "framework/homepage/index";
 	}
