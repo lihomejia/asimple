@@ -22,6 +22,13 @@ public class LoginController {
 
 	@RequestMapping(value="/doLogin")
 	public String doLogin(HttpServletRequest request) {
+
+		boolean valid = true;
+		//TODO
+		
+		if (!valid) {
+			return index();
+		}
 		
 		HttpSession session = request.getSession(true);
 		
