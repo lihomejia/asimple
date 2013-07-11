@@ -12,5 +12,14 @@
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	
+	
+	
+	<bean id="commonDao"  class="com.norming.ess.common.dao.impl.CommonDaoImpl">	
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<bean id="commonDaoDynamic"  class="com.norming.ess.common.dao.impl.CommonDaoImpl">	
+		<property name="dataSource" ref="dynamicDataSource"/>
+	</bean>
 
 </beans>

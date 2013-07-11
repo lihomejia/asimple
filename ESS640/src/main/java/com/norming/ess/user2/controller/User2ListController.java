@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.norming.ess.user1.model.User;
-import com.norming.ess.user1.service.IUserService;
+import com.norming.ess.user2.model.User;
+import com.norming.ess.user2.service.IUserService;
 
 @Controller
 @RequestMapping(value="/user2/userList")
