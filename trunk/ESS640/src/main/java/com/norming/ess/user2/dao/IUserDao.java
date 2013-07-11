@@ -2,7 +2,7 @@ package com.norming.ess.user2.dao;
 
 import java.util.List;
 
-import com.norming.ess.user1.model.User;
+import com.norming.ess.user2.model.User;
 
 public interface IUserDao {
 	List<User> selectAll();

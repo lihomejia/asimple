@@ -17,12 +17,12 @@ public class UserDaoImpl implements IUserDao {
 	private JdbcTemplate jdbcTemplate;
 	
 	public List<User> selectAll(){
-		String querySql = "select ASUSER_USERID, ASUSER_USERNAME, ASUSER_EMAIL from ASUSER";
+		String querySql = "select ASUSER_USERID, ASUSER_USERNAME, ASUSER_EMAIL, ASUSER_PWD from ASUSER";
 		return jdbcTemplate.query(querySql, new BeanPropertyRowMapper<User>(User.class));
 	}
 	
 	public User selectById(String id){
-		String querySql = "select ASUSER_USERID,ASUSER_USERNAME,ASUSER_EMAIL from ASUSER where ASUSER_USERID = ?";
+		String querySql = "select ASUSER_USERID,ASUSER_USERNAME,ASUSER_EMAIL, ASUSER_PWD from ASUSER where ASUSER_USERID = ?";
 		return jdbcTemplate.queryForObject(querySql, new BeanPropertyRowMapper<User>(User.class),id);
 	}
 	

@@ -4,6 +4,8 @@ public class User {
 	private String asuserUserid;
 	private String asuserUsername;
 	private String asuserEmail;
+	private String asuserPwd;
+	
 	public String getAsuserUserid() {
 		return asuserUserid;
 	}
@@ -21,5 +23,12 @@ public class User {
 	}
 	public void setAsuserEmail(String asuserEmail) {
 		this.asuserEmail = asuserEmail;
+	}
+
+	public String getAsuserPwd() {
+		return asuserPwd;
+	}
+	public void setAsuserPwd(String asuserPwd) {
+		this.asuserPwd = asuserPwd;
 	}
 }

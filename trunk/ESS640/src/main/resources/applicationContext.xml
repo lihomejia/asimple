@@ -46,4 +46,7 @@
 	</tx:advice>
 	
 	
+	<!-- 用于持有ApplicationContext,可以使用SpringContextHolder.getBean('xxxx')的静态方法得到spring bean -->
+	<bean class="com.norming.ess.base.SpringContextHolder" lazy-init="false" />
+	
 </beans>

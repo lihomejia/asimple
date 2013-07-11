@@ -2,9 +2,9 @@ package com.norming.ess.user2.service.impl;
 
 import java.util.List;
 
-import com.norming.ess.user1.dao.IUserDao;
-import com.norming.ess.user1.model.User;
-import com.norming.ess.user1.service.IUserService;
+import com.norming.ess.user2.dao.IUserDao;
+import com.norming.ess.user2.model.User;
+import com.norming.ess.user2.service.IUserService;
 
 public class UserServiceImpl implements IUserService{
 
