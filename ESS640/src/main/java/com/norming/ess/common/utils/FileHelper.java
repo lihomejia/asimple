@@ -130,14 +130,15 @@ public class FileHelper {
 	 */
 	public static String readUTF8File(File file) {
 		StringBuffer sb = new StringBuffer();
+		BufferedReader reader = null;
 		try {
 			FileInputStream fis = new FileInputStream(file);
-			BufferedReader reader;
 			reader = new BufferedReader(new InputStreamReader(fis, "utf-8"));
 			String line;
 			while ((line = reader.readLine()) != null) {
 				sb.append(line + "\n");
 			}
+			reader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
