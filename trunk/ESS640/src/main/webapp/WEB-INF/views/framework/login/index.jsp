@@ -23,6 +23,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    This is Login page. <br>
+    
+    User ID : <input value="admin"/> <br/>
+    Password: <input type="password" value="admin"/><br/>
+    
+    
+    <a href="framework/login/doLogin">doLogin</a>
   </body>
 </html>
