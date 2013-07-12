@@ -1,4 +1,4 @@
-package com.norming.ess.user.model;
+package com.norming.ess.user.domain;
 
 public class User {
 	private String asuserUserid;

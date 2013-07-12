@@ -3,7 +3,7 @@ package com.norming.ess.user.service.impl;
 import java.util.List;
 
 import com.norming.ess.user.dao.IUserDao;
-import com.norming.ess.user.model.User;
+import com.norming.ess.user.domain.User;
 import com.norming.ess.user.service.IUserService;
 
 public class UserServiceImpl implements IUserService {

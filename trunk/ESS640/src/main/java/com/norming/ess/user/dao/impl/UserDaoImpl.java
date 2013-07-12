@@ -6,7 +6,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
 import com.norming.ess.common.dao.impl.CommonDaoImpl;
 import com.norming.ess.user.dao.IUserDao;
-import com.norming.ess.user.model.User;
+import com.norming.ess.user.domain.User;
 
 public class UserDaoImpl extends CommonDaoImpl implements IUserDao {
 	

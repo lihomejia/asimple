@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.norming.ess.user.model.User;
+import com.norming.ess.user.domain.User;
 import com.norming.ess.user.service.IUserService;
 
 @Controller
