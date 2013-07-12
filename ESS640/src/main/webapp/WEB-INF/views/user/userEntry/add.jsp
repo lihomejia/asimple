@@ -9,7 +9,7 @@
   </head>
   
   <body>
-  	<form id="form1" name="form1" action="user2/userEntry/add" method="post">
+  	<form id="form1" name="form1" action="user/userEntry/add" method="post">
 	    <table>
 	    	<tr>
 	    		<td>用户ID：<input type="text" name="asuserUserid"/></td>

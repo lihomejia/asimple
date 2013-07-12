@@ -30,9 +30,9 @@
 								<td>${user.asuserUsername}</td>
 								<td>${user.asuserEmail}</td>
 								<td>
-									<a class=linkStyle href="<%=basePath%>user2/userEntry/toEdit?id=${user.asuserUserid}">编辑</a>
+									<a class=linkStyle href="<%=basePath%>user/userEntry/toEdit?id=${user.asuserUserid}">编辑</a>
 								    &nbsp;|&nbsp;
-								    <a class=linkStyle href="<%=basePath%>user2/userEntry/delete?id=${user.asuserUserid}" onclick="return confirm('确定删除吗?')">删除</a>
+								    <a class=linkStyle href="<%=basePath%>user/userEntry/delete?id=${user.asuserUserid}" onclick="return confirm('确定删除吗?')">删除</a>
 								</td>
 							</tr>
 						</c:forEach>
@@ -42,7 +42,7 @@
 			<tr><td>&nbsp;</td></tr>
 			<tr>
 				<td style="text-align:right">
-					<input type="button" class="btnStyle" value="新&nbsp;建" onclick="window.location.href='<%=basePath%>user2/userEntry/toAdd';"/>
+					<input type="button" class="btnStyle" value="新&nbsp;建" onclick="window.location.href='<%=basePath%>user/userEntry/toAdd';"/>
 				</td>
 			</tr>
 		</table>
