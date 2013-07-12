@@ -3,6 +3,7 @@ package com.norming.ess.framework.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +18,8 @@ import com.norming.ess.user.service.IUserService;
 @Controller
 @RequestMapping(value="/framework/login")
 public class LoginController {
+	@Autowired
+	private IUserService userService;
 	
 	@RequestMapping
 	public String index() {
@@ -28,8 +31,6 @@ public class LoginController {
 			@RequestParam("asuserUserid") String asuserUserid,
 			@RequestParam("asuserPwd") String asuserPwd) {
 
-		IUserService userService = SpringContextHolder.getBean(IUserService.class);
-		//IUserService userService = SpringContextHolder.getBean("userService");
 		
 		User user = userService.findUserById(asuserUserid);
 		if (user == null || !asuserPwd.equals(user.getAsuserPwd())) {
