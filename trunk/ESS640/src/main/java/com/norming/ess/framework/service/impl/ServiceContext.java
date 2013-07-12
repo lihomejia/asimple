@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.norming.ess.base.util.LocalHelper;
 import com.norming.ess.framework.service.UserSuportable;
-import com.norming.ess.user1.model.User;
+import com.norming.ess.user.model.User;
 
 @Service
 public class ServiceContext implements UserSuportable {
