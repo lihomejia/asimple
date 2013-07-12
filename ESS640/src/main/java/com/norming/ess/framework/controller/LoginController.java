@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.norming.ess.base.Constants;
 import com.norming.ess.base.SpringContextHolder;
 import com.norming.ess.framework.service.impl.ServiceContext;
-import com.norming.ess.user1.model.User;
-import com.norming.ess.user1.service.IUserService;
+import com.norming.ess.user.model.User;
+import com.norming.ess.user.service.IUserService;
 
 
 @Controller
