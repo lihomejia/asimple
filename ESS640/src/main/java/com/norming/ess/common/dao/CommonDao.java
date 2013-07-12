@@ -25,6 +25,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 /**
  * Norming持久层API公用服务接口类.  2.0
  * @author LiRui
+ * @param <T>
  * @date Jul 12, 2012
  * 
  * @edit June. 25,2013 去除Spring3废弃方法。并对新方法增强！并新增接口
@@ -33,7 +34,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
  */
 public interface CommonDao {
 	
-	String BEAN_NAME = "commonDao";
+	String BEAN_NAME    = "commonDao";
 	String BEAN_DYNAMIC = "commonDaoDynamic";
 	
 	/**
@@ -60,27 +61,25 @@ public interface CommonDao {
 	 * @param object型对象.如：USER.class
 	 * @author LiRui
 	 * @date Jul 12, 2012
-	 * @return List<E> 对象数组。 
+	 * @return List<?> 对象数组。 
 	 */
-	public List<?> findJson(String finalSql, Class<?> clazz);
+	public <T> List<T> findJson(String finalSql, Class<T> clazz);
 	/**
 	 * 	通过SQL返回查询对象的集合。Map
 	 * 
 	 * @param String型SQL.如：finalSql = "SELECT user_name,user_pwd FROM user WHERE user_id='01'";
 	 * @author LiRui
 	 * @date Jul 12, 2012
-	 * @return Map 	 */
-	@SuppressWarnings("unchecked")
-	public Map findMap(String finalSql);
+	 * @return Map<String,Object>	 */
+	public Map<String,Object> findMap(String finalSql);
 	/**
 	 * 	通过SQL返回查询对象的集合。Map
 	 * 
 	 * @param String型SQL.如：finalSql = "SELECT user_name,user_pwd FROM user WHERE user_id='01'";
 	 * @author LiRui
 	 * @date Jul 12, 2012
-	 * @return Map 	 */
-	@SuppressWarnings("unchecked")
-	public Map findMap(String finalSql,Object[] object);
+	 * @return Map<String,Object> 	 */
+	public Map<String,Object> findMap(String finalSql,Object[] object);
 	/**
 	 * 	通过SQL返回查询对象的集合。Map
 	 * 
@@ -89,20 +88,18 @@ public interface CommonDao {
 	 * @param int[] argTyes    new int[]{Types.VARCHAR}
 	 * @author LiRui
 	 * @date June 25, 2013
-	 * @return Map 
+	 * @return Map<String,Object> 
 	 */
-	@SuppressWarnings("unchecked")
-	public Map findMap(String finalSql,Object[] object, int[] argTyes);
+	public Map<String,Object> findMap(String finalSql,Object[] object, int[] argTyes);
 	/**
 	 * 	通过SQL返回查询对象的集合。List<?>
 	 * 
 	 * @param String型SQL.如：finalSql = "SELECT user_name,user_pwd FROM user";
 	 * @author LiRui
 	 * @date Jul 12, 2012
-	 * @return List<E> 对象数组。
+	 * @return List<?> 对象数组。
 	 */
-	@SuppressWarnings("unchecked")
-	public List findForList(String finalSql);
+	public List<?> findForList(String finalSql);
 	/**
 	 * 	通过SQL返回查询对象的集合。List<?>
 	 * 
@@ -110,9 +107,8 @@ public interface CommonDao {
 	 * @param object[]对象数组 如：new Object[] {'01'}
 	 * @author LiRui
 	 * @date Aug 24, 2012
-	 * @return List<E> 对象数组。	 */
-	@SuppressWarnings("unchecked")
-	public List findForList(String finalSql,Object[] object);
+	 * @return List<?> 对象数组。	 */
+	public List<?> findForList(String finalSql,Object[] object);
 	/**
 	 *  通过SQL返回查询对象的集合。List<?>
 	 *  
@@ -120,10 +116,9 @@ public interface CommonDao {
 	 * @param RowMapper rowMapper
 	 * @author LiRui
 	 * @date June 25, 2013
-	 * @return List<E> 对象数组。 
+	 * @return List<?> 对象数组。 
 	 */
-	@SuppressWarnings("unchecked")
-	public List findForList(String finalSql,RowMapper rowMapper);
+	public List<?> findForList(String finalSql,RowMapper<?> rowMapper);
 	/**
 	 *  通过SQL返回查询对象的集合。List<?>
 	 *  
@@ -132,10 +127,9 @@ public interface CommonDao {
 	 * @param RowMapper rowMapper
 	 * @author LiRui
 	 * @date June 25, 2013
-	 * @return List<E> 对象数组。 
+	 * @return List<?> 对象数组。 
 	 */
-	@SuppressWarnings("unchecked")
-	public List findForList(String finalSql,Object[] objects,RowMapper rowMapper);
+	public List<?> findForList(String finalSql,Object[] objects,RowMapper<?> rowMapper);
 	/**
 	 *  通过SQL返回查询对象的集合。List<?>
 	 *  
@@ -144,10 +138,9 @@ public interface CommonDao {
 	 * @param Class<?> clazz
 	 * @author LiRui
 	 * @date June 25, 2013
-	 * @return List<E> 对象数组。 
+	 * @return List<?> 对象数组。 
 	 */
-	@SuppressWarnings("unchecked")
-	public List findForList(String finalSql,Object[] objects,Class<?> clazz);
+	public List<?> findForList(String finalSql,Object[] objects,Class<?> clazz);
 	/**
 	 *  通过SQL返回查询对象的集合。List<?>
 	 *  
@@ -157,10 +150,9 @@ public interface CommonDao {
 	 * @param Class<?> clazz   如： String.class
 	 * @author LiRui
 	 * @date June 25, 2013
-	 * @return List<E> 对象数组。 
+	 * @return List<?> 对象数组。 
 	 */
-	@SuppressWarnings("unchecked")
-	public List findForList(String finalSql,Object[] objects,int[] argTypes);
+	public List<?> findForList(String finalSql,Object[] objects,int[] argTypes);
 	/**
 	 *  通过SQL返回查询对象的集合。List<?>
 	 *  
@@ -170,83 +162,78 @@ public interface CommonDao {
 	 * @param Class<?> clazz   如： String.class
 	 * @author LiRui
 	 * @date June 25, 2013
-	 * @return List<E> 对象数组。 
+	 * @return List<?> 对象数组。 
 	 */
-	@SuppressWarnings("unchecked")
-	public List findForList(String finalSql,Object[] objects,int[] argTypes,Class<?> clazz);
+	public List<?> findForList(String finalSql,Object[] objects,int[] argTypes,Class<?> clazz);
 	/**
 	 * 	通过SQL返回查询对象。	 * 
 	 * @param String型SQL.如：finalSql = "SELECT * FROM user WHERE user_id='01'";
 	 * @param object型对象.如: USER.class
 	 * @author LiRui
 	 * @date Jul 12, 2012
-	 * @return Object对象。	 */
-	public Object findForObject(String finalSql, Class<?> clazz);
+	 * @return <T> 	 */
+	public <T> T findForObject(String finalSql, Class<T> clazz);
 	/**
 	 * 通过SQL返回查询对象。
 	 * 
 	 * @param String型Sql 如：finalSql = "SELECT user_name FROM user Where" user_id=1;
-	 * @param RowMapper rowMapper
-	 * @return Object 
+	 * @param RowMapper<T> rowMapper
 	 * @author LiRui
-	 * @date June 25,2013 
+	 * @date June 25,2013
+	 * @return <T> 
 	 */
-	@SuppressWarnings("unchecked")
-	public Object findForObject(String finalSql, RowMapper rowMapper); 
+	public <T> T findForObject(String finalSql, RowMapper<T> rowMapper); 
 	/**
 	 * 通过SQL返回查询对象。
 	 * 
 	 * @param String型Sql 如：finalSql = "SELECT user_name FROM user Where" user_id=?;
 	 * @param object[]对象数组 如：new Object[] {'01'}
-	 * @param RowMapper rowMapper
-	 * @return Object 
+	 * @param RowMapper<T> rowMapper
 	 * @author LiRui
 	 * @date June 25,2013 
+	 * @return <T>
 	 */
-	@SuppressWarnings("unchecked")
-	public Object findForObject(String finalSql, Object[] objects,RowMapper rowMapper);
-	/**
-	 * 通过SQL返回查询对象。
-	 * 
-	 * @param String型Sql 如：finalSql = "SELECT user_name FROM user Where" user_id=?;
-	 * @param object[]对象数组 如：new Object[] {'01'}
-	 * @param int[] argTypes
-	 * @param Class<?> clazz
-	 * @return Object 
-	 * @author LiRui
-	 * @date June 25,2013 
-	 */
-	public Object findForObject(String finalSql, Object[] objects,int[] argTypes, Class<?> clazz );
+	public <T> T findForObject(String finalSql, Object[] objects,RowMapper<T> rowMapper);
 	/**
 	 * 通过SQL返回查询对象。
 	 * 
 	 * @param String型Sql 如：finalSql = "SELECT user_name FROM user Where" user_id=?;
 	 * @param object[]对象数组 如：new Object[] {'01'}
 	 * @param int[] argTypes
-	 * @param RowMapper rowMapper
-	 * @return Object 
+	 * @param Class<T> clazz
 	 * @author LiRui
 	 * @date June 25,2013 
+	 * @return <T>
 	 */
-	@SuppressWarnings("unchecked")
-	public Object findForObject(String finalSql, Object[] objects,int[] argTypes, RowMapper rowMapper );
+	public <T> T findForObject(String finalSql, Object[] objects,int[] argTypes, Class<T> clazz );
+	/**
+	 * 通过SQL返回查询对象。
+	 * 
+	 * @param String型Sql 如：finalSql = "SELECT user_name FROM user Where" user_id=?;
+	 * @param object[]对象数组 如：new Object[] {'01'}
+	 * @param int[] argTypes
+	 * @param RowMapper<T> rowMapper
+	 * @author LiRui
+	 * @date June 25,2013 
+	 * @return <T>
+	 */
+	public <T> T findForObject(String finalSql, Object[] objects,int[] argTypes, RowMapper<T> rowMapper );
 	/**
 	 * 	通过SQL删除数据信息。
 	 * 
 	 * @param String型SQL.如：finalSql = "DELETE FROM user WHERE user_id = '01'";
 	 * @author LiRui
 	 * @date Jul 12, 2012
-	 * @return String型logger信息。
-	 */
-	public String delete(String finalSql);
+	 * @return void	 */
+	public void delete(String finalSql);
 	/**
 	 * 	通过SQL删除数据信息。	 * 
 	 * @param String型SQL.如：finalSql = "DELETE FROM user WHERE user_id = '?'";
 	 * @param object[]对象数组 如：new Object[] {'01'}
 	 * @author LiRui
 	 * @date June 25, 2013
-	 * @return String型logger信息。	 */
-	public String delete(String finalSql ,Object[] object);
+	 * @return void	 */
+	public void delete(String finalSql ,Object[] object);
 	/**
 	 * 	通过SQL删除数据信息。
 	 * 
@@ -255,16 +242,16 @@ public interface CommonDao {
 	 * @param int[] argsType 如： new int[]{Types.VARCHAR}
 	 * @author LiRui
 	 * @date June 25, 2013
-	 * @return String型logger信息。
+	 * @return void
 	 */
-	public String delete(String finalSql, Object[] object ,int[] argsTypes);
+	public void delete(String finalSql, Object[] object ,int[] argsTypes);
 	/**
 	 * 	通过SQL删除数据信息。
 	 * 
 	 * @param String型SQL.如：finalSql = "DELETE FROM user WHERE user_id = '01'";
 	 * @author LiRui
 	 * @date June 25, 2013
-	 * @return int
+	 * @return int型数据
 	 */
 	public int deleteForInt(String finalSql);
 	/**
@@ -274,7 +261,7 @@ public interface CommonDao {
 	 * @param object[]对象数组 如：new Object[] {'01'}
 	 * @author LiRui
 	 * @date June 25, 2013
-	 * @return int
+	 * @return int型数据
 	 */
 	public int deleteForInt(String finalSql ,Object[] object);
 	/**
@@ -284,7 +271,7 @@ public interface CommonDao {
 	 * @param PreparedStatementSetter preparedStatementSetter
 	 * @author LiRui
 	 * @date June 25, 2013
-	 * @return int
+	 * @return int型数据
 	 */
 	public int deleteForInt(String finalSql, PreparedStatementSetter preparedStatementSetter);
 	/**
@@ -292,24 +279,24 @@ public interface CommonDao {
 	 * @param String型SQL.如：finalSql = "INSERT INTO user VALUES('','','')";
 	 * @author LiRui
 	 * @date Jul 12, 2012
-	 * @return String型logger信息.
+	 * @return void
 	 */
-	public String insert(String finalSql);
+	public void insert(String finalSql);
 	/**
 	 *  通过SQL添加数据信息	 * 
 	 * @param String型SQL.如：finalSql = "INSERT INTO user VALUES(?,?,?)";
 	 * @param object[]对象数组 如：new Object[] {'1','2','3'}
 	 * @author LiRui
 	 * @date Jul 12, 2012
-	 * @return String型logger信息。	 */
-	public String insert(String finalSql, Object[] object);
+	 * @return void	 */
+	public void insert(String finalSql, Object[] object);
 	/**
 	 *  通过SQL添加数据信息
 	 * 
 	 * @param String型SQL.如：finalSql = "INSERT INTO user VALUES('','','')";
 	 * @author LiRui
 	 * @date June 25, 2013
-	 * @return int
+	 * @return int型数据
 	 */
 	public int insertForInt(String finalSql);
 	/**
@@ -319,7 +306,7 @@ public interface CommonDao {
 	 * @param Object[] object 如：new Object[]{1,2,3}
 	 * @author LiRui
 	 * @date June 25, 2013
-	 * @return int
+	 * @return int型数据
 	 */
 	public int insertForInt(String finalSql, Object[] object);
 	/**
@@ -329,7 +316,7 @@ public interface CommonDao {
 	 * @param PreparedStatementSetter preparedStatementSetter
 	 * @author LiRui
 	 * @date Jul 12, 2012
-	 * @return String型logger信息。
+	 * @return int型数据
 	 */
 	public int insertForInt(String finalSql,PreparedStatementSetter preparedStatementSetter);
 	/**
@@ -337,17 +324,16 @@ public interface CommonDao {
 	 * @param String型SQL.如：finalSql = "UPDATE user SET name='1' WHERE user_id='01'";
 	 * @author LiRui
 	 * @date Jul 12, 2012
-	 * @return String型logger信息。
-	 */
-	public String update(String finalSql);
+	 * @return void	 */
+	public void update(String finalSql);
 	/**
 	 *  通过SQL修改数据信息	 * 
 	 * @param String型SQL.如：finalSql = "UPDATE user SET user_name=?,user_age=? WHERE user_id=?";
 	 * @param object[]对象数组 如：new Object[] {'jack','20','0001'}
 	 * @author LiRui
 	 * @date Jul 12, 2012
-	 * @return String型logger信息。	 */
-	public String update(String finalSql, Object[] object);
+	 * @return void	 */
+	public void update(String finalSql, Object[] object);
 	/**
 	 *  通过SQL修改数据信息
 	 * 
@@ -356,9 +342,9 @@ public interface CommonDao {
 	 * @param int[] argsTypes 如：new int[]{Types.VARCHAR}
 	 * @author LiRui
 	 * @date June 25, 2013
-	 * @return String型logger信息。
+	 * @return void
 	 */
-	public String update(String finalSql, Object[] object ,int[] argsTypes);
+	public void update(String finalSql, Object[] object ,int[] argsTypes);
 	/**
 	 *  通过SQL修改数据信息
 	 * 
@@ -366,15 +352,15 @@ public interface CommonDao {
 	 * @param BatchPreparedStatementSetter batchPreparedStatementSetter
 	 * @author LiRui
 	 * @date June 25, 2013
-	 * @return String型logger信息。
+	 * @return void
 	 */
-	public String update(String finalSql ,BatchPreparedStatementSetter batchPreparedStatementSetter);
+	public void update(String finalSql ,BatchPreparedStatementSetter batchPreparedStatementSetter);
 	/**
 	 * 通过SQL修改数据信息	 * 
 	 * @param String型SQL.如：finalSql = "UPDATE user SET name='1' WHERE user_id='01'";
 	 * @author LiRui
 	 * @date Aug 23, 2012
-	 * @return int。	 */
+	 * @return int型数据	 */
 	public int updateForInt(String finalSql);
 	/**
 	 *  通过SQL修改数据信息	 * 
@@ -382,7 +368,7 @@ public interface CommonDao {
 	 * @param object[]对象数组 如：new Object[] {'jack','20','0001'}
 	 * @author LiRui
 	 * @date Aug 23, 2012
-	 * @return int。	 */
+	 * @return int型数据	 */
 	public int updateForInt(String finalSql, Object[] object);
 	/**
 	 *  通过SQL修改数据信息
@@ -391,7 +377,7 @@ public interface CommonDao {
 	 * @param PreparedStatementSetter preparedStatementSetter
 	 * @author LiRui
 	 * @date Aug 23, 2012
-	 * @return int。
+	 * @return int型数据
 	 */
 	public int updateForInt(String finalSql, PreparedStatementSetter preparedStatementSetter);
 	/**
@@ -402,16 +388,16 @@ public interface CommonDao {
 	 * @param KeyHolder generatedKeyHolder
 	 * @author LiRui
 	 * @date Aug 23, 2012
-	 * @return int。
+	 * @return int型数据
 	 */
 	public int updateForInt(PreparedStatementCreator preparedStatementCreator,KeyHolder generatedKeyHolder);
 	/**
 	 * 通过SQL返回LONG型数据
 	 * 
 	 * @param String型SQL 如：finalSql = "SELECT COUNT(*) FROM User";
-	 * @return long
 	 * @author LiRui
 	 * @date June 25,2013
+	 * @return long型数据
 	 * */
 	public long findForLong(String finalSql);
 	/**
@@ -419,9 +405,9 @@ public interface CommonDao {
 	 * 
 	 * @param String型SQL 如：finalSql = "SELECT COUNT(*) FROM User WHERE user_id like ?";
 	 * @param Object[] object 如： new Object[] {"%Lee%"}
-	 * @return long
 	 * @author LiRui
 	 * @date June 25,2013
+	 * @return long型数据
 	 * */
 	public long findForLong(String finalSql, Object[] object);
 	/**
@@ -430,29 +416,29 @@ public interface CommonDao {
 	 * @param String型SQL 如：finalSql = "SELECT COUNT(*) FROM User WHERE user_id like ?";
 	 * @param Object[] object 如： new Object[] {"%Lee%"}
 	 * @param int[] argTypes  如： new int[]{Types.VARCHAR}
-	 * @return long
 	 * @author LiRui
 	 * @date June 25,2013
+	 * @return long
 	 * */
 	public long findForLong(String finalSql, Object[] object,int[] argTypes);
 	/**
 	 * 	通过SQL[] 批量处理数据。	 * 
 	 * @param String[]型SQL.如：finalSql.toArray(new String[finalSql.size()])
+	 * @return int[]
 	 * @author LiRui
 	 * @date Jul 12, 2012
-	 * @return String型logger信息。
 	 */
-	public String batch(String[] finalSql);
+	public int[] batch(String[] finalSql);
 	/**
 	 * 通过SQL[] 批量处理数据。
 	 * 
 	 * @param String sql
 	 * @param BatchPreparedStatementSetter batchPreparedStatementSetter
-	 * @return String 
+	 * @return int[] 
 	 * @author LiRui
 	 * @date June 25,2013 
 	 */
-	public String batch(String finalSql,BatchPreparedStatementSetter batchPreparedStatementSetter);
+	public int[] batch(String finalSql,BatchPreparedStatementSetter batchPreparedStatementSetter);
 	/**
 	 * 通过SQL[] 获取SqlRowSet
 	 * 
