@@ -20,7 +20,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.norming.ess.base.Constants;
 import com.norming.ess.base.util.LocalHelper;
 import com.norming.ess.framework.service.impl.ServiceContext;
-import com.norming.ess.user1.model.User;
+import com.norming.ess.user.model.User;
 
 public class RequestFilter implements Filter {
 	
