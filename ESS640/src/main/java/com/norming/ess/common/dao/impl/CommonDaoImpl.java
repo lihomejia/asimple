@@ -17,7 +17,6 @@ import java.util.List;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.PreparedStatementSetter;
@@ -26,10 +25,6 @@ import org.springframework.jdbc.support.KeyHolder;
 import com.norming.ess.common.dao.CommonDao;
 
 public class CommonDaoImpl extends JdbcTemplate implements CommonDao {
-	
-	public <T> List<T> query(String sql) throws DataAccessException {
-		return this.query(sql, new BeanPropertyRowMapper<T>());	
-	}
 	
 	public int[] batchInsert(final String[] sql) throws DataAccessException {
 		return batchUpdate(sql);
