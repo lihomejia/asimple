@@ -155,12 +155,12 @@
 																<li onclick="changeBgColor('shiyunul2',this)">
 																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="password.html" target="rightframe">&nbsp;生产单元编号</a>
+																	<a href="tab.html" target="rightframe">&nbsp;生产单元编号</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul2',this)">
 																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="WWFW010202.html" target="rightframe">&nbsp;生产单元面积</a>
+																	<a href="tab.html" target="rightframe">&nbsp;生产单元面积</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul2',this)">
 																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
