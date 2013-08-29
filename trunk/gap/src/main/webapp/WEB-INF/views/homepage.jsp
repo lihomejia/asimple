@@ -127,22 +127,22 @@
 																<li onclick="changeBgColor('shiyunul1',this)">
 																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="<%=basePath%>admin/tab.html" target="rightframe">&nbsp;公司资质</a>
+																	<a href="<%=basePath%>admin/comp/edit.html?id=2" target="rightframe">&nbsp;公司资质</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul1',this)">
 																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="<%=basePath%>admin/tab.html" target="rightframe">&nbsp;公司新闻</a>
+																	<a href="<%=basePath%>admin/comp/edit.html?id=3" target="rightframe">&nbsp;公司新闻</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul1',this)">
 																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="<%=basePath%>admin/tab.html" target="rightframe">&nbsp;产品与服务</a>
+																	<a href="<%=basePath%>admin/comp/edit.html?id=4" target="rightframe">&nbsp;产品与服务</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul1',this)">
 																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="<%=basePath%>admin/tab.html" target="rightframe">&nbsp;联系我们</a>
+																	<a href="<%=basePath%>admin/comp/edit.html?id=5" target="rightframe">&nbsp;联系我们</a>
 																</li>
 															</ul>
 															<div id="menudiv2" class="shiyunlei2"
