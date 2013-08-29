@@ -23,6 +23,6 @@ public class BeanViewDaoImpl<T> implements IBeanViewDao<T> {
 
 	@Override
 	public int getCount(String sql, Object[] pros) {
-		return jdbcTemplate.queryForInt(sql, pros);
+		return jdbcTemplate.queryForObject(sql, pros, Integer.class);
 	}
 }
