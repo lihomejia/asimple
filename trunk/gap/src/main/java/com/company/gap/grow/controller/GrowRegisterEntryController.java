@@ -18,6 +18,7 @@ import com.company.gap.grow.service.IGrowRegisterService;
 import com.company.gap.resource.component.DictHelper;
 import com.company.gap.resource.enumeration.DictType;
 
+@SuppressWarnings("restriction")
 @Controller
 @RequestMapping("admin/grow/register")
 public class GrowRegisterEntryController extends BeanEntryController<Register> {

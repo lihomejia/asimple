@@ -18,6 +18,7 @@ import com.company.gap.nurture.service.INurtureRegisterService;
 import com.company.gap.resource.component.DictHelper;
 import com.company.gap.resource.enumeration.DictType;
 
+@SuppressWarnings("restriction")
 @Controller
 @RequestMapping("admin/nurture/register")
 public class NurtureRegisterEntryController extends BeanEntryController<Register> {
