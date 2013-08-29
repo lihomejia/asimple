@@ -16,6 +16,7 @@ import javax.crypto.spec.SecretKeySpec;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
+@SuppressWarnings("restriction")
 public abstract class GapEncrypter {
 
 	private static final String	algorithm	= "DESede";
