@@ -2,6 +2,7 @@ package com.company.gap.system.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 
 import com.company.gap.base.model.GeneralModel;
 
@@ -19,6 +20,9 @@ public class User extends GeneralModel {
 	
 	@Column(name="pass_word", length=20)
 	private String passWord;
+	
+	@Transient
+	private String companyId;
 	
 	public String getUserId() {
 		return userId;
@@ -43,4 +47,14 @@ public class User extends GeneralModel {
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;
 	}
+
+	public String getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(String companyId) {
+		this.companyId = companyId;
+	}
+	
+	
 }
