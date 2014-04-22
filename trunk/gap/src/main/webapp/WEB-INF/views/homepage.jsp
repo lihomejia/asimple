@@ -462,29 +462,8 @@
 																&nbsp;
 																<a href="<%=basePath%>admin/resource/dict/list.html?type=<%=dictType %>" target="rightframe">&nbsp;<%=dictType.getTitle() %></a>
 															</li>
-															
 															<%
 															}
-															 %>
-																
-															</ul>
-															<div id="menudiv11" class="shiyunlei2"
-																onclick="zhedie('shiyunul11',this)">
-																<p>
-																	新闻公告
-																</p>
-															</div>
-															<ul id="shiyunul11" class="shiyunul">
-															<%
-															for (InfoType infoType : InfoType.values()) {
-															%>
-																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
-																	&nbsp;
-																	<a href="<%=basePath%>admin/info/list.html?type=<%=infoType %>" target="rightframe">&nbsp;<%=infoType.getTitle() %></a>
-																</li>
-															 <%
-															 }
 															 %>
 															</ul>
 															<div id="menudiv12" class="shiyunlei2"

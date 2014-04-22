@@ -176,6 +176,13 @@
       </table></td>
     <td width="270" align="right" valign="top">
       <!--用户注册-->
+      	<script type="text/javascript">
+			function doLogin(flag) {
+				var _form = document.form1;
+				
+				_form.action = '<%=basePath%>' + flag + '/login.html';
+			}      	
+      	</script>
 		<table border="0" cellspacing="0" cellpadding="0" class="userReg">
         <tr>
           <td class="p10">
@@ -197,8 +204,8 @@
                   </td>
                 </tr>
                 <tr>
-                  <td height="30" colspan="2" align="center"><input type="submit" name="button" id="button" value="登 录" class="btnStyle" />
-                    <input type="button" value="注 册" class="btnStyle" onclick="window.location.href='<%=basePath%>admin/register.html'"/></td>
+                  <td height="30" colspan="2" align="center"><input type="submit" value="登 录" class="btnStyle" onclick="return doLogin('admin');"/>
+                    <input type="submit" value="后台登录" class="btnStyle" onclick="return doLogin('backend');"/></td>
                 </tr>
               </table>
             </form>
