@@ -70,7 +70,10 @@
 		<filter-name>requestFilter</filter-name>
 		<url-pattern>/admin/*</url-pattern>
 	</filter-mapping>
-	
+	<filter-mapping>
+		<filter-name>requestFilter</filter-name>
+		<url-pattern>/backend/*</url-pattern>
+	</filter-mapping>
 
 	<!-- Spring 刷新Introspector防止内存泄露 -->
 	<listener>
