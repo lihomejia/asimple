@@ -1,19 +1,22 @@
-package com.company.gap.system.service.impl;
+package com.company.gap.base;
 
 import com.company.gap.base.util.LocalHelper;
 import com.company.gap.system.model.User;
-import com.company.gap.system.service.UserSuportable;
 
-public class ServiceContext implements UserSuportable {
-	
-	private static final ThreadLocal<User> user = LocalHelper.registStatic(new ThreadLocal<User>());
+public class LocalContext {
+private static final ThreadLocal<User> user = LocalHelper.registStatic(new ThreadLocal<User>());
 	
 	public static void setUser(User user) {
-		ServiceContext.user.set(user);
+		LocalContext.user.set(user);
 	}
 	
 	public static User getUser() {
 		return user.get();
+	}
+	
+	public static String getCompanyId() {
+	    User user = getUser();
+        return user == null ? null : user.getCompanyId();
 	}
 	
 	public static int getLoginId() {

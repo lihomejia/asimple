@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.company.gap.base.GapConstants;
+import com.company.gap.base.LocalContext;
 import com.company.gap.base.util.LocalHelper;
 import com.company.gap.system.model.User;
-import com.company.gap.system.service.impl.ServiceContext;
 
 public class RequestFilter implements Filter {
 
@@ -37,13 +37,14 @@ public class RequestFilter implements Filter {
 		User user = (User) session.getAttribute(GapConstants.USER_BEAN);
 		
 		String uri = request.getRequestURI().toLowerCase();
-		if (user != null) {
-			ServiceContext.setUser(user);
+		int userType = uri.indexOf("/backend") > -1 ? 1 : 2;
+		
+		if (user != null && userType == user.getUserType()) {
+			LocalContext.setUser(user);
 		}
 		else if (uri.indexOf("login.html") > 0
 				|| uri.indexOf("register.html") > 0
 				|| uri.indexOf("registersave.html") > 0) {
-			
 		} 
 		else {
 			response.sendRedirect(request.getContextPath() + "/web/index.html");

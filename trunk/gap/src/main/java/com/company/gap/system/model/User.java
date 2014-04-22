@@ -24,6 +24,13 @@ public class User extends GeneralModel {
 	@Transient
 	private String companyId;
 	
+	/**
+	 * 1: backend
+	 * 2: admin
+	 */
+	@Transient
+	private int userType;
+	
 	public String getUserId() {
 		return userId;
 	}
@@ -55,6 +62,12 @@ public class User extends GeneralModel {
 	public void setCompanyId(String companyId) {
 		this.companyId = companyId;
 	}
-	
-	
+
+	public int getUserType() {
+		return userType;
+	}
+
+	public void setUserType(int userType) {
+		this.userType = userType;
+	}
 }

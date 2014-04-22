@@ -13,7 +13,7 @@ import com.company.gap.info.model.Info;
 import com.company.gap.info.service.IInfoService;
 
 @Controller
-@RequestMapping("admin/info")
+@RequestMapping("backend/info")
 public class InfoEntryController extends BeanEntryController<Info> {
 	
 	@Autowired
@@ -25,12 +25,12 @@ public class InfoEntryController extends BeanEntryController<Info> {
 	@Override
 	protected String toList(HttpServletRequest request) {
 		String type = request.getParameter("type");
-		return "redirect:/admin/info/list.html?type=" + type;
+		return "redirect:/backend/info/list.html?type=" + type;
 	}
 	
 	@Override
 	protected String toEntry(HttpServletRequest request) {
-		return "admin/info/infoEntry";
+		return "backend/info/infoEntry";
 	}
 	
 	@Override

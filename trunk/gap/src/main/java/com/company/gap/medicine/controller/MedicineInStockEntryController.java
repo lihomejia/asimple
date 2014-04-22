@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.company.gap.base.LocalContext;
 import com.company.gap.base.controller.BeanEntryController;
 import com.company.gap.base.service.IBaseService;
 import com.company.gap.base.util.DateUtils;
@@ -15,7 +16,6 @@ import com.company.gap.medicine.enumeration.MedicineResourceType;
 import com.company.gap.medicine.model.InStock;
 import com.company.gap.medicine.service.IMedicineInStockService;
 import com.company.gap.system.service.IUserService;
-import com.company.gap.system.service.impl.ServiceContext;
 
 @Controller
 @RequestMapping("admin/medicine/instock")
@@ -46,8 +46,8 @@ public class MedicineInStockEntryController extends BeanEntryController<InStock>
 	@Override
 	protected void initializeAdd(HttpServletRequest request) {
 		InStock t = new InStock();
-		t.setInuserId(ServiceContext.getLoginId());
-		t.getDisp().put("inuserId", ServiceContext.getUserName());
+		t.setInuserId(LocalContext.getLoginId());
+		t.getDisp().put("inuserId", LocalContext.getUserName());
 		
 		request.setAttribute("data", t);
 		super.initializeAdd(request);
