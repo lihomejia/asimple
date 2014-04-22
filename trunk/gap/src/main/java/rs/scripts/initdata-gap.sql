@@ -1,0 +1,1 @@
+INSERT INTO `t_user` (`id`, `adate`, `auser_id`, `cdate`, `comment`, `cuser_id`, `status`, `udate`, `uuser_id`, `pass_word`, `user_id`, `user_name`) VALUES (1, NULL, 0, '2013-6-6 20:22:39', NULL, 0, 0, '2013-6-6 20:22:39', 0, 'admin', 'admin', '超级管理员');
