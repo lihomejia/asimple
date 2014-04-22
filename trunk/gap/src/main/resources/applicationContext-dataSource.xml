@@ -29,6 +29,13 @@
 		<property name="maxOpenPreparedStatements" value="${maxopen.preparedstatements}" />	<!-- 同一时间能够从语句池里分配的已备语句的最大数量。设置为0时表示无限制。 -->
 		<property name="validationQuery" value="${validation.query}"/> 					<!-- 用于验证连接是否成功的查询SQL语句，SQL语句必须至少要返回一行数据 -->
 	</bean>
+	
+	<bean id="dynamicDataSource" class="com.company.gap.base.util.DynamicDataSource">
+	</bean>
+	
+	<bean class="com.company.gap.base.InitDynamicDataSource">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
 
 	<!-- 
 	<jdbc:embedded-database id="dataSource">

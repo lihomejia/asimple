@@ -38,4 +38,6 @@
 			<tx:method name="*" read-only="false" />
 		</tx:attributes>
 	</tx:advice>
+	
+	<bean class="com.company.gap.base.SpringInitializer"/>
 </beans>
