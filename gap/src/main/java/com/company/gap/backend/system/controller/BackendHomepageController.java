@@ -1,4 +1,4 @@
-package com.company.gap.system.controller;
+package com.company.gap.backend.system.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,17 +10,17 @@ import com.company.gap.system.model.User;
 
 
 @Controller
-@RequestMapping("admin")
-public class TabController {
+@RequestMapping("backend")
+public class BackendHomepageController {
 	
-	@RequestMapping("/tab")
+	@RequestMapping("/homepage")
 	public String homepage(HttpServletRequest request) {
 		
 		User user = LocalContext.getUser();
 		
 		request.setAttribute("user", user);
 		
-		return "admin/tab";
+		return "backend/homepage";
 		
 	}
 	

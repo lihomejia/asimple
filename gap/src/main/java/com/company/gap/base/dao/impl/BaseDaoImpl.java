@@ -5,7 +5,8 @@ import java.lang.reflect.Type;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -17,10 +18,17 @@ import com.company.gap.base.util.sql.SqlResult;
 
 public class BaseDaoImpl<T extends GeneralModel> implements IBaseDao<T> {
 	
-	@Autowired
+	/** Primary JdtcTemplate, default by dynamic datasource*/
+	@Resource(name="jdbcTemplate")
 	protected JdbcTemplate jdbcTemplate;
-	private Class<T> clazz;
-	private String tableName;
+	
+	
+	/** Temporary JdtcTemplate, default by main datasource */
+	@Resource(name="jdbcTemplateCommon")
+	protected JdbcTemplate jdbcTemplateTmp;
+	
+	protected Class<T> clazz;
+	protected String tableName;
 	
 	@SuppressWarnings("unchecked")
 	public BaseDaoImpl() {

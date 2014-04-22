@@ -1,21 +1,19 @@
-package com.company.gap.system.service.impl;
-
-import java.util.List;
+package com.company.gap.backend.system.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.company.gap.backend.system.dao.IBackendUserDao;
+import com.company.gap.backend.system.service.IBackendUserService;
 import com.company.gap.base.dao.IBaseDao;
 import com.company.gap.base.service.impl.BaseServiceImpl;
-import com.company.gap.system.dao.IUserDao;
 import com.company.gap.system.model.User;
-import com.company.gap.system.service.IUserService;
 
 @Service
-public class UserServiceImpl extends BaseServiceImpl<User> implements IUserService {
+public class BackendUserServiceImpl extends BaseServiceImpl<User> implements IBackendUserService {
 
 	@Autowired
-	private IUserDao dao;
+	private IBackendUserDao dao;
 	
 	@Override
 	protected IBaseDao<User> get() {
@@ -29,9 +27,5 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements IUserServi
 		return t.getUserName();
 	}
 
-	@Override
-	public List<User> findList(String companyId, User u) {
-		return this.dao.findList(companyId, u);
-	}
 	
 }

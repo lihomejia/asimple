@@ -3,11 +3,11 @@ package com.company.gap.base.service.impl;
 import java.util.Date;
 import java.util.List;
 
+import com.company.gap.base.LocalContext;
 import com.company.gap.base.dao.IBaseDao;
 import com.company.gap.base.model.GeneralModel;
 import com.company.gap.base.model.Status;
 import com.company.gap.base.service.IBaseService;
-import com.company.gap.system.service.impl.ServiceContext;
 
 public abstract class BaseServiceImpl<T extends GeneralModel> implements IBaseService<T> {
 	
@@ -15,16 +15,16 @@ public abstract class BaseServiceImpl<T extends GeneralModel> implements IBaseSe
 
 	@Override
 	public int save(T t) {
-		t.setCuserId(ServiceContext.getLoginId());
+		t.setCuserId(LocalContext.getLoginId());
 		t.setCdate(new Date());
-		t.setUuserId(ServiceContext.getLoginId());
+		t.setUuserId(LocalContext.getLoginId());
 		t.setUdate(new Date());
 		return get().insert(t);
 	}
 	
 	@Override
 	public int update(T t) {
-		t.setUuserId(ServiceContext.getLoginId());
+		t.setUuserId(LocalContext.getLoginId());
 		t.setUdate(new Date());
 		return get().update(t);
 	}
@@ -41,7 +41,7 @@ public abstract class BaseServiceImpl<T extends GeneralModel> implements IBaseSe
 	
 	@Override
 	public int approve(Integer id) {
-		return get().updateStatus(id, Status.APPROVED.getStatus(), ServiceContext.getLoginId(), new Date());
+		return get().updateStatus(id, Status.APPROVED.getStatus(), LocalContext.getLoginId(), new Date());
 	}
 	
 	@Override

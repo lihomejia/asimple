@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.company.gap.base.LocalContext;
 import com.company.gap.base.controller.BeanEntryController;
 import com.company.gap.base.service.IBaseService;
 import com.company.gap.base.util.DateUtils;
@@ -22,7 +23,6 @@ import com.company.gap.medicine.model.Stock;
 import com.company.gap.medicine.service.IMedicineOutStockService;
 import com.company.gap.medicine.service.IMedicineStockService;
 import com.company.gap.system.service.IUserService;
-import com.company.gap.system.service.impl.ServiceContext;
 
 @Controller
 @RequestMapping("admin/medicine/outstock")
@@ -70,8 +70,8 @@ public class MedicineOutStockEntryController extends BeanEntryController<OutStoc
 	protected void initializeAdd(HttpServletRequest request) {
 		super.initializeAdd(request);
 		OutStock t = new OutStock();
-		t.setOutuserId(ServiceContext.getLoginId());
-		t.getDisp().put("outuserId", ServiceContext.getUserName());
+		t.setOutuserId(LocalContext.getLoginId());
+		t.getDisp().put("outuserId", LocalContext.getUserName());
 		request.setAttribute("data", t);
 		request.setAttribute("registerList", 	registerService.findListByGrowStatus(GrowStatus.GOING.getStatus()));
 	}

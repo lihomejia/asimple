@@ -1,39 +1,37 @@
-package com.company.gap.info.controller;
+package com.company.gap.backend.company.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.company.gap.backend.company.model.Company;
+import com.company.gap.base.component.TranslatorWithStatus;
 import com.company.gap.base.controller.BeanViewController;
-import com.company.gap.base.dao.search.Op;
 import com.company.gap.base.model.ViewFormModel;
-import com.company.gap.info.enumeration.InfoType;
-import com.company.gap.info.model.Info;
 
 @Controller
-@RequestMapping("backend/info")
-public class InfoViewController extends BeanViewController<Info> {
+@RequestMapping("backend/company")
+public class BackendCompanyViewController extends BeanViewController<Company> {
 	
 	@Override
 	protected void preparing(HttpServletRequest request, ViewFormModel model) {
-		String type = request.getParameter("type");
-		request.setAttribute("type", type);
-		request.setAttribute("resource", InfoType.valueOf(type));
 	}
-
+	
 	@Override
 	protected void dowithSearcher(HttpServletRequest request, ViewFormModel model) {
-		String type = request.getParameter("type");
-		searcher.addSf("type", Op.EQ, type);
+	}
+	
+	protected void registTranslators() {
+		registerTranslator("status", 	TranslatorWithStatus.getInstance());
 	}
 	
 	@Override
 	protected void afterall(HttpServletRequest request, ViewFormModel model) {
-	} 
-
+	}
+	
 	@Override
 	protected String viewResolver(HttpServletRequest request, ViewFormModel model) {
-		return "backend/info/infoList";
+		return "backend/company/list";
 	}
 }
