@@ -10,7 +10,7 @@ import com.company.gap.system.model.User;
 
 
 @Controller
-@RequestMapping("admin")
+@RequestMapping("admin/{companyno}")
 public class HomepageController {
 	
 	@RequestMapping("/homepage")

@@ -53,6 +53,16 @@
       </tr>
     </table>
   </div>
+  <div class="mainNav_downMenu4" id="mainNav_downMenu4" style="display:none" onmouseover="shows2('mainNav_downMenu4','menu4')" onmouseout="hiddens2('mainNav_downMenu4','menu4')">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <c:forEach items="${companyList}" var="company">
+	    <tr>
+        	<td><a href="<%=basePath%>company/${company.companyno}.html" target="_blank">${company.companyname}</a></td>
+      	</tr>
+  	</c:forEach>
+      
+    </table>
+  </div>
   <table border="0" cellspacing="0" cellpadding="0" class="mCenter w960">
     <tr>
       <td width="5" align="left" class="mainNavLeftBg">&nbsp;</td>
@@ -61,7 +71,7 @@
       	<a href="#" id="menu1" onmouseover="shows('mainNav_downMenu1')" onmouseout="hiddens('mainNav_downMenu1')" >新闻公告</a>
 		<a href="#" id="menu2" onmouseover="shows('mainNav_downMenu2')" onmouseout="hiddens('mainNav_downMenu2')" >法律法规</a>
 		<a href="#">产品认证</a>
-		<a href="#">GAP企业</a>
+		<a href="#" id="menu4" onmouseover="shows('mainNav_downMenu4')" onmouseout="hiddens('mainNav_downMenu4')" >GAP企业</a>
 		<a href="#">投诉信息</a>
 	  </td>
       <td width="5" align="right" class="mainNavRightBg">&nbsp;</td>

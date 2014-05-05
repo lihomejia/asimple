@@ -86,10 +86,9 @@
 						                <th>登记人</th>
 						                <th>养殖状态</th>
 						                <th>状态</th>
-						                <th>农事活动</th>
-						                <th>灌溉记录</th>
+						                <th>养殖活动</th>
 						                <th>投入品使用</th>
-						                <th>收割记录</th>
+						                <th>出栏记录</th>
 						                <th>操作</th>
 						            </tr>
 						            <c:forEach items="${datas}" var="data" varStatus="status">
@@ -104,17 +103,15 @@
 							                </td>
 							                <td>${data.disp.status}</td>
 							              	<td>
-								                <a class=linkStyle href="<%=basePath%>admin/nurture/farm/list.html?registerId=${data.id}">农事活动</a>
+								                <a class=linkStyle href="<%=basePath%>admin/nurture/farm/list.html?registerId=${data.id}">养殖活动</a>
 							                </td>
 							                <td>
-								                <a class=linkStyle href="<%=basePath%>admin/nurture/irrigate/list.html?registerId=${data.id}">灌溉记录</a>
-											</td>
-							                <td>
-							                	<a class=linkStyle href="<%=basePath%>admin/nurture/manure/list.html?registerId=${data.id}">肥料</a>&nbsp;|&nbsp;
-								                <a class=linkStyle href="<%=basePath%>admin/nurture/pesticide/list.html?registerId=${data.id}">农药</a>
+							                	<a class=linkStyle href="<%=basePath%>admin/nurture/manure/list.html?registerId=${data.id}">饲料</a>&nbsp;|&nbsp;
+								                	<a class=linkStyle href="<%=basePath%>admin/nurture/pesticide/list.html?registerId=${data.id}">兽药</a>&nbsp;|&nbsp;
+								                	<a class=linkStyle href="<%=basePath%>admin/nurture/pesticide/list.html?registerId=${data.id}">消毒剂</a>
 							                </td>
 							                <td>
-								                <a class=linkStyle href="<%=basePath%>admin/nurture/harvest/list.html?registerId=${data.id}">收割记录</a>
+								                <a class=linkStyle href="<%=basePath%>admin/nurture/harvest/list.html?registerId=${data.id}">出栏记录</a>
 							                </td>
 							                <td>
 							                	<a class=linkStyle href="<%=basePath%>admin/nurture/register/archive.html?id=${data.id}" onclick="return confirm('确定归档吗?')">归档</a>

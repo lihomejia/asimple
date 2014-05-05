@@ -26,7 +26,7 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements IUserDao {
 		if (ds == null) {
 			return new ArrayList<>();
 		}
-		jdbcTemplateTmp = new JdbcTemplate(ds);
+		JdbcTemplate jdbcTemplateTmp = new JdbcTemplate(ds);
 
 		SqlResult result = GeneralModelUtil.getSelectSql(u);
 		

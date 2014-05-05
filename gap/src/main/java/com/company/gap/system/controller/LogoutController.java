@@ -4,18 +4,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.company.gap.base.GapConstants;
 
 
 @Controller
-@RequestMapping("admin")
+@RequestMapping("admin/{companyno}")
 public class LogoutController {
 
 	
 	@RequestMapping("logout")
-	public String logout(HttpServletRequest request) {
+	public String logout(HttpServletRequest request, @PathVariable("companyno") String companyno) {
 		
 		try {
 			HttpSession session = request.getSession();
@@ -24,6 +25,6 @@ public class LogoutController {
 			
 		} catch (Throwable t) {}
 		
-		return "redirect:/web/index.html";
+		return "redirect:/company/" + companyno + ".html";
 	}
 }

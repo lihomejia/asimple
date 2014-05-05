@@ -30,12 +30,11 @@ import com.company.gap.base.util.sql.SqlResult;
 public class BackendCompanyDaoImpl extends BaseDaoImpl<Company> implements IBackendCompanyDao {
 
 	@Resource(name="jdbcTemplateCommon")
-	protected JdbcTemplate jdbcTemplate;
+	protected JdbcTemplate jdbcTemplateCommon;
 	
-	
-	@Resource(name="jdbcTemplate")
-	protected JdbcTemplate jdbcTemplateTmp;
-	
+	protected JdbcTemplate getJdbcTemplate() {
+		return this.jdbcTemplateCommon;
+	}
 	
 	@Override
 	public boolean initCompanyDatabase(Integer id) {
@@ -44,7 +43,7 @@ public class BackendCompanyDaoImpl extends BaseDaoImpl<Company> implements IBack
 		
 		try {
 			//create database
-			jdbcTemplate.execute("CREATE DATABASE " + GapConstants.SCHEMA_PREFIX + c.getInnercode() + " DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci");
+			getJdbcTemplate().execute("CREATE DATABASE " + GapConstants.SCHEMA_PREFIX + c.getInnercode() + " DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci");
 		} catch (Exception e) {
 			
 		}
@@ -58,7 +57,7 @@ public class BackendCompanyDaoImpl extends BaseDaoImpl<Company> implements IBack
 		InitDynamicDataSource idds = SpringContextHolder.getBean(InitDynamicDataSource.class);
 		idds.loadCompanyDataSource(comList);
 		
-		jdbcTemplateTmp = new JdbcTemplate(new DynamicDataSource().getDataSourceByCompanyId(String.valueOf(c.getInnercode())));
+		JdbcTemplate jdbcTemplateTmp = new JdbcTemplate(new DynamicDataSource().getDataSourceByCompanyId(String.valueOf(c.getInnercode())));
 		
 		String[] scripts = new String[] {"createtables-company.sql", "initdata-company.sql"};
 		
@@ -89,9 +88,6 @@ public class BackendCompanyDaoImpl extends BaseDaoImpl<Company> implements IBack
 				e1.printStackTrace();
 			}
 		}
-		
-		jdbcTemplateTmp.execute("update t_user set user_id='admin@" + c.getCompanyno() + "'");
-		
 		return true;
 	}
 
@@ -103,10 +99,8 @@ public class BackendCompanyDaoImpl extends BaseDaoImpl<Company> implements IBack
 		
 		SqlResult result = GeneralModelUtil.getSelectSql(temp);
 		
-		List<Company> l = jdbcTemplate.query(result.getSql(), new BeanPropertyRowMapper<Company>(clazz), result.getValues());
+		List<Company> l = getJdbcTemplate().query(result.getSql(), new BeanPropertyRowMapper<Company>(clazz), result.getValues());
 		
 		return l.size() > 0 ? l.get(0) : null;
 	}
-	
-	
 }

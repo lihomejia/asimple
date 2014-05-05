@@ -62,7 +62,7 @@ public class NurtureRegisterEntryController extends BeanEntryController<Register
 	@RequestMapping("archive")
 	public String archive(HttpServletRequest request, @RequestParam("id") Integer id) {
 		service.archive(id);
-		return "redirect:/nurture/completed/list.html";
+		return "redirect:/admin/nurture/completed/list.html";
 	}
 	
 	protected void initializeAdd(HttpServletRequest request) {

@@ -23,6 +23,15 @@ public class Company extends GeneralModel {
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date indate;
+	
+	@Column(columnDefinition="int default 0")
+	private Integer type;
+	
+	public Company() {}
+	
+	public Company(String innercode) {
+		this.innercode = innercode;
+	}
 
 	public String getCompanyno() {
 		return companyno;
@@ -55,4 +64,14 @@ public class Company extends GeneralModel {
 	public void setInnercode(String innercode) {
 		this.innercode = innercode;
 	}
+
+	public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
+	}
+	
+
 }

@@ -142,7 +142,7 @@ a.menuParent:hover {
 	background:url(../images/navBg.gif) 0 -111px repeat-x;
 }
 /*导航下拉菜单*/
-.mainNav_downMenu1, .mainNav_downMenu2 {
+.mainNav_downMenu1, .mainNav_downMenu2, .mainNav_downMenu4 {
 	width:118px;
 	background:url(../images/donwMenuBg.gif) top repeat-x #dff4fd;
 	position:absolute;
@@ -154,7 +154,10 @@ a.menuParent:hover {
 .mainNav_downMenu2 {
 	left: 245px;
 }
-.mainNav_downMenu1 a, .mainNav_downMenu1 a:hover, .mainNav_downMenu1.current, .mainNav_downMenu2 a, .mainNav_downMenu2 a:hover, .mainNav_downMenu2.current {
+.mainNav_downMenu4 {
+	left: 485px;
+}
+.mainNav_downMenu1 a, .mainNav_downMenu1 a:hover, .mainNav_downMenu1.current, .mainNav_downMenu2 a, .mainNav_downMenu2 a:hover, .mainNav_downMenu2.current, .mainNav_downMenu4 a, .mainNav_downMenu4 a:hover, .mainNav_downMenu4.current {
 	width:120px;
 	height:37px;
 	line-height:36px;
@@ -165,7 +168,7 @@ a.menuParent:hover {
 	display:inline;
 	font-family:"Microsoft YaHei"
 }
-.mainNav_downMenu1 a:hover, .mainNav_downMenu1.current, .mainNav_downMenu2 a:hover, .mainNav_downMenu2.current {
+.mainNav_downMenu1 a:hover, .mainNav_downMenu1.current, .mainNav_downMenu2 a:hover, .mainNav_downMenu2.current, .mainNav_downMenu4 a:hover, .mainNav_downMenu4.current {
 	color:#ffffff;
 	background:#236cce;
 	text-decoration:none;
