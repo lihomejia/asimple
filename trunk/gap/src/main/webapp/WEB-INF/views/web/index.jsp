@@ -129,24 +129,7 @@
                       <td width="16%" align="left"><input type="submit" id="btnQuery" value="查 询" class="btnStyle" /></td>
                     </tr>
                   </table>
-                  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="mt10">
-                    <tr>
-                      <td height="73"><input type="button" name="button4" id="button4" value=" " class="counterBtn1" /></td>
-                      <td><input type="button" name="button5" id="button5" value=" " class="counterBtn2"/></td>
-                      <td><input type="button" name="button6" id="button6" value=" " class="counterBtn3"/></td>
-                      <td><input type="button" name="button7" id="button7" value=" " class="counterBtn4"/></td>
-                      <td><input type="button" name="button8" id="button8" value=" " class="counterBtn5"/></td>
-                      <td><input type="button" name="button9" id="button9" value=" " class="counterBtn6"/></td>
-                    </tr>
-                    <tr>
-                      <td><input type="button" name="button15" id="button15" value=" " class="counterBtn7"/></td>
-                      <td><input type="button" name="button14" id="button14" value=" " class="counterBtn8"/></td>
-                      <td><input type="button" name="button13" id="button13" value=" " class="counterBtn9"/></td>
-                      <td><input type="button" name="button12" id="button12" value=" " class="counterBtn0"/></td>
-                      <td><input type="button" name="button11" id="button11" value=" " class="counterBtn_clear"/></td>
-                      <td><input type="button" name="button10" id="button10" value=" " class="counterBtn_quit"/></td>
-                    </tr>
-                  </table></form></td>
+                  </form></td>
               </tr>
             </table>
           </td>
@@ -159,8 +142,8 @@
           <td align="right" class="titleBar"><a href="<%=basePath%>web/info/list.html?type=QYXXH" target="_blank">[更多]</a>&nbsp;</td>
         </tr>
         <tr>
-          <td colspan="2" valign="top" class="p10" style="height:182px;">
-		   <MARQUEE  direction="up" HEIGHT="178" WIDTH="450" VSPACE="2" scrollAmount="2" ONMOUSEOUT=this.start() ONMOUSEOVER=this.stop()>
+          <td colspan="2" valign="top" class="p10" style="height:322px;">
+		   <MARQUEE  direction="up" HEIGHT="310" WIDTH="450" VSPACE="2" scrollAmount="2" ONMOUSEOUT=this.start() ONMOUSEOVER=this.stop()>
 		  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="font12Blue">
 		  	<c:forEach items="${QYXXH}" var="info">
 		  		<tr>
@@ -168,25 +151,17 @@
 			      <td align="left"><a href="<%=basePath%>web/info/detail.html?id=${info.id}" target="_blank">${info.title}</a></td>
 			      <td height="26" colspan="3" align="right" class="font12Gray">2013年05月15日</td>
 			    </tr>
-		    <tr>
 		  	</c:forEach>
             </table>
-			</MARQUEE>		  </td>
+			</MARQUEE></td>
         </tr>
       </table></td>
     <td width="270" align="right" valign="top">
       <!--用户注册-->
-      	<script type="text/javascript">
-			function doLogin(flag) {
-				var _form = document.form1;
-				
-				_form.action = '<%=basePath%>' + flag + '/login.html';
-			}      	
-      	</script>
 		<table border="0" cellspacing="0" cellpadding="0" class="userReg">
         <tr>
           <td class="p10">
-          	<form id="form1" name="form1" method="post" action="<%=basePath%>admin/login.html" target="_blank">
+          	<form id="form1" name="form1" method="post" action="<%=basePath%>backend/login.html" target="_blank">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <td height="23" colspan="2" align="left" class="title">用户登录</td>
@@ -204,8 +179,8 @@
                   </td>
                 </tr>
                 <tr>
-                  <td height="30" colspan="2" align="center"><input type="submit" value="登 录" class="btnStyle" onclick="return doLogin('admin');"/>
-                    <input type="submit" value="后台登录" class="btnStyle" onclick="return doLogin('backend');"/></td>
+                  <td height="30" colspan="2" align="center"><input type="submit" value="登 录" class="btnStyle"/>
+                    <input type="reset" value="重置" class="btnStyle"/></td>
                 </tr>
               </table>
             </form>

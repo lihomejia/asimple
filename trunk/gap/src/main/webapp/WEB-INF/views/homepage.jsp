@@ -70,7 +70,7 @@
 							</td>
 							<td width="36" align="right" nowrap="nowrap"
 								class="content font12White_B">
-								<a href="<%=basePath%>admin/logout.html">退出</a>
+								<a href="<%=basePath%>admin/${user.companyId}/logout.html">退出</a>
 							</td>
 							<td width="15" align="right">
 								<img src="<%=basePath%>public/images/userRight.gif" width="15" height="30" />
@@ -122,27 +122,17 @@
 																<li onclick="changeBgColor('shiyunul1',this)">
 																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="<%=basePath%>admin/comp/edit.html?id=1" target="rightframe">&nbsp;公司简介</a>
+																	<a href="<%=basePath%>admin/cinfo/edit.html?id=1" target="rightframe">&nbsp;公司简介</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul1',this)">
 																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="<%=basePath%>admin/comp/edit.html?id=2" target="rightframe">&nbsp;公司资质</a>
+																	<a href="<%=basePath%>admin/cinfo/list.html?type=GSXW" target="rightframe">&nbsp;公司新闻</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul1',this)">
 																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="<%=basePath%>admin/comp/edit.html?id=3" target="rightframe">&nbsp;公司新闻</a>
-																</li>
-																<li onclick="changeBgColor('shiyunul1',this)">
-																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
-																	&nbsp;
-																	<a href="<%=basePath%>admin/comp/edit.html?id=4" target="rightframe">&nbsp;产品与服务</a>
-																</li>
-																<li onclick="changeBgColor('shiyunul1',this)">
-																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
-																	&nbsp;
-																	<a href="<%=basePath%>admin/comp/edit.html?id=5" target="rightframe">&nbsp;联系我们</a>
+																	<a href="<%=basePath%>admin/cinfo/list.html?type=CPFW" target="rightframe">&nbsp;产品与服务</a>
 																</li>
 															</ul>
 															<div id="menudiv2" class="shiyunlei2"
@@ -155,19 +145,11 @@
 																<li onclick="changeBgColor('shiyunul2',this)">
 																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a href="<%=basePath%>admin/tab.html" target="rightframe">&nbsp;生产单元编号</a>
-																</li>
-																<li onclick="changeBgColor('shiyunul2',this)">
-																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
-																	&nbsp;
-																	<a href="<%=basePath%>admin/tab.html" target="rightframe">&nbsp;生产单元面积</a>
-																</li>
-																<li onclick="changeBgColor('shiyunul2',this)">
-																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
-																	&nbsp;
 																	<a href="<%=basePath%>admin/cell/list.html" target="rightframe">&nbsp;生产单元信息</a>
 																</li>
 															</ul>
+															
+															<c:if test="${user.companyType == 2}">
 															<div id="menudiv3" class="shiyunlei2"
 																onclick="zhedie('shiyunul3',this)">
 																<p>
@@ -194,34 +176,6 @@
 																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
 																	<a href="<%=basePath%>admin/nurture/archived/list.html" target="rightframe">&nbsp;已归档信息</a>
-																</li>
-															</ul>
-															<div id="menudiv4" class="shiyunlei2"
-																onclick="zhedie('shiyunul4',this)">
-																<p>
-																	种植类
-																</p>
-															</div>
-															<ul id="shiyunul4" class="shiyunul">
-																<li onclick="changeBgColor('shiyunul4',this)">
-																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
-																	&nbsp;
-																	<a href="<%=basePath%>admin/grow/register/add.html" target="rightframe">&nbsp;登记</a>
-																</li>
-																<li onclick="changeBgColor('shiyunul4',this)">
-																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
-																	&nbsp;
-																	<a href="<%=basePath%>admin/grow/process/list.html" target="rightframe">&nbsp;种植过程</a>
-																</li>
-																<li onclick="changeBgColor('shiyunul4',this)">
-																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
-																	&nbsp;
-																	<a href="<%=basePath%>admin/grow/completed/list.html" target="rightframe">&nbsp;已完成信息</a>
-																</li>
-																<li onclick="changeBgColor('shiyunul4',this)">
-																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
-																	&nbsp;
-																	<a href="<%=basePath%>admin/grow/archived/list.html" target="rightframe">&nbsp;已归档信息</a>
 																</li>
 															</ul>
 															<div id="menudiv5" class="shiyunlei2"
@@ -267,6 +221,81 @@
 																<%
 																}
 																 %>
+															</ul>
+															
+															<div id="menudiv8" class="shiyunlei2"
+																onclick="zhedie('shiyunul8',this)">
+																<p>
+																	兽药
+																</p>
+															</div>
+															<ul id="shiyunul8" class="shiyunul">
+																<li onclick="changeBgColor('shiyunul8',this)">
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
+																	&nbsp;
+																	<a href="<%=basePath%>admin/medicine/instock/add.html" target="rightframe">&nbsp;兽药入库单</a>
+																</li>
+																<li onclick="changeBgColor('shiyunul8',this)">
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
+																	&nbsp;
+																	<a href="<%=basePath%>admin/medicine/instock/list.html" target="rightframe">&nbsp;兽药入库记录</a>
+																</li>
+																<li onclick="changeBgColor('shiyunul8',this)">
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
+																	&nbsp;
+																	<a href="<%=basePath%>admin/medicine/outstock/add.html" target="rightframe">&nbsp;兽药出库单</a>
+																</li>
+																<li onclick="changeBgColor('shiyunul8',this)">
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
+																	&nbsp;
+																	<a href="<%=basePath%>admin/medicine/outstock/list.html" target="rightframe">&nbsp;兽药出库记录</a>
+																</li>
+																<li onclick="changeBgColor('shiyunul8',this)">
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
+																	&nbsp;
+																	<a href="<%=basePath%>admin/medicine/stock/list.html" target="rightframe">&nbsp;兽药库存</a>
+																</li>
+																<%
+																	for (MedicineResourceType resourceType : MedicineResourceType.values()) {
+																%>
+																<li onclick="changeBgColor('shiyunul8',this)">
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
+																	&nbsp;
+																	<a href="<%=basePath%>admin/medicine/resource/list.html?type=<%=resourceType %>" target="rightframe">&nbsp;<%=resourceType.getTitle() %></a>
+																</li>
+																<%
+																}
+																 %>
+															</ul>
+															</c:if>
+															<c:if test="${user.companyType == 1}">
+															<div id="menudiv4" class="shiyunlei2"
+																onclick="zhedie('shiyunul4',this)">
+																<p>
+																	种植类
+																</p>
+															</div>
+															<ul id="shiyunul4" class="shiyunul">
+																<li onclick="changeBgColor('shiyunul4',this)">
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
+																	&nbsp;
+																	<a href="<%=basePath%>admin/grow/register/add.html" target="rightframe">&nbsp;登记</a>
+																</li>
+																<li onclick="changeBgColor('shiyunul4',this)">
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
+																	&nbsp;
+																	<a href="<%=basePath%>admin/grow/process/list.html" target="rightframe">&nbsp;种植过程</a>
+																</li>
+																<li onclick="changeBgColor('shiyunul4',this)">
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
+																	&nbsp;
+																	<a href="<%=basePath%>admin/grow/completed/list.html" target="rightframe">&nbsp;已完成信息</a>
+																</li>
+																<li onclick="changeBgColor('shiyunul4',this)">
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
+																	&nbsp;
+																	<a href="<%=basePath%>admin/grow/archived/list.html" target="rightframe">&nbsp;已归档信息</a>
+																</li>
 															</ul>
 															<div id="menudiv6" class="shiyunlei2"
 																onclick="zhedie('shiyunul6',this)">
@@ -356,50 +385,7 @@
 																}
 																 %>
 															</ul>
-															<div id="menudiv8" class="shiyunlei2"
-																onclick="zhedie('shiyunul8',this)">
-																<p>
-																	兽药
-																</p>
-															</div>
-															<ul id="shiyunul8" class="shiyunul">
-																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
-																	&nbsp;
-																	<a href="<%=basePath%>admin/medicine/instock/add.html" target="rightframe">&nbsp;兽药入库单</a>
-																</li>
-																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
-																	&nbsp;
-																	<a href="<%=basePath%>admin/medicine/instock/list.html" target="rightframe">&nbsp;兽药入库记录</a>
-																</li>
-																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
-																	&nbsp;
-																	<a href="<%=basePath%>admin/medicine/outstock/add.html" target="rightframe">&nbsp;兽药出库单</a>
-																</li>
-																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
-																	&nbsp;
-																	<a href="<%=basePath%>admin/medicine/outstock/list.html" target="rightframe">&nbsp;兽药出库记录</a>
-																</li>
-																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
-																	&nbsp;
-																	<a href="<%=basePath%>admin/medicine/stock/list.html" target="rightframe">&nbsp;兽药库存</a>
-																</li>
-																<%
-																	for (MedicineResourceType resourceType : MedicineResourceType.values()) {
-																%>
-																<li onclick="changeBgColor('shiyunul7',this)">
-																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
-																	&nbsp;
-																	<a href="<%=basePath%>admin/medicine/resource/list.html?type=<%=resourceType %>" target="rightframe">&nbsp;<%=resourceType.getTitle() %></a>
-																</li>
-																<%
-																}
-																 %>
-															</ul>
+															</c:if>
 															<div id="menudiv9" class="shiyunlei2"
 																onclick="zhedie('shiyunul9',this)">
 																<p>
@@ -407,27 +393,27 @@
 																</p>
 															</div>
 															<ul id="shiyunul9" class="shiyunul">
-																<li onclick="changeBgColor('shiyunul7',this)">
+																<li onclick="changeBgColor('shiyunul9',this)">
 																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
 																	<a href="<%=basePath%>admin/disinfectant/instock/add.html" target="rightframe">&nbsp;消毒剂入库单</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul7',this)">
+																<li onclick="changeBgColor('shiyunul9',this)">
 																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
 																	<a href="<%=basePath%>admin/disinfectant/instock/list.html" target="rightframe">&nbsp;消毒剂入库记录</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul7',this)">
+																<li onclick="changeBgColor('shiyunul9',this)">
 																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
 																	<a href="<%=basePath%>admin/disinfectant/outstock/add.html" target="rightframe">&nbsp;消毒剂出库单</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul7',this)">
+																<li onclick="changeBgColor('shiyunul9',this)">
 																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
 																	<a href="<%=basePath%>admin/disinfectant/outstock/list.html" target="rightframe">&nbsp;消毒剂出库记录</a>
 																</li>
-																<li onclick="changeBgColor('shiyunul7',this)">
+																<li onclick="changeBgColor('shiyunul9',this)">
 																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
 																	<a href="<%=basePath%>admin/disinfectant/stock/list.html" target="rightframe">&nbsp;消毒剂库存</a>
@@ -436,7 +422,7 @@
 																<%
 																	for (DisinfectantResourceType resourceType : DisinfectantResourceType.values()) {
 																%>
-																<li onclick="changeBgColor('shiyunul7',this)">
+																<li onclick="changeBgColor('shiyunul9',this)">
 																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
 																	<a href="<%=basePath%>admin/disinfectant/resource/list.html?type=<%=resourceType %>" target="rightframe">&nbsp;<%=resourceType.getTitle() %></a>
@@ -457,7 +443,7 @@
 															for (DictType dictType : DictType.values()) {
 															%>
 															
-															<li onclick="changeBgColor('shiyunul4',this)">
+															<li onclick="changeBgColor('shiyunul10',this)">
 																<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																&nbsp;
 																<a href="<%=basePath%>admin/resource/dict/list.html?type=<%=dictType %>" target="rightframe">&nbsp;<%=dictType.getTitle() %></a>
@@ -466,42 +452,46 @@
 															}
 															 %>
 															</ul>
-															<div id="menudiv12" class="shiyunlei2"
-																onclick="zhedie('shiyunul12',this)">
+															
+															<div id="menudiv11" class="shiyunlei2"
+																onclick="zhedie('shiyunul11',this)">
 																<p>
-																	环境管理
+																	生产管理
 																</p>
 															</div>
-															<div id="menudiv13" class="shiyunlei2"
-																onclick="zhedie('shiyunul13',this)">
-																<p>
-																	培训记录
-																</p>
-															</div>
-															<div id="menudiv14" class="shiyunlei2"
-																onclick="zhedie('shiyunul14',this)">
-																<p>
-																	员工基本信息
-																</p>
-															</div>
-															<div id="menudiv15" class="shiyunlei2"
-																onclick="zhedie('shiyunul15',this)">
-																<p>
-																	投诉建议
-																</p>
-															</div>
-															<div id="menudiv16" class="shiyunlei2"
-																onclick="zhedie('shiyunul16',this)">
-																<p>
-																	法律法规
-																</p>
-															</div>
-															<div id="menudiv17" class="shiyunlei2"
-																onclick="zhedie('shiyunul17',this)">
-																<p>
-																	抱怨处理
-																</p>
-															</div>
+															<ul id="shiyunul11" class="shiyunul">
+																<li onclick="changeBgColor('shiyunul11',this)">
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
+																	&nbsp;
+																	<a target="rightframe">&nbsp;环境管理</a>
+																</li>
+																<li onclick="changeBgColor('shiyunul11',this)">
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
+																	&nbsp;
+																	<a target="rightframe">&nbsp;培训记录</a>
+																</li>
+																<li onclick="changeBgColor('shiyunul11',this)">
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
+																	&nbsp;
+																	<a target="rightframe">&nbsp;员工基本信息</a>
+																</li>
+																<li onclick="changeBgColor('shiyunul11',this)">
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
+																	&nbsp;
+																	<a target="rightframe">&nbsp;投诉建议</a>
+																</li>
+																<li onclick="changeBgColor('shiyunul11',this)">
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
+																	&nbsp;
+																	<a target="rightframe">&nbsp;法律法规</a>
+																</li>
+																<li onclick="changeBgColor('shiyunul11',this)">
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
+																	&nbsp;
+																	<a target="rightframe">&nbsp;抱怨处理</a>
+																</li>
+																
+															</ul>
 														</td>
 													</tr>
 												</tbody>

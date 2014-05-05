@@ -75,6 +75,7 @@
 						                <th>编号</th>
 						                <th>公司编号</th>
 						                <th>公司名称</th>
+						                <th>公司类型</th>
 						                <th>状态</th>
 						                <th>操作</th>
 						            </tr>
@@ -83,6 +84,10 @@
 							                <td>${pager.start+status.index}</td>
 							                <td>${data.companyno}</td>
 							                <td>${data.companyname}</td>
+							                <td>
+							                	<c:if test="${1==data.type}">种植类</c:if>
+							                	<c:if test="${2==data.type}">养殖类</c:if>
+							                </td>
 							                <td>${data.disp.status}</td>
 							                <td>
 												<c:if test="${data.status == 0}">

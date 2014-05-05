@@ -9,6 +9,7 @@
 		JGAP.on(window, 'load', function() {
 	    	validator.regist({id : "companyno", name : "公司代码"}, "notnull");
 	    	validator.regist({id : "companyname", name : "公司名称"}, "notnull");
+	    	validator.regist({id : "type", name : "公司类型"}, "notnull");
 	    	validator.bindForm("form1");
 	   	});
     </script>
@@ -27,15 +28,25 @@
 							<td>
 								<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0" class="dataList">
 									<tr>
-										<td class=forumrow style="30%"><div align="right">公司代码:</div></td>
+										<td class=forumrow style="width:30%;"><div align="right">公司代码:</div></td>
 										<td class=forumrow>
 											<input type="text" id="companyno" name="companyno" value="${data.companyno }"/><font class=required>*</font>公司邮箱@后面部分
 										</td>
 									</tr>
 									<tr>
-										<td class=forumrow style="70%"><div align="right">公司名称:</div></td>
+										<td class=forumrow><div align="right">公司名称:</div></td>
 										<td class=forumrow>
 											<input type="text" id="companyname" name="companyname" value="${data.companyname }"/><font class=required>*</font>
+										</td>
+									</tr>
+									<tr>
+										<td class=forumrow><div align="right">公司类型:</div></td>
+										<td class=forumrow>
+											<select id="type" name="type">
+												<option value=""> 请选择公司类型</option>
+												<option value="1" <c:if test="${1==data.type}">selected</c:if>>种植类</option>
+												<option value="2" <c:if test="${2==data.type}">selected</c:if>>养殖类</option>
+											</select><font class=required>*</font>
 										</td>
 									</tr>
 									<tr>

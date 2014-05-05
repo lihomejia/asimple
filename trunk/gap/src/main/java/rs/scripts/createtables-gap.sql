@@ -12,6 +12,7 @@ create table t_company (
     companyno varchar(60),
     innercode varchar(60),
     indate datetime,
+    type int default 0,
     primary key (id)
 );
 

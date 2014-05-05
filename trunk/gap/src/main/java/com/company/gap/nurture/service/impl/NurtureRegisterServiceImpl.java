@@ -7,6 +7,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.company.gap.backend.company.model.Company;
+import com.company.gap.backend.company.service.IBackendCompanyService;
+import com.company.gap.base.LocalContext;
 import com.company.gap.base.dao.IBaseDao;
 import com.company.gap.base.qrcode.TwoDimensionCode;
 import com.company.gap.base.service.impl.BaseServiceImpl;
@@ -26,6 +29,9 @@ public class NurtureRegisterServiceImpl extends BaseServiceImpl<Register> implem
 	private INurtureRegisterDao dao;
 	@Autowired
 	private ICellService cellService;
+	
+	@Autowired
+	private IBackendCompanyService backendCompanyService;
 
 	@Override
 	protected IBaseDao<Register> get() {
@@ -68,11 +74,13 @@ public class NurtureRegisterServiceImpl extends BaseServiceImpl<Register> implem
 		Calendar factory = Calendar.getInstance();
 		factory.set(Calendar.DATE, -3);
 		
+		Company c = backendCompanyService.findBean(new Company(LocalContext.getCompanyId()));
+		
 		String content = new StringBuffer()
 			.append("gap://scan/")
-			.append(t.getId()).append("|")//产品编号
+			.append(c.getInnercode() + "N" + t.getId()).append("|")//产品编号
 			.append(DictHelper.getText(t.getProductId())).append("|")//产品名称
-			.append("北京世外桃源农业科技").append("|")//生产厂家
+			.append(c.getCompanyname()).append("|")//生产厂家
 			.append(DateUtils.format(t.getRegdate())).append("|")//生产日期
 			.append(DateUtils.format(factory.getTime()))//出厂日期
 			.toString()

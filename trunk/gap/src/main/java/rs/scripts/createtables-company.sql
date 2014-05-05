@@ -1,4 +1,4 @@
-create table t_comp (
+create table t_cinfo (
     id integer not null auto_increment,
     adate datetime,
     auser_id int default 0,
@@ -9,6 +9,9 @@ create table t_comp (
     udate datetime,
     uuser_id int default 0,
     content TEXT,
+    keyword varchar(250),
+    title varchar(250),
+    type varchar(20),
     primary key (id)
 );
 

@@ -22,13 +22,13 @@ public class BaseDaoImpl<T extends GeneralModel> implements IBaseDao<T> {
 	@Resource(name="jdbcTemplate")
 	protected JdbcTemplate jdbcTemplate;
 	
-	
-	/** Temporary JdtcTemplate, default by main datasource */
-	@Resource(name="jdbcTemplateCommon")
-	protected JdbcTemplate jdbcTemplateTmp;
-	
 	protected Class<T> clazz;
 	protected String tableName;
+	
+	
+	protected JdbcTemplate getJdbcTemplate() {
+		return this.jdbcTemplate;
+	}
 	
 	@SuppressWarnings("unchecked")
 	public BaseDaoImpl() {
@@ -45,30 +45,30 @@ public class BaseDaoImpl<T extends GeneralModel> implements IBaseDao<T> {
 	@Override
 	public int insert(T t) {
 		t.setCdate(new Date());
-		return GeneralModelUtil.insert(jdbcTemplate, t);
+		return GeneralModelUtil.insert(getJdbcTemplate(), t);
 	}
 
 	@Override
 	public int update(T t) {
-		return GeneralModelUtil.update(jdbcTemplate, t);
+		return GeneralModelUtil.update(getJdbcTemplate(), t);
 	}
 	
 	@Override
 	public int deleteById(Integer id) {
 		String sql = "delete from " + tableName + " where id=?";
-		return jdbcTemplate.update(sql, id);
+		return getJdbcTemplate().update(sql, id);
 	}
 	
 	@Override
 	public int updateStatus(Integer id, Integer status) {
 		String sql = "update " + tableName + " set status=? where id=?";
-		return jdbcTemplate.update(sql, status, id);
+		return getJdbcTemplate().update(sql, status, id);
 	}
 	
 	@Override
 	public int updateStatus(Integer id, Integer status, Integer auserId, Date adate) {
 		String sql = "update " + tableName + " set status=?,auser_id=?,adate=? where id=?";
-		return jdbcTemplate.update(sql, status, auserId, adate, id);
+		return getJdbcTemplate().update(sql, status, auserId, adate, id);
 	}
 	
 	@Override
@@ -78,7 +78,7 @@ public class BaseDaoImpl<T extends GeneralModel> implements IBaseDao<T> {
 
 	@Override
 	public List<T> findList(String sql, Object... args) {
-		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<T>(clazz), args);
+		return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<T>(clazz), args);
 	}
 	
 	@Override
