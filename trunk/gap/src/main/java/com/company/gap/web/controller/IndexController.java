@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.company.gap.backend.company.model.Company;
 import com.company.gap.backend.company.service.IBackendCompanyService;
 import com.company.gap.info.enumeration.InfoType;
 import com.company.gap.info.model.Info;
@@ -33,7 +34,9 @@ public class IndexController {
 			request.setAttribute(e.getKey().toString(), e.getValue());
 		}
 		
-		request.setAttribute("companyList", backendCompanyService.findList());
+		Company tmp = new Company();
+		tmp.setStatus(2);
+		request.setAttribute("companyList", backendCompanyService.findList(tmp));
 		
 		return "web/index";
 	}
