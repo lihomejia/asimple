@@ -40,7 +40,7 @@
 								    <tr> 
 								   	 	<td class=forumrow style="70%"><div align="right">产品名称:</div></td>
 										<td class=forumrow>
-											<input type="text" name="product" value="${data.product }"/>
+											<input type="text" name="product" value="${productName}" readonly="readonly"/>
 										</td>
 								    </tr>
 								    <tr> 
