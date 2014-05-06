@@ -29,7 +29,8 @@ public class ProductQueryController {
 	
 	@RequestMapping("doHtml5")
 	public String doHtml5(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String id = StringUtils.defaultString(request.getParameter("id"));
+		String id = StringUtils.defaultString(request.getParameter("id")).toUpperCase();
+		request.setAttribute("content", "对不起，请检查您输入的产品追溯码是否有误！");
 		//A001G0
 		if (id.length() < 6) {
 			return "result";
@@ -52,7 +53,9 @@ public class ProductQueryController {
 		response.setContentType("text/html");
 		response.setCharacterEncoding("utf-8");
 		if (productQueryService != null) {
-			request.setAttribute("content", productQueryService.query(key));
+			try {
+				request.setAttribute("content", productQueryService.query(key));
+			} catch (Exception e) {}
 		}
 		return "result";
 	}
