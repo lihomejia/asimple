@@ -30,7 +30,7 @@
 									<tr>
 										<td class=forumrow style="width:30%;"><div align="right">公司代码:</div></td>
 										<td class=forumrow>
-											<input type="text" id="companyno" name="companyno" value="${data.companyno }"/><font class=required>*</font>公司邮箱@后面部分
+											<input type="text" id="companyno" name="companyno" value="${data.companyno }"/><font class=required>*</font>
 										</td>
 									</tr>
 									<tr>
