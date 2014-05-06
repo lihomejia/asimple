@@ -2,6 +2,9 @@ package com.company.gap.info.dao.impl;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.company.gap.base.dao.impl.BaseDaoImpl;
@@ -14,6 +17,13 @@ import com.company.gap.info.model.Info;
 public class InfoDaoImpl extends BaseDaoImpl<Info> implements IInfoDao<Info> {
 	
 	private static String UNION_ALL = " union all ";
+	
+	@Resource(name="jdbcTemplateCommon")
+	protected JdbcTemplate jdbcTemplateCommon;
+	
+	protected JdbcTemplate getJdbcTemplate() {
+		return this.jdbcTemplateCommon;
+	}
 
 	@Override
 	public List<Info> queryGroup(InfoType[] types) {
