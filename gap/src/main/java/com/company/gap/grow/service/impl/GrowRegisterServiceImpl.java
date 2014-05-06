@@ -81,8 +81,8 @@ public class GrowRegisterServiceImpl extends BaseServiceImpl<Register> implement
 			.append(c.getInnercode() + "G" + t.getId()).append("|")//产品编号
 			.append(DictHelper.getText(t.getProductId())).append("|")//产品名称
 			.append(c.getCompanyname()).append("|")//生产厂家
-			.append(DateUtils.format(t.getRegdate())).append("|")//生产日期
-			.append(DateUtils.format(factory.getTime()))//出厂日期
+			.append(DateUtils.format(t.getRegdate()))//.append("|")//生产日期
+			//.append(DateUtils.format(factory.getTime()))//出厂日期
 			.toString()
 		;
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
