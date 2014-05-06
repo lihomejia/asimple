@@ -11,6 +11,8 @@ import com.company.gap.base.service.IBaseService;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.grow.model.Pesticide;
 import com.company.gap.grow.service.IGrowPesticideService;
+import com.company.gap.resource.component.DictHelper;
+import com.company.gap.resource.enumeration.DictType;
 
 @Controller
 @RequestMapping("admin/grow/pesticide")
@@ -43,5 +45,7 @@ public class GrowPesticideEntryController extends BeanEntryController<Pesticide>
 	protected void initialize(HttpServletRequest request) {
 		super.initialize(request);
 		request.setAttribute("registerId", request.getParameter("registerId"));
+		request.setAttribute("jxlbList", DictHelper.getList(DictType.JXLB));
+		request.setAttribute("syffList", DictHelper.getList(DictType.SYFF));
 	}
 }
