@@ -31,6 +31,7 @@ public class GrowHarvestViewController extends BeanViewController<Harvest> {
 			Dto disp = harvest.getDisp();
 			disp.put("operatedate", DateUtils.format(harvest.getOperatedate()));
 			disp.put("status", Status.valueOf(harvest.getStatus()).getName());
+			disp.put("method", harvest.getMethod());
 		}
 	}
 	

@@ -224,7 +224,7 @@ create table t_grow_harvest (
     uuser_id int default 0,
     batch int default 0,
     cell_id int default 0,
-    method varchar(60),
+    method int default 0,
     operatedate datetime,
     product varchar(100),
     register_id int default 0,
@@ -251,7 +251,7 @@ create table t_grow_irrigate (
     manager varchar(60),
     quantum decimal(10,2) default 0,
     register_id int default 0,
-    way varchar(30),
+    way int default 0,
     primary key (id)
 );
 create table t_grow_manure (

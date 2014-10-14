@@ -12,6 +12,7 @@ import com.company.gap.base.model.ViewFormModel;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.base.util.Dto;
 import com.company.gap.grow.model.Irrigate;
+import com.company.gap.resource.component.DictHelper;
 
 @Controller
 @RequestMapping("admin/grow/irrigate")
@@ -31,6 +32,7 @@ public class GrowIrrigateViewController extends BeanViewController<Irrigate> {
 			Dto disp = irrigate.getDisp();
 			disp.put("date", DateUtils.format(irrigate.getDate()));
 			disp.put("status", Status.valueOf(irrigate.getStatus()).getName());
+			disp.put("way", DictHelper.getText(irrigate.getWay()));
 		}
 	}
 	

@@ -20,8 +20,7 @@ public class Irrigate extends GeneralModel {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 	
-	@Column(length=30)
-	private String way;
+	private Integer way;
 	
 	@Column(columnDefinition="decimal(10,2) default 0")
 	private Double area;
@@ -56,11 +55,11 @@ public class Irrigate extends GeneralModel {
 		this.date = date;
 	}
 
-	public String getWay() {
+	public Integer getWay() {
 		return way;
 	}
 
-	public void setWay(String way) {
+	public void setWay(Integer way) {
 		this.way = way;
 	}
 
