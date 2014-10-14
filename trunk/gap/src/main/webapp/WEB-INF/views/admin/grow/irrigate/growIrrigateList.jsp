@@ -46,7 +46,7 @@
 						              	<tr>
 						              		<td>${pager.start+status.index}</td>
 						              		<td>${data.disp.date}</td>
-						              		<td>${data.way }</td>
+						              		<td>${data.disp.way }</td>
 						              		<td>${data.area}</td>
 						              		<td>${data.quantum }</td>
 						              		<td>${data.manager }</td>

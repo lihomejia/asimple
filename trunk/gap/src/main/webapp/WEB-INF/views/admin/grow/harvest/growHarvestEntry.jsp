@@ -58,7 +58,13 @@
 								    <tr>
 										<td class=forumrow><div align="right">收割方法:</div></td>
 										<td class=forumrow>
-											<input type="text" name="method" value="${data.method }"/>
+											<select id="method" name="method">
+												<option value=""> 请选择收割方法</option>
+												<c:forEach items="${sgffList}" var="dict">
+													<option value="${dict.id }" <c:if test="${dict.id==data.method}">selected</c:if>>${dict.name }</option>
+												</c:forEach>
+											</select>
+											<font class=required>*</font>
 										</td>
 									</tr>
 								    <tr>
