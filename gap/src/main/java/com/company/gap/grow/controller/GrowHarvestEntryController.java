@@ -14,6 +14,8 @@ import com.company.gap.grow.model.Harvest;
 import com.company.gap.grow.model.Register;
 import com.company.gap.grow.service.IGrowHarvestService;
 import com.company.gap.grow.service.IGrowRegisterService;
+import com.company.gap.resource.component.DictHelper;
+import com.company.gap.resource.enumeration.DictType;
 import com.company.gap.resource.model.Dict;
 import com.company.gap.resource.service.IDictService;
 
@@ -59,6 +61,6 @@ public class GrowHarvestEntryController extends BeanEntryController<Harvest> {
 		
 		Dict dict = dictService.findById(register.getProductId());
 		request.setAttribute("productName", dict.getName());
-		
+		request.setAttribute("sgffList", DictHelper.getList(DictType.SGFF));
 	}
 }

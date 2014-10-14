@@ -27,8 +27,8 @@ public class Harvest extends GeneralModel {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date operatedate;
 	
-	@Column(length=60)
-	private String method;
+	@Column
+	private Integer method;
 	
 	@Column(columnDefinition="decimal(10, 2) default 0")
 	private Double scale;
@@ -85,11 +85,11 @@ public class Harvest extends GeneralModel {
 		this.operatedate = operatedate;
 	}
 
-	public String getMethod() {
+	public Integer getMethod() {
 		return method;
 	}
 
-	public void setMethod(String method) {
+	public void setMethod(Integer method) {
 		this.method = method;
 	}
 

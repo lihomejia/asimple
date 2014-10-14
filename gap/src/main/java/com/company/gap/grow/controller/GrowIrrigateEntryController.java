@@ -11,6 +11,8 @@ import com.company.gap.base.service.IBaseService;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.grow.model.Irrigate;
 import com.company.gap.grow.service.IGrowIrrigateService;
+import com.company.gap.resource.component.DictHelper;
+import com.company.gap.resource.enumeration.DictType;
 
 @Controller
 @RequestMapping("admin/grow/irrigate")
@@ -41,5 +43,7 @@ public class GrowIrrigateEntryController extends BeanEntryController<Irrigate> {
 	protected void initialize(HttpServletRequest request) {
 		super.initialize(request);
 		request.setAttribute("registerId", request.getParameter("registerId"));
+		
+		request.setAttribute("ggfsList", DictHelper.getList(DictType.GGFS));
 	}
 }
