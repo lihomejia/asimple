@@ -46,7 +46,13 @@
 								    <tr>
 										<td class=forumrow><div align="right">灌溉方式:</div></td>
 										<td class=forumrow>
-											<input type="text" name="way" value="${data.way }"/>
+											<select id="way" name="way">
+												<option value=""> 请选择灌溉方式</option>
+												<c:forEach items="${ggfsList}" var="dict">
+													<option value="${dict.id }" <c:if test="${dict.id==data.way}">selected</c:if>>${dict.name }</option>
+												</c:forEach>
+											</select>
+											<font class=required>*</font>
 										</td>
 									</tr>
 								    <tr>
