@@ -742,3 +742,24 @@ create table t_user (
     user_name varchar(60),
     primary key (id)
 );
+
+create table t_sale (
+    id integer not null auto_increment,
+    adate datetime,
+    auser_id int default 0,
+    cdate datetime,
+    comment varchar(255),
+    cuser_id int default 0,
+    status int default 0,
+    udate datetime,
+    uuser_id int default 0,
+    batch int default 0,
+    contact varchar(50),
+    level varchar(100),
+    product varchar(100),
+    purchaser varchar(100),
+    quantity decimal(10, 2) default 0,
+    saledate datetime,
+    spec varchar(100),
+    primary key (id)
+);
