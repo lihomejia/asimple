@@ -463,7 +463,37 @@
 																<li onclick="changeBgColor('shiyunul11',this)">
 																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
-																	<a target="rightframe">&nbsp;环境管理</a>
+																	<a target="rightframe">&nbsp;产品召回记录</a>
+																</li>
+																<li onclick="changeBgColor('shiyunul11',this)">
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
+																	&nbsp;
+																	<a target="rightframe">&nbsp;防护服使用清洗记录</a>
+																</li>
+																<li onclick="changeBgColor('shiyunul11',this)">
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
+																	&nbsp;
+																	<a target="rightframe">&nbsp;废弃物处理记录</a>
+																</li>
+																<li onclick="changeBgColor('shiyunul11',this)">
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
+																	&nbsp;
+																	<a target="rightframe">&nbsp;设施设备维修保养清洗记录</a>
+																</li>
+																<li onclick="changeBgColor('shiyunul11',this)">
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
+																	&nbsp;
+																	<a target="rightframe">&nbsp;有害生物控制检查记录</a>
+																</li>
+																<li onclick="changeBgColor('shiyunul11',this)">
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
+																	&nbsp;
+																	<a target="rightframe">&nbsp;消毒记录</a>
+																</li>
+																<li onclick="changeBgColor('shiyunul11',this)">
+																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
+																	&nbsp;
+																	<a href="<%=basePath%>admin/pm/sale/list.html" target="rightframe">&nbsp;销售记录</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul11',this)">
 																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />

@@ -23,7 +23,7 @@
 				<td>
 					<table border="0" cellspacing="0" cellpadding="0" class="subNav mCenter" style="width:100%;">
 			      		<tr>
-			        		<td class="font12Blue p10"><span class="font12Blue_B">您当前所在位置：收割记录</td>
+			        		<td class="font12Blue p10"><span class="font12Blue_B">您当前所在位置：出栏记录</td>
 			      		</tr>
 			   		 </table>
 				</td>
@@ -32,7 +32,7 @@
 				<td>
 					<table style="width:100%;">
 						<tr>
-							<td class="dataListTitle"><span class="pl10">收割记录</span></td>
+							<td class="dataListTitle"><span class="pl10">出栏记录</span></td>
 						</tr>
 						<tr>
 							<td>
@@ -56,7 +56,7 @@
 										</td>
 								    </tr>
 								    <tr>
-										<td class=forumrow><div align="right">收割方法:</div></td>
+										<td class=forumrow><div align="right">出栏方法:</div></td>
 										<td class=forumrow>
 											<input type="text" name="method" value="${data.method }"/>
 										</td>
