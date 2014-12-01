@@ -113,8 +113,8 @@
 		<!-- Tomcat Web Server -->
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
-			<artifactId>catalina</artifactId>
-			<version>6.0.37</version>
+			<artifactId>tomcat-api</artifactId>
+			<version>7.0.57</version>
 			<scope>provided</scope>
 		</dependency>
 		
