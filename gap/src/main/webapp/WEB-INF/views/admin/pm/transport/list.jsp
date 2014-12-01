@@ -15,7 +15,7 @@
 				<td>
 					<table border="0" cellspacing="0" cellpadding="0" class="subNav mCenter" style="width:100%;">
 			      		<tr>
-			        		<td class="font12Blue p10"><span class="font12Blue_B">您当前所在位置：销售记录管理</td>
+			        		<td class="font12Blue p10"><span class="font12Blue_B">您当前所在位置：运输记录管理</td>
 			      		</tr>
 			   		 </table>
 				</td>
@@ -71,28 +71,28 @@
 					<table cellpadding="0" cellspacing="0" style="width:100%;">
 						<%@include file="/public/jsp/pager.jsp"%>
 						<tr>
-         					 <td class="dataListTitle"><span class="pl10">销售记录管理</span></td>
+         					 <td class="dataListTitle"><span class="pl10">运输记录管理</span></td>
        					</tr>
 						<tr>
 							<td align="left" valign="top">
 								<table width="100%" border="0" cellspacing="0" cellpadding="0" class="dataList">
 									<tr>
 									    <th>编号</th>
-										<th>销售时间</th>
+										<th>运输时间</th>
 										<th>产品名称</th>
 										<th>产品批次号</th>
-										<th>销售数量</th>
+										<th>运输数量</th>
 										<th>包装规格</th>
 										<th>产品等级</th>
-										<th>采购商名称</th>
-										<th>采购商联系方式</th>
+										<th>运输方名称</th>
+										<th>运输方联系方式</th>
 										<th>状态</th>
 										<th>操作</th>
 									</tr>
 									<c:forEach items="${datas}" var="data" varStatus="status">
 										<tr>
 											<td>${pager.start+status.index}</td>
-											<td>${data.disp.saledate}</td>
+											<td>${data.disp.transportdate}</td>
 											<td>${data.disp.productId}</td>
 											<td>${data.batch}</td>
 											<td>${data.quantity}</td>
@@ -103,16 +103,16 @@
 											<td>${data.disp.status}</td>
 											<td>
 												<c:if test="${data.status == 0}">
-							                		<a class=linkStyle href="<%=basePath%>admin/pm/sale/approve.html?id=${data.id}" onclick="return confirm('确定批准吗?')">批准</a>
+							                		<a class=linkStyle href="<%=basePath%>admin/pm/transport/approve.html?id=${data.id}" onclick="return confirm('确定批准吗?')">批准</a>
 							                		&nbsp;|&nbsp;
-							                		<a class=linkStyle href="<%=basePath%>admin/pm/sale/edit.html?id=${data.id}">修改</a>
+							                		<a class=linkStyle href="<%=basePath%>admin/pm/transport/edit.html?id=${data.id}">修改</a>
 													&nbsp;|&nbsp;
-							                		<a class=linkStyle href="<%=basePath%>admin/pm/sale/delete.html?id=${data.id}" onclick="return confirm('确定删除吗?')">删除</a>
+							                		<a class=linkStyle href="<%=basePath%>admin/pm/transport/delete.html?id=${data.id}" onclick="return confirm('确定删除吗?')">删除</a>
 							                	</c:if>
 							                	<c:if test="${data.status == 2}">
-							                		<a class=linkStyle href="<%=basePath%>admin/pm/sale/disp.html?id=${data.id}">查看</a>
+							                		<a class=linkStyle href="<%=basePath%>admin/pm/transport/disp.html?id=${data.id}">查看</a>
 							                		&nbsp;|&nbsp;
-							                		<a class=linkStyle href="<%=basePath%>admin/pm/sale/nullify.html?id=${data.id}" onclick="return confirm('确定作废吗?')">作废</a>
+							                		<a class=linkStyle href="<%=basePath%>admin/pm/transport/nullify.html?id=${data.id}" onclick="return confirm('确定作废吗?')">作废</a>
 							                	</c:if>
 											</td>
 										</tr>
@@ -126,7 +126,7 @@
 			<tr><td>&nbsp;</td></tr>
 			<tr>
 				<td style="text-align:right">
-					<input type="button" class="btnStyle" value="新&nbsp;建" onclick="window.location.href='<%=basePath%>admin/pm/sale/add.html';"/>
+					<input type="button" class="btnStyle" value="新&nbsp;建" onclick="window.location.href='<%=basePath%>admin/pm/transport/add.html';"/>
 				</td>
 			</tr>
 		</table>
