@@ -5,19 +5,19 @@ import org.springframework.stereotype.Service;
 
 import com.company.gap.base.dao.IBaseDao;
 import com.company.gap.base.service.impl.BaseServiceImpl;
-import com.company.gap.pm.dao.ISaleDao;
-import com.company.gap.pm.model.Sale;
-import com.company.gap.pm.service.ISaleService;
+import com.company.gap.pm.dao.ITransportDao;
+import com.company.gap.pm.model.Transport;
+import com.company.gap.pm.service.ITransportService;
 
 @Service
-public class SaleServiceImpl extends BaseServiceImpl<Sale> implements ISaleService {
+public class TransportServiceImpl extends BaseServiceImpl<Transport> implements ITransportService {
 
 	@Autowired
-	private ISaleDao<Sale> dao;
+	private ITransportDao<Transport> dao;
 	
 
 	@Override
-	protected IBaseDao<Sale> get() {
+	protected IBaseDao<Transport> get() {
 		return this.dao;
 	}
 

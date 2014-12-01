@@ -9,11 +9,11 @@ import javax.persistence.TemporalType;
 
 import com.company.gap.base.model.GeneralModel;
 
-@Entity(name="t_sale")
-public class Sale extends GeneralModel {
+@Entity(name="t_transport")
+public class Transport extends GeneralModel {
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date saledate;
+	private Date transportdate;
 	
 	@Column(name="product_id")
 	private Integer productId;
@@ -35,13 +35,13 @@ public class Sale extends GeneralModel {
 	
 	@Column(length = 50)
 	private String contact;
-	
-	public Date getSaledate() {
-		return saledate;
+
+	public Date getTransportdate() {
+		return transportdate;
 	}
 
-	public void setSaledate(Date saledate) {
-		this.saledate = saledate;
+	public void setTransportdate(Date transportdate) {
+		this.transportdate = transportdate;
 	}
 
 	public Integer getProductId() {
@@ -99,4 +99,6 @@ public class Sale extends GeneralModel {
 	public void setContact(String contact) {
 		this.contact = contact;
 	}
+	
+	
 }

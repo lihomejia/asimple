@@ -1,4 +1,4 @@
-package com.company.gap.pm.dao.impl;
+package com.company.gap.pm.dao;
 
 import com.company.gap.base.dao.IBaseDao;
 
