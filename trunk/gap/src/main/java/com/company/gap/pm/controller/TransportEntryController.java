@@ -10,29 +10,29 @@ import com.company.gap.base.controller.BeanEntryController;
 import com.company.gap.base.service.IBaseService;
 import com.company.gap.base.util.DateUtils;
 import com.company.gap.base.util.Dto;
-import com.company.gap.pm.model.Sale;
-import com.company.gap.pm.service.ISaleService;
+import com.company.gap.pm.model.Transport;
+import com.company.gap.pm.service.ITransportService;
 import com.company.gap.resource.component.DictHelper;
 import com.company.gap.resource.enumeration.DictType;
 
 @Controller
-@RequestMapping("admin/pm/sale")
-public class SaleEntryController extends BeanEntryController<Sale> {
+@RequestMapping("admin/pm/transport")
+public class TransportEntryController extends BeanEntryController<Transport> {
 
 	@Autowired
-	private ISaleService service;
+	private ITransportService service;
 	
 	@Override
-	protected IBaseService<Sale> get() {return this.service;}
+	protected IBaseService<Transport> get() {return this.service;}
 	
 	@Override
 	protected String toList(HttpServletRequest request) {
-		return "redirect:/admin/pm/sale/list.html";
+		return "redirect:/admin/pm/transport/list.html";
 	}
 	
 	@Override
 	protected String toEntry(HttpServletRequest request) {
-		return "admin/pm/sale/entry";
+		return "admin/pm/transport/entry";
 	}
 	
 	
@@ -41,9 +41,9 @@ public class SaleEntryController extends BeanEntryController<Sale> {
 	}
 	
 	@Override
-	protected void initializeEdit(HttpServletRequest request, Sale t) {
+	protected void initializeEdit(HttpServletRequest request, Transport t) {
 		Dto disp = t.getDisp();
-		disp.put("saledate", DateUtils.format(t.getSaledate()));
+		disp.put("transportdate", DateUtils.format(t.getTransportdate()));
 		disp.put("productId", DictHelper.getText(t.getProductId()));
 		super.initializeEdit(request, t);
 	}
