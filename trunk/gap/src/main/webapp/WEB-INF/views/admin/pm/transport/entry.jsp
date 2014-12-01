@@ -8,8 +8,8 @@
     <script type="text/javascript">
 		JGAP.on(window, 'load', function() {
 
-            validator.regist({id : "saledate", name : "销售日期"}, "date");
-            validator.regist({id : "quantity", name : "销售数量"}, "notnull", "number");
+            validator.regist({id : "transportdate", name : "运输日期"}, "date");
+            validator.regist({id : "quantity", name : "运输数量"}, "notnull", "number");
             validator.regist({id : "productId", name : "产品名称"}, "notnull");
             validator.regist({id : "batch", name : "产品批次号"}, "notnull");
            
@@ -25,17 +25,17 @@
 				<td>
 					<table style="width:100%;">
 						<tr>
-							<td class="dataListTitle"><span class="pl10">销售记录维护</span></td>
+							<td class="dataListTitle"><span class="pl10">运输记录维护</span></td>
 						</tr>
 						<tr>
 							<td>
 								<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0" class="dataList">
                                     <tr> 
-                                        <td width="15%" class=forumrow><div align="right">销售日期:</div></td>
+                                        <td width="15%" class=forumrow><div align="right">运输日期:</div></td>
                                         <td width="35%" class=forumrow>
-                                            <input type="text" id="saledate" name="saledate" value="${data.disp.saledate}" class="Wdate" onClick="WdatePicker()"/><font class=required>*</font>
+                                            <input type="text" id="transportdate" name="transportdate" value="${data.disp.transportdate}" class="Wdate" onClick="WdatePicker()"/><font class=required>*</font>
                                         </td>
-                                        <td width="18%" class=forumrow><div align="right">销售数量：</div></td>
+                                        <td width="18%" class=forumrow><div align="right">运输数量：</div></td>
                                         <td width="32%" class=forumrow>
                                             <input id="quantity" name="quantity" value="${data.quantity}"/><font class=required>*</font>
                                         </td>
@@ -73,11 +73,11 @@
                                         </td>
                                     </tr>
                                     <tr> 
-                                        <td class=forumrow><div align="right">采购商名称:</div></td>
+                                        <td class=forumrow><div align="right">运输方名称:</div></td>
                                         <td class=forumrow>
                                             <input type="text" id="partner" name="partner" value="${data.partner}" />
                                         </td>
-                                        <td class=forumrow><div align="right">采购商联系方式：</div></td>
+                                        <td class=forumrow><div align="right">运输方联系方式：</div></td>
                                         <td class=forumrow>
                                             <input id="contact" name="contact" value="${data.contact}"/>
                                         </td>

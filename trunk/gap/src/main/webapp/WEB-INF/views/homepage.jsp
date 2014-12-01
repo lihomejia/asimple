@@ -491,6 +491,11 @@
 																	<a target="rightframe">&nbsp;消毒记录</a>
 																</li>
 																<li onclick="changeBgColor('shiyunul11',this)">
+                                                                    <img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
+                                                                    &nbsp;
+                                                                    <a href="<%=basePath%>admin/pm/transport/list.html" target="rightframe">&nbsp;运输记录</a>
+                                                                </li>
+																<li onclick="changeBgColor('shiyunul11',this)">
 																	<img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
 																	&nbsp;
 																	<a href="<%=basePath%>admin/pm/sale/list.html" target="rightframe">&nbsp;销售记录</a>
