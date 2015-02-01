@@ -36,7 +36,10 @@ public class IndexController {
 		
 		Company tmp = new Company();
 		tmp.setStatus(2);
-		request.setAttribute("companyList", backendCompanyService.findList(tmp));
+		tmp.setType(1);
+		request.setAttribute("companyList1", backendCompanyService.findList(tmp));
+		tmp.setType(2);
+		request.setAttribute("companyList2", backendCompanyService.findList(tmp));
 		
 		return "web/index";
 	}

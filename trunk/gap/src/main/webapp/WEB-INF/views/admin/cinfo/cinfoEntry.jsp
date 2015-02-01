@@ -12,7 +12,11 @@
     <script type="text/javascript">
     	var editor;
 		KindEditor.ready(function(K) {
-			editor = K.create('#content');
+			editor = K.create('#content', {
+                uploadJson : '<%=basePath%>public/kindeditor-4.1.7/jsp/upload_json.jsp',
+                fileManagerJson : '<%=basePath%>public/kindeditor-4.1.7/jsp/file_manager_json.jsp',
+                allowFileManager : true
+			});
 		});	
 	    JGAP.on(window, 'load', function() {
 	    	validator.regist({id : "title", name : "标题"}, "notnull");

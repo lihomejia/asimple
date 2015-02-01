@@ -25,6 +25,9 @@ public class User extends GeneralModel {
 	private String companyId;
 	
 	@Transient
+	private String companyno;
+	
+	@Transient
 	private Integer companyType;
 	
 	/**
@@ -81,4 +84,13 @@ public class User extends GeneralModel {
 	public void setCompanyType(Integer companyType) {
 		this.companyType = companyType;
 	}
+
+	public String getCompanyno() {
+		return companyno;
+	}
+
+	public void setCompanyno(String companyno) {
+		this.companyno = companyno;
+	}
+	
 }

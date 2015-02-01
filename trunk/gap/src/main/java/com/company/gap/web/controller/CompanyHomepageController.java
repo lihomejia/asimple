@@ -31,7 +31,7 @@ public class CompanyHomepageController {
 	
 	@RequestMapping(value="company/{companyno}")
 	public String index(HttpServletRequest request, @PathVariable("companyno") String companyno) {
-		request.setAttribute("companyno", "companyno");
+		request.setAttribute("companyno", companyno);
 		
 		Company c = backendCompanyService.findCompanyByCompanyNo(companyno);
 		
