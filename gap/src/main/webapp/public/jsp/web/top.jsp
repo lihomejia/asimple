@@ -53,14 +53,34 @@
       </tr>
     </table>
   </div>
-  <div class="mainNav_downMenu4" id="mainNav_downMenu4" style="display:none" onmouseover="shows2('mainNav_downMenu4','menu4')" onmouseout="hiddens2('mainNav_downMenu4','menu4')">
+  <div class="mainNav_downMenu4" id="mainNav_downMenu4" style="display:none" onmouseover="shows2('mainNav_downMenu4','menu4')" >
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <c:forEach items="${companyList}" var="company">
+        <tr>
+            <td><a href="#" id=downMenu1 onmouseover="shows('menu4Nav_downMenu1')" onmouseout="hiddens('menu4Nav_downMenu1')" >种植类</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" id=downMenu2 onmouseover="shows('menu4Nav_downMenu2')" onmouseout="hiddens('menu4Nav_downMenu2')" >养殖类</a></td>
+        </tr>
+    </table>
+  </div>
+  
+  
+  <div class="menu4Nav_downMenu1" id="menu4Nav_downMenu1" style="display:none" onmouseover="shows2('menu4Nav_downMenu1','downMenu1')" onmouseout="hiddens2('menu4Nav_downMenu1','downMenu1')">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <c:forEach items="${companyList1}" var="company">
 	    <tr>
         	<td><a href="<%=basePath%>company/${company.companyno}.html" target="_blank">${company.companyname}</a></td>
       	</tr>
   	</c:forEach>
-      
+    </table>
+  </div>
+    <div class="menu4Nav_downMenu2" id="menu4Nav_downMenu2" style="display:none" onmouseover="shows2('menu4Nav_downMenu2','downMenu2')" onmouseout="hiddens2('menu4Nav_downMenu2','downMenu2')">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <c:forEach items="${companyList2}" var="company">
+        <tr>
+            <td><a href="<%=basePath%>company/${company.companyno}.html" target="_blank">${company.companyname}</a></td>
+        </tr>
+    </c:forEach>
     </table>
   </div>
   <table border="0" cellspacing="0" cellpadding="0" class="mCenter w960">

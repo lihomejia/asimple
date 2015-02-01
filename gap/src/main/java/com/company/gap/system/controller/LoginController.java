@@ -63,6 +63,7 @@ public class LoginController {
 			return error;
 		}
 		u.setCompanyId(companyId);
+		u.setCompanyno(companyno);
 		u.setCompanyType(company.getType());
 		u.setUserType(2);
 		u.setCompanyId(company.getInnercode());

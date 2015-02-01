@@ -70,7 +70,7 @@
 							</td>
 							<td width="36" align="right" nowrap="nowrap"
 								class="content font12White_B">
-								<a href="<%=basePath%>admin/${user.companyId}/logout.html">退出</a>
+								<a href="<%=basePath%>admin/${user.companyno}/logout.html">退出</a>
 							</td>
 							<td width="15" align="right">
 								<img src="<%=basePath%>public/images/userRight.gif" width="15" height="30" />
@@ -134,6 +134,13 @@
 																	&nbsp;
 																	<a href="<%=basePath%>admin/cinfo/list.html?type=CPFW" target="rightframe">&nbsp;产品与服务</a>
 																</li>
+																<c:if test="${user.userId == 'ADMIN' || user.userId == 'admin'}">
+																	<li onclick="changeBgColor('shiyunul1',this)">
+	                                                                    <img src="<%=basePath%>public/images/fangdian_06.gif" align="absmiddle" />
+	                                                                    &nbsp;
+	                                                                    <a href="<%=basePath%>admin/user/list.html" target="rightframe">&nbsp;用户管理</a>
+	                                                                </li>
+	                                                            </c:if>    
 															</ul>
 															<div id="menudiv2" class="shiyunlei2"
 																onclick="zhedie('shiyunul2',this)">
